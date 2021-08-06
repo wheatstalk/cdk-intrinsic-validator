@@ -1,4 +1,3 @@
-const { AwsCdkConstructLibrary } = require('projen');
 const pj = require('projen');
 const project = new pj.AwsCdkConstructLibrary({
   author: 'Josh Kellendonk',
@@ -7,6 +6,8 @@ const project = new pj.AwsCdkConstructLibrary({
   defaultReleaseBranch: 'master',
   name: '@wheatstalk/cdk-intrinsic-validator',
   repositoryUrl: 'https://github.com/wheatstalk/cdk-intrinsic-validator.git',
+
+  releaseEveryCommit: false,
 
   // cdkDependencies: undefined,        /* Which AWS CDK modules (those that start with "@aws-cdk/") does this library require when consumed? */
   // cdkTestDependencies: undefined,    /* AWS CDK modules required for testing. */
