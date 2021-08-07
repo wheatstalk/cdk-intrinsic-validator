@@ -16,7 +16,7 @@ const project = new pj.AwsCdkConstructLibrary({
     '@aws-cdk/custom-resources',
     '@aws-cdk/aws-ec2',
     '@aws-cdk/aws-ecs',
-    '@aws-cdk/aws-lambda-nodejs',
+    '@aws-cdk/aws-lambda',
     '@aws-cdk/aws-logs',
     '@aws-cdk/aws-stepfunctions',
     '@aws-cdk/aws-stepfunctions-tasks',
@@ -26,7 +26,6 @@ const project = new pj.AwsCdkConstructLibrary({
     'ts-node@^10.1.0',
     'aws-cdk@^1.95.2',
     'aws-sdk@^2.963.0',
-    'esbuild@0',
   ],
 
   gitignore: [
@@ -34,6 +33,15 @@ const project = new pj.AwsCdkConstructLibrary({
     'cdk.out',
     '.idea',
     '*.iml',
+  ],
+
+  npmignore: [
+    'cdk.context.json',
+    'cdk.out',
+    '.idea',
+    '*.iml',
+    '/images',
+    '/lib/it',
   ],
 
   // cdkDependencies: undefined,        /* Which AWS CDK modules (those that start with "@aws-cdk/") does this library require when consumed? */

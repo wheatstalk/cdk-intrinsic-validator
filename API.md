@@ -37,10 +37,10 @@ new FargateValidationFactory(scope: Construct, id: string, props: FargateValidat
 
 #### Methods <a name="Methods"></a>
 
-##### `script` <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactory.script"></a>
+##### `runContainer` <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactory.runContainer"></a>
 
 ```typescript
-public script(image: ContainerImage, command: string)
+public runContainer(image: ContainerImage, command: string)
 ```
 
 ###### `image`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactory.parameter.image"></a>

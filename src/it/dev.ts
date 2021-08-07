@@ -44,7 +44,7 @@ class CdkIntrinsicValidator extends cdk.Stack {
         fargateValidations.runContainer(curlImage, 'https://www.amazon.ca/'),
         fargateValidations.runContainer(curlImage, 'https://www.google.com/'),
         // This one will fail and roll back the stack.
-        fargateValidations.runContainer(curlImage, 'https://fake.fake.fake/'),
+        // fargateValidations.runContainer(curlImage, 'https://fake.fake.fake/'),
       ],
     });
   }

@@ -40,7 +40,6 @@
     "@typescript-eslint/parser": "^4.29.0",
     "aws-cdk": "^1.95.2",
     "aws-sdk": "^2.963.0",
-    "esbuild": "0",
     "eslint": "^7.32.0",
     "eslint-import-resolver-node": "^0.3.4",
     "eslint-import-resolver-typescript": "^2.4.0",
@@ -62,7 +61,7 @@
   "peerDependencies": {
     "@aws-cdk/aws-ec2": "^1.95.2",
     "@aws-cdk/aws-ecs": "^1.95.2",
-    "@aws-cdk/aws-lambda-nodejs": "^1.95.2",
+    "@aws-cdk/aws-lambda": "^1.95.2",
     "@aws-cdk/aws-logs": "^1.95.2",
     "@aws-cdk/aws-stepfunctions": "^1.95.2",
     "@aws-cdk/aws-stepfunctions-tasks": "^1.95.2",
@@ -73,7 +72,7 @@
   "dependencies": {
     "@aws-cdk/aws-ec2": "^1.95.2",
     "@aws-cdk/aws-ecs": "^1.95.2",
-    "@aws-cdk/aws-lambda-nodejs": "^1.95.2",
+    "@aws-cdk/aws-lambda": "^1.95.2",
     "@aws-cdk/aws-logs": "^1.95.2",
     "@aws-cdk/aws-stepfunctions": "^1.95.2",
     "@aws-cdk/aws-stepfunctions-tasks": "^1.95.2",

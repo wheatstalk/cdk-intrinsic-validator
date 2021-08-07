@@ -33,11 +33,6 @@
       "type": "build"
     },
     {
-      "name": "esbuild",
-      "version": "0",
-      "type": "build"
-    },
-    {
       "name": "eslint",
       "type": "build"
     },
@@ -120,7 +115,7 @@
       "type": "peer"
     },
     {
-      "name": "@aws-cdk/aws-lambda-nodejs",
+      "name": "@aws-cdk/aws-lambda",
       "version": "^1.95.2",
       "type": "peer"
     },
@@ -165,7 +160,7 @@
       "type": "runtime"
     },
     {
-      "name": "@aws-cdk/aws-lambda-nodejs",
+      "name": "@aws-cdk/aws-lambda",
       "version": "^1.95.2",
       "type": "runtime"
     },

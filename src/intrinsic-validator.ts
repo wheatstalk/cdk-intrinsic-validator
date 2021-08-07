@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as ec2 from '@aws-cdk/aws-ec2';
 import * as ecs from '@aws-cdk/aws-ecs';
-import * as nodejs from '@aws-cdk/aws-lambda-nodejs';
+import * as lambda from '@aws-cdk/aws-lambda';
 import * as logs from '@aws-cdk/aws-logs';
 import * as sfn from '@aws-cdk/aws-stepfunctions';
 import * as sfn_tasks from '@aws-cdk/aws-stepfunctions-tasks';
@@ -27,32 +27,39 @@ export class IntrinsicValidator extends cdk.Construct {
   constructor(scope: cdk.Construct, id: string, props: IntrinsicValidatorProps) {
     super(scope, id);
 
-    const parallel = new sfn.Parallel(this, 'Validations');
+    const definition = new sfn.Parallel(this, 'Validations');
 
     let validationIndex = 0;
     for (const validation of props.validations ?? []) {
-      const config = validation._bind(parallel, `Branch${validationIndex}`);
-      parallel.branch(config.chainable);
+      const config = validation._bind(definition, `Branch${validationIndex}`);
+      definition.branch(config.chainable);
       validationIndex++;
     }
 
     const stateMachine = new sfn.StateMachine(this, 'StateMachine', {
-      definition: parallel,
+      definition,
     });
 
-    const entry = path.join(__dirname, 'intrinsic-validator.provider.ts');
-    const onEventHandler = new nodejs.NodejsFunction(this, 'OnEventHandler', {
-      entry,
-      handler: 'onEventHandler',
+    const code = lambda.Code.fromAsset(path.join(__dirname, '..', 'lambda'));
+    const runtime = lambda.Runtime.NODEJS_14_X;
+    const logRetention = logs.RetentionDays.ONE_MONTH;
+
+    const onEventHandler = new lambda.Function(this, 'OnEventHandler', {
+      runtime,
+      code,
+      logRetention,
+      handler: 'intrinsic-validator-provider.onEventHandler',
       environment: {
         STATE_MACHINE_ARN: stateMachine.stateMachineArn,
       },
     });
     stateMachine.grantStartExecution(onEventHandler);
 
-    const isCompleteHandler = new nodejs.NodejsFunction(this, 'IsCompleteHandler', {
-      entry,
-      handler: 'isCompleteHandler',
+    const isCompleteHandler = new lambda.Function(this, 'IsCompleteHandler', {
+      runtime,
+      code,
+      logRetention,
+      handler: 'intrinsic-validator-provider.isCompleteHandler',
       environment: {
         STATE_MACHINE_ARN: stateMachine.stateMachineArn,
       },
@@ -62,7 +69,7 @@ export class IntrinsicValidator extends cdk.Construct {
     const provider = new cr.Provider(this, 'Provider', {
       onEventHandler,
       isCompleteHandler,
-      logRetention: logs.RetentionDays.ONE_MONTH,
+      logRetention,
     });
 
     // Create a new logical resource every time we deploy. This is how we cause

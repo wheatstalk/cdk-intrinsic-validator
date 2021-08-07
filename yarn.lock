@@ -400,16 +400,7 @@
     "@aws-cdk/cx-api" "1.117.0"
     constructs "^3.3.69"
 
-"@aws-cdk/aws-lambda-nodejs@^1.95.2":
-  version "1.117.0"
-  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-lambda-nodejs/-/aws-lambda-nodejs-1.117.0.tgz#2fddfe22b711af32734cd75d5fa395da30db9474"
-  integrity sha512-0Idax1YsfPZsdLAvKtPZJo5r5FOrIqOmLoV0I3EckRcAPu8otJkRhoqfIJ5frgnJdZR9s3zg2srOMT1M0Ejurg==
-  dependencies:
-    "@aws-cdk/aws-lambda" "1.117.0"
-    "@aws-cdk/core" "1.117.0"
-    constructs "^3.3.69"
-
-"@aws-cdk/aws-lambda@1.117.0":
+"@aws-cdk/aws-lambda@1.117.0", "@aws-cdk/aws-lambda@^1.95.2":
   version "1.117.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-lambda/-/aws-lambda-1.117.0.tgz#52cf78d2ff408905ae00a8c99b97613682c9deed"
   integrity sha512-oVCh0Gdjh29FQ1l8CJwKicIKx74+sFgv0pnB4jj+jfPhS5oNBGGKIG9+CxdDWyWV7MDz1OA6MI+KJkCI8lY/Ag==
@@ -3137,11 +3128,6 @@ es5-ext@0.8.x:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.8.2.tgz#aba8d9e1943a895ac96837a62a39b3f55ecd94ab"
   integrity sha1-q6jZ4ZQ6iVrJaDemKjmz9V7NlKs=
-
-esbuild@0:
-  version "0.12.18"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.12.18.tgz#e5db16372188c2b4d395f7f55fdade27f6a119fa"
-  integrity sha512-arWhBQSy+oiBAp8VRRCFvAU+3jyf0gGacABLO3haMHboXCDjzq4WUqyQklst2XRuFS8MXgap+9uvODqj9Iygpg==
 
 escalade@^3.1.1:
   version "3.1.1"
