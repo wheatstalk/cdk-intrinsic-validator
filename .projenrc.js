@@ -23,7 +23,7 @@ const project = new pj.AwsCdkConstructLibrary({
   ],
 
   devDeps: [
-    'ts-node@^10.1.0',
+    'ts-node@^9',
     'aws-cdk@^1.95.2',
     'aws-sdk@^2.963.0',
   ],
