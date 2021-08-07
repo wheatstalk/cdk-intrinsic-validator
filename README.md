@@ -30,7 +30,7 @@ const fargateValidations = new FargateValidationFactory(this, 'FargateValidation
 });
 
 // Validate the stack on every deploy and fail the deployment if any of
-// them fail so that CloudFormation can auto-rollback.
+// the given validations fail so that CloudFormation can auto-rollback.
 new IntrinsicValidator(this, 'IntrinsicValidator', {
   validations: [
     // Always succeeds. Not necessary. But even it succeeds, if anything
