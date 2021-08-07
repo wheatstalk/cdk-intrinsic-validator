@@ -11,6 +11,11 @@ const project = new pj.AwsCdkConstructLibrary({
   releaseEveryCommit: false,
   releaseToNpm: true,
 
+  autoApproveUpgrades: true,
+  autoApproveOptions: {
+    secret: 'YARN_UPGRADE_TOKEN',
+  },
+
   cdkDependencies: [
     '@aws-cdk/core',
     '@aws-cdk/custom-resources',
