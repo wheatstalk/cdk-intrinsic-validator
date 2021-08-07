@@ -20,8 +20,7 @@ export interface IntrinsicValidatorProps {
 }
 
 /**
- * Adds intrinsic validation to a CloudFormation stack so that when one of the
- * given validations fails, the stack will automatically roll back.
+ * Adds intrinsic validation to a CloudFormation stack.
  */
 export class IntrinsicValidator extends cdk.Construct {
   constructor(scope: cdk.Construct, id: string, props: IntrinsicValidatorProps = {}) {
@@ -205,8 +204,7 @@ export interface FargateValidationFactoryProps extends FargateValidationBaseOpti
 }
 
 /**
- * Creates a convenient factory for Fargate-based validations. The given props
- * applied as defaults for all produced Fargate validations.
+ * A convenience tool for creating Fargate-based validations.
  */
 export class FargateValidationFactory extends cdk.Construct {
   private readonly options: FargateValidationFactoryProps;
