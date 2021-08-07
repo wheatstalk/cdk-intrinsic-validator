@@ -6,8 +6,35 @@ const project = new pj.AwsCdkConstructLibrary({
   defaultReleaseBranch: 'master',
   name: '@wheatstalk/cdk-intrinsic-validator',
   repositoryUrl: 'https://github.com/wheatstalk/cdk-intrinsic-validator.git',
+  description: 'Allows you to add intrinsic validation to your CDK stacks',
 
   releaseEveryCommit: false,
+  releaseToNpm: true,
+
+  cdkDependencies: [
+    '@aws-cdk/core',
+    '@aws-cdk/custom-resources',
+    '@aws-cdk/aws-ec2',
+    '@aws-cdk/aws-ecs',
+    '@aws-cdk/aws-lambda-nodejs',
+    '@aws-cdk/aws-logs',
+    '@aws-cdk/aws-stepfunctions',
+    '@aws-cdk/aws-stepfunctions-tasks',
+  ],
+
+  devDeps: [
+    'ts-node@^10.1.0',
+    'aws-cdk@^1.95.2',
+    'aws-sdk@^2.963.0',
+    'esbuild@0',
+  ],
+
+  gitignore: [
+    'cdk.context.json',
+    'cdk.out',
+    '.idea',
+    '*.iml',
+  ],
 
   // cdkDependencies: undefined,        /* Which AWS CDK modules (those that start with "@aws-cdk/") does this library require when consumed? */
   // cdkTestDependencies: undefined,    /* AWS CDK modules required for testing. */
