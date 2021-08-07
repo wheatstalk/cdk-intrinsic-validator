@@ -1,16 +1,13 @@
 # CDK Intrinsic Validator
 
 This CDK construct allows you to add intrinsic validation to your CDK stacks.
-Intrinsic validation allows you to add checks that occur during deployment
-that, if they fail, will automatically roll back the stack.
+Adding intrinsic validation adds checks that occur during deployment that, if
+they fail, will automatically roll back the stack.
 
-This capability ensures that can add tests to ensure that what you're deploying
-works as expected - and if it doesn't, CloudFormation will safely roll back the
-changes, showing an error message:
-
+**Example error**
 ![An example of an intrinsic validation error](images/failure-example.png)
 
-## Example
+## Usage
 
 ```ts
 import * as ecs from '@aws-cdk/aws-ecs';
