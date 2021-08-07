@@ -15,7 +15,7 @@ const project = new pj.AwsCdkConstructLibrary({
   autoApproveUpgrades: true,
   autoApproveOptions: {
     secret: 'GITHUB_TOKEN',
-    allowedUsernames: ['github-actions', 'github-actions[bot]'],
+    allowedUsernames: ['github-actions', 'github-actions[bot]', 'misterjoshua'],
   },
 
   cdkDependencies: [
