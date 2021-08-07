@@ -232,6 +232,4 @@ export class FargateValidationFactory extends cdk.Construct {
       taskDefinition,
     });
   }
-
-
 }
