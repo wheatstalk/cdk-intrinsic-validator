@@ -14,6 +14,7 @@ const project = new pj.AwsCdkConstructLibrary({
   autoApproveUpgrades: true,
   autoApproveOptions: {
     secret: 'YARN_UPGRADE_TOKEN',
+    allowedUsernames: ['github-actions', 'github-actions[bot]'],
   },
 
   cdkDependencies: [
