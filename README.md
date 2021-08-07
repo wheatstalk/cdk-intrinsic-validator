@@ -5,6 +5,7 @@ Adding intrinsic validation adds checks that occur during deployment that, if
 they fail, will automatically roll back the stack.
 
 **Example error**
+
 ![An example of an intrinsic validation error](images/failure-example.png)
 
 ## Usage
