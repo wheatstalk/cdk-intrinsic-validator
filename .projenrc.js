@@ -41,7 +41,6 @@ const project = new pj.AwsCdkConstructLibrary({
     '.idea',
     '*.iml',
     '/images',
-    '/lib/it',
   ],
 
   // cdkDependencies: undefined,        /* Which AWS CDK modules (those that start with "@aws-cdk/") does this library require when consumed? */
