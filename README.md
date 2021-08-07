@@ -18,7 +18,7 @@ import {
   IntrinsicValidator,
   FargateValidationFactory,
   Validation
-} from '@wheatstalk/cdk-intrinsic-validation';
+} from '@wheatstalk/cdk-intrinsic-validator';
 
 const cluster = new ecs.Cluster(...);
 
