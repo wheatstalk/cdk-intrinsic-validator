@@ -1,4 +1,3 @@
-import * as ec2 from '@aws-cdk/aws-ec2';
 import * as ecs from '@aws-cdk/aws-ecs';
 import * as cdk from '@aws-cdk/core';
 import { FargateValidationFactory, IntrinsicValidator, Validation } from '..';
@@ -7,23 +6,7 @@ class CdkIntrinsicValidator extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props: cdk.StackProps = {}) {
     super(scope, id, props);
 
-    const vpc = new ec2.Vpc(this, 'Vpc', {
-      natGatewayProvider: ec2.NatProvider.gateway(),
-      subnetConfiguration: [
-        {
-          name: 'public',
-          subnetType: ec2.SubnetType.PUBLIC,
-        },
-        {
-          name: 'tasks',
-          subnetType: ec2.SubnetType.PRIVATE,
-        },
-      ],
-    });
-
-    const cluster = new ecs.Cluster(this, 'Cluster', {
-      vpc,
-    });
+    const cluster = new ecs.Cluster(this, 'Cluster');
 
     const curlImage = ecs.ContainerImage.fromRegistry('curlimages/curl:7.78.0');
     const fargateValidations = new FargateValidationFactory(this, 'FargateValidationFactory', {
