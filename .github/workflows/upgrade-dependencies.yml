@@ -58,7 +58,7 @@ jobs:
         id: create-pr
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.YARN_UPGRADE_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: >-
             chore(deps): upgrade dependencies
 
