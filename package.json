@@ -1,6 +1,6 @@
 {
   "name": "@wheatstalk/cdk-intrinsic-validator",
-  "description": "Allows you to add intrinsic validation to your CDK stacks",
+  "description": "Make deployments safer by adding intrinsic validation to your stacks",
   "repository": {
     "type": "git",
     "url": "https://github.com/wheatstalk/cdk-intrinsic-validator.git"
@@ -80,7 +80,13 @@
   },
   "bundledDependencies": [],
   "keywords": [
-    "cdk"
+    "cdk",
+    "cloudformation",
+    "deployment",
+    "fargate",
+    "projen",
+    "rollback",
+    "testing"
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",

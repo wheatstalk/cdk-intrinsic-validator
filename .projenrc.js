@@ -6,7 +6,17 @@ const project = new pj.AwsCdkConstructLibrary({
   defaultReleaseBranch: 'master',
   name: '@wheatstalk/cdk-intrinsic-validator',
   repositoryUrl: 'https://github.com/wheatstalk/cdk-intrinsic-validator.git',
-  description: 'Allows you to add intrinsic validation to your CDK stacks',
+  description: 'Make deployments safer by adding intrinsic validation to your stacks',
+
+  keywords: [
+    'cdk',
+    'fargate',
+    'testing',
+    'deployment',
+    'rollback',
+    'cloudformation',
+    'projen',
+  ],
 
   releaseEveryCommit: true,
   releaseToNpm: true,
