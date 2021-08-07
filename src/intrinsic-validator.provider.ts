@@ -97,9 +97,10 @@ export const isCompleteHandler = async (event: IsCompleteEvent, context: any): P
     case 'SUCCEEDED':
       return { IsComplete: true };
     case 'FAILED':
+      throw new Error('One or more of your intrinsic validations have failed, so the stack update will be cancelled. Check the latest Step Function execution for more information.');
     case 'TIMED_OUT':
     case 'ABORTED':
-      throw new Error(`State machine execution failed with status ${execution.status}. Extra data: ${JSON.stringify(execution)}`);
+      throw new Error(`Intrinsic validations have stopped for an unexpected reason. Execution status: ${execution.status}. Extra data: ${JSON.stringify(execution)}`);
     default:
       throw new Error(`Unrecognized state machine status ${execution.status}. Extra data: ${JSON.stringify(execution)}`);
   }

@@ -40,11 +40,11 @@ class CdkIntrinsicValidator extends cdk.Stack {
         Validation.alwaysSucceeds(),
         // Public endpoints because in this vpc environment, I have no
         // services.
-        fargateValidations.script(curlImage, 'https://www.example.com/'),
-        fargateValidations.script(curlImage, 'https://www.amazon.ca/'),
-        fargateValidations.script(curlImage, 'https://www.google.com/'),
+        fargateValidations.runContainer(curlImage, 'https://www.example.com/'),
+        fargateValidations.runContainer(curlImage, 'https://www.amazon.ca/'),
+        fargateValidations.runContainer(curlImage, 'https://www.google.com/'),
         // This one will fail and roll back the stack.
-        // fargateValidations.script(curlImage, 'https://www.laksdjflkasjdflkasjdflaksdj.com/'),
+        fargateValidations.runContainer(curlImage, 'https://fake.fake.fake/'),
       ],
     });
   }

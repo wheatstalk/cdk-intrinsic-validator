@@ -205,9 +205,9 @@ export class FargateValidationFactory extends cdk.Construct {
     this.securityGroups = props.securityGroups ?? [];
   }
 
-  private obtainTaskDefinitionIndex() {
+  private obtainTaskDefinitionId() {
     this.taskDefinitionIndex += 1;
-    return this.taskDefinitionIndex;
+    return `TaskDefinition${this.taskDefinitionIndex}`;
   }
 
   /**
@@ -215,8 +215,8 @@ export class FargateValidationFactory extends cdk.Construct {
    * @param image The ECS container image to run
    * @param command The command to run in the container
    */
-  script(image: ecs.ContainerImage, ...command: string[]): Validation {
-    const taskDefinition = new ecs.FargateTaskDefinition(this, `Script${this.obtainTaskDefinitionIndex()}`, {
+  runContainer(image: ecs.ContainerImage, ...command: string[]): Validation {
+    const taskDefinition = new ecs.FargateTaskDefinition(this, this.obtainTaskDefinitionId(), {
       cpu: 256,
       memoryLimitMiB: 512,
     });
@@ -232,4 +232,6 @@ export class FargateValidationFactory extends cdk.Construct {
       taskDefinition,
     });
   }
+
+
 }

@@ -1,5 +1,6 @@
 {
   "name": "@wheatstalk/cdk-intrinsic-validator",
+  "description": "Allows you to add intrinsic validation to your CDK stacks",
   "repository": {
     "type": "git",
     "url": "https://github.com/wheatstalk/cdk-intrinsic-validator.git"
