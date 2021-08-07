@@ -64,7 +64,7 @@ The command to run in the container.
 
 ### IntrinsicValidator <a name="@wheatstalk/cdk-intrinsic-validator.IntrinsicValidator"></a>
 
-Adds intrinsic validation to a CloudFormation stack so that when one of the given validations fails, the stack will automatically roll back.
+Adds intrinsic validation to a CloudFormation stack so that when one of the given validations fails, the stack will automatically roll back.
 
 #### Initializer <a name="@wheatstalk/cdk-intrinsic-validator.IntrinsicValidator.Initializer"></a>
 
