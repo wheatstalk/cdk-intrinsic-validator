@@ -69,4 +69,5 @@ const project = new pj.AwsCdkConstructLibrary({
   // projectType: ProjectType.UNKNOWN,  /* Which type of project this is (library/app). */
   // release: undefined,                /* Add release management to this project. */
 });
+project.package.setScript('it:dev', 'cdk --app "ts-node src/it/dev.ts"');
 project.synth();
