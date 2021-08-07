@@ -24,7 +24,8 @@
     "publish:npm": "npx projen publish:npm",
     "docgen": "npx projen docgen",
     "release": "npx projen release",
-    "projen": "npx projen"
+    "projen": "npx projen",
+    "it:dev": "cdk --app \"ts-node src/it/dev.ts\""
   },
   "author": {
     "name": "Josh Kellendonk",
