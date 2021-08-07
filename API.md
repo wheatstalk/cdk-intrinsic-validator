@@ -4,10 +4,7 @@
 
 ### FargateValidationFactory <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactory"></a>
 
-Creates a convenient factory for Fargate-based validations.
-
-The given props
-applied as defaults for all produced Fargate validations.
+A convenience tool for creating Fargate-based validations.
 
 #### Initializer <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactory.Initializer"></a>
 
@@ -64,7 +61,7 @@ The command to run in the container.
 
 ### IntrinsicValidator <a name="@wheatstalk/cdk-intrinsic-validator.IntrinsicValidator"></a>
 
-Adds intrinsic validation to a CloudFormation stack so that when one of the given validations fails, the stack will automatically roll back.
+Adds intrinsic validation to a CloudFormation stack.
 
 #### Initializer <a name="@wheatstalk/cdk-intrinsic-validator.IntrinsicValidator.Initializer"></a>
 
