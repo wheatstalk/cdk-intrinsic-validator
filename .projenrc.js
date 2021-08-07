@@ -8,7 +8,7 @@ const project = new pj.AwsCdkConstructLibrary({
   repositoryUrl: 'https://github.com/wheatstalk/cdk-intrinsic-validator.git',
   description: 'Allows you to add intrinsic validation to your CDK stacks',
 
-  releaseEveryCommit: false,
+  releaseEveryCommit: true,
   releaseToNpm: true,
 
   projenUpgradeSecret: 'YARN_UPGRADE_TOKEN',
