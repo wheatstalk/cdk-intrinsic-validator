@@ -71,7 +71,7 @@ Adds intrinsic validation to a CloudFormation stack so that when one of the giv
 ```typescript
 import { IntrinsicValidator } from '@wheatstalk/cdk-intrinsic-validator'
 
-new IntrinsicValidator(scope: Construct, id: string, props: IntrinsicValidatorProps)
+new IntrinsicValidator(scope: Construct, id: string, props?: IntrinsicValidatorProps)
 ```
 
 ##### `scope`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.IntrinsicValidator.parameter.scope"></a>
@@ -86,7 +86,7 @@ new IntrinsicValidator(scope: Construct, id: string, props: IntrinsicValidatorPr
 
 ---
 
-##### `props`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.IntrinsicValidator.parameter.props"></a>
+##### `props`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.IntrinsicValidator.parameter.props"></a>
 
 - *Type:* [`@wheatstalk/cdk-intrinsic-validator.IntrinsicValidatorProps`](#@wheatstalk/cdk-intrinsic-validator.IntrinsicValidatorProps)
 

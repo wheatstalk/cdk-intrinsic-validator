@@ -24,16 +24,24 @@ export interface IntrinsicValidatorProps {
  * given validations fails, the stack will automatically roll back.
  */
 export class IntrinsicValidator extends cdk.Construct {
-  constructor(scope: cdk.Construct, id: string, props: IntrinsicValidatorProps) {
+  constructor(scope: cdk.Construct, id: string, props: IntrinsicValidatorProps = {}) {
     super(scope, id);
 
     const definition = new sfn.Parallel(this, 'Validations');
 
     let validationIndex = 0;
-    for (const validation of props.validations ?? []) {
+    const validations = props.validations ?? [];
+    for (const validation of validations) {
       const config = validation._bind(definition, `Branch${validationIndex}`);
       definition.branch(config.chainable);
       validationIndex++;
+    }
+
+    if (validations.length === 0) {
+      const noValidationsPass = new sfn.Pass(this, 'NoValidations', {
+        result: sfn.Result.fromString('Disabled'),
+      });
+      definition.branch(noValidationsPass);
     }
 
     const stateMachine = new sfn.StateMachine(this, 'StateMachine', {
