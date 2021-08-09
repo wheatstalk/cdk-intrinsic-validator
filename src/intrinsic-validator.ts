@@ -136,6 +136,13 @@ export abstract class Validation {
   }
 
   /**
+   * Create a validation that invokes a lambda function.
+   */
+  static lambdaInvokeSucceeds(options: LambdaInvokeSucceedsOptions): Validation {
+    return new LambdaInvokeSucceeds(options);
+  }
+
+  /**
    * Create a validation that monitors an alarm.
    */
   static monitorAlarm(options: MonitorAlarmOptions): Validation {
@@ -391,6 +398,39 @@ class StateMachineExecutionSucceeds extends Validation {
       stateMachine: this.options.stateMachine,
       input: this.options.input,
       integrationPattern: sfn.IntegrationPattern.RUN_JOB,
+    });
+
+    return {
+      chainable,
+    };
+  }
+}
+
+/**
+ * Options for lambda validations
+ */
+export interface LambdaInvokeSucceedsOptions extends ValidationBaseOptions {
+  /**
+   * The Lambda function to invoke.
+   *
+   * If there's an error, throw from within your function.
+   */
+  readonly lambdaFunction: lambda.IFunction;
+}
+
+class LambdaInvokeSucceeds extends Validation {
+  private readonly lambdaFunction: lambda.IFunction;
+
+  constructor(options: LambdaInvokeSucceedsOptions) {
+    super({ label: options.label ?? 'LambdaInvokeSucceeds' });
+
+    this.lambdaFunction = options.lambdaFunction;
+  }
+
+  _bind(scope: cdk.Construct, id: string): ValidationConfig {
+    const chainable = new sfn_tasks.LambdaInvoke(scope, id, {
+      integrationPattern: sfn.IntegrationPattern.REQUEST_RESPONSE,
+      lambdaFunction: this.lambdaFunction,
     });
 
     return {
