@@ -21,28 +21,11 @@ You can add the following intrinsic validations:
 ## Usage
 
 ```ts
-import * as ecs from '@aws-cdk/aws-ecs';
-import * as cdk from '@aws-cdk/core';
-import {
-  FargateValidationFactory,
-  IntrinsicValidator,
-  // @ts-ignore
-  Validation,
-} from '@wheatstalk/cdk-intrinsic-validator';
-
-const app = new cdk.App();
-const stack = new cdk.Stack(app, 'CdkIntrinsicValidator', {
-  env: {
-    account: process.env.CDK_DEFAULT_ACCOUNT,
-    region: process.env.CDK_DEFAULT_REGION,
-  },
-});
-
 // Create an ECS cluster to run some Fargate tasks in.
-const cluster = new ecs.Cluster(stack, 'Cluster');
+const cluster = new ecs.Cluster(stack, 'Cluster', /* ... */);
 
-// A convenience tool for creating Fargate validations with common options
-// (i.e., a specific ecs cluster.)
+// Instantiate a convenience tool for creating Fargate validations with common
+// options (i.e., a specific ecs cluster.)
 const fargateValidations = new FargateValidationFactory(stack, 'FargateValidationFactory', {
   cluster,
 });
@@ -65,11 +48,37 @@ new IntrinsicValidator(stack, 'IntrinsicValidator', {
 });
 ```
 
+## Validate With Any Fargate Task
+
+```ts
+// Create an ECS cluster and Task Definition
+const cluster = new Cluster(stack, 'Cluster', /* ... */);
+const taskDefinition = new TaskDefinition(stack, 'TaskDefinition', /* ... */);
+/* ... */
+
+new IntrinsicValidator(stack, 'IntrinsicValidator', {
+  validations: [
+    // Use this generic interface to launch a Fargate task on the given cluster
+    // from the given task definition. If the task run fails, the stack
+    // deployment will cancel and roll back.
+    Validation.fargateTaskSucceeds({
+      cluster,
+      taskDefinition,
+      // ... other options:
+      // assignPublicIp: ...,
+      // containerOverrides: ...,
+      // securityGroups: ...,
+      // subnets: ...,
+    }),
+  ],
+});
+```
+
 ## Monitor a CloudWatch Alarm
 
 ```ts
 // Create a CloudWatch Alarm
-const alarm = new Alarm(stack, 'MyAlarm', { /*...*/ });
+const alarm = new Alarm(stack, 'MyAlarm', /* ... */);
 
 new IntrinsicValidator(stack, 'IntrinsicValidator', {
   validations: [
@@ -88,7 +97,7 @@ new IntrinsicValidator(stack, 'IntrinsicValidator', {
 
 ```ts
 // Create a CloudWatch Alarm
-const stateMachine = new StateMachine(stack, 'MyStateMachine', { /*...*/ });
+const stateMachine = new StateMachine(stack, 'MyStateMachine', /* ... */);
 
 new IntrinsicValidator(stack, 'IntrinsicValidator', {
   validations: [
