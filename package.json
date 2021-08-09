@@ -25,7 +25,8 @@
     "docgen": "npx projen docgen",
     "release": "npx projen release",
     "projen": "npx projen",
-    "it:dev": "cdk --app \"ts-node src/it/dev.ts\""
+    "it:dev": "cdk --app \"ts-node src/it/dev.ts\"",
+    "it:alarm-monitor": "cdk --app \"ts-node src/it/alarm-monitor.ts\""
   },
   "author": {
     "name": "Josh Kellendonk",
@@ -59,8 +60,10 @@
     "typescript": "^4.3.5"
   },
   "peerDependencies": {
+    "@aws-cdk/aws-cloudwatch": "^1.95.2",
     "@aws-cdk/aws-ec2": "^1.95.2",
     "@aws-cdk/aws-ecs": "^1.95.2",
+    "@aws-cdk/aws-iam": "^1.95.2",
     "@aws-cdk/aws-lambda": "^1.95.2",
     "@aws-cdk/aws-logs": "^1.95.2",
     "@aws-cdk/aws-stepfunctions": "^1.95.2",
@@ -70,8 +73,10 @@
     "constructs": "^3.2.27"
   },
   "dependencies": {
+    "@aws-cdk/aws-cloudwatch": "^1.95.2",
     "@aws-cdk/aws-ec2": "^1.95.2",
     "@aws-cdk/aws-ecs": "^1.95.2",
+    "@aws-cdk/aws-iam": "^1.95.2",
     "@aws-cdk/aws-lambda": "^1.95.2",
     "@aws-cdk/aws-logs": "^1.95.2",
     "@aws-cdk/aws-stepfunctions": "^1.95.2",

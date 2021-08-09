@@ -31,8 +31,10 @@ const project = new pj.AwsCdkConstructLibrary({
   cdkDependencies: [
     '@aws-cdk/core',
     '@aws-cdk/custom-resources',
+    '@aws-cdk/aws-cloudwatch',
     '@aws-cdk/aws-ec2',
     '@aws-cdk/aws-ecs',
+    '@aws-cdk/aws-iam',
     '@aws-cdk/aws-lambda',
     '@aws-cdk/aws-logs',
     '@aws-cdk/aws-stepfunctions',
@@ -70,4 +72,5 @@ const project = new pj.AwsCdkConstructLibrary({
   // release: undefined,                /* Add release management to this project. */
 });
 project.package.setScript('it:dev', 'cdk --app "ts-node src/it/dev.ts"');
+project.package.setScript('it:alarm-monitor', 'cdk --app "ts-node src/it/alarm-monitor.ts"');
 project.synth();

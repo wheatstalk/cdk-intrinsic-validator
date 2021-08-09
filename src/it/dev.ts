@@ -6,6 +6,7 @@ import {
   // @ts-ignore
   Validation,
 } from '..';
+import { TestAlarms } from './test-alarms';
 
 const app = new cdk.App();
 const stack = new cdk.Stack(app, 'CdkIntrinsicValidator', {
@@ -27,6 +28,8 @@ const fargateValidations = new FargateValidationFactory(stack, 'FargateValidatio
 // Let's do some testing with the curl container image.
 const curlImage = ecs.ContainerImage.fromRegistry('curlimages/curl:7.78.0');
 
+const testAlarms = new TestAlarms(stack, 'TestAlarms');
+
 // Validate the stack on every deploy and fail the deployment if any of
 // the given validations fail so that CloudFormation can auto-rollback.
 new IntrinsicValidator(stack, 'IntrinsicValidator', {
@@ -35,6 +38,13 @@ new IntrinsicValidator(stack, 'IntrinsicValidator', {
     fargateValidations.runContainer(curlImage, 'https://www.example.com/'),
     fargateValidations.runContainer(curlImage, 'https://www.amazon.ca/'),
     fargateValidations.runContainer(curlImage, 'https://www.google.com/'),
+
+    // Monitor an alarm
+    Validation.monitorAlarm({
+      alarm: testAlarms.neverAlarming,
+      duration: cdk.Duration.seconds(30),
+    }),
+
     // The following validations will fail and roll back the stack:
     // fargateValidations.runContainer(curlImage, 'https://fake.fake.fake/'),
     // Validation.alwaysFails(),

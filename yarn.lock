@@ -132,7 +132,7 @@
     "@aws-cdk/cx-api" "1.117.0"
     constructs "^3.3.69"
 
-"@aws-cdk/aws-cloudwatch@1.117.0":
+"@aws-cdk/aws-cloudwatch@1.117.0", "@aws-cdk/aws-cloudwatch@^1.95.2":
   version "1.117.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-cloudwatch/-/aws-cloudwatch-1.117.0.tgz#326978d7669abaee2ab914ef7fd26a1a2f3b8310"
   integrity sha512-nlG2D70rK9FZVBYXVPuD28S+ji6fjv/oNQn3YWX+GXl1uHbrVgb/YmcX7pidcK5rJReNOtjHnDewYY6fN5YDuA==
@@ -369,7 +369,7 @@
     "@aws-cdk/custom-resources" "1.117.0"
     constructs "^3.3.69"
 
-"@aws-cdk/aws-iam@1.117.0":
+"@aws-cdk/aws-iam@1.117.0", "@aws-cdk/aws-iam@^1.95.2":
   version "1.117.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-iam/-/aws-iam-1.117.0.tgz#00f6cc2f9d384a8e7b4225642fb6d3f536bc090e"
   integrity sha512-vBZraqTxTvLl2aqZg4oS4R3nOntalZ/zDQSsWnib8py7On5bJiKBSlY3pnbbtp+A3Ox2ovnGJK9EwEghOe0HFA==
