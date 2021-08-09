@@ -8,6 +8,15 @@ they fail, will automatically roll back the stack.
 
 ![An example of an intrinsic validation error](images/failure-example.png)
 
+## Intrinsic Validation Types
+
+You can add the following intrinsic validations:
+
+- Run Fargate tasks to test your system - if any fail, the stack rolls back.
+- Monitor CloudWatch Alarms for a while and roll back if they alarm.
+- More to come. If you have any ideas and want to contribute, please open a
+  feature request!
+
 ## Usage
 
 ```ts
@@ -51,6 +60,25 @@ new IntrinsicValidator(stack, 'IntrinsicValidator', {
     // The following validations will fail and roll back the stack:
     // fargateValidations.runContainer(curlImage, 'https://fake.fake.fake/'),
     // Validation.alwaysFails(),
+  ],
+});
+```
+
+## Monitor a CloudWatch Alarm
+
+```ts
+// Create a CloudWatch Alarm
+const alarm = new Alarm(stack, 'MyAlarm', { /*...*/ });
+
+new IntrinsicValidator(stack, 'IntrinsicValidator', {
+  validations: [
+    // Monitor the given alarm for five minutes before allowing the deployment
+    // to complete. If the alarm starts sounding while intrinsic validation is
+    // monitoring it, the stack will roll back automatically.
+    Validation.monitorAlarm({
+      alarm,
+      duration: cdk.Duration.minutes(5),
+    }),
   ],
 });
 ```
