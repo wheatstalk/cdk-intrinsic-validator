@@ -278,6 +278,35 @@ Validations to run every time the stack is deployed.
 
 ---
 
+### MonitorAlarmOptions <a name="@wheatstalk/cdk-intrinsic-validator.MonitorAlarmOptions"></a>
+
+Options for monitoring alarms.
+
+#### Initializer <a name="[object Object].Initializer"></a>
+
+```typescript
+import { MonitorAlarmOptions } from '@wheatstalk/cdk-intrinsic-validator'
+
+const monitorAlarmOptions: MonitorAlarmOptions = { ... }
+```
+
+##### `alarm`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.MonitorAlarmOptions.property.alarm"></a>
+
+- *Type:* [`@aws-cdk/aws-cloudwatch.IAlarm`](#@aws-cdk/aws-cloudwatch.IAlarm)
+
+The alarm to monitor.
+
+---
+
+##### `duration`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.MonitorAlarmOptions.property.duration"></a>
+
+- *Type:* [`@aws-cdk/core.Duration`](#@aws-cdk/core.Duration)
+- *Default:* one minute
+
+The length of time to monitor the alarm.
+
+---
+
 ## Classes <a name="Classes"></a>
 
 ### Validation <a name="@wheatstalk/cdk-intrinsic-validator.Validation"></a>
@@ -322,6 +351,20 @@ Validation.fargateTaskSucceeds(options: FargateTaskSucceedsOptions)
 ###### `options`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.Validation.parameter.options"></a>
 
 - *Type:* [`@wheatstalk/cdk-intrinsic-validator.FargateTaskSucceedsOptions`](#@wheatstalk/cdk-intrinsic-validator.FargateTaskSucceedsOptions)
+
+---
+
+##### `monitorAlarm` <a name="@wheatstalk/cdk-intrinsic-validator.Validation.monitorAlarm"></a>
+
+```typescript
+import { Validation } from '@wheatstalk/cdk-intrinsic-validator'
+
+Validation.monitorAlarm(options: MonitorAlarmOptions)
+```
+
+###### `options`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.Validation.parameter.options"></a>
+
+- *Type:* [`@wheatstalk/cdk-intrinsic-validator.MonitorAlarmOptions`](#@wheatstalk/cdk-intrinsic-validator.MonitorAlarmOptions)
 
 ---
 

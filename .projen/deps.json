@@ -105,12 +105,22 @@
       "type": "build"
     },
     {
+      "name": "@aws-cdk/aws-cloudwatch",
+      "version": "^1.95.2",
+      "type": "peer"
+    },
+    {
       "name": "@aws-cdk/aws-ec2",
       "version": "^1.95.2",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-ecs",
+      "version": "^1.95.2",
+      "type": "peer"
+    },
+    {
+      "name": "@aws-cdk/aws-iam",
       "version": "^1.95.2",
       "type": "peer"
     },
@@ -150,12 +160,22 @@
       "type": "peer"
     },
     {
+      "name": "@aws-cdk/aws-cloudwatch",
+      "version": "^1.95.2",
+      "type": "runtime"
+    },
+    {
       "name": "@aws-cdk/aws-ec2",
       "version": "^1.95.2",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-ecs",
+      "version": "^1.95.2",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-iam",
       "version": "^1.95.2",
       "type": "runtime"
     },

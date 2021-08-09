@@ -1,4 +1,5 @@
 import * as path from 'path';
+import * as cw from '@aws-cdk/aws-cloudwatch';
 import * as ec2 from '@aws-cdk/aws-ec2';
 import * as ecs from '@aws-cdk/aws-ecs';
 import * as lambda from '@aws-cdk/aws-lambda';
@@ -7,6 +8,7 @@ import * as sfn from '@aws-cdk/aws-stepfunctions';
 import * as sfn_tasks from '@aws-cdk/aws-stepfunctions-tasks';
 import * as cdk from '@aws-cdk/core';
 import * as cr from '@aws-cdk/custom-resources';
+import { SingletonAlarmMonitor } from './alarm-monitor';
 
 /**
  * Props for `IntrinsicValidator`
@@ -117,6 +119,13 @@ export abstract class Validation {
    */
   static fargateTaskSucceeds(options: FargateTaskSucceedsOptions): Validation {
     return new FargateTaskSucceeds(options);
+  }
+
+  /**
+   * Create a validation that monitors an alarm.
+   */
+  static monitorAlarm(options: MonitorAlarmOptions): Validation {
+    return new MonitorAlarm(options);
   }
 
   /** @internal */
@@ -244,5 +253,50 @@ export class FargateValidationFactory extends cdk.Construct {
       securityGroups: this.securityGroups,
       taskDefinition,
     });
+  }
+}
+
+/**
+ * Options for monitoring alarms.
+ */
+export interface MonitorAlarmOptions {
+  /**
+   * The alarm to monitor.
+   */
+  readonly alarm: cw.IAlarm;
+
+  /**
+   * The length of time to monitor the alarm.
+   * @default - one minute
+   */
+  readonly duration?: cdk.Duration;
+}
+
+class MonitorAlarm extends Validation {
+  private readonly alarm: cw.IAlarm;
+  private readonly timeout: cdk.Duration;
+
+  constructor(options: MonitorAlarmOptions) {
+    super();
+    this.alarm = options.alarm;
+    this.timeout = options.duration ?? cdk.Duration.minutes(1);
+  }
+
+  _bind(scope: cdk.Construct, id: string): ValidationConfig {
+    const privateScope = new cdk.Construct(scope, id);
+    const alarmMonitor = new SingletonAlarmMonitor(privateScope, 'AlarmMonitor');
+
+    const chainable = new sfn_tasks.StepFunctionsStartExecution(privateScope, id, {
+      stateMachine: alarmMonitor.stateMachine,
+      input: alarmMonitor.createTaskInput({
+        alarm: this.alarm,
+        duration: this.timeout,
+      }),
+      integrationPattern: sfn.IntegrationPattern.RUN_JOB,
+    });
+
+    return {
+      chainable,
+    };
   }
 }
