@@ -307,6 +307,35 @@ The length of time to monitor the alarm.
 
 ---
 
+### StateMachineExecutionSucceedsOptions <a name="@wheatstalk/cdk-intrinsic-validator.StateMachineExecutionSucceedsOptions"></a>
+
+Options for step function validations.
+
+#### Initializer <a name="[object Object].Initializer"></a>
+
+```typescript
+import { StateMachineExecutionSucceedsOptions } from '@wheatstalk/cdk-intrinsic-validator'
+
+const stateMachineExecutionSucceedsOptions: StateMachineExecutionSucceedsOptions = { ... }
+```
+
+##### `stateMachine`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.StateMachineExecutionSucceedsOptions.property.stateMachine"></a>
+
+- *Type:* [`@aws-cdk/aws-stepfunctions.IStateMachine`](#@aws-cdk/aws-stepfunctions.IStateMachine)
+
+The state machine to execute.
+
+---
+
+##### `input`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.StateMachineExecutionSucceedsOptions.property.input"></a>
+
+- *Type:* [`@aws-cdk/aws-stepfunctions.TaskInput`](#@aws-cdk/aws-stepfunctions.TaskInput)
+- *Default:* no input given
+
+Input for the state machine's execution.
+
+---
+
 ## Classes <a name="Classes"></a>
 
 ### Validation <a name="@wheatstalk/cdk-intrinsic-validator.Validation"></a>
@@ -365,6 +394,20 @@ Validation.monitorAlarm(options: MonitorAlarmOptions)
 ###### `options`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.Validation.parameter.options"></a>
 
 - *Type:* [`@wheatstalk/cdk-intrinsic-validator.MonitorAlarmOptions`](#@wheatstalk/cdk-intrinsic-validator.MonitorAlarmOptions)
+
+---
+
+##### `stateMachineExecutionSucceeds` <a name="@wheatstalk/cdk-intrinsic-validator.Validation.stateMachineExecutionSucceeds"></a>
+
+```typescript
+import { Validation } from '@wheatstalk/cdk-intrinsic-validator'
+
+Validation.stateMachineExecutionSucceeds(options: StateMachineExecutionSucceedsOptions)
+```
+
+###### `options`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.Validation.parameter.options"></a>
+
+- *Type:* [`@wheatstalk/cdk-intrinsic-validator.StateMachineExecutionSucceedsOptions`](#@wheatstalk/cdk-intrinsic-validator.StateMachineExecutionSucceedsOptions)
 
 ---
 

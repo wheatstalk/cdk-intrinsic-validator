@@ -122,6 +122,13 @@ export abstract class Validation {
   }
 
   /**
+   * Create a validation that executes a Step Functions state machine.
+   */
+  static stateMachineExecutionSucceeds(options: StateMachineExecutionSucceedsOptions): Validation {
+    return new StateMachineExecutionSucceeds(options);
+  }
+
+  /**
    * Create a validation that monitors an alarm.
    */
   static monitorAlarm(options: MonitorAlarmOptions): Validation {
@@ -292,6 +299,38 @@ class MonitorAlarm extends Validation {
         alarm: this.alarm,
         duration: this.timeout,
       }),
+      integrationPattern: sfn.IntegrationPattern.RUN_JOB,
+    });
+
+    return {
+      chainable,
+    };
+  }
+}
+
+/**
+ * Options for step function validations
+ */
+export interface StateMachineExecutionSucceedsOptions {
+  /** The state machine to execute */
+  readonly stateMachine: sfn.IStateMachine;
+
+  /**
+   * Input for the state machine's execution
+   * @default - no input given
+   */
+  readonly input?: sfn.TaskInput;
+}
+
+class StateMachineExecutionSucceeds extends Validation {
+  constructor(private readonly options: StateMachineExecutionSucceedsOptions) {
+    super();
+  }
+
+  _bind(scope: cdk.Construct, id: string): ValidationConfig {
+    const chainable = new sfn_tasks.StepFunctionsStartExecution(scope, id, {
+      stateMachine: this.options.stateMachine,
+      input: this.options.input,
       integrationPattern: sfn.IntegrationPattern.RUN_JOB,
     });
 
