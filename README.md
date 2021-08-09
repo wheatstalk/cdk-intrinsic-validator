@@ -120,3 +120,9 @@ new IntrinsicValidator(stack, 'IntrinsicValidator', {
   ],
 });
 ```
+
+## Tips
+
+- If you're adding `IntrinsicValidator` to your stack for the first time, try
+  adding it without validations. This way, if the intrinsic validator catches
+  a validation error, you can keep the State Machine that contains the error.
