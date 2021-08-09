@@ -14,6 +14,7 @@ You can add the following intrinsic validations:
 
 - Run Fargate tasks to test your system - if any fail, the stack rolls back.
 - Monitor CloudWatch Alarms for a while and roll back if they alarm.
+- Execute a step functions state machine and roll back if it fails.
 - More to come. If you have any ideas and want to contribute, please open a
   feature request!
 
@@ -78,6 +79,27 @@ new IntrinsicValidator(stack, 'IntrinsicValidator', {
     Validation.monitorAlarm({
       alarm,
       duration: cdk.Duration.minutes(5),
+    }),
+  ],
+});
+```
+
+## Execute a Step Functions State Machine
+
+```ts
+// Create a CloudWatch Alarm
+const stateMachine = new StateMachine(stack, 'MyStateMachine', { /*...*/ });
+
+new IntrinsicValidator(stack, 'IntrinsicValidator', {
+  validations: [
+    // Execute the given step function and if it fails, cancel and roll back
+    // the deployment.
+    Validation.stateMachineExecutionSucceeds({
+      stateMachine,
+      // Input is optional
+      input: TaskInput.fromObject({
+        anything: 'you need',
+      }),
     }),
   ],
 });
