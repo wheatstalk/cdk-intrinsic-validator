@@ -15,6 +15,12 @@ import { SingletonAlarmMonitor } from './alarm-monitor';
  */
 export interface IntrinsicValidatorProps {
   /**
+   * Name the Step Functions State Machine.
+   * @default - CDK automatically picks a name
+   */
+  readonly stateMachineName?: string;
+
+  /**
    * Validations to run every time the stack is deployed.
    * @default - no validations are run
    */
@@ -46,6 +52,7 @@ export class IntrinsicValidator extends cdk.Construct {
     }
 
     const stateMachine = new sfn.StateMachine(this, 'StateMachine', {
+      stateMachineName: props.stateMachineName,
       definition,
     });
 

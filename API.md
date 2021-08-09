@@ -269,6 +269,15 @@ import { IntrinsicValidatorProps } from '@wheatstalk/cdk-intrinsic-validator'
 const intrinsicValidatorProps: IntrinsicValidatorProps = { ... }
 ```
 
+##### `stateMachineName`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.IntrinsicValidatorProps.property.stateMachineName"></a>
+
+- *Type:* `string`
+- *Default:* CDK automatically picks a name
+
+Name the Step Functions State Machine.
+
+---
+
 ##### `validations`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.IntrinsicValidatorProps.property.validations"></a>
 
 - *Type:* [`@wheatstalk/cdk-intrinsic-validator.Validation`](#@wheatstalk/cdk-intrinsic-validator.Validation)[]
