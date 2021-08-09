@@ -342,6 +342,37 @@ Validations to run every time the stack is deployed.
 
 ---
 
+### LambdaInvokeSucceedsOptions <a name="@wheatstalk/cdk-intrinsic-validator.LambdaInvokeSucceedsOptions"></a>
+
+Options for lambda validations.
+
+#### Initializer <a name="[object Object].Initializer"></a>
+
+```typescript
+import { LambdaInvokeSucceedsOptions } from '@wheatstalk/cdk-intrinsic-validator'
+
+const lambdaInvokeSucceedsOptions: LambdaInvokeSucceedsOptions = { ... }
+```
+
+##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.LambdaInvokeSucceedsOptions.property.label"></a>
+
+- *Type:* `string`
+- *Default:* Automatic label based on the validation type
+
+Label references to this validation for easier identification.
+
+---
+
+##### `lambdaFunction`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.LambdaInvokeSucceedsOptions.property.lambdaFunction"></a>
+
+- *Type:* [`@aws-cdk/aws-lambda.IFunction`](#@aws-cdk/aws-lambda.IFunction)
+
+The Lambda function to invoke.
+
+If there's an error, throw from within your function.
+
+---
+
 ### MonitorAlarmOptions <a name="@wheatstalk/cdk-intrinsic-validator.MonitorAlarmOptions"></a>
 
 Options for monitoring alarms.
@@ -489,6 +520,20 @@ Validation.fargateTaskSucceeds(options: FargateTaskSucceedsOptions)
 ###### `options`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.Validation.parameter.options"></a>
 
 - *Type:* [`@wheatstalk/cdk-intrinsic-validator.FargateTaskSucceedsOptions`](#@wheatstalk/cdk-intrinsic-validator.FargateTaskSucceedsOptions)
+
+---
+
+##### `lambdaInvokeSucceeds` <a name="@wheatstalk/cdk-intrinsic-validator.Validation.lambdaInvokeSucceeds"></a>
+
+```typescript
+import { Validation } from '@wheatstalk/cdk-intrinsic-validator'
+
+Validation.lambdaInvokeSucceeds(options: LambdaInvokeSucceedsOptions)
+```
+
+###### `options`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.Validation.parameter.options"></a>
+
+- *Type:* [`@wheatstalk/cdk-intrinsic-validator.LambdaInvokeSucceedsOptions`](#@wheatstalk/cdk-intrinsic-validator.LambdaInvokeSucceedsOptions)
 
 ---
 

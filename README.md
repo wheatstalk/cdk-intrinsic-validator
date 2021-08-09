@@ -100,6 +100,22 @@ new IntrinsicValidator(stack, 'IntrinsicValidator', {
 });
 ```
 
+## Invoke an Ad-hoc Lambda
+
+```ts
+const lambdaFunction = new Function(stack, 'LambdaFunction', /* ... */);
+
+new IntrinsicValidator(stack, 'IntrinsicValidator', {
+  validations: [
+    // Invoke the given Lambda function. If the function fails, the deployment
+    // will be cancelled and rolled back.
+    Validation.lambdaInvokeSucceeds({
+      lambdaFunction,
+    }),
+  ],
+});
+```
+
 ## Execute a Step Functions State Machine
 
 ```ts

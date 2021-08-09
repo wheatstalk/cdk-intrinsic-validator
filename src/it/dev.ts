@@ -1,12 +1,8 @@
 import * as ecs from '@aws-cdk/aws-ecs';
 import * as cdk from '@aws-cdk/core';
-import {
-  FargateValidationFactory,
-  IntrinsicValidator,
-  // @ts-ignore
-  Validation,
-} from '..';
+import { FargateValidationFactory, IntrinsicValidator, Validation } from '..';
 import { TestAlarms } from './test-alarms';
+import { TestLambdas } from './test-lambdas';
 
 const app = new cdk.App();
 const stack = new cdk.Stack(app, 'CdkIntrinsicValidator', {
@@ -29,6 +25,7 @@ const fargateValidations = new FargateValidationFactory(stack, 'FargateValidatio
 const curlImage = ecs.ContainerImage.fromRegistry('curlimages/curl:7.78.0');
 
 const testAlarms = new TestAlarms(stack, 'TestAlarms');
+const testLambdas = new TestLambdas(stack, 'TestLambdas');
 
 // Validate the stack on every deploy and fail the deployment if any of
 // the given validations fail so that CloudFormation can auto-rollback.
@@ -56,5 +53,11 @@ new IntrinsicValidator(stack, 'IntrinsicValidator', {
     // The following validations will fail and roll back the stack:
     // fargateValidations.runContainer(curlImage, 'https://fake.fake.fake/'),
     // Validation.alwaysFails(),
+
+    // Test that a lambda invocation succeeds
+    Validation.lambdaInvokeSucceeds({
+      lambdaFunction: testLambdas.alwaysSucceeds,
+      // lambdaFunction: testLambdas.alwaysFails,
+    }),
   ],
 });
