@@ -37,22 +37,12 @@ new FargateValidationFactory(scope: Construct, id: string, props: FargateValidat
 ##### `runContainer` <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactory.runContainer"></a>
 
 ```typescript
-public runContainer(image: ContainerImage, command: string)
+public runContainer(options: FargateValidationRunContainerOptions)
 ```
 
-###### `image`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactory.parameter.image"></a>
+###### `options`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactory.parameter.options"></a>
 
-- *Type:* [`@aws-cdk/aws-ecs.ContainerImage`](#@aws-cdk/aws-ecs.ContainerImage)
-
-The ECS container image to run.
-
----
-
-###### `command`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactory.parameter.command"></a>
-
-- *Type:* `string`
-
-The command to run in the container.
+- *Type:* [`@wheatstalk/cdk-intrinsic-validator.FargateValidationRunContainerOptions`](#@wheatstalk/cdk-intrinsic-validator.FargateValidationRunContainerOptions)
 
 ---
 
@@ -106,6 +96,15 @@ import { FargateTaskSucceedsOptions } from '@wheatstalk/cdk-intrinsic-validator'
 
 const fargateTaskSucceedsOptions: FargateTaskSucceedsOptions = { ... }
 ```
+
+##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateTaskSucceedsOptions.property.label"></a>
+
+- *Type:* `string`
+- *Default:* Automatic label based on the validation type
+
+Label references to this validation for easier identification.
+
+---
 
 ##### `cluster`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateTaskSucceedsOptions.property.cluster"></a>
 
@@ -165,6 +164,15 @@ import { FargateValidationBaseOptions } from '@wheatstalk/cdk-intrinsic-validato
 const fargateValidationBaseOptions: FargateValidationBaseOptions = { ... }
 ```
 
+##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationBaseOptions.property.label"></a>
+
+- *Type:* `string`
+- *Default:* Automatic label based on the validation type
+
+Label references to this validation for easier identification.
+
+---
+
 ##### `cluster`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationBaseOptions.property.cluster"></a>
 
 - *Type:* [`@aws-cdk/aws-ecs.ICluster`](#@aws-cdk/aws-ecs.ICluster)
@@ -217,6 +225,15 @@ import { FargateValidationFactoryProps } from '@wheatstalk/cdk-intrinsic-validat
 const fargateValidationFactoryProps: FargateValidationFactoryProps = { ... }
 ```
 
+##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactoryProps.property.label"></a>
+
+- *Type:* `string`
+- *Default:* Automatic label based on the validation type
+
+Label references to this validation for easier identification.
+
+---
+
 ##### `cluster`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactoryProps.property.cluster"></a>
 
 - *Type:* [`@aws-cdk/aws-ecs.ICluster`](#@aws-cdk/aws-ecs.ICluster)
@@ -254,6 +271,44 @@ Give tasks a security group.
 - *Type:* [`@aws-cdk/aws-ec2.SubnetSelection`](#@aws-cdk/aws-ec2.SubnetSelection)
 
 Select subnets in which tasks will run.
+
+---
+
+### FargateValidationRunContainerOptions <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationRunContainerOptions"></a>
+
+Base options for running containers.
+
+#### Initializer <a name="[object Object].Initializer"></a>
+
+```typescript
+import { FargateValidationRunContainerOptions } from '@wheatstalk/cdk-intrinsic-validator'
+
+const fargateValidationRunContainerOptions: FargateValidationRunContainerOptions = { ... }
+```
+
+##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationRunContainerOptions.property.label"></a>
+
+- *Type:* `string`
+- *Default:* Automatic label based on the validation type
+
+Label references to this validation for easier identification.
+
+---
+
+##### `image`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationRunContainerOptions.property.image"></a>
+
+- *Type:* [`@aws-cdk/aws-ecs.ContainerImage`](#@aws-cdk/aws-ecs.ContainerImage)
+
+Container image to run.
+
+---
+
+##### `command`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationRunContainerOptions.property.command"></a>
+
+- *Type:* `string`[]
+- *Default:* use the image's default.
+
+Run this container command.
 
 ---
 
@@ -299,6 +354,15 @@ import { MonitorAlarmOptions } from '@wheatstalk/cdk-intrinsic-validator'
 const monitorAlarmOptions: MonitorAlarmOptions = { ... }
 ```
 
+##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.MonitorAlarmOptions.property.label"></a>
+
+- *Type:* `string`
+- *Default:* Automatic label based on the validation type
+
+Label references to this validation for easier identification.
+
+---
+
 ##### `alarm`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.MonitorAlarmOptions.property.alarm"></a>
 
 - *Type:* [`@aws-cdk/aws-cloudwatch.IAlarm`](#@aws-cdk/aws-cloudwatch.IAlarm)
@@ -328,6 +392,15 @@ import { StateMachineExecutionSucceedsOptions } from '@wheatstalk/cdk-intrinsic-
 const stateMachineExecutionSucceedsOptions: StateMachineExecutionSucceedsOptions = { ... }
 ```
 
+##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.StateMachineExecutionSucceedsOptions.property.label"></a>
+
+- *Type:* `string`
+- *Default:* Automatic label based on the validation type
+
+Label references to this validation for easier identification.
+
+---
+
 ##### `stateMachine`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.StateMachineExecutionSucceedsOptions.property.stateMachine"></a>
 
 - *Type:* [`@aws-cdk/aws-stepfunctions.IStateMachine`](#@aws-cdk/aws-stepfunctions.IStateMachine)
@@ -345,6 +418,27 @@ Input for the state machine's execution.
 
 ---
 
+### ValidationBaseOptions <a name="@wheatstalk/cdk-intrinsic-validator.ValidationBaseOptions"></a>
+
+Base options for validations.
+
+#### Initializer <a name="[object Object].Initializer"></a>
+
+```typescript
+import { ValidationBaseOptions } from '@wheatstalk/cdk-intrinsic-validator'
+
+const validationBaseOptions: ValidationBaseOptions = { ... }
+```
+
+##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.ValidationBaseOptions.property.label"></a>
+
+- *Type:* `string`
+- *Default:* Automatic label based on the validation type
+
+Label references to this validation for easier identification.
+
+---
+
 ## Classes <a name="Classes"></a>
 
 ### Validation <a name="@wheatstalk/cdk-intrinsic-validator.Validation"></a>
@@ -356,8 +450,14 @@ Create many types of validations.
 ```typescript
 import { Validation } from '@wheatstalk/cdk-intrinsic-validator'
 
-new Validation()
+new Validation(options: ValidationBaseOptions)
 ```
+
+##### `options`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.Validation.parameter.options"></a>
+
+- *Type:* [`@wheatstalk/cdk-intrinsic-validator.ValidationBaseOptions`](#@wheatstalk/cdk-intrinsic-validator.ValidationBaseOptions)
+
+---
 
 
 #### Static Functions <a name="Static Functions"></a>

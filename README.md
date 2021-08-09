@@ -38,9 +38,16 @@ const curlImage = ecs.ContainerImage.fromRegistry('curlimages/curl:7.78.0');
 new IntrinsicValidator(stack, 'IntrinsicValidator', {
   validations: [
     // Test some public endpoints to see if they respond to HTTP:
-    fargateValidations.runContainer(curlImage, 'https://www.example.com/'),
-    fargateValidations.runContainer(curlImage, 'https://www.amazon.ca/'),
-    fargateValidations.runContainer(curlImage, 'https://www.google.com/'),
+    fargateValidations.runContainer({
+      image: curlImage,
+      command: ['https://www.example.com/'],
+    }),
+    fargateValidations.runContainer({
+      // Add an optional label to help identity the validation.
+      label: 'cURL the Front Page',
+      image: curlImage,
+      command: ['https://www.amazon.ca/'],
+    }),
     // The following validations will fail and roll back the stack:
     // fargateValidations.runContainer(curlImage, 'https://fake.fake.fake/'),
     // Validation.alwaysFails(),

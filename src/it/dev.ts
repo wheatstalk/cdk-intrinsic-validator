@@ -35,12 +35,20 @@ const testAlarms = new TestAlarms(stack, 'TestAlarms');
 new IntrinsicValidator(stack, 'IntrinsicValidator', {
   validations: [
     // Test some public endpoints to see if they respond to HTTP:
-    fargateValidations.runContainer(curlImage, 'https://www.example.com/'),
-    fargateValidations.runContainer(curlImage, 'https://www.amazon.ca/'),
-    fargateValidations.runContainer(curlImage, 'https://www.google.com/'),
+    fargateValidations.runContainer({
+      image: curlImage,
+      command: ['https://www.example.com/'],
+    }),
+    fargateValidations.runContainer({
+      // Add an optional label to help identity the validation.
+      label: 'cURL the Front Page',
+      image: curlImage,
+      command: ['https://www.amazon.ca/'],
+    }),
 
     // Monitor an alarm
     Validation.monitorAlarm({
+      label: 'Monitor an alarm',
       alarm: testAlarms.neverAlarming,
       duration: cdk.Duration.seconds(30),
     }),

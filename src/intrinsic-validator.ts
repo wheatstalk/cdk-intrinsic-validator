@@ -39,7 +39,7 @@ export class IntrinsicValidator extends cdk.Construct {
     let validationIndex = 0;
     const validations = props.validations ?? [];
     for (const validation of validations) {
-      const config = validation._bind(definition, `Branch${validationIndex}`);
+      const config = validation._bind(definition, `[${validationIndex}] ${validation._label}`);
       definition.branch(config.chainable);
       validationIndex++;
     }
@@ -143,11 +143,23 @@ export abstract class Validation {
   }
 
   /** @internal */
+  readonly _label: string;
+
+  /** @internal */
+  protected constructor(options: ValidationBaseOptions) {
+    this._label = options.label ?? 'Unlabelled';
+  }
+
+  /** @internal */
   abstract _bind(scope: cdk.Construct, id: string): ValidationConfig;
 }
 
 /** @internal */
 class AlwaysSucceeds extends Validation {
+  constructor() {
+    super({ label: 'AlwaysSucceeds' });
+  }
+
   _bind(scope: cdk.Construct, id: string): ValidationConfig {
     return {
       chainable: new sfn.Pass(scope, id, {
@@ -159,6 +171,10 @@ class AlwaysSucceeds extends Validation {
 
 /** @internal */
 class AlwaysFails extends Validation {
+  constructor() {
+    super({ label: 'AlwaysFails' });
+  }
+
   _bind(scope: cdk.Construct, id: string): ValidationConfig {
     return {
       chainable: new sfn.Fail(scope, id),
@@ -167,9 +183,20 @@ class AlwaysFails extends Validation {
 }
 
 /**
+ * Base options for validations
+ */
+export interface ValidationBaseOptions {
+  /**
+   * Label references to this validation for easier identification.
+   * @default - Automatic label based on the validation type
+   */
+  readonly label?: string;
+}
+
+/**
  * Base options for Fargate-based validations.
  */
-export interface FargateValidationBaseOptions {
+export interface FargateValidationBaseOptions extends ValidationBaseOptions {
   /**
    * The cluster to create the task on.
    */
@@ -206,7 +233,9 @@ export interface FargateTaskSucceedsOptions extends FargateValidationBaseOptions
 /** @internal */
 class FargateTaskSucceeds extends Validation {
   constructor(private readonly options: FargateTaskSucceedsOptions) {
-    super();
+    super({
+      label: options.label ?? 'FargateTaskSucceeds',
+    });
   }
 
   _bind(scope: cdk.Construct, id: string): ValidationConfig {
@@ -224,6 +253,22 @@ class FargateTaskSucceeds extends Validation {
  * Props for `FargateValidationFactory`
  */
 export interface FargateValidationFactoryProps extends FargateValidationBaseOptions {
+}
+
+/**
+ * Base options for running containers.
+ */
+export interface FargateValidationRunContainerOptions extends ValidationBaseOptions {
+  /**
+   * Container image to run.
+   */
+  readonly image: ecs.ContainerImage;
+
+  /**
+   * Run this container command.
+   * @default - use the image's default.
+   */
+  readonly command?: string[];
 }
 
 /**
@@ -248,22 +293,24 @@ export class FargateValidationFactory extends cdk.Construct {
 
   /**
    * Produce a validation that uses a container image to run a command.
-   * @param image The ECS container image to run
-   * @param command The command to run in the container
    */
-  runContainer(image: ecs.ContainerImage, ...command: string[]): Validation {
+  runContainer(options: FargateValidationRunContainerOptions): Validation {
     const taskDefinition = new ecs.FargateTaskDefinition(this, this.obtainTaskDefinitionId(), {
       cpu: 256,
       memoryLimitMiB: 512,
     });
 
     taskDefinition.addContainer('script', {
-      image,
-      command: command,
+      image: options.image,
+      command: options.command,
     });
+
+    // Use the given label over the factory's default label.
+    const label = options.label ?? this.options.label;
 
     return Validation.fargateTaskSucceeds({
       ...this.options,
+      label: label,
       securityGroups: this.securityGroups,
       taskDefinition,
     });
@@ -273,7 +320,7 @@ export class FargateValidationFactory extends cdk.Construct {
 /**
  * Options for monitoring alarms.
  */
-export interface MonitorAlarmOptions {
+export interface MonitorAlarmOptions extends ValidationBaseOptions {
   /**
    * The alarm to monitor.
    */
@@ -291,7 +338,10 @@ class MonitorAlarm extends Validation {
   private readonly timeout: cdk.Duration;
 
   constructor(options: MonitorAlarmOptions) {
-    super();
+    super({
+      label: options.label ?? 'MonitorAlarm',
+    });
+
     this.alarm = options.alarm;
     this.timeout = options.duration ?? cdk.Duration.minutes(1);
   }
@@ -318,7 +368,7 @@ class MonitorAlarm extends Validation {
 /**
  * Options for step function validations
  */
-export interface StateMachineExecutionSucceedsOptions {
+export interface StateMachineExecutionSucceedsOptions extends ValidationBaseOptions {
   /** The state machine to execute */
   readonly stateMachine: sfn.IStateMachine;
 
@@ -331,7 +381,9 @@ export interface StateMachineExecutionSucceedsOptions {
 
 class StateMachineExecutionSucceeds extends Validation {
   constructor(private readonly options: StateMachineExecutionSucceedsOptions) {
-    super();
+    super({
+      label: options.label ?? 'StateMachineExecutionSucceeds',
+    });
   }
 
   _bind(scope: cdk.Construct, id: string): ValidationConfig {
