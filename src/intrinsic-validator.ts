@@ -27,6 +27,9 @@ export interface IntrinsicValidatorProps {
   readonly validations?: Validation[];
 }
 
+/** @internal */
+export const DisableRandomnessContextKey = 'intrinsic-validator.disable-randomness';
+
 /**
  * Adds intrinsic validation to a CloudFormation stack.
  */
@@ -90,10 +93,24 @@ export class IntrinsicValidator extends cdk.Construct {
 
     // Create a new logical resource every time we deploy. This is how we cause
     // the validation to be run on every deployment.
-    const randomness = Math.round(Math.random() * 10000000);
-    new cdk.CustomResource(this, `Resource${randomness}`, {
+    const customResourceId = this.getCustomResourceId();
+    new cdk.CustomResource(this, customResourceId, {
       serviceToken: provider.serviceToken,
     });
+  }
+
+  /**
+   * Get the custom resource ID.
+   *
+   * It's usually random-suffixed, but it can be turned off by providing a
+   * context. Randomness is disabled in the tests so that the snapshots
+   * can be stable.
+   */
+  private getCustomResourceId() {
+    const shouldDisableRandomness = Boolean(this.node.tryGetContext(DisableRandomnessContextKey));
+    return shouldDisableRandomness
+      ? 'Resource'
+      : `Resource${(Math.round(Math.random() * 10000000))}`;
   }
 }
 

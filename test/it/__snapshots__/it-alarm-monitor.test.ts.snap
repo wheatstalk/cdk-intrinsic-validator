@@ -1,0 +1,430 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+Object {
+  "Outputs": Object {
+    "TestAlarmsAlwaysAlarmingExecution4B32A340": Object {
+      "Value": Object {
+        "Fn::Join": Array [
+          "",
+          Array [
+            "{\\"AlarmName\\":\\"",
+            Object {
+              "Ref": "TestAlarmsAlwaysAlarming69FED027",
+            },
+            "\\",\\"MonitoringSeconds\\":31}",
+          ],
+        ],
+      },
+    },
+    "TestAlarmsNeverAlarmingExecutionF5D1776E": Object {
+      "Value": Object {
+        "Fn::Join": Array [
+          "",
+          Array [
+            "{\\"AlarmName\\":\\"",
+            Object {
+              "Ref": "TestAlarmsNeverAlarmingHopefullyFD878B05",
+            },
+            "\\",\\"MonitoringSeconds\\":60}",
+          ],
+        ],
+      },
+    },
+  },
+  "Parameters": Object {
+    "AssetParameters5530e77136cfc502c2430a4a203eedc88ff527da95231209da7018adf08f80f2ArtifactHash50F9A072": Object {
+      "Description": "Artifact hash for asset \\"5530e77136cfc502c2430a4a203eedc88ff527da95231209da7018adf08f80f2\\"",
+      "Type": "String",
+    },
+    "AssetParameters5530e77136cfc502c2430a4a203eedc88ff527da95231209da7018adf08f80f2S3BucketDB536421": Object {
+      "Description": "S3 bucket for asset \\"5530e77136cfc502c2430a4a203eedc88ff527da95231209da7018adf08f80f2\\"",
+      "Type": "String",
+    },
+    "AssetParameters5530e77136cfc502c2430a4a203eedc88ff527da95231209da7018adf08f80f2S3VersionKey535E23D6": Object {
+      "Description": "S3 key for asset version \\"5530e77136cfc502c2430a4a203eedc88ff527da95231209da7018adf08f80f2\\"",
+      "Type": "String",
+    },
+    "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24ArtifactHashBA91B77F": Object {
+      "Description": "Artifact hash for asset \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
+      "Type": "String",
+    },
+    "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3Bucket4D46ABB5": Object {
+      "Description": "S3 bucket for asset \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
+      "Type": "String",
+    },
+    "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3VersionKeyB0F28861": Object {
+      "Description": "S3 key for asset version \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
+      "Type": "String",
+    },
+  },
+  "Resources": Object {
+    "AlarmMonitorCheckAlarmStatusFunction38993418": Object {
+      "DependsOn": Array [
+        "AlarmMonitorCheckAlarmStatusFunctionServiceRoleDefaultPolicyF834009A",
+        "AlarmMonitorCheckAlarmStatusFunctionServiceRole0FE14751",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParameters5530e77136cfc502c2430a4a203eedc88ff527da95231209da7018adf08f80f2S3BucketDB536421",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters5530e77136cfc502c2430a4a203eedc88ff527da95231209da7018adf08f80f2S3VersionKey535E23D6",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters5530e77136cfc502c2430a4a203eedc88ff527da95231209da7018adf08f80f2S3VersionKey535E23D6",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Handler": "check-alarm-status.checkAlarmStatus",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "AlarmMonitorCheckAlarmStatusFunctionServiceRole0FE14751",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "AlarmMonitorCheckAlarmStatusFunctionLogRetention1E4E68E2": Object {
+      "Properties": Object {
+        "LogGroupName": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "/aws/lambda/",
+              Object {
+                "Ref": "AlarmMonitorCheckAlarmStatusFunction38993418",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 30,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "AlarmMonitorCheckAlarmStatusFunctionServiceRole0FE14751": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "AlarmMonitorCheckAlarmStatusFunctionServiceRoleDefaultPolicyF834009A": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "cloudwatch:DescribeAlarms",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "AlarmMonitorCheckAlarmStatusFunctionServiceRoleDefaultPolicyF834009A",
+        "Roles": Array [
+          Object {
+            "Ref": "AlarmMonitorCheckAlarmStatusFunctionServiceRole0FE14751",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "AlarmMonitorStateMachineC704D11C": Object {
+      "DependsOn": Array [
+        "AlarmMonitorStateMachineRoleDefaultPolicy7C3EF13E",
+        "AlarmMonitorStateMachineRole19D08AAF",
+      ],
+      "Properties": Object {
+        "DefinitionString": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"StartAt\\":\\"CheckAlarmStatus\\",\\"States\\":{\\"CheckAlarmStatus\\":{\\"Next\\":\\"AlarmStatusChoice\\",\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2},{\\"ErrorEquals\\":[\\"States.ALL\\"],\\"MaxAttempts\\":3}],\\"Catch\\":[{\\"ErrorEquals\\":[\\"States.ALL\\"],\\"Next\\":\\"BugState\\"}],\\"Type\\":\\"Task\\",\\"ResultPath\\":\\"$.CheckAlarmStatus\\",\\"ResultSelector\\":{\\"Status.$\\":\\"$.Payload.Status\\"},\\"Resource\\":\\"arn:",
+              Object {
+                "Ref": "AWS::Partition",
+              },
+              ":states:::lambda:invoke\\",\\"Parameters\\":{\\"FunctionName\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "AlarmMonitorCheckAlarmStatusFunction38993418",
+                  "Arn",
+                ],
+              },
+              "\\",\\"Payload\\":{\\"AlarmName.$\\":\\"$.AlarmName\\",\\"MonitoringDurationSeconds.$\\":\\"$.MonitoringDurationSeconds\\",\\"StartTime.$\\":\\"$$.Execution.StartTime\\"}}},\\"DelayThenNextCheckStatus\\":{\\"Type\\":\\"Wait\\",\\"Seconds\\":30,\\"Next\\":\\"CheckAlarmStatus\\"},\\"AlarmStatusChoice\\":{\\"Type\\":\\"Choice\\",\\"Choices\\":[{\\"Variable\\":\\"$.CheckAlarmStatus.Status\\",\\"StringEquals\\":\\"ALARM\\",\\"Next\\":\\"FailBecauseAlarming\\"},{\\"Variable\\":\\"$.CheckAlarmStatus.Status\\",\\"StringEquals\\":\\"MONITORING\\",\\"Next\\":\\"DelayThenNextCheckStatus\\"},{\\"Variable\\":\\"$.CheckAlarmStatus.Status\\",\\"StringEquals\\":\\"NO_ALARM\\",\\"Next\\":\\"NoAlarm\\"}],\\"Default\\":\\"BugState\\"},\\"BugState\\":{\\"Type\\":\\"Fail\\"},\\"FailBecauseAlarming\\":{\\"Type\\":\\"Fail\\"},\\"NoAlarm\\":{\\"Type\\":\\"Succeed\\"}}}",
+            ],
+          ],
+        },
+        "RoleArn": Object {
+          "Fn::GetAtt": Array [
+            "AlarmMonitorStateMachineRole19D08AAF",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::StepFunctions::StateMachine",
+    },
+    "AlarmMonitorStateMachineRole19D08AAF": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "states.",
+                      Object {
+                        "Ref": "AWS::Region",
+                      },
+                      ".amazonaws.com",
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "AlarmMonitorStateMachineRoleDefaultPolicy7C3EF13E": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "AlarmMonitorCheckAlarmStatusFunction38993418",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "AlarmMonitorStateMachineRoleDefaultPolicy7C3EF13E",
+        "Roles": Array [
+          Object {
+            "Ref": "AlarmMonitorStateMachineRole19D08AAF",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": Object {
+      "DependsOn": Array [
+        "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+        "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3Bucket4D46ABB5",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3VersionKeyB0F28861",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3VersionKeyB0F28861",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Handler": "index.handler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "logs:PutRetentionPolicy",
+                "logs:DeleteRetentionPolicy",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+        "Roles": Array [
+          Object {
+            "Ref": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "TestAlarmsAlwaysAlarming69FED027": Object {
+      "Properties": Object {
+        "ComparisonOperator": "LessThanThreshold",
+        "Dimensions": Array [
+          Object {
+            "Name": "Currency",
+            "Value": "USD",
+          },
+        ],
+        "EvaluationPeriods": 1,
+        "MetricName": "EstimatedCharges",
+        "Namespace": "AWS/Billing",
+        "Period": 32400,
+        "Statistic": "Maximum",
+        "Threshold": 99999999999,
+        "TreatMissingData": "breaching",
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+    "TestAlarmsNeverAlarmingHopefullyFD878B05": Object {
+      "Properties": Object {
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Dimensions": Array [
+          Object {
+            "Name": "Currency",
+            "Value": "USD",
+          },
+        ],
+        "EvaluationPeriods": 1,
+        "MetricName": "EstimatedCharges",
+        "Namespace": "AWS/Billing",
+        "Period": 32400,
+        "Statistic": "Maximum",
+        "Threshold": 99999999999,
+        "TreatMissingData": "notBreaching",
+      },
+      "Type": "AWS::CloudWatch::Alarm",
+    },
+  },
+}
+`;

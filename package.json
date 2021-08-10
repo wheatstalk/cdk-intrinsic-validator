@@ -26,8 +26,13 @@
     "docgen": "npx projen docgen",
     "release": "npx projen release",
     "projen": "npx projen",
-    "it:dev": "cdk --app \"ts-node src/it/dev.ts\"",
-    "it:alarm-monitor": "cdk --app \"ts-node src/it/alarm-monitor.ts\""
+    "it:dev": "cdk --app \"ts-node src/it/it-dev.ts\"",
+    "it:lit": "cdk --app \"ts-node src/it/it-lit.ts\"",
+    "it:lit-fargate": "cdk --app \"ts-node src/it/it-lit-fargate.ts\"",
+    "it:lit-cloudwatch-alarm": "cdk --app \"ts-node src/it/it-lit-cloudwatch-alarm.ts\"",
+    "it:lit-lambda": "cdk --app \"ts-node src/it/it-lit-lambda.ts\"",
+    "it:lit-step-function": "cdk --app \"ts-node src/it/it-lit-stepfunction.ts\"",
+    "it:alarm-monitor": "cdk --app \"ts-node src/it/it-alarm-monitor.ts\""
   },
   "author": {
     "name": "Josh Kellendonk",

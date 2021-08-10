@@ -71,6 +71,11 @@ const project = new pj.AwsCdkConstructLibrary({
   // projectType: ProjectType.UNKNOWN,  /* Which type of project this is (library/app). */
   // release: undefined,                /* Add release management to this project. */
 });
-project.package.setScript('it:dev', 'cdk --app "ts-node src/it/dev.ts"');
-project.package.setScript('it:alarm-monitor', 'cdk --app "ts-node src/it/alarm-monitor.ts"');
+project.package.setScript('it:dev', 'cdk --app "ts-node src/it/it-dev.ts"');
+project.package.setScript('it:lit', 'cdk --app "ts-node src/it/it-lit.ts"');
+project.package.setScript('it:lit-fargate', 'cdk --app "ts-node src/it/it-lit-fargate.ts"');
+project.package.setScript('it:lit-cloudwatch-alarm', 'cdk --app "ts-node src/it/it-lit-cloudwatch-alarm.ts"');
+project.package.setScript('it:lit-lambda', 'cdk --app "ts-node src/it/it-lit-lambda.ts"');
+project.package.setScript('it:lit-step-function', 'cdk --app "ts-node src/it/it-lit-stepfunction.ts"');
+project.package.setScript('it:alarm-monitor', 'cdk --app "ts-node src/it/it-alarm-monitor.ts"');
 project.synth();
