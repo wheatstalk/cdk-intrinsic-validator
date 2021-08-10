@@ -78,12 +78,21 @@
       "type": "build"
     },
     {
+      "name": "markmac",
+      "version": "^0.1",
+      "type": "build"
+    },
+    {
       "name": "npm-check-updates",
       "version": "^11",
       "type": "build"
     },
     {
       "name": "projen",
+      "type": "build"
+    },
+    {
+      "name": "shx",
       "type": "build"
     },
     {

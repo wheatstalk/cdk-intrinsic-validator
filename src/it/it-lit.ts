@@ -10,6 +10,7 @@ export class ItLit extends cdk.Stack {
     // Lit code uses 'scope'
     const scope = this;
 
+    // ::SNIP
     // Create an ECS cluster to run some Fargate tasks in.
     const cluster = new ecs.Cluster(scope, 'Cluster');
 
@@ -46,6 +47,7 @@ export class ItLit extends cdk.Stack {
         // Validation.alwaysFails(),
       ],
     });
+    // ::END-SNIP
   }
 }
 

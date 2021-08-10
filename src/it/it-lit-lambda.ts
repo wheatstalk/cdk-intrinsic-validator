@@ -13,6 +13,7 @@ export class ItLitLambda extends cdk.Stack {
     // Lit code uses 'scope'
     const scope = this;
 
+    // ::SNIP
     new IntrinsicValidator(scope, 'IntrinsicValidator', {
       validations: [
         // Invoke the given Lambda function. If the function fails, the deployment
@@ -22,6 +23,7 @@ export class ItLitLambda extends cdk.Stack {
         }),
       ],
     });
+    // ::END-SNIP
   }
 }
 
