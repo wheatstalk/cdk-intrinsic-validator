@@ -195,8 +195,8 @@ function reconstructTaskFailure(historyEvent, eventIndex) {
   while (currentEvent) {
     switch (currentEvent.type) {
       case 'TaskFailed':
-        error = currentEvent.taskFailedEventDetails.error ?? error;
-        cause = currentEvent.taskFailedEventDetails.cause ?? cause;
+        error = currentEvent.taskFailedEventDetails.error || error;
+        cause = currentEvent.taskFailedEventDetails.cause || cause;
         break;
       case 'TaskStarted':
       case 'TaskScheduled':
