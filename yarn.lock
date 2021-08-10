@@ -5332,6 +5332,11 @@ map-obj@^4.0.0:
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-4.2.1.tgz#e4ea399dbc979ae735c83c863dd31bdf364277b7"
   integrity sha512-+WA2/1sPmDj1dlvvJmB5G6JKfY9dpn7EVBUL06+y6PoljPkh+6V1QihwxNkbcGxCRjt2b0F9K0taiCuo7MbdFQ==
 
+markmac@^0.1:
+  version "0.1.37"
+  resolved "https://registry.yarnpkg.com/markmac/-/markmac-0.1.37.tgz#0aa0086ba10a2e844012dafc9e1a6244574ffa9c"
+  integrity sha512-pq0TXerRUwl8Pcl6d9LaI/VyhNjRU0qmwOQiti766V7z2ATInlbz4IMchhLNqRA21aj+BuLeZieSAXsA/NARug==
+
 md5@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/md5/-/md5-2.3.0.tgz#c3da9a6aae3a30b46b7b0c349b87b110dc3bda4f"

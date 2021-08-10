@@ -20,6 +20,7 @@ export class ItLitFargate extends cdk.Stack {
     // Lit code uses 'scope'
     const scope = this;
 
+    // ::SNIP
     new IntrinsicValidator(scope, 'IntrinsicValidator', {
       validations: [
         // Use this generic interface to launch a Fargate task on the given cluster
@@ -36,6 +37,7 @@ export class ItLitFargate extends cdk.Stack {
         }),
       ],
     });
+    // ::END-SNIP
   }
 }
 

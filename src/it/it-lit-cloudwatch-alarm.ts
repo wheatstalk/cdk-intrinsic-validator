@@ -13,6 +13,7 @@ export class ItLitCloudwatchAlarm extends cdk.Stack {
     // Lit code uses 'scope'
     const scope = this;
 
+    // ::SNIP
     new IntrinsicValidator(scope, 'IntrinsicValidator', {
       validations: [
         // Monitor the given alarm for five minutes before allowing the deployment
@@ -24,6 +25,7 @@ export class ItLitCloudwatchAlarm extends cdk.Stack {
         }),
       ],
     });
+    // ::END-SNIP
   }
 }
 

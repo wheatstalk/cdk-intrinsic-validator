@@ -14,6 +14,7 @@ export class ItLitStepFunction extends cdk.Stack {
     // Lit code uses 'scope'
     const scope = this;
 
+    // ::SNIP
     new IntrinsicValidator(scope, 'IntrinsicValidator', {
       validations: [
         // Execute the given step function and if it fails, cancel and roll back
@@ -27,6 +28,7 @@ export class ItLitStepFunction extends cdk.Stack {
         }),
       ],
     });
+    // ::END-SNIP
   }
 }
 

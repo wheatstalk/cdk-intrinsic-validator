@@ -45,6 +45,8 @@ const project = new pj.AwsCdkConstructLibrary({
     'ts-node@^9',
     'aws-cdk@^1.95.2',
     'aws-sdk@^2.963.0',
+    'markmac@^0.1',
+    'shx',
   ],
 
   gitignore: [
@@ -79,4 +81,11 @@ project.package.setScript('it:lit-lambda', 'cdk --app "ts-node src/it/it-lit-lam
 project.package.setScript('it:lit-step-function', 'cdk --app "ts-node src/it/it-lit-stepfunction.ts"');
 project.package.setScript('it:alarm-monitor', 'cdk --app "ts-node src/it/it-alarm-monitor.ts"');
 project.package.setScript('it:error-message', 'cdk --app "ts-node src/it/it-error-message.ts"');
+
+const macros = project.addTask('readme-macros');
+macros.exec('shx mv README.md README.md.bak');
+macros.exec('shx cat README.md.bak | markmac > README.md');
+macros.exec('shx rm README.md.bak');
+project.buildTask.spawn(macros);
+
 project.synth();

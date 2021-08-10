@@ -21,13 +21,14 @@ You can add the following intrinsic validations:
 
 ## Usage
 
+<!-- <macro exec="node ./scripts/lit-snip.js ./src/it/it-lit.ts"> -->
 ```ts
 // Create an ECS cluster to run some Fargate tasks in.
-const cluster = new ecs.Cluster(stack, 'Cluster', /* ... */);
+const cluster = new ecs.Cluster(scope, 'Cluster');
 
 // Instantiate a convenience tool for creating Fargate validations with common
 // options (i.e., a specific ecs cluster.)
-const fargateValidations = new FargateValidationFactory(stack, 'FargateValidationFactory', {
+const fargateValidations = new FargateValidationFactory(scope, 'FargateValidationFactory', {
   cluster,
 });
 
@@ -36,7 +37,7 @@ const curlImage = ecs.ContainerImage.fromRegistry('curlimages/curl:7.78.0');
 
 // Validate the stack on every deploy and fail the deployment if any of
 // the given validations fail so that CloudFormation can auto-rollback.
-new IntrinsicValidator(stack, 'IntrinsicValidator', {
+new IntrinsicValidator(scope, 'IntrinsicValidator', {
   validations: [
     // Test some public endpoints to see if they respond to HTTP:
     fargateValidations.runContainer({
@@ -49,22 +50,23 @@ new IntrinsicValidator(stack, 'IntrinsicValidator', {
       image: curlImage,
       command: ['https://www.amazon.ca/'],
     }),
+
+    // Most validations are available through the abstract factory.
+    Validation.alwaysSucceeds(),
+
     // The following validations will fail and roll back the stack:
     // fargateValidations.runContainer(curlImage, 'https://fake.fake.fake/'),
     // Validation.alwaysFails(),
   ],
 });
 ```
+<!-- </macro> -->
 
 ## Validate With Any Fargate Task
 
+<!-- <macro exec="node ./scripts/lit-snip.js ./src/it/it-lit-fargate.ts"> -->
 ```ts
-// Create an ECS cluster and Task Definition
-const cluster = new Cluster(stack, 'Cluster', /* ... */);
-const taskDefinition = new TaskDefinition(stack, 'TaskDefinition', /* ... */);
-/* ... */
-
-new IntrinsicValidator(stack, 'IntrinsicValidator', {
+new IntrinsicValidator(scope, 'IntrinsicValidator', {
   validations: [
     // Use this generic interface to launch a Fargate task on the given cluster
     // from the given task definition. If the task run fails, the stack
@@ -81,14 +83,13 @@ new IntrinsicValidator(stack, 'IntrinsicValidator', {
   ],
 });
 ```
+<!-- </macro> -->
 
 ## Monitor a CloudWatch Alarm
 
+<!-- <macro exec="node ./scripts/lit-snip.js ./src/it/it-lit-cloudwatch-alarm.ts"> -->
 ```ts
-// Create a CloudWatch Alarm
-const alarm = new Alarm(stack, 'MyAlarm', /* ... */);
-
-new IntrinsicValidator(stack, 'IntrinsicValidator', {
+new IntrinsicValidator(scope, 'IntrinsicValidator', {
   validations: [
     // Monitor the given alarm for five minutes before allowing the deployment
     // to complete. If the alarm starts sounding while intrinsic validation is
@@ -100,13 +101,13 @@ new IntrinsicValidator(stack, 'IntrinsicValidator', {
   ],
 });
 ```
+<!-- </macro> -->
 
 ## Invoke an Ad-hoc Lambda
 
+<!-- <macro exec="node ./scripts/lit-snip.js ./src/it/it-lit-lambda.ts"> -->
 ```ts
-const lambdaFunction = new Function(stack, 'LambdaFunction', /* ... */);
-
-new IntrinsicValidator(stack, 'IntrinsicValidator', {
+new IntrinsicValidator(scope, 'IntrinsicValidator', {
   validations: [
     // Invoke the given Lambda function. If the function fails, the deployment
     // will be cancelled and rolled back.
@@ -116,14 +117,13 @@ new IntrinsicValidator(stack, 'IntrinsicValidator', {
   ],
 });
 ```
+<!-- </macro> -->
 
 ## Execute a Step Functions State Machine
 
+<!-- <macro exec="node ./scripts/lit-snip.js ./src/it/it-lit-step-function.ts"> -->
 ```ts
-// Create a CloudWatch Alarm
-const stateMachine = new StateMachine(stack, 'MyStateMachine', /* ... */);
-
-new IntrinsicValidator(stack, 'IntrinsicValidator', {
+new IntrinsicValidator(scope, 'IntrinsicValidator', {
   validations: [
     // Execute the given step function and if it fails, cancel and roll back
     // the deployment.
@@ -137,6 +137,7 @@ new IntrinsicValidator(stack, 'IntrinsicValidator', {
   ],
 });
 ```
+<!-- </macro> -->
 
 ## Tips
 
