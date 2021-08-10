@@ -1,0 +1,1295 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+Object {
+  "Parameters": Object {
+    "AssetParameters0832174fde72cd971a27479dcc997f3bbc8c5edcb918cc022ae4b956b6dc0adfArtifactHash18ED610C": Object {
+      "Description": "Artifact hash for asset \\"0832174fde72cd971a27479dcc997f3bbc8c5edcb918cc022ae4b956b6dc0adf\\"",
+      "Type": "String",
+    },
+    "AssetParameters0832174fde72cd971a27479dcc997f3bbc8c5edcb918cc022ae4b956b6dc0adfS3BucketCC6F037C": Object {
+      "Description": "S3 bucket for asset \\"0832174fde72cd971a27479dcc997f3bbc8c5edcb918cc022ae4b956b6dc0adf\\"",
+      "Type": "String",
+    },
+    "AssetParameters0832174fde72cd971a27479dcc997f3bbc8c5edcb918cc022ae4b956b6dc0adfS3VersionKeyA80BE83A": Object {
+      "Description": "S3 key for asset version \\"0832174fde72cd971a27479dcc997f3bbc8c5edcb918cc022ae4b956b6dc0adf\\"",
+      "Type": "String",
+    },
+    "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24ArtifactHashBA91B77F": Object {
+      "Description": "Artifact hash for asset \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
+      "Type": "String",
+    },
+    "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3Bucket4D46ABB5": Object {
+      "Description": "S3 bucket for asset \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
+      "Type": "String",
+    },
+    "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3VersionKeyB0F28861": Object {
+      "Description": "S3 key for asset version \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
+      "Type": "String",
+    },
+    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cArtifactHash627DAAA7": Object {
+      "Description": "Artifact hash for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
+      "Type": "String",
+    },
+    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43": Object {
+      "Description": "S3 bucket for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
+      "Type": "String",
+    },
+    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7": Object {
+      "Description": "S3 key for asset version \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
+      "Type": "String",
+    },
+  },
+  "Resources": Object {
+    "IntrinsicValidator72B8901E": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "IntrinsicValidatorProviderframeworkonEvent82CE92C0",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::CustomResource",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "IntrinsicValidatorIsCompleteHandler423A78A1": Object {
+      "DependsOn": Array [
+        "IntrinsicValidatorIsCompleteHandlerServiceRoleDefaultPolicy0A0FF4F6",
+        "IntrinsicValidatorIsCompleteHandlerServiceRole704A2806",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParameters0832174fde72cd971a27479dcc997f3bbc8c5edcb918cc022ae4b956b6dc0adfS3BucketCC6F037C",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters0832174fde72cd971a27479dcc997f3bbc8c5edcb918cc022ae4b956b6dc0adfS3VersionKeyA80BE83A",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters0832174fde72cd971a27479dcc997f3bbc8c5edcb918cc022ae4b956b6dc0adfS3VersionKeyA80BE83A",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Environment": Object {
+          "Variables": Object {
+            "STATE_MACHINE_ARN": Object {
+              "Ref": "IntrinsicValidatorStateMachine503A46CB",
+            },
+          },
+        },
+        "Handler": "intrinsic-validator-provider.isCompleteHandler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "IntrinsicValidatorIsCompleteHandlerServiceRole704A2806",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "IntrinsicValidatorIsCompleteHandlerLogRetention2B92D325": Object {
+      "Properties": Object {
+        "LogGroupName": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "/aws/lambda/",
+              Object {
+                "Ref": "IntrinsicValidatorIsCompleteHandler423A78A1",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 30,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "IntrinsicValidatorIsCompleteHandlerServiceRole704A2806": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "IntrinsicValidatorIsCompleteHandlerServiceRoleDefaultPolicy0A0FF4F6": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "states:ListExecutions",
+                "states:ListStateMachines",
+              ],
+              "Effect": "Allow",
+              "Resource": Object {
+                "Ref": "IntrinsicValidatorStateMachine503A46CB",
+              },
+            },
+            Object {
+              "Action": Array [
+                "states:DescribeExecution",
+                "states:DescribeStateMachineForExecution",
+                "states:GetExecutionHistory",
+              ],
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    "arn:",
+                    Object {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":states:",
+                    Object {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    Object {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":execution:",
+                    Object {
+                      "Fn::Select": Array [
+                        6,
+                        Object {
+                          "Fn::Split": Array [
+                            ":",
+                            Object {
+                              "Ref": "IntrinsicValidatorStateMachine503A46CB",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    ":*",
+                  ],
+                ],
+              },
+            },
+            Object {
+              "Action": Array [
+                "states:ListActivities",
+                "states:DescribeStateMachine",
+                "states:DescribeActivity",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "IntrinsicValidatorIsCompleteHandlerServiceRoleDefaultPolicy0A0FF4F6",
+        "Roles": Array [
+          Object {
+            "Ref": "IntrinsicValidatorIsCompleteHandlerServiceRole704A2806",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "IntrinsicValidatorOnEventHandler47CDD484": Object {
+      "DependsOn": Array [
+        "IntrinsicValidatorOnEventHandlerServiceRoleDefaultPolicy14391CA9",
+        "IntrinsicValidatorOnEventHandlerServiceRoleEE869675",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParameters0832174fde72cd971a27479dcc997f3bbc8c5edcb918cc022ae4b956b6dc0adfS3BucketCC6F037C",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters0832174fde72cd971a27479dcc997f3bbc8c5edcb918cc022ae4b956b6dc0adfS3VersionKeyA80BE83A",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters0832174fde72cd971a27479dcc997f3bbc8c5edcb918cc022ae4b956b6dc0adfS3VersionKeyA80BE83A",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Environment": Object {
+          "Variables": Object {
+            "STATE_MACHINE_ARN": Object {
+              "Ref": "IntrinsicValidatorStateMachine503A46CB",
+            },
+          },
+        },
+        "Handler": "intrinsic-validator-provider.onEventHandler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "IntrinsicValidatorOnEventHandlerServiceRoleEE869675",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "IntrinsicValidatorOnEventHandlerLogRetention2289578F": Object {
+      "Properties": Object {
+        "LogGroupName": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "/aws/lambda/",
+              Object {
+                "Ref": "IntrinsicValidatorOnEventHandler47CDD484",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 30,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "IntrinsicValidatorOnEventHandlerServiceRoleDefaultPolicy14391CA9": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "states:StartExecution",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Ref": "IntrinsicValidatorStateMachine503A46CB",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "IntrinsicValidatorOnEventHandlerServiceRoleDefaultPolicy14391CA9",
+        "Roles": Array [
+          Object {
+            "Ref": "IntrinsicValidatorOnEventHandlerServiceRoleEE869675",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "IntrinsicValidatorOnEventHandlerServiceRoleEE869675": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "IntrinsicValidatorProviderframeworkisComplete26093F1B": Object {
+      "DependsOn": Array [
+        "IntrinsicValidatorProviderframeworkisCompleteServiceRoleDefaultPolicy4529A03D",
+        "IntrinsicValidatorProviderframeworkisCompleteServiceRole3970DE37",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Description": "AWS CDK resource provider framework - isComplete (ItLitStepFunction/IntrinsicValidator/Provider)",
+        "Environment": Object {
+          "Variables": Object {
+            "USER_IS_COMPLETE_FUNCTION_ARN": Object {
+              "Fn::GetAtt": Array [
+                "IntrinsicValidatorIsCompleteHandler423A78A1",
+                "Arn",
+              ],
+            },
+            "USER_ON_EVENT_FUNCTION_ARN": Object {
+              "Fn::GetAtt": Array [
+                "IntrinsicValidatorOnEventHandler47CDD484",
+                "Arn",
+              ],
+            },
+          },
+        },
+        "Handler": "framework.isComplete",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "IntrinsicValidatorProviderframeworkisCompleteServiceRole3970DE37",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "IntrinsicValidatorProviderframeworkisCompleteLogRetention8CFABEC6": Object {
+      "Properties": Object {
+        "LogGroupName": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "/aws/lambda/",
+              Object {
+                "Ref": "IntrinsicValidatorProviderframeworkisComplete26093F1B",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 30,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "IntrinsicValidatorProviderframeworkisCompleteServiceRole3970DE37": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "IntrinsicValidatorProviderframeworkisCompleteServiceRoleDefaultPolicy4529A03D": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "IntrinsicValidatorOnEventHandler47CDD484",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "IntrinsicValidatorIsCompleteHandler423A78A1",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "IntrinsicValidatorProviderframeworkisCompleteServiceRoleDefaultPolicy4529A03D",
+        "Roles": Array [
+          Object {
+            "Ref": "IntrinsicValidatorProviderframeworkisCompleteServiceRole3970DE37",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "IntrinsicValidatorProviderframeworkonEvent82CE92C0": Object {
+      "DependsOn": Array [
+        "IntrinsicValidatorProviderframeworkonEventServiceRoleDefaultPolicyC06C6BB0",
+        "IntrinsicValidatorProviderframeworkonEventServiceRole5C0AB086",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Description": "AWS CDK resource provider framework - onEvent (ItLitStepFunction/IntrinsicValidator/Provider)",
+        "Environment": Object {
+          "Variables": Object {
+            "USER_IS_COMPLETE_FUNCTION_ARN": Object {
+              "Fn::GetAtt": Array [
+                "IntrinsicValidatorIsCompleteHandler423A78A1",
+                "Arn",
+              ],
+            },
+            "USER_ON_EVENT_FUNCTION_ARN": Object {
+              "Fn::GetAtt": Array [
+                "IntrinsicValidatorOnEventHandler47CDD484",
+                "Arn",
+              ],
+            },
+            "WAITER_STATE_MACHINE_ARN": Object {
+              "Ref": "IntrinsicValidatorProviderwaiterstatemachineDF9DBBD8",
+            },
+          },
+        },
+        "Handler": "framework.onEvent",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "IntrinsicValidatorProviderframeworkonEventServiceRole5C0AB086",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "IntrinsicValidatorProviderframeworkonEventLogRetention8AB1B53C": Object {
+      "Properties": Object {
+        "LogGroupName": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "/aws/lambda/",
+              Object {
+                "Ref": "IntrinsicValidatorProviderframeworkonEvent82CE92C0",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 30,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "IntrinsicValidatorProviderframeworkonEventServiceRole5C0AB086": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "IntrinsicValidatorProviderframeworkonEventServiceRoleDefaultPolicyC06C6BB0": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "IntrinsicValidatorOnEventHandler47CDD484",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "IntrinsicValidatorIsCompleteHandler423A78A1",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": "states:StartExecution",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Ref": "IntrinsicValidatorProviderwaiterstatemachineDF9DBBD8",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "IntrinsicValidatorProviderframeworkonEventServiceRoleDefaultPolicyC06C6BB0",
+        "Roles": Array [
+          Object {
+            "Ref": "IntrinsicValidatorProviderframeworkonEventServiceRole5C0AB086",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "IntrinsicValidatorProviderframeworkonTimeoutC3AE935A": Object {
+      "DependsOn": Array [
+        "IntrinsicValidatorProviderframeworkonTimeoutServiceRoleDefaultPolicyE147BCD2",
+        "IntrinsicValidatorProviderframeworkonTimeoutServiceRole673B9931",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Description": "AWS CDK resource provider framework - onTimeout (ItLitStepFunction/IntrinsicValidator/Provider)",
+        "Environment": Object {
+          "Variables": Object {
+            "USER_IS_COMPLETE_FUNCTION_ARN": Object {
+              "Fn::GetAtt": Array [
+                "IntrinsicValidatorIsCompleteHandler423A78A1",
+                "Arn",
+              ],
+            },
+            "USER_ON_EVENT_FUNCTION_ARN": Object {
+              "Fn::GetAtt": Array [
+                "IntrinsicValidatorOnEventHandler47CDD484",
+                "Arn",
+              ],
+            },
+          },
+        },
+        "Handler": "framework.onTimeout",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "IntrinsicValidatorProviderframeworkonTimeoutServiceRole673B9931",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "IntrinsicValidatorProviderframeworkonTimeoutLogRetention94550242": Object {
+      "Properties": Object {
+        "LogGroupName": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "/aws/lambda/",
+              Object {
+                "Ref": "IntrinsicValidatorProviderframeworkonTimeoutC3AE935A",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 30,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "IntrinsicValidatorProviderframeworkonTimeoutServiceRole673B9931": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "IntrinsicValidatorProviderframeworkonTimeoutServiceRoleDefaultPolicyE147BCD2": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "IntrinsicValidatorOnEventHandler47CDD484",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "IntrinsicValidatorIsCompleteHandler423A78A1",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "IntrinsicValidatorProviderframeworkonTimeoutServiceRoleDefaultPolicyE147BCD2",
+        "Roles": Array [
+          Object {
+            "Ref": "IntrinsicValidatorProviderframeworkonTimeoutServiceRole673B9931",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "IntrinsicValidatorProviderwaiterstatemachineDF9DBBD8": Object {
+      "DependsOn": Array [
+        "IntrinsicValidatorProviderwaiterstatemachineRoleDefaultPolicy471E9E24",
+        "IntrinsicValidatorProviderwaiterstatemachineRoleBB931BBD",
+      ],
+      "Properties": Object {
+        "DefinitionString": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"StartAt\\":\\"framework-isComplete-task\\",\\"States\\":{\\"framework-isComplete-task\\":{\\"End\\":true,\\"Retry\\":[{\\"ErrorEquals\\":[\\"States.ALL\\"],\\"IntervalSeconds\\":5,\\"MaxAttempts\\":360,\\"BackoffRate\\":1}],\\"Catch\\":[{\\"ErrorEquals\\":[\\"States.ALL\\"],\\"Next\\":\\"framework-onTimeout-task\\"}],\\"Type\\":\\"Task\\",\\"Resource\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "IntrinsicValidatorProviderframeworkisComplete26093F1B",
+                  "Arn",
+                ],
+              },
+              "\\"},\\"framework-onTimeout-task\\":{\\"End\\":true,\\"Type\\":\\"Task\\",\\"Resource\\":\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "IntrinsicValidatorProviderframeworkonTimeoutC3AE935A",
+                  "Arn",
+                ],
+              },
+              "\\"}}}",
+            ],
+          ],
+        },
+        "RoleArn": Object {
+          "Fn::GetAtt": Array [
+            "IntrinsicValidatorProviderwaiterstatemachineRoleBB931BBD",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::StepFunctions::StateMachine",
+    },
+    "IntrinsicValidatorProviderwaiterstatemachineRoleBB931BBD": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "states.",
+                      Object {
+                        "Ref": "AWS::Region",
+                      },
+                      ".amazonaws.com",
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "IntrinsicValidatorProviderwaiterstatemachineRoleDefaultPolicy471E9E24": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "IntrinsicValidatorProviderframeworkisComplete26093F1B",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "IntrinsicValidatorProviderframeworkonTimeoutC3AE935A",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "IntrinsicValidatorProviderwaiterstatemachineRoleDefaultPolicy471E9E24",
+        "Roles": Array [
+          Object {
+            "Ref": "IntrinsicValidatorProviderwaiterstatemachineRoleBB931BBD",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "IntrinsicValidatorStateMachine503A46CB": Object {
+      "DependsOn": Array [
+        "IntrinsicValidatorStateMachineRoleDefaultPolicy24A129F9",
+        "IntrinsicValidatorStateMachineRole4BD3BBAE",
+      ],
+      "Properties": Object {
+        "DefinitionString": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] StateMachineExecutionSucceeds\\",\\"States\\":{\\"[0] StateMachineExecutionSucceeds\\":{\\"End\\":true,\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
+              Object {
+                "Ref": "AWS::Partition",
+              },
+              ":states:::states:startExecution.sync:2\\",\\"Parameters\\":{\\"Input\\":{\\"anything\\":\\"you need\\"},\\"StateMachineArn\\":\\"",
+              Object {
+                "Ref": "StateMachine2E01A3A5",
+              },
+              "\\"}}}}]}}}",
+            ],
+          ],
+        },
+        "RoleArn": Object {
+          "Fn::GetAtt": Array [
+            "IntrinsicValidatorStateMachineRole4BD3BBAE",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::StepFunctions::StateMachine",
+    },
+    "IntrinsicValidatorStateMachineRole4BD3BBAE": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "states.",
+                      Object {
+                        "Ref": "AWS::Region",
+                      },
+                      ".amazonaws.com",
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "IntrinsicValidatorStateMachineRoleDefaultPolicy24A129F9": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "states:StartExecution",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Ref": "StateMachine2E01A3A5",
+              },
+            },
+            Object {
+              "Action": Array [
+                "states:DescribeExecution",
+                "states:StopExecution",
+              ],
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    "arn:",
+                    Object {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":states:",
+                    Object {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    Object {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":execution:",
+                    Object {
+                      "Fn::Select": Array [
+                        6,
+                        Object {
+                          "Fn::Split": Array [
+                            ":",
+                            Object {
+                              "Ref": "StateMachine2E01A3A5",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    "*",
+                  ],
+                ],
+              },
+            },
+            Object {
+              "Action": Array [
+                "events:PutTargets",
+                "events:PutRule",
+                "events:DescribeRule",
+              ],
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    "arn:",
+                    Object {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":events:",
+                    Object {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    Object {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":rule/StepFunctionsGetEventsForStepFunctionsExecutionRule",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "IntrinsicValidatorStateMachineRoleDefaultPolicy24A129F9",
+        "Roles": Array [
+          Object {
+            "Ref": "IntrinsicValidatorStateMachineRole4BD3BBAE",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": Object {
+      "DependsOn": Array [
+        "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+        "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3Bucket4D46ABB5",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3VersionKeyB0F28861",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3VersionKeyB0F28861",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Handler": "index.handler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "logs:PutRetentionPolicy",
+                "logs:DeleteRetentionPolicy",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+        "Roles": Array [
+          Object {
+            "Ref": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "StateMachine2E01A3A5": Object {
+      "DependsOn": Array [
+        "StateMachineRoleB840431D",
+      ],
+      "Properties": Object {
+        "DefinitionString": "{\\"StartAt\\":\\"Pass\\",\\"States\\":{\\"Pass\\":{\\"Type\\":\\"Pass\\",\\"End\\":true}}}",
+        "RoleArn": Object {
+          "Fn::GetAtt": Array [
+            "StateMachineRoleB840431D",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::StepFunctions::StateMachine",
+    },
+    "StateMachineRoleB840431D": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "states.",
+                      Object {
+                        "Ref": "AWS::Region",
+                      },
+                      ".amazonaws.com",
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+  },
+}
+`;
