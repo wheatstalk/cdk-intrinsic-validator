@@ -32,7 +32,8 @@
     "it:lit-cloudwatch-alarm": "cdk --app \"ts-node src/it/it-lit-cloudwatch-alarm.ts\"",
     "it:lit-lambda": "cdk --app \"ts-node src/it/it-lit-lambda.ts\"",
     "it:lit-step-function": "cdk --app \"ts-node src/it/it-lit-stepfunction.ts\"",
-    "it:alarm-monitor": "cdk --app \"ts-node src/it/it-alarm-monitor.ts\""
+    "it:alarm-monitor": "cdk --app \"ts-node src/it/it-alarm-monitor.ts\"",
+    "it:error-message": "cdk --app \"ts-node src/it/it-error-message.ts\""
   },
   "author": {
     "name": "Josh Kellendonk",

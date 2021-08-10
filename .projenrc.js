@@ -78,4 +78,5 @@ project.package.setScript('it:lit-cloudwatch-alarm', 'cdk --app "ts-node src/it/
 project.package.setScript('it:lit-lambda', 'cdk --app "ts-node src/it/it-lit-lambda.ts"');
 project.package.setScript('it:lit-step-function', 'cdk --app "ts-node src/it/it-lit-stepfunction.ts"');
 project.package.setScript('it:alarm-monitor', 'cdk --app "ts-node src/it/it-alarm-monitor.ts"');
+project.package.setScript('it:error-message', 'cdk --app "ts-node src/it/it-error-message.ts"');
 project.synth();
