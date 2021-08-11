@@ -39,7 +39,10 @@ export class ItLit extends cdk.Stack {
         Validation.alwaysSucceeds(),
 
         // The following validations will fail and roll back the stack:
-        // fargateValidations.runContainer(curlImage, 'https://fake.fake.fake/'),
+        // fargateValidations.runContainer({
+        //   image: curlImage,
+        //   command: ['https://fake.fake.fake/'],
+        // }),
         // Validation.alwaysFails(),
       ],
     });
