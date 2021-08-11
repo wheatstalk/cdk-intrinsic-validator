@@ -432,7 +432,7 @@ Object {
         "ContainerDefinitions": Array [
           Object {
             "Command": Array [
-              "https://www.example.com/",
+              "https://www.amazon.ca/",
             ],
             "Essential": true,
             "Image": "curlimages/curl:7.78.0",
@@ -456,51 +456,6 @@ Object {
       "Type": "AWS::ECS::TaskDefinition",
     },
     "FargateValidationFactoryTaskDefinition0TaskRoleAE808297": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "ecs-tasks.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "FargateValidationFactoryTaskDefinition1F94BC6E6": Object {
-      "Properties": Object {
-        "ContainerDefinitions": Array [
-          Object {
-            "Command": Array [
-              "https://www.amazon.ca/",
-            ],
-            "Essential": true,
-            "Image": "curlimages/curl:7.78.0",
-            "Name": "script",
-          },
-        ],
-        "Cpu": "256",
-        "Family": "ItLitFargateValidationFactoryTaskDefinition1361EB038",
-        "Memory": "512",
-        "NetworkMode": "awsvpc",
-        "RequiresCompatibilities": Array [
-          "FARGATE",
-        ],
-        "TaskRoleArn": Object {
-          "Fn::GetAtt": Array [
-            "FargateValidationFactoryTaskDefinition1TaskRole52FC39A4",
-            "Arn",
-          ],
-        },
-      },
-      "Type": "AWS::ECS::TaskDefinition",
-    },
-    "FargateValidationFactoryTaskDefinition1TaskRole52FC39A4": Object {
       "Properties": Object {
         "AssumeRolePolicyDocument": Object {
           "Statement": Array [
@@ -1472,7 +1427,7 @@ Object {
           "Fn::Join": Array [
             "",
             Array [
-              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] FargateTaskSucceeds\\",\\"States\\":{\\"[0] FargateTaskSucceeds\\":{\\"End\\":true,\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
+              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] cURL the Front Page\\",\\"States\\":{\\"[0] cURL the Front Page\\":{\\"End\\":true,\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
               Object {
                 "Ref": "AWS::Partition",
               },
@@ -1491,26 +1446,7 @@ Object {
               Object {
                 "Ref": "ClusterVpcPrivateSubnet2SubnetBD1ECB6E",
               },
-              "\\"],\\"SecurityGroups\\":[]}},\\"LaunchType\\":\\"FARGATE\\"}}}},{\\"StartAt\\":\\"[1] cURL the Front Page\\",\\"States\\":{\\"[1] cURL the Front Page\\":{\\"End\\":true,\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
-              Object {
-                "Ref": "AWS::Partition",
-              },
-              ":states:::ecs:runTask.sync\\",\\"Parameters\\":{\\"Cluster\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "ClusterEB0386A7",
-                  "Arn",
-                ],
-              },
-              "\\",\\"TaskDefinition\\":\\"ItLitFargateValidationFactoryTaskDefinition1361EB038\\",\\"NetworkConfiguration\\":{\\"AwsvpcConfiguration\\":{\\"Subnets\\":[\\"",
-              Object {
-                "Ref": "ClusterVpcPrivateSubnet1SubnetA4EB481A",
-              },
-              "\\",\\"",
-              Object {
-                "Ref": "ClusterVpcPrivateSubnet2SubnetBD1ECB6E",
-              },
-              "\\"],\\"SecurityGroups\\":[]}},\\"LaunchType\\":\\"FARGATE\\"}}}},{\\"StartAt\\":\\"[2] AlwaysSucceeds\\",\\"States\\":{\\"[2] AlwaysSucceeds\\":{\\"Type\\":\\"Pass\\",\\"Result\\":\\"Winner\\",\\"End\\":true}}}]}}}",
+              "\\"],\\"SecurityGroups\\":[]}},\\"LaunchType\\":\\"FARGATE\\"}}}},{\\"StartAt\\":\\"[1] AlwaysSucceeds\\",\\"States\\":{\\"[1] AlwaysSucceeds\\":{\\"Type\\":\\"Pass\\",\\"Result\\":\\"Winner\\",\\"End\\":true}}}]}}}",
             ],
           ],
         },
@@ -1713,131 +1649,6 @@ Object {
                     },
                     ":rule/StepFunctionsGetEventsForECSTaskRule",
                   ],
-                ],
-              },
-            },
-            Object {
-              "Action": "ecs:RunTask",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::Join": Array [
-                  "",
-                  Array [
-                    "arn:",
-                    Object {
-                      "Fn::Select": Array [
-                        1,
-                        Object {
-                          "Fn::Split": Array [
-                            ":",
-                            Object {
-                              "Ref": "FargateValidationFactoryTaskDefinition1F94BC6E6",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    ":",
-                    Object {
-                      "Fn::Select": Array [
-                        2,
-                        Object {
-                          "Fn::Split": Array [
-                            ":",
-                            Object {
-                              "Ref": "FargateValidationFactoryTaskDefinition1F94BC6E6",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    ":",
-                    Object {
-                      "Fn::Select": Array [
-                        3,
-                        Object {
-                          "Fn::Split": Array [
-                            ":",
-                            Object {
-                              "Ref": "FargateValidationFactoryTaskDefinition1F94BC6E6",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    ":",
-                    Object {
-                      "Fn::Select": Array [
-                        4,
-                        Object {
-                          "Fn::Split": Array [
-                            ":",
-                            Object {
-                              "Ref": "FargateValidationFactoryTaskDefinition1F94BC6E6",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    ":",
-                    Object {
-                      "Fn::Select": Array [
-                        0,
-                        Object {
-                          "Fn::Split": Array [
-                            "/",
-                            Object {
-                              "Fn::Select": Array [
-                                5,
-                                Object {
-                                  "Fn::Split": Array [
-                                    ":",
-                                    Object {
-                                      "Ref": "FargateValidationFactoryTaskDefinition1F94BC6E6",
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    "/",
-                    Object {
-                      "Fn::Select": Array [
-                        1,
-                        Object {
-                          "Fn::Split": Array [
-                            "/",
-                            Object {
-                              "Fn::Select": Array [
-                                5,
-                                Object {
-                                  "Fn::Split": Array [
-                                    ":",
-                                    Object {
-                                      "Ref": "FargateValidationFactoryTaskDefinition1F94BC6E6",
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                ],
-              },
-            },
-            Object {
-              "Action": "iam:PassRole",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "FargateValidationFactoryTaskDefinition1TaskRole52FC39A4",
-                  "Arn",
                 ],
               },
             },

@@ -27,11 +27,7 @@ export class ItLit extends cdk.Stack {
     // the given validations fail so that CloudFormation can auto-rollback.
     new IntrinsicValidator(scope, 'IntrinsicValidator', {
       validations: [
-        // Test some public endpoints to see if they respond to HTTP:
-        fargateValidations.runContainer({
-          image: curlImage,
-          command: ['https://www.example.com/'],
-        }),
+        // Test a public endpoint to see if it responds to HTTP:
         fargateValidations.runContainer({
           // Add an optional label to help identity the validation.
           label: 'cURL the Front Page',
@@ -43,7 +39,10 @@ export class ItLit extends cdk.Stack {
         Validation.alwaysSucceeds(),
 
         // The following validations will fail and roll back the stack:
-        // fargateValidations.runContainer(curlImage, 'https://fake.fake.fake/'),
+        // fargateValidations.runContainer({
+        //   image: curlImage,
+        //   command: ['https://fake.fake.fake/'],
+        // }),
         // Validation.alwaysFails(),
       ],
     });
