@@ -21,7 +21,7 @@ You can add the following intrinsic validations:
 
 ## Usage
 
-<!-- <macro exec="node ./scripts/lit-snip.js ./src/it/it-lit.ts"> -->
+<!-- <macro exec="lit-snip ./src/it/it-lit.ts"> -->
 ```ts
 // Create an ECS cluster to run some Fargate tasks in.
 const cluster = new ecs.Cluster(scope, 'Cluster');
@@ -63,7 +63,7 @@ new IntrinsicValidator(scope, 'IntrinsicValidator', {
 
 ## Validate With Any Fargate Task
 
-<!-- <macro exec="node ./scripts/lit-snip.js ./src/it/it-lit-fargate.ts"> -->
+<!-- <macro exec="lit-snip ./src/it/it-lit-fargate.ts"> -->
 ```ts
 new IntrinsicValidator(scope, 'IntrinsicValidator', {
   validations: [
@@ -86,7 +86,7 @@ new IntrinsicValidator(scope, 'IntrinsicValidator', {
 
 ## Monitor a CloudWatch Alarm
 
-<!-- <macro exec="node ./scripts/lit-snip.js ./src/it/it-lit-cloudwatch-alarm.ts"> -->
+<!-- <macro exec="lit-snip ./src/it/it-lit-cloudwatch-alarm.ts"> -->
 ```ts
 new IntrinsicValidator(scope, 'IntrinsicValidator', {
   validations: [
@@ -104,7 +104,7 @@ new IntrinsicValidator(scope, 'IntrinsicValidator', {
 
 ## Invoke an Ad-hoc Lambda
 
-<!-- <macro exec="node ./scripts/lit-snip.js ./src/it/it-lit-lambda.ts"> -->
+<!-- <macro exec="lit-snip ./src/it/it-lit-lambda.ts"> -->
 ```ts
 new IntrinsicValidator(scope, 'IntrinsicValidator', {
   validations: [
@@ -120,7 +120,7 @@ new IntrinsicValidator(scope, 'IntrinsicValidator', {
 
 ## Execute a Step Functions State Machine
 
-<!-- <macro exec="node ./scripts/lit-snip.js ./src/it/it-lit-step-function.ts"> -->
+<!-- <macro exec="lit-snip ./src/it/it-lit-step-function.ts"> -->
 ```ts
 new IntrinsicValidator(scope, 'IntrinsicValidator', {
   validations: [

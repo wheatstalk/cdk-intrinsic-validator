@@ -23,6 +23,11 @@
       "type": "build"
     },
     {
+      "name": "@wheatstalk/lit-snip",
+      "version": "^0.0",
+      "type": "build"
+    },
+    {
       "name": "aws-cdk",
       "version": "^1.95.2",
       "type": "build"

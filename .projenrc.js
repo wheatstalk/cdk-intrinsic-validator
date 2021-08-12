@@ -47,6 +47,7 @@ const project = new pj.AwsCdkConstructLibrary({
     'aws-sdk@^2.963.0',
     'markmac@^0.1',
     'shx',
+    '@wheatstalk/lit-snip@^0.0',
   ],
 
   gitignore: [

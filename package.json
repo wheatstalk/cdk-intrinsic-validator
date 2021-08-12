@@ -47,6 +47,7 @@
     "@types/node": "^10.17.0",
     "@typescript-eslint/eslint-plugin": "^4.29.1",
     "@typescript-eslint/parser": "^4.29.1",
+    "@wheatstalk/lit-snip": "^0.0",
     "aws-cdk": "^1.95.2",
     "aws-sdk": "^2.963.0",
     "eslint": "^7.32.0",
