@@ -27,14 +27,14 @@
     "readme-macros": "npx projen readme-macros",
     "release": "npx projen release",
     "projen": "npx projen",
-    "it:dev": "cdk --app \"ts-node src/it/it-dev.ts\"",
-    "it:lit": "cdk --app \"ts-node src/it/it-lit.ts\"",
-    "it:lit-fargate": "cdk --app \"ts-node src/it/it-lit-fargate.ts\"",
-    "it:lit-cloudwatch-alarm": "cdk --app \"ts-node src/it/it-lit-cloudwatch-alarm.ts\"",
-    "it:lit-lambda": "cdk --app \"ts-node src/it/it-lit-lambda.ts\"",
-    "it:lit-step-function": "cdk --app \"ts-node src/it/it-lit-stepfunction.ts\"",
-    "it:alarm-monitor": "cdk --app \"ts-node src/it/it-alarm-monitor.ts\"",
-    "it:error-message": "cdk --app \"ts-node src/it/it-error-message.ts\""
+    "integ:dev": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.dev.ts\"",
+    "integ:main": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.main.lit.ts\"",
+    "integ:fargate": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.fargate.lit.ts\"",
+    "integ:cloudwatch-alarm": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.cloudwatch-alarm.lit.ts\"",
+    "integ:lambda": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.lambda.lit.ts\"",
+    "integ:step-function": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.step-function.lit.ts\"",
+    "integ:alarm-monitor": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.alarm-monitor.ts\"",
+    "integ:error-message": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.error-message.ts\""
   },
   "author": {
     "name": "Josh Kellendonk",

@@ -536,7 +536,7 @@ def handler(event, context):
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - isComplete (ItLitLambda/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - isComplete (IntegErrorMessage/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -699,7 +699,7 @@ def handler(event, context):
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onEvent (ItLitLambda/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - onEvent (IntegErrorMessage/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -872,7 +872,7 @@ def handler(event, context):
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onTimeout (ItLitLambda/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - onTimeout (IntegErrorMessage/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -1102,14 +1102,14 @@ def handler(event, context):
           "Fn::Join": Array [
             "",
             Array [
-              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] LambdaInvokeSucceeds\\",\\"States\\":{\\"[0] LambdaInvokeSucceeds\\":{\\"End\\":true,\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2}],\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
+              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] Check That Error Messages Show\\",\\"States\\":{\\"[0] Check That Error Messages Show\\":{\\"End\\":true,\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2}],\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
               Object {
                 "Ref": "AWS::Partition",
               },
               ":states:::lambda:invoke\\",\\"Parameters\\":{\\"FunctionName\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
-                  "AlwaysSucceeds94CDADD6",
+                  "AlwaysFails0D393A9D",
                   "Arn",
                 ],
               },
@@ -1163,7 +1163,7 @@ def handler(event, context):
               "Effect": "Allow",
               "Resource": Object {
                 "Fn::GetAtt": Array [
-                  "AlwaysSucceeds94CDADD6",
+                  "AlwaysFails0D393A9D",
                   "Arn",
                 ],
               },

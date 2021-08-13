@@ -74,14 +74,15 @@ const project = new pj.AwsCdkConstructLibrary({
   // projectType: ProjectType.UNKNOWN,  /* Which type of project this is (library/app). */
   // release: undefined,                /* Add release management to this project. */
 });
-project.package.setScript('it:dev', 'cdk --app "ts-node src/it/it-dev.ts"');
-project.package.setScript('it:lit', 'cdk --app "ts-node src/it/it-lit.ts"');
-project.package.setScript('it:lit-fargate', 'cdk --app "ts-node src/it/it-lit-fargate.ts"');
-project.package.setScript('it:lit-cloudwatch-alarm', 'cdk --app "ts-node src/it/it-lit-cloudwatch-alarm.ts"');
-project.package.setScript('it:lit-lambda', 'cdk --app "ts-node src/it/it-lit-lambda.ts"');
-project.package.setScript('it:lit-step-function', 'cdk --app "ts-node src/it/it-lit-stepfunction.ts"');
-project.package.setScript('it:alarm-monitor', 'cdk --app "ts-node src/it/it-alarm-monitor.ts"');
-project.package.setScript('it:error-message', 'cdk --app "ts-node src/it/it-error-message.ts"');
+
+project.package.setScript('integ:dev', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.dev.ts"');
+project.package.setScript('integ:main', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.main.lit.ts"');
+project.package.setScript('integ:fargate', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.fargate.lit.ts"');
+project.package.setScript('integ:cloudwatch-alarm', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.cloudwatch-alarm.lit.ts"');
+project.package.setScript('integ:lambda', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.lambda.lit.ts"');
+project.package.setScript('integ:step-function', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.step-function.lit.ts"');
+project.package.setScript('integ:alarm-monitor', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.alarm-monitor.ts"');
+project.package.setScript('integ:error-message', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.error-message.ts"');
 
 const macros = project.addTask('readme-macros');
 macros.exec('shx mv README.md README.md.bak');

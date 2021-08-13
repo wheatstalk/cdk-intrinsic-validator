@@ -1,11 +1,11 @@
 import * as cdk from '@aws-cdk/core';
-import { IntrinsicValidator, Validation } from '..';
+import { IntrinsicValidator, Validation } from '../../src';
 import { TestAlarms } from './test-alarms';
 
 /** @internal */
-export class ItLitCloudwatchAlarm extends cdk.Stack {
+export class IntegCloudwatchAlarmLit extends cdk.Stack {
   constructor(scope_: cdk.Construct, props: cdk.StackProps = {}) {
-    super(scope_, 'ItLitCloudwatchAlarm', props);
+    super(scope_, 'IntegCloudwatchAlarmLit', props);
 
     const testAlarms = new TestAlarms(this, 'TestAlarms');
     const alarm = testAlarms.neverAlarming;
@@ -31,7 +31,7 @@ export class ItLitCloudwatchAlarm extends cdk.Stack {
 
 if (!module.parent) {
   const app = new cdk.App();
-  new ItLitCloudwatchAlarm(app, {
+  new IntegCloudwatchAlarmLit(app, {
     env: {
       account: process.env.CDK_DEFAULT_ACCOUNT,
       region: process.env.CDK_DEFAULT_REGION,

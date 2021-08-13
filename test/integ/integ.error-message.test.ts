@@ -1,7 +1,7 @@
 import { SynthUtils } from '@aws-cdk/assert';
 import * as cdk from '@aws-cdk/core';
 import { DisableRandomnessContextKey } from '../../src';
-import { ItLitStepFunction } from '../../src/it/it-lit-step-function';
+import { IntegErrorMessage } from './integ.error-message';
 
 test('snapshot', () => {
   const app = new cdk.App({
@@ -10,6 +10,6 @@ test('snapshot', () => {
     },
   });
 
-  const stack = new ItLitStepFunction(app);
+  const stack = new IntegErrorMessage(app);
   expect(SynthUtils.toCloudFormation(stack)).toMatchSnapshot();
 });

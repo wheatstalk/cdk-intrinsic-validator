@@ -1,11 +1,11 @@
 import * as cdk from '@aws-cdk/core';
-import { AlarmMonitor } from '../alarm-monitor';
+import { AlarmMonitor } from '../../src/alarm-monitor';
 import { TestAlarms } from './test-alarms';
 
 /** @internal */
-export class ItAlarmMonitor extends cdk.Stack {
+export class IntegAlarmMonitor extends cdk.Stack {
   constructor(scope: cdk.Construct, props: cdk.StackProps = {}) {
-    super(scope, 'ItAlarmMonitor', props);
+    super(scope, 'IntegAlarmMonitor', props);
 
     new AlarmMonitor(this, 'AlarmMonitor');
     new TestAlarms(this, 'TestAlarms');
@@ -16,7 +16,7 @@ export class ItAlarmMonitor extends cdk.Stack {
 
 if (!module.parent) {
   const app = new cdk.App();
-  new ItAlarmMonitor(app, {
+  new IntegAlarmMonitor(app, {
     env: {
       account: process.env.CDK_DEFAULT_ACCOUNT,
       region: process.env.CDK_DEFAULT_REGION,

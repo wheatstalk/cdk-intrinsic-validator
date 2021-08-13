@@ -1,33 +1,35 @@
 import * as cdk from '@aws-cdk/core';
-import { IntrinsicValidator, Validation } from '..';
+import { IntrinsicValidator, Validation } from '../../src';
 import { TestLambdas } from './test-lambdas';
 
 /** @internal */
-export class ItErrorMessage extends cdk.Stack {
+export class IntegLambdaLit extends cdk.Stack {
   constructor(scope_: cdk.Construct, props: cdk.StackProps = {}) {
-    super(scope_, 'ItErrorMessage', props);
+    super(scope_, 'IntegLambdaLit', props);
 
     const testLambdas = new TestLambdas(this, 'TestLambdas');
+    const lambdaFunction = testLambdas.alwaysSucceeds;
 
-    new IntrinsicValidator(this, 'IntrinsicValidator', {
+    // Lit code uses 'scope'
+    const scope = this;
+
+    // ::SNIP
+    new IntrinsicValidator(scope, 'IntrinsicValidator', {
       validations: [
         // Invoke the given Lambda function. If the function fails, the deployment
         // will be cancelled and rolled back.
         Validation.lambdaInvokeSucceeds({
-          label: 'Check That Error Messages Show',
-          lambdaFunction: testLambdas.alwaysFails,
-          // Uncomment the next line and comment the above if you want to
-          // deploy this stack without an error so you can iterate faster.
-          // lambdaFunction: testLambdas.alwaysSucceeds,
+          lambdaFunction,
         }),
       ],
     });
+    // ::END-SNIP
   }
 }
 
 if (!module.parent) {
   const app = new cdk.App();
-  new ItErrorMessage(app, {
+  new IntegLambdaLit(app, {
     env: {
       account: process.env.CDK_DEFAULT_ACCOUNT,
       region: process.env.CDK_DEFAULT_REGION,

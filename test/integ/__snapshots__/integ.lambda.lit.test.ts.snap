@@ -41,6 +41,112 @@ Object {
     },
   },
   "Resources": Object {
+    "AlwaysFails0D393A9D": Object {
+      "DependsOn": Array [
+        "AlwaysFailsServiceRole4F545107",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "ZipFile": "
+def handler(event, context):
+  raise Exception('An expected failure')
+",
+        },
+        "Handler": "index.handler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "AlwaysFailsServiceRole4F545107",
+            "Arn",
+          ],
+        },
+        "Runtime": "python3.8",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "AlwaysFailsServiceRole4F545107": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "AlwaysSucceeds94CDADD6": Object {
+      "DependsOn": Array [
+        "AlwaysSucceedsServiceRoleE790EBB8",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "ZipFile": "
+def handler(event, context):
+  return 'it works'
+",
+        },
+        "Handler": "index.handler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "AlwaysSucceedsServiceRoleE790EBB8",
+            "Arn",
+          ],
+        },
+        "Runtime": "python3.8",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "AlwaysSucceedsServiceRoleE790EBB8": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
     "IntrinsicValidator72B8901E": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
@@ -430,7 +536,7 @@ Object {
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - isComplete (ItLitStepFunction/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - isComplete (IntegLambdaLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -593,7 +699,7 @@ Object {
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onEvent (ItLitStepFunction/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - onEvent (IntegLambdaLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -766,7 +872,7 @@ Object {
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onTimeout (ItLitStepFunction/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - onTimeout (IntegLambdaLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -996,15 +1102,18 @@ Object {
           "Fn::Join": Array [
             "",
             Array [
-              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] StateMachineExecutionSucceeds\\",\\"States\\":{\\"[0] StateMachineExecutionSucceeds\\":{\\"End\\":true,\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
+              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] LambdaInvokeSucceeds\\",\\"States\\":{\\"[0] LambdaInvokeSucceeds\\":{\\"End\\":true,\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2}],\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":states:::states:startExecution.sync:2\\",\\"Parameters\\":{\\"Input\\":{\\"anything\\":\\"you need\\"},\\"StateMachineArn\\":\\"",
+              ":states:::lambda:invoke\\",\\"Parameters\\":{\\"FunctionName\\":\\"",
               Object {
-                "Ref": "StateMachine2E01A3A5",
+                "Fn::GetAtt": Array [
+                  "AlwaysSucceeds94CDADD6",
+                  "Arn",
+                ],
               },
-              "\\"}}}}]}}}",
+              "\\",\\"Payload.$\\":\\"$\\"}}}}]}}}",
             ],
           ],
         },
@@ -1050,78 +1159,12 @@ Object {
         "PolicyDocument": Object {
           "Statement": Array [
             Object {
-              "Action": "states:StartExecution",
+              "Action": "lambda:InvokeFunction",
               "Effect": "Allow",
               "Resource": Object {
-                "Ref": "StateMachine2E01A3A5",
-              },
-            },
-            Object {
-              "Action": Array [
-                "states:DescribeExecution",
-                "states:StopExecution",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::Join": Array [
-                  "",
-                  Array [
-                    "arn:",
-                    Object {
-                      "Ref": "AWS::Partition",
-                    },
-                    ":states:",
-                    Object {
-                      "Ref": "AWS::Region",
-                    },
-                    ":",
-                    Object {
-                      "Ref": "AWS::AccountId",
-                    },
-                    ":execution:",
-                    Object {
-                      "Fn::Select": Array [
-                        6,
-                        Object {
-                          "Fn::Split": Array [
-                            ":",
-                            Object {
-                              "Ref": "StateMachine2E01A3A5",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    "*",
-                  ],
-                ],
-              },
-            },
-            Object {
-              "Action": Array [
-                "events:PutTargets",
-                "events:PutRule",
-                "events:DescribeRule",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::Join": Array [
-                  "",
-                  Array [
-                    "arn:",
-                    Object {
-                      "Ref": "AWS::Partition",
-                    },
-                    ":events:",
-                    Object {
-                      "Ref": "AWS::Region",
-                    },
-                    ":",
-                    Object {
-                      "Ref": "AWS::AccountId",
-                    },
-                    ":rule/StepFunctionsGetEventsForStepFunctionsExecutionRule",
-                  ],
+                "Fn::GetAtt": Array [
+                  "AlwaysSucceeds94CDADD6",
+                  "Arn",
                 ],
               },
             },
@@ -1246,49 +1289,6 @@ Object {
         ],
       },
       "Type": "AWS::IAM::Policy",
-    },
-    "StateMachine2E01A3A5": Object {
-      "DependsOn": Array [
-        "StateMachineRoleB840431D",
-      ],
-      "Properties": Object {
-        "DefinitionString": "{\\"StartAt\\":\\"Pass\\",\\"States\\":{\\"Pass\\":{\\"Type\\":\\"Pass\\",\\"End\\":true}}}",
-        "RoleArn": Object {
-          "Fn::GetAtt": Array [
-            "StateMachineRoleB840431D",
-            "Arn",
-          ],
-        },
-      },
-      "Type": "AWS::StepFunctions::StateMachine",
-    },
-    "StateMachineRoleB840431D": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "states.",
-                      Object {
-                        "Ref": "AWS::Region",
-                      },
-                      ".amazonaws.com",
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
     },
   },
 }

@@ -53,7 +53,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItLit/Cluster/Vpc",
+            "Value": "IntegMainLit/Cluster/Vpc",
           },
         ],
       },
@@ -64,7 +64,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItLit/Cluster/Vpc",
+            "Value": "IntegMainLit/Cluster/Vpc",
           },
         ],
       },
@@ -87,7 +87,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItLit/Cluster/Vpc/PrivateSubnet1",
+            "Value": "IntegMainLit/Cluster/Vpc/PrivateSubnet1",
           },
         ],
         "VpcId": Object {
@@ -130,7 +130,7 @@ Object {
           },
           Object {
             "Key": "Name",
-            "Value": "ItLit/Cluster/Vpc/PrivateSubnet1",
+            "Value": "IntegMainLit/Cluster/Vpc/PrivateSubnet1",
           },
         ],
         "VpcId": Object {
@@ -156,7 +156,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItLit/Cluster/Vpc/PrivateSubnet2",
+            "Value": "IntegMainLit/Cluster/Vpc/PrivateSubnet2",
           },
         ],
         "VpcId": Object {
@@ -199,7 +199,7 @@ Object {
           },
           Object {
             "Key": "Name",
-            "Value": "ItLit/Cluster/Vpc/PrivateSubnet2",
+            "Value": "IntegMainLit/Cluster/Vpc/PrivateSubnet2",
           },
         ],
         "VpcId": Object {
@@ -229,7 +229,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItLit/Cluster/Vpc/PublicSubnet1",
+            "Value": "IntegMainLit/Cluster/Vpc/PublicSubnet1",
           },
         ],
       },
@@ -249,7 +249,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItLit/Cluster/Vpc/PublicSubnet1",
+            "Value": "IntegMainLit/Cluster/Vpc/PublicSubnet1",
           },
         ],
       },
@@ -260,7 +260,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItLit/Cluster/Vpc/PublicSubnet1",
+            "Value": "IntegMainLit/Cluster/Vpc/PublicSubnet1",
           },
         ],
         "VpcId": Object {
@@ -303,7 +303,7 @@ Object {
           },
           Object {
             "Key": "Name",
-            "Value": "ItLit/Cluster/Vpc/PublicSubnet1",
+            "Value": "IntegMainLit/Cluster/Vpc/PublicSubnet1",
           },
         ],
         "VpcId": Object {
@@ -333,7 +333,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItLit/Cluster/Vpc/PublicSubnet2",
+            "Value": "IntegMainLit/Cluster/Vpc/PublicSubnet2",
           },
         ],
       },
@@ -353,7 +353,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItLit/Cluster/Vpc/PublicSubnet2",
+            "Value": "IntegMainLit/Cluster/Vpc/PublicSubnet2",
           },
         ],
       },
@@ -364,7 +364,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItLit/Cluster/Vpc/PublicSubnet2",
+            "Value": "IntegMainLit/Cluster/Vpc/PublicSubnet2",
           },
         ],
         "VpcId": Object {
@@ -407,7 +407,7 @@ Object {
           },
           Object {
             "Key": "Name",
-            "Value": "ItLit/Cluster/Vpc/PublicSubnet2",
+            "Value": "IntegMainLit/Cluster/Vpc/PublicSubnet2",
           },
         ],
         "VpcId": Object {
@@ -440,7 +440,7 @@ Object {
           },
         ],
         "Cpu": "256",
-        "Family": "ItLitFargateValidationFactoryTaskDefinition0F28CF8BE",
+        "Family": "IntegMainLitFargateValidationFactoryTaskDefinition094E34CDD",
         "Memory": "512",
         "NetworkMode": "awsvpc",
         "RequiresCompatibilities": Array [
@@ -861,7 +861,7 @@ Object {
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - isComplete (ItLit/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - isComplete (IntegMainLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -1024,7 +1024,7 @@ Object {
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onEvent (ItLit/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - onEvent (IntegMainLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -1197,7 +1197,7 @@ Object {
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onTimeout (ItLit/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - onTimeout (IntegMainLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -1438,7 +1438,7 @@ Object {
                   "Arn",
                 ],
               },
-              "\\",\\"TaskDefinition\\":\\"ItLitFargateValidationFactoryTaskDefinition0F28CF8BE\\",\\"NetworkConfiguration\\":{\\"AwsvpcConfiguration\\":{\\"Subnets\\":[\\"",
+              "\\",\\"TaskDefinition\\":\\"IntegMainLitFargateValidationFactoryTaskDefinition094E34CDD\\",\\"NetworkConfiguration\\":{\\"AwsvpcConfiguration\\":{\\"Subnets\\":[\\"",
               Object {
                 "Ref": "ClusterVpcPrivateSubnet1SubnetA4EB481A",
               },
