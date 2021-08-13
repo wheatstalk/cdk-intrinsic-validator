@@ -1,7 +1,7 @@
 import { SynthUtils } from '@aws-cdk/assert';
 import * as cdk from '@aws-cdk/core';
 import { DisableRandomnessContextKey } from '../../src';
-import { ItLit } from '../../src/it/it-lit';
+import { IntegFargateLit } from './integ.fargate.lit';
 
 test('snapshot', () => {
   const app = new cdk.App({
@@ -10,6 +10,6 @@ test('snapshot', () => {
     },
   });
 
-  const stack = new ItLit(app);
+  const stack = new IntegFargateLit(app);
   expect(SynthUtils.toCloudFormation(stack)).toMatchSnapshot();
 });

@@ -1,11 +1,11 @@
 import * as ecs from '@aws-cdk/aws-ecs';
 import * as cdk from '@aws-cdk/core';
-import { FargateValidationFactory, IntrinsicValidator, Validation } from '..';
+import { FargateValidationFactory, IntrinsicValidator, Validation } from '../../src';
 
 /** @internal */
-export class ItLit extends cdk.Stack {
+export class IntegMainLit extends cdk.Stack {
   constructor(scope_: cdk.Construct, props: cdk.StackProps = {}) {
-    super(scope_, 'ItLit', props);
+    super(scope_, 'IntegMainLit', props);
 
     // Lit code uses 'scope'
     const scope = this;
@@ -52,7 +52,7 @@ export class ItLit extends cdk.Stack {
 
 if (!module.parent) {
   const app = new cdk.App();
-  new ItLit(app, {
+  new IntegMainLit(app, {
     env: {
       account: process.env.CDK_DEFAULT_ACCOUNT,
       region: process.env.CDK_DEFAULT_REGION,

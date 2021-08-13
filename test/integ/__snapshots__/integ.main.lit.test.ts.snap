@@ -2,36 +2,6 @@
 
 exports[`snapshot 1`] = `
 Object {
-  "Outputs": Object {
-    "TestAlarmsAlwaysAlarmingExecution4B32A340": Object {
-      "Value": Object {
-        "Fn::Join": Array [
-          "",
-          Array [
-            "{\\"AlarmName\\":\\"",
-            Object {
-              "Ref": "TestAlarmsAlwaysAlarming69FED027",
-            },
-            "\\",\\"MonitoringSeconds\\":31}",
-          ],
-        ],
-      },
-    },
-    "TestAlarmsNeverAlarmingExecutionF5D1776E": Object {
-      "Value": Object {
-        "Fn::Join": Array [
-          "",
-          Array [
-            "{\\"AlarmName\\":\\"",
-            Object {
-              "Ref": "TestAlarmsNeverAlarmingHopefullyFD878B05",
-            },
-            "\\",\\"MonitoringSeconds\\":60}",
-          ],
-        ],
-      },
-    },
-  },
   "Parameters": Object {
     "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24ArtifactHashBA91B77F": Object {
       "Description": "Artifact hash for asset \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
@@ -43,6 +13,18 @@ Object {
     },
     "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3VersionKeyB0F28861": Object {
       "Description": "S3 key for asset version \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
+      "Type": "String",
+    },
+    "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aArtifactHash1EF21FFF": Object {
+      "Description": "Artifact hash for asset \\"9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973a\\"",
+      "Type": "String",
+    },
+    "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3Bucket24AB9842": Object {
+      "Description": "S3 bucket for asset \\"9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973a\\"",
+      "Type": "String",
+    },
+    "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3VersionKey8E6E9A8B": Object {
+      "Description": "S3 key for asset version \\"9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973a\\"",
       "Type": "String",
     },
     "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cArtifactHash627DAAA7": Object {
@@ -57,126 +39,8 @@ Object {
       "Description": "S3 key for asset version \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
       "Type": "String",
     },
-    "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9ArtifactHashA838B621": Object {
-      "Description": "Artifact hash for asset \\"f7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9\\"",
-      "Type": "String",
-    },
-    "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3Bucket275930E7": Object {
-      "Description": "S3 bucket for asset \\"f7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9\\"",
-      "Type": "String",
-    },
-    "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059": Object {
-      "Description": "S3 key for asset version \\"f7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9\\"",
-      "Type": "String",
-    },
   },
   "Resources": Object {
-    "AlwaysFails0D393A9D": Object {
-      "DependsOn": Array [
-        "AlwaysFailsServiceRole4F545107",
-      ],
-      "Properties": Object {
-        "Code": Object {
-          "ZipFile": "
-def handler(event, context):
-  raise Exception('An expected failure')
-",
-        },
-        "Handler": "index.handler",
-        "Role": Object {
-          "Fn::GetAtt": Array [
-            "AlwaysFailsServiceRole4F545107",
-            "Arn",
-          ],
-        },
-        "Runtime": "python3.8",
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "AlwaysFailsServiceRole4F545107": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                "arn:",
-                Object {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "AlwaysSucceeds94CDADD6": Object {
-      "DependsOn": Array [
-        "AlwaysSucceedsServiceRoleE790EBB8",
-      ],
-      "Properties": Object {
-        "Code": Object {
-          "ZipFile": "
-def handler(event, context):
-  return 'it works'
-",
-        },
-        "Handler": "index.handler",
-        "Role": Object {
-          "Fn::GetAtt": Array [
-            "AlwaysSucceedsServiceRoleE790EBB8",
-            "Arn",
-          ],
-        },
-        "Runtime": "python3.8",
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "AlwaysSucceedsServiceRoleE790EBB8": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                "arn:",
-                Object {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
     "ClusterEB0386A7": Object {
       "Type": "AWS::ECS::Cluster",
     },
@@ -189,7 +53,7 @@ def handler(event, context):
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItDev/Cluster/Vpc",
+            "Value": "IntegMainLit/Cluster/Vpc",
           },
         ],
       },
@@ -200,7 +64,7 @@ def handler(event, context):
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItDev/Cluster/Vpc",
+            "Value": "IntegMainLit/Cluster/Vpc",
           },
         ],
       },
@@ -223,7 +87,7 @@ def handler(event, context):
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItDev/Cluster/Vpc/PrivateSubnet1",
+            "Value": "IntegMainLit/Cluster/Vpc/PrivateSubnet1",
           },
         ],
         "VpcId": Object {
@@ -266,7 +130,7 @@ def handler(event, context):
           },
           Object {
             "Key": "Name",
-            "Value": "ItDev/Cluster/Vpc/PrivateSubnet1",
+            "Value": "IntegMainLit/Cluster/Vpc/PrivateSubnet1",
           },
         ],
         "VpcId": Object {
@@ -292,7 +156,7 @@ def handler(event, context):
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItDev/Cluster/Vpc/PrivateSubnet2",
+            "Value": "IntegMainLit/Cluster/Vpc/PrivateSubnet2",
           },
         ],
         "VpcId": Object {
@@ -335,7 +199,7 @@ def handler(event, context):
           },
           Object {
             "Key": "Name",
-            "Value": "ItDev/Cluster/Vpc/PrivateSubnet2",
+            "Value": "IntegMainLit/Cluster/Vpc/PrivateSubnet2",
           },
         ],
         "VpcId": Object {
@@ -365,7 +229,7 @@ def handler(event, context):
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItDev/Cluster/Vpc/PublicSubnet1",
+            "Value": "IntegMainLit/Cluster/Vpc/PublicSubnet1",
           },
         ],
       },
@@ -385,7 +249,7 @@ def handler(event, context):
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItDev/Cluster/Vpc/PublicSubnet1",
+            "Value": "IntegMainLit/Cluster/Vpc/PublicSubnet1",
           },
         ],
       },
@@ -396,7 +260,7 @@ def handler(event, context):
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItDev/Cluster/Vpc/PublicSubnet1",
+            "Value": "IntegMainLit/Cluster/Vpc/PublicSubnet1",
           },
         ],
         "VpcId": Object {
@@ -439,7 +303,7 @@ def handler(event, context):
           },
           Object {
             "Key": "Name",
-            "Value": "ItDev/Cluster/Vpc/PublicSubnet1",
+            "Value": "IntegMainLit/Cluster/Vpc/PublicSubnet1",
           },
         ],
         "VpcId": Object {
@@ -469,7 +333,7 @@ def handler(event, context):
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItDev/Cluster/Vpc/PublicSubnet2",
+            "Value": "IntegMainLit/Cluster/Vpc/PublicSubnet2",
           },
         ],
       },
@@ -489,7 +353,7 @@ def handler(event, context):
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItDev/Cluster/Vpc/PublicSubnet2",
+            "Value": "IntegMainLit/Cluster/Vpc/PublicSubnet2",
           },
         ],
       },
@@ -500,7 +364,7 @@ def handler(event, context):
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "ItDev/Cluster/Vpc/PublicSubnet2",
+            "Value": "IntegMainLit/Cluster/Vpc/PublicSubnet2",
           },
         ],
         "VpcId": Object {
@@ -543,7 +407,7 @@ def handler(event, context):
           },
           Object {
             "Key": "Name",
-            "Value": "ItDev/Cluster/Vpc/PublicSubnet2",
+            "Value": "IntegMainLit/Cluster/Vpc/PublicSubnet2",
           },
         ],
         "VpcId": Object {
@@ -568,7 +432,7 @@ def handler(event, context):
         "ContainerDefinitions": Array [
           Object {
             "Command": Array [
-              "https://www.example.com/",
+              "https://www.amazon.ca/",
             ],
             "Essential": true,
             "Image": "curlimages/curl:7.78.0",
@@ -576,7 +440,7 @@ def handler(event, context):
           },
         ],
         "Cpu": "256",
-        "Family": "ItDevFargateValidationFactoryTaskDefinition0E89C1288",
+        "Family": "IntegMainLitFargateValidationFactoryTaskDefinition094E34CDD",
         "Memory": "512",
         "NetworkMode": "awsvpc",
         "RequiresCompatibilities": Array [
@@ -592,51 +456,6 @@ def handler(event, context):
       "Type": "AWS::ECS::TaskDefinition",
     },
     "FargateValidationFactoryTaskDefinition0TaskRoleAE808297": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "ecs-tasks.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "FargateValidationFactoryTaskDefinition1F94BC6E6": Object {
-      "Properties": Object {
-        "ContainerDefinitions": Array [
-          Object {
-            "Command": Array [
-              "https://www.amazon.ca/",
-            ],
-            "Essential": true,
-            "Image": "curlimages/curl:7.78.0",
-            "Name": "script",
-          },
-        ],
-        "Cpu": "256",
-        "Family": "ItDevFargateValidationFactoryTaskDefinition186711DA3",
-        "Memory": "512",
-        "NetworkMode": "awsvpc",
-        "RequiresCompatibilities": Array [
-          "FARGATE",
-        ],
-        "TaskRoleArn": Object {
-          "Fn::GetAtt": Array [
-            "FargateValidationFactoryTaskDefinition1TaskRole52FC39A4",
-            "Arn",
-          ],
-        },
-      },
-      "Type": "AWS::ECS::TaskDefinition",
-    },
-    "FargateValidationFactoryTaskDefinition1TaskRole52FC39A4": Object {
       "Properties": Object {
         "AssumeRolePolicyDocument": Object {
           "Statement": Array [
@@ -674,7 +493,7 @@ def handler(event, context):
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3Bucket275930E7",
+            "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3Bucket24AB9842",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -687,7 +506,7 @@ def handler(event, context):
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059",
+                          "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3VersionKey8E6E9A8B",
                         },
                       ],
                     },
@@ -700,7 +519,7 @@ def handler(event, context):
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059",
+                          "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3VersionKey8E6E9A8B",
                         },
                       ],
                     },
@@ -867,7 +686,7 @@ def handler(event, context):
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3Bucket275930E7",
+            "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3Bucket24AB9842",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -880,7 +699,7 @@ def handler(event, context):
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059",
+                          "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3VersionKey8E6E9A8B",
                         },
                       ],
                     },
@@ -893,7 +712,7 @@ def handler(event, context):
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059",
+                          "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3VersionKey8E6E9A8B",
                         },
                       ],
                     },
@@ -1042,7 +861,7 @@ def handler(event, context):
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - isComplete (ItDev/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - isComplete (IntegMainLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -1205,7 +1024,7 @@ def handler(event, context):
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onEvent (ItDev/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - onEvent (IntegMainLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -1378,7 +1197,7 @@ def handler(event, context):
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onTimeout (ItDev/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - onTimeout (IntegMainLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -1608,7 +1427,7 @@ def handler(event, context):
           "Fn::Join": Array [
             "",
             Array [
-              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] FargateTaskSucceeds\\",\\"States\\":{\\"[0] FargateTaskSucceeds\\":{\\"End\\":true,\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
+              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] cURL the Front Page\\",\\"States\\":{\\"[0] cURL the Front Page\\":{\\"End\\":true,\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
               Object {
                 "Ref": "AWS::Partition",
               },
@@ -1619,7 +1438,7 @@ def handler(event, context):
                   "Arn",
                 ],
               },
-              "\\",\\"TaskDefinition\\":\\"ItDevFargateValidationFactoryTaskDefinition0E89C1288\\",\\"NetworkConfiguration\\":{\\"AwsvpcConfiguration\\":{\\"Subnets\\":[\\"",
+              "\\",\\"TaskDefinition\\":\\"IntegMainLitFargateValidationFactoryTaskDefinition094E34CDD\\",\\"NetworkConfiguration\\":{\\"AwsvpcConfiguration\\":{\\"Subnets\\":[\\"",
               Object {
                 "Ref": "ClusterVpcPrivateSubnet1SubnetA4EB481A",
               },
@@ -1627,49 +1446,7 @@ def handler(event, context):
               Object {
                 "Ref": "ClusterVpcPrivateSubnet2SubnetBD1ECB6E",
               },
-              "\\"],\\"SecurityGroups\\":[]}},\\"LaunchType\\":\\"FARGATE\\"}}}},{\\"StartAt\\":\\"[1] cURL the Front Page\\",\\"States\\":{\\"[1] cURL the Front Page\\":{\\"End\\":true,\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
-              Object {
-                "Ref": "AWS::Partition",
-              },
-              ":states:::ecs:runTask.sync\\",\\"Parameters\\":{\\"Cluster\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "ClusterEB0386A7",
-                  "Arn",
-                ],
-              },
-              "\\",\\"TaskDefinition\\":\\"ItDevFargateValidationFactoryTaskDefinition186711DA3\\",\\"NetworkConfiguration\\":{\\"AwsvpcConfiguration\\":{\\"Subnets\\":[\\"",
-              Object {
-                "Ref": "ClusterVpcPrivateSubnet1SubnetA4EB481A",
-              },
-              "\\",\\"",
-              Object {
-                "Ref": "ClusterVpcPrivateSubnet2SubnetBD1ECB6E",
-              },
-              "\\"],\\"SecurityGroups\\":[]}},\\"LaunchType\\":\\"FARGATE\\"}}}},{\\"StartAt\\":\\"[2] Monitor an alarm\\",\\"States\\":{\\"[2] Monitor an alarm\\":{\\"End\\":true,\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
-              Object {
-                "Ref": "AWS::Partition",
-              },
-              ":states:::states:startExecution.sync:2\\",\\"Parameters\\":{\\"Input\\":{\\"AlarmName\\":\\"",
-              Object {
-                "Ref": "TestAlarmsNeverAlarmingHopefullyFD878B05",
-              },
-              "\\",\\"MonitoringDurationSeconds\\":30},\\"StateMachineArn\\":\\"",
-              Object {
-                "Ref": "SingletonAlarmMonitorStateMachine9830D808",
-              },
-              "\\"}}}},{\\"StartAt\\":\\"[3] LambdaInvokeSucceeds\\",\\"States\\":{\\"[3] LambdaInvokeSucceeds\\":{\\"End\\":true,\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2}],\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
-              Object {
-                "Ref": "AWS::Partition",
-              },
-              ":states:::lambda:invoke\\",\\"Parameters\\":{\\"FunctionName\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "AlwaysSucceeds94CDADD6",
-                  "Arn",
-                ],
-              },
-              "\\",\\"Payload.$\\":\\"$\\"}}}}]}}}",
+              "\\"],\\"SecurityGroups\\":[]}},\\"LaunchType\\":\\"FARGATE\\"}}}},{\\"StartAt\\":\\"[1] AlwaysSucceeds\\",\\"States\\":{\\"[1] AlwaysSucceeds\\":{\\"Type\\":\\"Pass\\",\\"Result\\":\\"Winner\\",\\"End\\":true}}}]}}}",
             ],
           ],
         },
@@ -1875,217 +1652,6 @@ def handler(event, context):
                 ],
               },
             },
-            Object {
-              "Action": "ecs:RunTask",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::Join": Array [
-                  "",
-                  Array [
-                    "arn:",
-                    Object {
-                      "Fn::Select": Array [
-                        1,
-                        Object {
-                          "Fn::Split": Array [
-                            ":",
-                            Object {
-                              "Ref": "FargateValidationFactoryTaskDefinition1F94BC6E6",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    ":",
-                    Object {
-                      "Fn::Select": Array [
-                        2,
-                        Object {
-                          "Fn::Split": Array [
-                            ":",
-                            Object {
-                              "Ref": "FargateValidationFactoryTaskDefinition1F94BC6E6",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    ":",
-                    Object {
-                      "Fn::Select": Array [
-                        3,
-                        Object {
-                          "Fn::Split": Array [
-                            ":",
-                            Object {
-                              "Ref": "FargateValidationFactoryTaskDefinition1F94BC6E6",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    ":",
-                    Object {
-                      "Fn::Select": Array [
-                        4,
-                        Object {
-                          "Fn::Split": Array [
-                            ":",
-                            Object {
-                              "Ref": "FargateValidationFactoryTaskDefinition1F94BC6E6",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    ":",
-                    Object {
-                      "Fn::Select": Array [
-                        0,
-                        Object {
-                          "Fn::Split": Array [
-                            "/",
-                            Object {
-                              "Fn::Select": Array [
-                                5,
-                                Object {
-                                  "Fn::Split": Array [
-                                    ":",
-                                    Object {
-                                      "Ref": "FargateValidationFactoryTaskDefinition1F94BC6E6",
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    "/",
-                    Object {
-                      "Fn::Select": Array [
-                        1,
-                        Object {
-                          "Fn::Split": Array [
-                            "/",
-                            Object {
-                              "Fn::Select": Array [
-                                5,
-                                Object {
-                                  "Fn::Split": Array [
-                                    ":",
-                                    Object {
-                                      "Ref": "FargateValidationFactoryTaskDefinition1F94BC6E6",
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                ],
-              },
-            },
-            Object {
-              "Action": "iam:PassRole",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "FargateValidationFactoryTaskDefinition1TaskRole52FC39A4",
-                  "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": "states:StartExecution",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Ref": "SingletonAlarmMonitorStateMachine9830D808",
-              },
-            },
-            Object {
-              "Action": Array [
-                "states:DescribeExecution",
-                "states:StopExecution",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::Join": Array [
-                  "",
-                  Array [
-                    "arn:",
-                    Object {
-                      "Ref": "AWS::Partition",
-                    },
-                    ":states:",
-                    Object {
-                      "Ref": "AWS::Region",
-                    },
-                    ":",
-                    Object {
-                      "Ref": "AWS::AccountId",
-                    },
-                    ":execution:",
-                    Object {
-                      "Fn::Select": Array [
-                        6,
-                        Object {
-                          "Fn::Split": Array [
-                            ":",
-                            Object {
-                              "Ref": "SingletonAlarmMonitorStateMachine9830D808",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    "*",
-                  ],
-                ],
-              },
-            },
-            Object {
-              "Action": Array [
-                "events:PutTargets",
-                "events:PutRule",
-                "events:DescribeRule",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::Join": Array [
-                  "",
-                  Array [
-                    "arn:",
-                    Object {
-                      "Ref": "AWS::Partition",
-                    },
-                    ":events:",
-                    Object {
-                      "Ref": "AWS::Region",
-                    },
-                    ":",
-                    Object {
-                      "Ref": "AWS::AccountId",
-                    },
-                    ":rule/StepFunctionsGetEventsForStepFunctionsExecutionRule",
-                  ],
-                ],
-              },
-            },
-            Object {
-              "Action": "lambda:InvokeFunction",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "AlwaysSucceeds94CDADD6",
-                  "Arn",
-                ],
-              },
-            },
           ],
           "Version": "2012-10-17",
         },
@@ -2207,262 +1773,6 @@ def handler(event, context):
         ],
       },
       "Type": "AWS::IAM::Policy",
-    },
-    "SingletonAlarmMonitorCheckAlarmStatusFunction294DA39A": Object {
-      "DependsOn": Array [
-        "SingletonAlarmMonitorCheckAlarmStatusFunctionServiceRoleDefaultPolicy2E6A6615",
-        "SingletonAlarmMonitorCheckAlarmStatusFunctionServiceRoleA8B357EC",
-      ],
-      "Properties": Object {
-        "Code": Object {
-          "S3Bucket": Object {
-            "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3Bucket275930E7",
-          },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
-        },
-        "Handler": "check-alarm-status.checkAlarmStatus",
-        "Role": Object {
-          "Fn::GetAtt": Array [
-            "SingletonAlarmMonitorCheckAlarmStatusFunctionServiceRoleA8B357EC",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs14.x",
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "SingletonAlarmMonitorCheckAlarmStatusFunctionLogRetention871F38F1": Object {
-      "Properties": Object {
-        "LogGroupName": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "/aws/lambda/",
-              Object {
-                "Ref": "SingletonAlarmMonitorCheckAlarmStatusFunction294DA39A",
-              },
-            ],
-          ],
-        },
-        "RetentionInDays": 30,
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
-            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
-            "Arn",
-          ],
-        },
-      },
-      "Type": "Custom::LogRetention",
-    },
-    "SingletonAlarmMonitorCheckAlarmStatusFunctionServiceRoleA8B357EC": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                "arn:",
-                Object {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "SingletonAlarmMonitorCheckAlarmStatusFunctionServiceRoleDefaultPolicy2E6A6615": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "cloudwatch:DescribeAlarms",
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "SingletonAlarmMonitorCheckAlarmStatusFunctionServiceRoleDefaultPolicy2E6A6615",
-        "Roles": Array [
-          Object {
-            "Ref": "SingletonAlarmMonitorCheckAlarmStatusFunctionServiceRoleA8B357EC",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "SingletonAlarmMonitorStateMachine9830D808": Object {
-      "DependsOn": Array [
-        "SingletonAlarmMonitorStateMachineRoleDefaultPolicy445274A5",
-        "SingletonAlarmMonitorStateMachineRoleBFB10518",
-      ],
-      "Properties": Object {
-        "DefinitionString": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "{\\"StartAt\\":\\"CheckAlarmStatus\\",\\"States\\":{\\"CheckAlarmStatus\\":{\\"Next\\":\\"AlarmStatusChoice\\",\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2},{\\"ErrorEquals\\":[\\"States.ALL\\"],\\"MaxAttempts\\":3}],\\"Catch\\":[{\\"ErrorEquals\\":[\\"States.ALL\\"],\\"Next\\":\\"BugState\\"}],\\"Type\\":\\"Task\\",\\"ResultPath\\":\\"$.CheckAlarmStatus\\",\\"ResultSelector\\":{\\"Status.$\\":\\"$.Payload.Status\\"},\\"Resource\\":\\"arn:",
-              Object {
-                "Ref": "AWS::Partition",
-              },
-              ":states:::lambda:invoke\\",\\"Parameters\\":{\\"FunctionName\\":\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "SingletonAlarmMonitorCheckAlarmStatusFunction294DA39A",
-                  "Arn",
-                ],
-              },
-              "\\",\\"Payload\\":{\\"AlarmName.$\\":\\"$.AlarmName\\",\\"MonitoringDurationSeconds.$\\":\\"$.MonitoringDurationSeconds\\",\\"StartTime.$\\":\\"$$.Execution.StartTime\\"}}},\\"DelayThenNextCheckStatus\\":{\\"Type\\":\\"Wait\\",\\"Seconds\\":30,\\"Next\\":\\"CheckAlarmStatus\\"},\\"AlarmStatusChoice\\":{\\"Type\\":\\"Choice\\",\\"Choices\\":[{\\"Variable\\":\\"$.CheckAlarmStatus.Status\\",\\"StringEquals\\":\\"ALARM\\",\\"Next\\":\\"FailBecauseAlarming\\"},{\\"Variable\\":\\"$.CheckAlarmStatus.Status\\",\\"StringEquals\\":\\"MONITORING\\",\\"Next\\":\\"DelayThenNextCheckStatus\\"},{\\"Variable\\":\\"$.CheckAlarmStatus.Status\\",\\"StringEquals\\":\\"NO_ALARM\\",\\"Next\\":\\"NoAlarm\\"}],\\"Default\\":\\"BugState\\"},\\"BugState\\":{\\"Type\\":\\"Fail\\"},\\"FailBecauseAlarming\\":{\\"Type\\":\\"Fail\\"},\\"NoAlarm\\":{\\"Type\\":\\"Succeed\\"}}}",
-            ],
-          ],
-        },
-        "RoleArn": Object {
-          "Fn::GetAtt": Array [
-            "SingletonAlarmMonitorStateMachineRoleBFB10518",
-            "Arn",
-          ],
-        },
-      },
-      "Type": "AWS::StepFunctions::StateMachine",
-    },
-    "SingletonAlarmMonitorStateMachineRoleBFB10518": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "states.",
-                      Object {
-                        "Ref": "AWS::Region",
-                      },
-                      ".amazonaws.com",
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "SingletonAlarmMonitorStateMachineRoleDefaultPolicy445274A5": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "lambda:InvokeFunction",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "SingletonAlarmMonitorCheckAlarmStatusFunction294DA39A",
-                  "Arn",
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "SingletonAlarmMonitorStateMachineRoleDefaultPolicy445274A5",
-        "Roles": Array [
-          Object {
-            "Ref": "SingletonAlarmMonitorStateMachineRoleBFB10518",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "TestAlarmsAlwaysAlarming69FED027": Object {
-      "Properties": Object {
-        "ComparisonOperator": "LessThanThreshold",
-        "Dimensions": Array [
-          Object {
-            "Name": "Currency",
-            "Value": "USD",
-          },
-        ],
-        "EvaluationPeriods": 1,
-        "MetricName": "EstimatedCharges",
-        "Namespace": "AWS/Billing",
-        "Period": 32400,
-        "Statistic": "Maximum",
-        "Threshold": 99999999999,
-        "TreatMissingData": "breaching",
-      },
-      "Type": "AWS::CloudWatch::Alarm",
-    },
-    "TestAlarmsNeverAlarmingHopefullyFD878B05": Object {
-      "Properties": Object {
-        "ComparisonOperator": "GreaterThanThreshold",
-        "Dimensions": Array [
-          Object {
-            "Name": "Currency",
-            "Value": "USD",
-          },
-        ],
-        "EvaluationPeriods": 1,
-        "MetricName": "EstimatedCharges",
-        "Namespace": "AWS/Billing",
-        "Period": 32400,
-        "Statistic": "Maximum",
-        "Threshold": 99999999999,
-        "TreatMissingData": "notBreaching",
-      },
-      "Type": "AWS::CloudWatch::Alarm",
     },
   },
 }

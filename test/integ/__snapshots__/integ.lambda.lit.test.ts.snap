@@ -15,6 +15,18 @@ Object {
       "Description": "S3 key for asset version \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
       "Type": "String",
     },
+    "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aArtifactHash1EF21FFF": Object {
+      "Description": "Artifact hash for asset \\"9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973a\\"",
+      "Type": "String",
+    },
+    "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3Bucket24AB9842": Object {
+      "Description": "S3 bucket for asset \\"9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973a\\"",
+      "Type": "String",
+    },
+    "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3VersionKey8E6E9A8B": Object {
+      "Description": "S3 key for asset version \\"9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973a\\"",
+      "Type": "String",
+    },
     "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cArtifactHash627DAAA7": Object {
       "Description": "Artifact hash for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
       "Type": "String",
@@ -27,405 +39,113 @@ Object {
       "Description": "S3 key for asset version \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
       "Type": "String",
     },
-    "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9ArtifactHashA838B621": Object {
-      "Description": "Artifact hash for asset \\"f7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9\\"",
-      "Type": "String",
-    },
-    "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3Bucket275930E7": Object {
-      "Description": "S3 bucket for asset \\"f7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9\\"",
-      "Type": "String",
-    },
-    "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059": Object {
-      "Description": "S3 key for asset version \\"f7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9\\"",
-      "Type": "String",
-    },
   },
   "Resources": Object {
-    "ClusterEB0386A7": Object {
-      "Type": "AWS::ECS::Cluster",
-    },
-    "ClusterVpcFAA3CEDF": Object {
-      "Properties": Object {
-        "CidrBlock": "10.0.0.0/16",
-        "EnableDnsHostnames": true,
-        "EnableDnsSupport": true,
-        "InstanceTenancy": "default",
-        "Tags": Array [
-          Object {
-            "Key": "Name",
-            "Value": "ItLitFargate/Cluster/Vpc",
-          },
-        ],
-      },
-      "Type": "AWS::EC2::VPC",
-    },
-    "ClusterVpcIGW1E358A6E": Object {
-      "Properties": Object {
-        "Tags": Array [
-          Object {
-            "Key": "Name",
-            "Value": "ItLitFargate/Cluster/Vpc",
-          },
-        ],
-      },
-      "Type": "AWS::EC2::InternetGateway",
-    },
-    "ClusterVpcPrivateSubnet1DefaultRoute3B4D40DD": Object {
-      "Properties": Object {
-        "DestinationCidrBlock": "0.0.0.0/0",
-        "NatGatewayId": Object {
-          "Ref": "ClusterVpcPublicSubnet1NATGateway0693C346",
-        },
-        "RouteTableId": Object {
-          "Ref": "ClusterVpcPrivateSubnet1RouteTable5AAEDA3F",
-        },
-      },
-      "Type": "AWS::EC2::Route",
-    },
-    "ClusterVpcPrivateSubnet1RouteTable5AAEDA3F": Object {
-      "Properties": Object {
-        "Tags": Array [
-          Object {
-            "Key": "Name",
-            "Value": "ItLitFargate/Cluster/Vpc/PrivateSubnet1",
-          },
-        ],
-        "VpcId": Object {
-          "Ref": "ClusterVpcFAA3CEDF",
-        },
-      },
-      "Type": "AWS::EC2::RouteTable",
-    },
-    "ClusterVpcPrivateSubnet1RouteTableAssociation9B8A88D9": Object {
-      "Properties": Object {
-        "RouteTableId": Object {
-          "Ref": "ClusterVpcPrivateSubnet1RouteTable5AAEDA3F",
-        },
-        "SubnetId": Object {
-          "Ref": "ClusterVpcPrivateSubnet1SubnetA4EB481A",
-        },
-      },
-      "Type": "AWS::EC2::SubnetRouteTableAssociation",
-    },
-    "ClusterVpcPrivateSubnet1SubnetA4EB481A": Object {
-      "Properties": Object {
-        "AvailabilityZone": Object {
-          "Fn::Select": Array [
-            0,
-            Object {
-              "Fn::GetAZs": "",
-            },
-          ],
-        },
-        "CidrBlock": "10.0.128.0/18",
-        "MapPublicIpOnLaunch": false,
-        "Tags": Array [
-          Object {
-            "Key": "aws-cdk:subnet-name",
-            "Value": "Private",
-          },
-          Object {
-            "Key": "aws-cdk:subnet-type",
-            "Value": "Private",
-          },
-          Object {
-            "Key": "Name",
-            "Value": "ItLitFargate/Cluster/Vpc/PrivateSubnet1",
-          },
-        ],
-        "VpcId": Object {
-          "Ref": "ClusterVpcFAA3CEDF",
-        },
-      },
-      "Type": "AWS::EC2::Subnet",
-    },
-    "ClusterVpcPrivateSubnet2DefaultRoute011666AF": Object {
-      "Properties": Object {
-        "DestinationCidrBlock": "0.0.0.0/0",
-        "NatGatewayId": Object {
-          "Ref": "ClusterVpcPublicSubnet2NATGateway00B24686",
-        },
-        "RouteTableId": Object {
-          "Ref": "ClusterVpcPrivateSubnet2RouteTable73064A66",
-        },
-      },
-      "Type": "AWS::EC2::Route",
-    },
-    "ClusterVpcPrivateSubnet2RouteTable73064A66": Object {
-      "Properties": Object {
-        "Tags": Array [
-          Object {
-            "Key": "Name",
-            "Value": "ItLitFargate/Cluster/Vpc/PrivateSubnet2",
-          },
-        ],
-        "VpcId": Object {
-          "Ref": "ClusterVpcFAA3CEDF",
-        },
-      },
-      "Type": "AWS::EC2::RouteTable",
-    },
-    "ClusterVpcPrivateSubnet2RouteTableAssociationFB21349E": Object {
-      "Properties": Object {
-        "RouteTableId": Object {
-          "Ref": "ClusterVpcPrivateSubnet2RouteTable73064A66",
-        },
-        "SubnetId": Object {
-          "Ref": "ClusterVpcPrivateSubnet2SubnetBD1ECB6E",
-        },
-      },
-      "Type": "AWS::EC2::SubnetRouteTableAssociation",
-    },
-    "ClusterVpcPrivateSubnet2SubnetBD1ECB6E": Object {
-      "Properties": Object {
-        "AvailabilityZone": Object {
-          "Fn::Select": Array [
-            1,
-            Object {
-              "Fn::GetAZs": "",
-            },
-          ],
-        },
-        "CidrBlock": "10.0.192.0/18",
-        "MapPublicIpOnLaunch": false,
-        "Tags": Array [
-          Object {
-            "Key": "aws-cdk:subnet-name",
-            "Value": "Private",
-          },
-          Object {
-            "Key": "aws-cdk:subnet-type",
-            "Value": "Private",
-          },
-          Object {
-            "Key": "Name",
-            "Value": "ItLitFargate/Cluster/Vpc/PrivateSubnet2",
-          },
-        ],
-        "VpcId": Object {
-          "Ref": "ClusterVpcFAA3CEDF",
-        },
-      },
-      "Type": "AWS::EC2::Subnet",
-    },
-    "ClusterVpcPublicSubnet1DefaultRoute62DA4B4B": Object {
+    "AlwaysFails0D393A9D": Object {
       "DependsOn": Array [
-        "ClusterVpcVPCGW47AC17E9",
+        "AlwaysFailsServiceRole4F545107",
       ],
       "Properties": Object {
-        "DestinationCidrBlock": "0.0.0.0/0",
-        "GatewayId": Object {
-          "Ref": "ClusterVpcIGW1E358A6E",
+        "Code": Object {
+          "ZipFile": "
+def handler(event, context):
+  raise Exception('An expected failure')
+",
         },
-        "RouteTableId": Object {
-          "Ref": "ClusterVpcPublicSubnet1RouteTable5594A636",
-        },
-      },
-      "Type": "AWS::EC2::Route",
-    },
-    "ClusterVpcPublicSubnet1EIP433C56EE": Object {
-      "Properties": Object {
-        "Domain": "vpc",
-        "Tags": Array [
-          Object {
-            "Key": "Name",
-            "Value": "ItLitFargate/Cluster/Vpc/PublicSubnet1",
-          },
-        ],
-      },
-      "Type": "AWS::EC2::EIP",
-    },
-    "ClusterVpcPublicSubnet1NATGateway0693C346": Object {
-      "Properties": Object {
-        "AllocationId": Object {
+        "Handler": "index.handler",
+        "Role": Object {
           "Fn::GetAtt": Array [
-            "ClusterVpcPublicSubnet1EIP433C56EE",
-            "AllocationId",
+            "AlwaysFailsServiceRole4F545107",
+            "Arn",
           ],
         },
-        "SubnetId": Object {
-          "Ref": "ClusterVpcPublicSubnet1SubnetA9F7E0A5",
-        },
-        "Tags": Array [
-          Object {
-            "Key": "Name",
-            "Value": "ItLitFargate/Cluster/Vpc/PublicSubnet1",
-          },
-        ],
+        "Runtime": "python3.8",
       },
-      "Type": "AWS::EC2::NatGateway",
+      "Type": "AWS::Lambda::Function",
     },
-    "ClusterVpcPublicSubnet1RouteTable5594A636": Object {
+    "AlwaysFailsServiceRole4F545107": Object {
       "Properties": Object {
-        "Tags": Array [
-          Object {
-            "Key": "Name",
-            "Value": "ItLitFargate/Cluster/Vpc/PublicSubnet1",
-          },
-        ],
-        "VpcId": Object {
-          "Ref": "ClusterVpcFAA3CEDF",
-        },
-      },
-      "Type": "AWS::EC2::RouteTable",
-    },
-    "ClusterVpcPublicSubnet1RouteTableAssociation0FBEF1F4": Object {
-      "Properties": Object {
-        "RouteTableId": Object {
-          "Ref": "ClusterVpcPublicSubnet1RouteTable5594A636",
-        },
-        "SubnetId": Object {
-          "Ref": "ClusterVpcPublicSubnet1SubnetA9F7E0A5",
-        },
-      },
-      "Type": "AWS::EC2::SubnetRouteTableAssociation",
-    },
-    "ClusterVpcPublicSubnet1SubnetA9F7E0A5": Object {
-      "Properties": Object {
-        "AvailabilityZone": Object {
-          "Fn::Select": Array [
-            0,
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
             Object {
-              "Fn::GetAZs": "",
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
             },
           ],
+          "Version": "2012-10-17",
         },
-        "CidrBlock": "10.0.0.0/18",
-        "MapPublicIpOnLaunch": true,
-        "Tags": Array [
+        "ManagedPolicyArns": Array [
           Object {
-            "Key": "aws-cdk:subnet-name",
-            "Value": "Public",
-          },
-          Object {
-            "Key": "aws-cdk:subnet-type",
-            "Value": "Public",
-          },
-          Object {
-            "Key": "Name",
-            "Value": "ItLitFargate/Cluster/Vpc/PublicSubnet1",
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
           },
         ],
-        "VpcId": Object {
-          "Ref": "ClusterVpcFAA3CEDF",
-        },
       },
-      "Type": "AWS::EC2::Subnet",
+      "Type": "AWS::IAM::Role",
     },
-    "ClusterVpcPublicSubnet2DefaultRoute97446C8A": Object {
+    "AlwaysSucceeds94CDADD6": Object {
       "DependsOn": Array [
-        "ClusterVpcVPCGW47AC17E9",
+        "AlwaysSucceedsServiceRoleE790EBB8",
       ],
       "Properties": Object {
-        "DestinationCidrBlock": "0.0.0.0/0",
-        "GatewayId": Object {
-          "Ref": "ClusterVpcIGW1E358A6E",
+        "Code": Object {
+          "ZipFile": "
+def handler(event, context):
+  return 'it works'
+",
         },
-        "RouteTableId": Object {
-          "Ref": "ClusterVpcPublicSubnet2RouteTable7B43F18C",
-        },
-      },
-      "Type": "AWS::EC2::Route",
-    },
-    "ClusterVpcPublicSubnet2EIP203DF3E5": Object {
-      "Properties": Object {
-        "Domain": "vpc",
-        "Tags": Array [
-          Object {
-            "Key": "Name",
-            "Value": "ItLitFargate/Cluster/Vpc/PublicSubnet2",
-          },
-        ],
-      },
-      "Type": "AWS::EC2::EIP",
-    },
-    "ClusterVpcPublicSubnet2NATGateway00B24686": Object {
-      "Properties": Object {
-        "AllocationId": Object {
+        "Handler": "index.handler",
+        "Role": Object {
           "Fn::GetAtt": Array [
-            "ClusterVpcPublicSubnet2EIP203DF3E5",
-            "AllocationId",
+            "AlwaysSucceedsServiceRoleE790EBB8",
+            "Arn",
           ],
         },
-        "SubnetId": Object {
-          "Ref": "ClusterVpcPublicSubnet2Subnet059113C4",
-        },
-        "Tags": Array [
-          Object {
-            "Key": "Name",
-            "Value": "ItLitFargate/Cluster/Vpc/PublicSubnet2",
-          },
-        ],
+        "Runtime": "python3.8",
       },
-      "Type": "AWS::EC2::NatGateway",
+      "Type": "AWS::Lambda::Function",
     },
-    "ClusterVpcPublicSubnet2RouteTable7B43F18C": Object {
+    "AlwaysSucceedsServiceRoleE790EBB8": Object {
       "Properties": Object {
-        "Tags": Array [
-          Object {
-            "Key": "Name",
-            "Value": "ItLitFargate/Cluster/Vpc/PublicSubnet2",
-          },
-        ],
-        "VpcId": Object {
-          "Ref": "ClusterVpcFAA3CEDF",
-        },
-      },
-      "Type": "AWS::EC2::RouteTable",
-    },
-    "ClusterVpcPublicSubnet2RouteTableAssociation8446B27D": Object {
-      "Properties": Object {
-        "RouteTableId": Object {
-          "Ref": "ClusterVpcPublicSubnet2RouteTable7B43F18C",
-        },
-        "SubnetId": Object {
-          "Ref": "ClusterVpcPublicSubnet2Subnet059113C4",
-        },
-      },
-      "Type": "AWS::EC2::SubnetRouteTableAssociation",
-    },
-    "ClusterVpcPublicSubnet2Subnet059113C4": Object {
-      "Properties": Object {
-        "AvailabilityZone": Object {
-          "Fn::Select": Array [
-            1,
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
             Object {
-              "Fn::GetAZs": "",
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
             },
           ],
+          "Version": "2012-10-17",
         },
-        "CidrBlock": "10.0.64.0/18",
-        "MapPublicIpOnLaunch": true,
-        "Tags": Array [
+        "ManagedPolicyArns": Array [
           Object {
-            "Key": "aws-cdk:subnet-name",
-            "Value": "Public",
-          },
-          Object {
-            "Key": "aws-cdk:subnet-type",
-            "Value": "Public",
-          },
-          Object {
-            "Key": "Name",
-            "Value": "ItLitFargate/Cluster/Vpc/PublicSubnet2",
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
           },
         ],
-        "VpcId": Object {
-          "Ref": "ClusterVpcFAA3CEDF",
-        },
       },
-      "Type": "AWS::EC2::Subnet",
-    },
-    "ClusterVpcVPCGW47AC17E9": Object {
-      "Properties": Object {
-        "InternetGatewayId": Object {
-          "Ref": "ClusterVpcIGW1E358A6E",
-        },
-        "VpcId": Object {
-          "Ref": "ClusterVpcFAA3CEDF",
-        },
-      },
-      "Type": "AWS::EC2::VPCGatewayAttachment",
+      "Type": "AWS::IAM::Role",
     },
     "IntrinsicValidator72B8901E": Object {
       "DeletionPolicy": "Delete",
@@ -448,7 +168,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3Bucket275930E7",
+            "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3Bucket24AB9842",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -461,7 +181,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059",
+                          "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3VersionKey8E6E9A8B",
                         },
                       ],
                     },
@@ -474,7 +194,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059",
+                          "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3VersionKey8E6E9A8B",
                         },
                       ],
                     },
@@ -641,7 +361,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3Bucket275930E7",
+            "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3Bucket24AB9842",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -654,7 +374,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059",
+                          "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3VersionKey8E6E9A8B",
                         },
                       ],
                     },
@@ -667,7 +387,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059",
+                          "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3VersionKey8E6E9A8B",
                         },
                       ],
                     },
@@ -816,7 +536,7 @@ Object {
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - isComplete (ItLitFargate/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - isComplete (IntegLambdaLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -979,7 +699,7 @@ Object {
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onEvent (ItLitFargate/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - onEvent (IntegLambdaLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -1152,7 +872,7 @@ Object {
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onTimeout (ItLitFargate/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - onTimeout (IntegLambdaLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -1382,33 +1102,18 @@ Object {
           "Fn::Join": Array [
             "",
             Array [
-              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] FargateTaskSucceeds\\",\\"States\\":{\\"[0] FargateTaskSucceeds\\":{\\"End\\":true,\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
+              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] LambdaInvokeSucceeds\\",\\"States\\":{\\"[0] LambdaInvokeSucceeds\\":{\\"End\\":true,\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2}],\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":states:::ecs:runTask.sync\\",\\"Parameters\\":{\\"Cluster\\":\\"",
+              ":states:::lambda:invoke\\",\\"Parameters\\":{\\"FunctionName\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
-                  "ClusterEB0386A7",
+                  "AlwaysSucceeds94CDADD6",
                   "Arn",
                 ],
               },
-              "\\",\\"TaskDefinition\\":\\"ItLitFargateTaskDefinitionA70E739D\\",\\"NetworkConfiguration\\":{\\"AwsvpcConfiguration\\":{\\"Subnets\\":[\\"",
-              Object {
-                "Ref": "ClusterVpcPrivateSubnet1SubnetA4EB481A",
-              },
-              "\\",\\"",
-              Object {
-                "Ref": "ClusterVpcPrivateSubnet2SubnetBD1ECB6E",
-              },
-              "\\"],\\"SecurityGroups\\":[\\"",
-              Object {
-                "Fn::GetAtt": Array [
-                  "IntrinsicValidatorValidations0FargateTaskSucceedsSecurityGroupC274FE8C",
-                  "GroupId",
-                ],
-              },
-              "\\"]}},\\"LaunchType\\":\\"FARGATE\\"}}}}]}}}",
+              "\\",\\"Payload.$\\":\\"$\\"}}}}]}}}",
             ],
           ],
         },
@@ -1454,163 +1159,12 @@ Object {
         "PolicyDocument": Object {
           "Statement": Array [
             Object {
-              "Action": "ecs:RunTask",
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::Join": Array [
-                  "",
-                  Array [
-                    "arn:",
-                    Object {
-                      "Fn::Select": Array [
-                        1,
-                        Object {
-                          "Fn::Split": Array [
-                            ":",
-                            Object {
-                              "Ref": "TaskDefinitionB36D86D9",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    ":",
-                    Object {
-                      "Fn::Select": Array [
-                        2,
-                        Object {
-                          "Fn::Split": Array [
-                            ":",
-                            Object {
-                              "Ref": "TaskDefinitionB36D86D9",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    ":",
-                    Object {
-                      "Fn::Select": Array [
-                        3,
-                        Object {
-                          "Fn::Split": Array [
-                            ":",
-                            Object {
-                              "Ref": "TaskDefinitionB36D86D9",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    ":",
-                    Object {
-                      "Fn::Select": Array [
-                        4,
-                        Object {
-                          "Fn::Split": Array [
-                            ":",
-                            Object {
-                              "Ref": "TaskDefinitionB36D86D9",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    ":",
-                    Object {
-                      "Fn::Select": Array [
-                        0,
-                        Object {
-                          "Fn::Split": Array [
-                            "/",
-                            Object {
-                              "Fn::Select": Array [
-                                5,
-                                Object {
-                                  "Fn::Split": Array [
-                                    ":",
-                                    Object {
-                                      "Ref": "TaskDefinitionB36D86D9",
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    "/",
-                    Object {
-                      "Fn::Select": Array [
-                        1,
-                        Object {
-                          "Fn::Split": Array [
-                            "/",
-                            Object {
-                              "Fn::Select": Array [
-                                5,
-                                Object {
-                                  "Fn::Split": Array [
-                                    ":",
-                                    Object {
-                                      "Ref": "TaskDefinitionB36D86D9",
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                ],
-              },
-            },
-            Object {
-              "Action": Array [
-                "ecs:StopTask",
-                "ecs:DescribeTasks",
-              ],
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-            Object {
-              "Action": "iam:PassRole",
+              "Action": "lambda:InvokeFunction",
               "Effect": "Allow",
               "Resource": Object {
                 "Fn::GetAtt": Array [
-                  "TaskDefinitionTaskRoleFD40A61D",
+                  "AlwaysSucceeds94CDADD6",
                   "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": Array [
-                "events:PutTargets",
-                "events:PutRule",
-                "events:DescribeRule",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::Join": Array [
-                  "",
-                  Array [
-                    "arn:",
-                    Object {
-                      "Ref": "AWS::Partition",
-                    },
-                    ":events:",
-                    Object {
-                      "Ref": "AWS::Region",
-                    },
-                    ":",
-                    Object {
-                      "Ref": "AWS::AccountId",
-                    },
-                    ":rule/StepFunctionsGetEventsForECSTaskRule",
-                  ],
                 ],
               },
             },
@@ -1625,22 +1179,6 @@ Object {
         ],
       },
       "Type": "AWS::IAM::Policy",
-    },
-    "IntrinsicValidatorValidations0FargateTaskSucceedsSecurityGroupC274FE8C": Object {
-      "Properties": Object {
-        "GroupDescription": "ItLitFargate/IntrinsicValidator/Validations/[0] FargateTaskSucceeds/SecurityGroup",
-        "SecurityGroupEgress": Array [
-          Object {
-            "CidrIp": "0.0.0.0/0",
-            "Description": "Allow all outbound traffic by default",
-            "IpProtocol": "-1",
-          },
-        ],
-        "VpcId": Object {
-          "Ref": "ClusterVpcFAA3CEDF",
-        },
-      },
-      "Type": "AWS::EC2::SecurityGroup",
     },
     "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": Object {
       "DependsOn": Array [
@@ -1751,51 +1289,6 @@ Object {
         ],
       },
       "Type": "AWS::IAM::Policy",
-    },
-    "TaskDefinitionB36D86D9": Object {
-      "Properties": Object {
-        "ContainerDefinitions": Array [
-          Object {
-            "Command": Array [
-              "true",
-            ],
-            "Essential": true,
-            "Image": "alpine",
-            "Name": "main",
-          },
-        ],
-        "Cpu": "256",
-        "Family": "ItLitFargateTaskDefinitionA70E739D",
-        "Memory": "512",
-        "NetworkMode": "awsvpc",
-        "RequiresCompatibilities": Array [
-          "FARGATE",
-        ],
-        "TaskRoleArn": Object {
-          "Fn::GetAtt": Array [
-            "TaskDefinitionTaskRoleFD40A61D",
-            "Arn",
-          ],
-        },
-      },
-      "Type": "AWS::ECS::TaskDefinition",
-    },
-    "TaskDefinitionTaskRoleFD40A61D": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "ecs-tasks.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::IAM::Role",
     },
   },
 }

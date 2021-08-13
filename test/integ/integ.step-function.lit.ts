@@ -1,11 +1,11 @@
 import { Chain, Pass, StateMachine, TaskInput } from '@aws-cdk/aws-stepfunctions';
 import * as cdk from '@aws-cdk/core';
-import { IntrinsicValidator, Validation } from '..';
+import { IntrinsicValidator, Validation } from '../../src';
 
 /** @internal */
-export class ItLitStepFunction extends cdk.Stack {
+export class IntegStepFunctionLit extends cdk.Stack {
   constructor(scope_: cdk.Construct, props: cdk.StackProps = {}) {
-    super(scope_, 'ItLitStepFunction', props);
+    super(scope_, 'IntegStepFunctionLit', props);
 
     const stateMachine = new StateMachine(this, 'StateMachine', {
       definition: Chain.start(new Pass(this, 'Pass')),
@@ -34,7 +34,7 @@ export class ItLitStepFunction extends cdk.Stack {
 
 if (!module.parent) {
   const app = new cdk.App();
-  new ItLitStepFunction(app, {
+  new IntegStepFunctionLit(app, {
     env: {
       account: process.env.CDK_DEFAULT_ACCOUNT,
       region: process.env.CDK_DEFAULT_REGION,

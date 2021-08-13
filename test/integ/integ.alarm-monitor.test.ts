@@ -1,7 +1,7 @@
 import { SynthUtils } from '@aws-cdk/assert';
 import * as cdk from '@aws-cdk/core';
 import { DisableRandomnessContextKey } from '../../src';
-import { ItDev } from '../../src/it/it-dev';
+import { IntegAlarmMonitor } from './integ.alarm-monitor';
 
 test('snapshot', () => {
   const app = new cdk.App({
@@ -10,6 +10,6 @@ test('snapshot', () => {
     },
   });
 
-  const stack = new ItDev(app);
+  const stack = new IntegAlarmMonitor(app);
   expect(SynthUtils.toCloudFormation(stack)).toMatchSnapshot();
 });

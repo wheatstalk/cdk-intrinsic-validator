@@ -15,6 +15,18 @@ Object {
       "Description": "S3 key for asset version \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
       "Type": "String",
     },
+    "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aArtifactHash1EF21FFF": Object {
+      "Description": "Artifact hash for asset \\"9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973a\\"",
+      "Type": "String",
+    },
+    "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3Bucket24AB9842": Object {
+      "Description": "S3 bucket for asset \\"9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973a\\"",
+      "Type": "String",
+    },
+    "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3VersionKey8E6E9A8B": Object {
+      "Description": "S3 key for asset version \\"9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973a\\"",
+      "Type": "String",
+    },
     "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cArtifactHash627DAAA7": Object {
       "Description": "Artifact hash for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
       "Type": "String",
@@ -27,126 +39,8 @@ Object {
       "Description": "S3 key for asset version \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
       "Type": "String",
     },
-    "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9ArtifactHashA838B621": Object {
-      "Description": "Artifact hash for asset \\"f7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9\\"",
-      "Type": "String",
-    },
-    "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3Bucket275930E7": Object {
-      "Description": "S3 bucket for asset \\"f7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9\\"",
-      "Type": "String",
-    },
-    "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059": Object {
-      "Description": "S3 key for asset version \\"f7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9\\"",
-      "Type": "String",
-    },
   },
   "Resources": Object {
-    "AlwaysFails0D393A9D": Object {
-      "DependsOn": Array [
-        "AlwaysFailsServiceRole4F545107",
-      ],
-      "Properties": Object {
-        "Code": Object {
-          "ZipFile": "
-def handler(event, context):
-  raise Exception('An expected failure')
-",
-        },
-        "Handler": "index.handler",
-        "Role": Object {
-          "Fn::GetAtt": Array [
-            "AlwaysFailsServiceRole4F545107",
-            "Arn",
-          ],
-        },
-        "Runtime": "python3.8",
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "AlwaysFailsServiceRole4F545107": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                "arn:",
-                Object {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "AlwaysSucceeds94CDADD6": Object {
-      "DependsOn": Array [
-        "AlwaysSucceedsServiceRoleE790EBB8",
-      ],
-      "Properties": Object {
-        "Code": Object {
-          "ZipFile": "
-def handler(event, context):
-  return 'it works'
-",
-        },
-        "Handler": "index.handler",
-        "Role": Object {
-          "Fn::GetAtt": Array [
-            "AlwaysSucceedsServiceRoleE790EBB8",
-            "Arn",
-          ],
-        },
-        "Runtime": "python3.8",
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "AlwaysSucceedsServiceRoleE790EBB8": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                "arn:",
-                Object {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
     "IntrinsicValidator72B8901E": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
@@ -168,7 +62,7 @@ def handler(event, context):
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3Bucket275930E7",
+            "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3Bucket24AB9842",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -181,7 +75,7 @@ def handler(event, context):
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059",
+                          "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3VersionKey8E6E9A8B",
                         },
                       ],
                     },
@@ -194,7 +88,7 @@ def handler(event, context):
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059",
+                          "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3VersionKey8E6E9A8B",
                         },
                       ],
                     },
@@ -361,7 +255,7 @@ def handler(event, context):
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3Bucket275930E7",
+            "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3Bucket24AB9842",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -374,7 +268,7 @@ def handler(event, context):
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059",
+                          "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3VersionKey8E6E9A8B",
                         },
                       ],
                     },
@@ -387,7 +281,7 @@ def handler(event, context):
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParametersf7ba52e204a711b5a27c7ee3ce46767b37e2f64e49e2a5b3d3d3129494b7a2e9S3VersionKey83798059",
+                          "Ref": "AssetParameters9ae3f28c032da6f20384fb1f333fdc1bafc2cc3515d48bdc6c4df3d2ec45973aS3VersionKey8E6E9A8B",
                         },
                       ],
                     },
@@ -536,7 +430,7 @@ def handler(event, context):
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - isComplete (ItLitLambda/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - isComplete (IntegStepFunctionLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -699,7 +593,7 @@ def handler(event, context):
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onEvent (ItLitLambda/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - onEvent (IntegStepFunctionLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -872,7 +766,7 @@ def handler(event, context):
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onTimeout (ItLitLambda/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - onTimeout (IntegStepFunctionLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -1102,18 +996,15 @@ def handler(event, context):
           "Fn::Join": Array [
             "",
             Array [
-              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] LambdaInvokeSucceeds\\",\\"States\\":{\\"[0] LambdaInvokeSucceeds\\":{\\"End\\":true,\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2}],\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
+              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] StateMachineExecutionSucceeds\\",\\"States\\":{\\"[0] StateMachineExecutionSucceeds\\":{\\"End\\":true,\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":states:::lambda:invoke\\",\\"Parameters\\":{\\"FunctionName\\":\\"",
+              ":states:::states:startExecution.sync:2\\",\\"Parameters\\":{\\"Input\\":{\\"anything\\":\\"you need\\"},\\"StateMachineArn\\":\\"",
               Object {
-                "Fn::GetAtt": Array [
-                  "AlwaysSucceeds94CDADD6",
-                  "Arn",
-                ],
+                "Ref": "StateMachine2E01A3A5",
               },
-              "\\",\\"Payload.$\\":\\"$\\"}}}}]}}}",
+              "\\"}}}}]}}}",
             ],
           ],
         },
@@ -1159,12 +1050,78 @@ def handler(event, context):
         "PolicyDocument": Object {
           "Statement": Array [
             Object {
-              "Action": "lambda:InvokeFunction",
+              "Action": "states:StartExecution",
               "Effect": "Allow",
               "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "AlwaysSucceeds94CDADD6",
-                  "Arn",
+                "Ref": "StateMachine2E01A3A5",
+              },
+            },
+            Object {
+              "Action": Array [
+                "states:DescribeExecution",
+                "states:StopExecution",
+              ],
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    "arn:",
+                    Object {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":states:",
+                    Object {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    Object {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":execution:",
+                    Object {
+                      "Fn::Select": Array [
+                        6,
+                        Object {
+                          "Fn::Split": Array [
+                            ":",
+                            Object {
+                              "Ref": "StateMachine2E01A3A5",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    "*",
+                  ],
+                ],
+              },
+            },
+            Object {
+              "Action": Array [
+                "events:PutTargets",
+                "events:PutRule",
+                "events:DescribeRule",
+              ],
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    "arn:",
+                    Object {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":events:",
+                    Object {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    Object {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":rule/StepFunctionsGetEventsForStepFunctionsExecutionRule",
+                  ],
                 ],
               },
             },
@@ -1289,6 +1246,49 @@ def handler(event, context):
         ],
       },
       "Type": "AWS::IAM::Policy",
+    },
+    "StateMachine2E01A3A5": Object {
+      "DependsOn": Array [
+        "StateMachineRoleB840431D",
+      ],
+      "Properties": Object {
+        "DefinitionString": "{\\"StartAt\\":\\"Pass\\",\\"States\\":{\\"Pass\\":{\\"Type\\":\\"Pass\\",\\"End\\":true}}}",
+        "RoleArn": Object {
+          "Fn::GetAtt": Array [
+            "StateMachineRoleB840431D",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::StepFunctions::StateMachine",
+    },
+    "StateMachineRoleB840431D": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "states.",
+                      Object {
+                        "Ref": "AWS::Region",
+                      },
+                      ".amazonaws.com",
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
     },
   },
 }

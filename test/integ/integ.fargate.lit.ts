@@ -1,11 +1,11 @@
 import * as ecs from '@aws-cdk/aws-ecs';
 import * as cdk from '@aws-cdk/core';
-import { IntrinsicValidator, Validation } from '..';
+import { IntrinsicValidator, Validation } from '../../src';
 
 /** @internal */
-export class ItLitFargate extends cdk.Stack {
+export class IntegFargateLit extends cdk.Stack {
   constructor(scope_: cdk.Construct, props: cdk.StackProps = {}) {
-    super(scope_, 'ItLitFargate', props);
+    super(scope_, 'IntegFargateLit', props);
 
     const cluster = new ecs.Cluster(this, 'Cluster');
     const taskDefinition = new ecs.FargateTaskDefinition(this, 'TaskDefinition', {
@@ -43,7 +43,7 @@ export class ItLitFargate extends cdk.Stack {
 
 if (!module.parent) {
   const app = new cdk.App();
-  new ItLitFargate(app, {
+  new IntegFargateLit(app, {
     env: {
       account: process.env.CDK_DEFAULT_ACCOUNT,
       region: process.env.CDK_DEFAULT_REGION,

@@ -1,13 +1,13 @@
 import * as ecs from '@aws-cdk/aws-ecs';
 import * as cdk from '@aws-cdk/core';
-import { FargateValidationFactory, IntrinsicValidator, Validation } from '..';
+import { FargateValidationFactory, IntrinsicValidator, Validation } from '../../src';
 import { TestAlarms } from './test-alarms';
 import { TestLambdas } from './test-lambdas';
 
 /** @internal */
-export class ItDev extends cdk.Stack {
+export class IntegDev extends cdk.Stack {
   constructor(scope: cdk.Construct, props: cdk.StackProps = {}) {
-    super(scope, 'ItDev', props);
+    super(scope, 'IntegDev', props);
 
     // Create an ECS cluster to run some Fargate tasks in.
     const cluster = new ecs.Cluster(this, 'Cluster');
@@ -63,7 +63,7 @@ export class ItDev extends cdk.Stack {
 
 if (!module.parent) {
   const app = new cdk.App();
-  new ItDev(app, {
+  new IntegDev(app, {
     env: {
       account: process.env.CDK_DEFAULT_ACCOUNT,
       region: process.env.CDK_DEFAULT_REGION,
