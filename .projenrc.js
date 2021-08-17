@@ -3,7 +3,7 @@ const project = new pj.AwsCdkConstructLibrary({
   author: 'Josh Kellendonk',
   authorAddress: 'joshkellendonk@gmail.com',
   cdkVersion: '1.95.2',
-  defaultReleaseBranch: 'master',
+  defaultReleaseBranch: 'main',
   name: '@wheatstalk/cdk-intrinsic-validator',
   repositoryUrl: 'https://github.com/wheatstalk/cdk-intrinsic-validator.git',
   description: 'Make deployments safer by adding intrinsic validation to your stacks',
@@ -28,6 +28,9 @@ const project = new pj.AwsCdkConstructLibrary({
     allowedUsernames: ['github-actions', 'github-actions[bot]', 'misterjoshua'],
   },
 
+  // Disable cdk dependencies as deps
+  // @see https://dev.to/aws-builders/correctly-defining-dependencies-in-l3-cdk-constructs-45p
+  cdkDependenciesAsDeps: false,
   cdkDependencies: [
     '@aws-cdk/core',
     '@aws-cdk/custom-resources',
