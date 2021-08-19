@@ -73,7 +73,7 @@
     "json-schema": "^0.3.0",
     "markmac": "^0.1",
     "npm-check-updates": "^11",
-    "projen": "^0.27.30",
+    "projen": "^0.27.31",
     "shx": "^0.3.3",
     "standard-version": "^9",
     "ts-jest": "^27.0.5",
