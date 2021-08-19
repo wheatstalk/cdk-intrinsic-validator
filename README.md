@@ -141,12 +141,12 @@ new IntrinsicValidator(scope, 'IntrinsicValidator', {
 
 ## Execute Puppeteer tests on every deployment
 
-You can execute functional tests with Puppeteer on every build. To accomplish
-this, you simply run a large Fargate task. Puppeteer runs Chromium, so it needs
-many resources and has some specific requirements of its execution.
+To run Puppeteer-based tests on every deployment, you can run Puppeteer in
+a Fargate task. Puppeteer runs Chromium, so it needs many resources and has
+some specific requirements.
 
-The example below (and in [examples/puppeteer][1]) shows how you can use Jest
-to orchestrate your Puppeteer tests:
+The example below (and in [examples/puppeteer][1]) shows how you can use
+Jest to orchestrate your Puppeteer tests on every stack deployment:
 
 <!-- <macro exec="lit-snip ./test/integ/integ.fargate-puppeteer.lit.ts"> -->
 ```ts
@@ -169,14 +169,16 @@ taskDefinition.addContainer('main', {
   },
   // We supply a command that runs jest to orchestrate Puppeteer.
   command: ['yarn', 'test', '--verbose'],
-  // The full of the test is too long to show in the CloudFormation output,
+  // The full test log is too long to show in the CloudFormation output,
   // so if we are interested in seeing why the tests failed, we need to
   // log the container output somewhere.
   logging: ecs.LogDriver.awsLogs({ streamPrefix: '/' }),
 });
 
+// Create an intrinsic validator as usual
 new IntrinsicValidator(scope, 'IntrinsicValidator', {
   validations: [
+    // Check that the Fargate task succeeds on every deploy or roll back.
     Validation.fargateTaskSucceeds({
       cluster,
       taskDefinition,
