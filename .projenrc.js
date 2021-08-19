@@ -81,6 +81,7 @@ const project = new pj.AwsCdkConstructLibrary({
 project.package.setScript('integ:dev', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.dev.ts"');
 project.package.setScript('integ:main', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.main.lit.ts"');
 project.package.setScript('integ:fargate', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.fargate.lit.ts"');
+project.package.setScript('integ:fargate-puppeteer', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.fargate-puppeteer.lit.ts"');
 project.package.setScript('integ:cloudwatch-alarm', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.cloudwatch-alarm.lit.ts"');
 project.package.setScript('integ:lambda', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.lambda.lit.ts"');
 project.package.setScript('integ:step-function', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.step-function.lit.ts"');
