@@ -33,14 +33,16 @@ export class IntegFargatePuppeteer extends cdk.Stack {
       },
       // We supply a command that runs jest to orchestrate Puppeteer.
       command: ['yarn', 'test', '--verbose'],
-      // The full of the test is too long to show in the CloudFormation output,
+      // The full test log is too long to show in the CloudFormation output,
       // so if we are interested in seeing why the tests failed, we need to
       // log the container output somewhere.
       logging: ecs.LogDriver.awsLogs({ streamPrefix: '/' }),
     });
 
+    // Create an intrinsic validator as usual
     new IntrinsicValidator(scope, 'IntrinsicValidator', {
       validations: [
+        // Check that the Fargate task succeeds on every deploy or roll back.
         Validation.fargateTaskSucceeds({
           cluster,
           taskDefinition,
