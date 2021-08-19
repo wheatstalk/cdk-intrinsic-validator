@@ -1,0 +1,18 @@
+{
+  "name": "ftest",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "jest-environment-node": "^27.0.6",
+    "mkdirp": "^1.0.4",
+    "puppeteer": "^10.2.0",
+    "rimraf": "^3.0.2"
+  },
+  "jest": {
+    "globalSetup": "./setup.js",
+    "globalTeardown": "./teardown.js",
+    "testEnvironment": "./puppeteer_environment.js"
+  }
+}

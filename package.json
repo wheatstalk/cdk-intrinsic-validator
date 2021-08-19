@@ -30,6 +30,7 @@
     "integ:dev": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.dev.ts\"",
     "integ:main": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.main.lit.ts\"",
     "integ:fargate": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.fargate.lit.ts\"",
+    "integ:fargate-puppeteer": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.fargate-puppeteer.lit.ts\"",
     "integ:cloudwatch-alarm": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.cloudwatch-alarm.lit.ts\"",
     "integ:lambda": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.lambda.lit.ts\"",
     "integ:step-function": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.step-function.lit.ts\"",
