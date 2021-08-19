@@ -16,6 +16,7 @@ You can add the following intrinsic validations:
 - Monitor CloudWatch Alarms for a while and roll back if they alarm.
 - Execute a Step Functions State Machine and roll back if it fails.
 - Invoke a Lambda Function to validate and roll back if it fails.
+- Run Puppeteer tests against your website and roll back if they fail.
 - More to come. If you have any ideas and want to contribute, please open a
   feature request!
 
@@ -61,7 +62,7 @@ new IntrinsicValidator(scope, 'IntrinsicValidator', {
 ```
 <!-- </macro> -->
 
-## Validate With Any Fargate Task
+## Validate with any Fargate task
 
 <!-- <macro exec="lit-snip ./test/integ/integ.fargate.lit.ts"> -->
 ```ts
@@ -102,7 +103,7 @@ new IntrinsicValidator(scope, 'IntrinsicValidator', {
 ```
 <!-- </macro> -->
 
-## Invoke an Ad-hoc Lambda
+## Invoke an ad-hoc Lambda
 
 <!-- <macro exec="lit-snip ./test/integ/integ.lambda.lit.ts"> -->
 ```ts
@@ -141,10 +142,11 @@ new IntrinsicValidator(scope, 'IntrinsicValidator', {
 ## Execute Puppeteer tests on every deployment
 
 You can execute functional tests with Puppeteer on every build. To accomplish
-this, you simply run a large Fargate task. Puppeteer requires a lot of
-resources and has some specific requirements of its execution. The example
-below (and the associated example in `examples/puppeteer`) shows how you can
-use Jest to orchestrate your Puppeteer tests:
+this, you simply run a large Fargate task. Puppeteer runs Chromium, so it needs
+many resources and has some specific requirements of its execution.
+
+The example below (and in [examples/puppeteer][1]) shows how you can use Jest
+to orchestrate your Puppeteer tests:
 
 <!-- <macro exec="lit-snip ./test/integ/integ.fargate-puppeteer.lit.ts"> -->
 ```ts
@@ -189,3 +191,5 @@ new IntrinsicValidator(scope, 'IntrinsicValidator', {
 - If you're adding `IntrinsicValidator` to your stack for the first time, try
   adding it without validations. This way, if the intrinsic validator catches
   a validation error, you can keep the State Machine that contains the error.
+
+[1]: examples/puppeteer
