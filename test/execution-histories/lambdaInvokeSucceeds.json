@@ -1,7 +1,7 @@
 {
     "events": [
         {
-            "timestamp": "2021-08-09T19:27:02.323000-06:00",
+            "timestamp": "2021-08-22T13:11:55.017000-06:00",
             "type": "ExecutionStarted",
             "id": 1,
             "previousEventId": 0,
@@ -10,11 +10,11 @@
                 "inputDetails": {
                     "truncated": false
                 },
-                "roleArn": "arn:aws:iam::CENSORED:role/ItLitLambda-IntrinsicValidatorStateMachineRole4BD3-1GAYM9QE0RPZX"
+                "roleArn": "arn:aws:iam::CENSORED:role/IntegErrorMessage-IntrinsicValidatorStateMachineRo-WNIYREYDSF71"
             }
         },
         {
-            "timestamp": "2021-08-09T19:27:02.368000-06:00",
+            "timestamp": "2021-08-22T13:11:55.062000-06:00",
             "type": "ParallelStateEntered",
             "id": 2,
             "previousEventId": 0,
@@ -27,18 +27,18 @@
             }
         },
         {
-            "timestamp": "2021-08-09T19:27:02.368000-06:00",
+            "timestamp": "2021-08-22T13:11:55.062000-06:00",
             "type": "ParallelStateStarted",
             "id": 3,
             "previousEventId": 2
         },
         {
-            "timestamp": "2021-08-09T19:27:02.368000-06:00",
-            "type": "PassStateEntered",
+            "timestamp": "2021-08-22T13:11:55.062000-06:00",
+            "type": "TaskStateEntered",
             "id": 4,
             "previousEventId": 3,
             "stateEnteredEventDetails": {
-                "name": "[0] AlwaysSucceeds",
+                "name": "[0] Check That Error Messages Show",
                 "input": "{}",
                 "inputDetails": {
                     "truncated": false
@@ -46,58 +46,32 @@
             }
         },
         {
-            "timestamp": "2021-08-09T19:27:02.368000-06:00",
-            "type": "PassStateExited",
+            "timestamp": "2021-08-22T13:11:55.062000-06:00",
+            "type": "TaskScheduled",
             "id": 5,
             "previousEventId": 4,
-            "stateExitedEventDetails": {
-                "name": "[0] AlwaysSucceeds",
-                "output": "\"Winner\"",
-                "outputDetails": {
-                    "truncated": false
-                }
-            }
-        },
-        {
-            "timestamp": "2021-08-09T19:27:02.368000-06:00",
-            "type": "TaskStateEntered",
-            "id": 6,
-            "previousEventId": 3,
-            "stateEnteredEventDetails": {
-                "name": "[1] LambdaInvokeSucceeds",
-                "input": "{}",
-                "inputDetails": {
-                    "truncated": false
-                }
-            }
-        },
-        {
-            "timestamp": "2021-08-09T19:27:02.368000-06:00",
-            "type": "TaskScheduled",
-            "id": 7,
-            "previousEventId": 6,
             "taskScheduledEventDetails": {
                 "resourceType": "lambda",
                 "resource": "invoke",
                 "region": "ca-central-1",
-                "parameters": "{\"FunctionName\":\"arn:aws:lambda:ca-central-1:CENSORED:function:ItLitLambda-AlwaysFails0D393A9D-9s2x9O7o7WgV\",\"Payload\":{}}"
+                "parameters": "{\"FunctionName\":\"arn:aws:lambda:ca-central-1:CENSORED:function:IntegErrorMessage-AlwaysFails0D393A9D-iNl73HRnjvmP\",\"Payload\":{}}"
             }
         },
         {
-            "timestamp": "2021-08-09T19:27:02.437000-06:00",
+            "timestamp": "2021-08-22T13:11:55.131000-06:00",
             "type": "TaskStarted",
-            "id": 8,
-            "previousEventId": 7,
+            "id": 6,
+            "previousEventId": 5,
             "taskStartedEventDetails": {
                 "resourceType": "lambda",
                 "resource": "invoke"
             }
         },
         {
-            "timestamp": "2021-08-09T19:27:02.704000-06:00",
+            "timestamp": "2021-08-22T13:11:55.390000-06:00",
             "type": "TaskFailed",
-            "id": 9,
-            "previousEventId": 8,
+            "id": 7,
+            "previousEventId": 6,
             "taskFailedEventDetails": {
                 "resourceType": "lambda",
                 "resource": "invoke",
@@ -106,22 +80,22 @@
             }
         },
         {
-            "timestamp": "2021-08-09T19:27:02.740000-06:00",
+            "timestamp": "2021-08-22T13:11:55.422000-06:00",
             "type": "TaskStateAborted",
-            "id": 10,
-            "previousEventId": 9
+            "id": 8,
+            "previousEventId": 7
         },
         {
-            "timestamp": "2021-08-09T19:27:02.740000-06:00",
+            "timestamp": "2021-08-22T13:11:55.422000-06:00",
             "type": "ParallelStateFailed",
-            "id": 11,
-            "previousEventId": 9
+            "id": 9,
+            "previousEventId": 7
         },
         {
-            "timestamp": "2021-08-09T19:27:02.771000-06:00",
+            "timestamp": "2021-08-22T13:11:55.455000-06:00",
             "type": "ExecutionFailed",
-            "id": 12,
-            "previousEventId": 11,
+            "id": 10,
+            "previousEventId": 9,
             "executionFailedEventDetails": {
                 "error": "Exception",
                 "cause": "{\"errorMessage\":\"An expected failure\",\"errorType\":\"Exception\",\"stackTrace\":[\"  File \\\"/var/task/index.py\\\", line 3, in handler\\n    raise Exception('An expected failure')\\n\"]}"

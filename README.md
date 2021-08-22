@@ -6,6 +6,9 @@ they fail, will automatically roll back the stack.
 
 **Example error**
 
+You can view errors directly in your CloudWatch event log. To see these
+errors, ensure that you run the CDK CLI with `--progress events`.
+
 ![An example of an intrinsic validation error](images/failure-example.png)
 
 ## Intrinsic Validation Types

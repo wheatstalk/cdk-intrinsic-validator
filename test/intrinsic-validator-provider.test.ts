@@ -3,49 +3,41 @@ import * as path from 'path';
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const provider = require('../lambda/intrinsic-validator-provider');
 
-test('finding failure messages', () => {
-  // GIVEN
-  const events = getEvents();
+describe('summarizing failure cause', () => {
+  const cases = [
+    [
+      'monitorAlarm.json',
+      '(FAILURE) [0] MonitorAlarm - Alarm: IntegErrorMessage-TestAlarmsAlwaysAlarming69FED027-XZB960YUVQLD is alarming',
+    ],
+    [
+      'lambdaInvokeSucceeds.json',
+      '(FAILURE) [0] Check That Error Messages Show - Exception: An expected failure\n' +
+      '  File "/var/task/index.py", line 3, in handler\n' +
+      '    raise Exception(\'An expected failure\')\n',
+    ],
+    [
+      'fargateTaskSucceeds.json',
+      '(FAILURE) [0] FargateTaskSucceeds - States.TaskFailed: Essential container in task exited',
+    ],
+    [
+      'stateMachineExecutionSucceeds.json',
+      '(FAILURE) [0] StateMachineExecutionSucceeds - ExecutionFailed: arn:aws:states:ca-central-1:CENSORED:stateMachine:SingletonAlarmMonitorStateMachine9830D808-yqO3EW4REqFh failed to execute',
+    ],
+  ];
 
-  // WHEN
-  const failures = provider.findFailures(events);
-
-  // THEN
-  expect(failures).toHaveLength(1);
-  expect(failures[0].name).toEqual('[1] LambdaInvokeSucceeds');
-  expect(failures[0].error).toEqual('Exception');
-  expect(failures[0].cause).toContain('An expected failure');
+  test.each(cases)('%s', (file, expectedError) => {
+    // GIVEN
+    const events = readExecutionHistory(file);
+    const [failure] = provider.findFailures(events);
+    // WHEN
+    const message = provider.renderFailure(failure);
+    // THEN
+    expect(message).toEqual(expectedError);
+  });
 });
 
-test('rendering an failure', () => {
-  const failure = {
-    name: '[1] LambdaInvokeSucceeds',
-    error: 'Exception',
-    cause: 'Test error',
-  };
-
-  // WHEN
-  const rendered = provider.renderFailure(failure);
-
-  // THEN
-  expect(rendered).toEqual('(FAILURE) [1] LambdaInvokeSucceeds - Exception: Test error');
-});
-
-test('rendering error messages from a complete history', () => {
-  // GIVEN
-  const events = getEvents();
-
-  // WHEN
-  const errorMessage = provider.renderErrorMessage(events);
-
-  // THEN
-  expect(errorMessage).toEqual(
-    expect.stringMatching(/\[1] LambdaInvokeSucceeds - Exception: .*An expected failure/),
-  );
-});
-
-function getEvents() {
-  const json = fs.readFileSync(path.join(__dirname, 'intrinsic-validator-provider.history.json')).toString('utf-8');
+function readExecutionHistory(historyFile: string) {
+  const json = fs.readFileSync(path.join(__dirname, 'execution-histories', historyFile)).toString('utf-8');
   const parsed = JSON.parse(json);
   return parsed.events;
 }

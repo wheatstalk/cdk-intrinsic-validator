@@ -1,0 +1,119 @@
+{
+    "events": [
+        {
+            "timestamp": "2021-08-22T13:24:22.157000-06:00",
+            "type": "ExecutionStarted",
+            "id": 1,
+            "previousEventId": 0,
+            "executionStartedEventDetails": {
+                "input": "{}",
+                "inputDetails": {
+                    "truncated": false
+                },
+                "roleArn": "arn:aws:iam::CENSORED:role/IntegErrorMessage-IntrinsicValidatorStateMachineRo-WNIYREYDSF71"
+            }
+        },
+        {
+            "timestamp": "2021-08-22T13:24:22.197000-06:00",
+            "type": "ParallelStateEntered",
+            "id": 2,
+            "previousEventId": 0,
+            "stateEnteredEventDetails": {
+                "name": "Validations",
+                "input": "{}",
+                "inputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2021-08-22T13:24:22.197000-06:00",
+            "type": "ParallelStateStarted",
+            "id": 3,
+            "previousEventId": 2
+        },
+        {
+            "timestamp": "2021-08-22T13:24:22.197000-06:00",
+            "type": "TaskStateEntered",
+            "id": 4,
+            "previousEventId": 3,
+            "stateEnteredEventDetails": {
+                "name": "[0] FargateTaskSucceeds",
+                "input": "{}",
+                "inputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2021-08-22T13:24:22.197000-06:00",
+            "type": "TaskScheduled",
+            "id": 5,
+            "previousEventId": 4,
+            "taskScheduledEventDetails": {
+                "resourceType": "ecs",
+                "resource": "runTask.sync",
+                "region": "ca-central-1",
+                "parameters": "{\"Cluster\":\"arn:aws:ecs:ca-central-1:CENSORED:cluster/IntegErrorMessage-ClusterEB0386A7-D3avQ7QPqbOn\",\"TaskDefinition\":\"IntegErrorMessageFargateValidationFactoryTaskDefinition05A4D5C6B\",\"NetworkConfiguration\":{\"AwsvpcConfiguration\":{\"Subnets\":[\"subnet-03f477aaadd5ffc48\",\"subnet-07c64e3992cf412b3\"],\"SecurityGroups\":[]}},\"LaunchType\":\"FARGATE\",\"StartedBy\":\"AWS Step Functions\"}"
+            }
+        },
+        {
+            "timestamp": "2021-08-22T13:24:22.253000-06:00",
+            "type": "TaskStarted",
+            "id": 6,
+            "previousEventId": 5,
+            "taskStartedEventDetails": {
+                "resourceType": "ecs",
+                "resource": "runTask.sync"
+            }
+        },
+        {
+            "timestamp": "2021-08-22T13:24:22.919000-06:00",
+            "type": "TaskSubmitted",
+            "id": 7,
+            "previousEventId": 6,
+            "taskSubmittedEventDetails": {
+                "resourceType": "ecs",
+                "resource": "runTask.sync",
+                "output": "{\"Failures\":[],\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"x-amzn-RequestId\":[\"9b18d28c-8622-426a-9d24-20cee2895a5e\"],\"Content-Length\":[\"1529\"],\"Date\":[\"Sun, 22 Aug 2021 19:24:22 GMT\"],\"Content-Type\":[\"application/x-amz-json-1.1\"]},\"HttpHeaders\":{\"Content-Length\":\"1529\",\"Content-Type\":\"application/x-amz-json-1.1\",\"Date\":\"Sun, 22 Aug 2021 19:24:22 GMT\",\"x-amzn-RequestId\":\"9b18d28c-8622-426a-9d24-20cee2895a5e\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"9b18d28c-8622-426a-9d24-20cee2895a5e\"},\"Tasks\":[{\"Attachments\":[{\"Details\":[{\"Name\":\"subnetId\",\"Value\":\"subnet-07c64e3992cf412b3\"}],\"Id\":\"2922ba41-a0e5-443c-a1ff-db70f19440b8\",\"Status\":\"PRECREATED\",\"Type\":\"ElasticNetworkInterface\"}],\"Attributes\":[],\"AvailabilityZone\":\"ca-central-1b\",\"ClusterArn\":\"arn:aws:ecs:ca-central-1:CENSORED:cluster/IntegErrorMessage-ClusterEB0386A7-D3avQ7QPqbOn\",\"Containers\":[{\"ContainerArn\":\"arn:aws:ecs:ca-central-1:CENSORED:container/IntegErrorMessage-ClusterEB0386A7-D3avQ7QPqbOn/af0ad45b795c46f9aad696fa30cefff9/bb8a6b45-197c-4d14-8e0e-39d62b11c0ea\",\"Cpu\":\"0\",\"GpuIds\":[],\"Image\":\"alpine:3\",\"LastStatus\":\"PENDING\",\"ManagedAgents\":[],\"Name\":\"script\",\"NetworkBindings\":[],\"NetworkInterfaces\":[],\"TaskArn\":\"arn:aws:ecs:ca-central-1:CENSORED:task/IntegErrorMessage-ClusterEB0386A7-D3avQ7QPqbOn/af0ad45b795c46f9aad696fa30cefff9\"}],\"Cpu\":\"256\",\"CreatedAt\":1629660262881,\"DesiredStatus\":\"RUNNING\",\"EnableExecuteCommand\":false,\"EphemeralStorage\":{\"SizeInGiB\":20},\"Group\":\"family:IntegErrorMessageFargateValidationFactoryTaskDefinition05A4D5C6B\",\"InferenceAccelerators\":[],\"LastStatus\":\"PROVISIONING\",\"LaunchType\":\"FARGATE\",\"Memory\":\"512\",\"Overrides\":{\"ContainerOverrides\":[{\"Command\":[],\"Environment\":[],\"EnvironmentFiles\":[],\"Name\":\"script\",\"ResourceRequirements\":[]}],\"InferenceAcceleratorOverrides\":[]},\"PlatformVersion\":\"1.4.0\",\"StartedBy\":\"AWS Step Functions\",\"Tags\":[],\"TaskArn\":\"arn:aws:ecs:ca-central-1:CENSORED:task/IntegErrorMessage-ClusterEB0386A7-D3avQ7QPqbOn/af0ad45b795c46f9aad696fa30cefff9\",\"TaskDefinitionArn\":\"arn:aws:ecs:ca-central-1:CENSORED:task-definition/IntegErrorMessageFargateValidationFactoryTaskDefinition05A4D5C6B:1\",\"Version\":1}]}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2021-08-22T13:25:01.481000-06:00",
+            "type": "TaskFailed",
+            "id": 8,
+            "previousEventId": 7,
+            "taskFailedEventDetails": {
+                "resourceType": "ecs",
+                "resource": "runTask.sync",
+                "error": "States.TaskFailed",
+                "cause": "{\"Attachments\":[{\"Details\":[{\"Name\":\"subnetId\",\"Value\":\"subnet-07c64e3992cf412b3\"},{\"Name\":\"networkInterfaceId\",\"Value\":\"eni-0c77f8e70c9f4e92f\"},{\"Name\":\"macAddress\",\"Value\":\"06:ad:4c:d4:9e:c8\"},{\"Name\":\"privateDnsName\",\"Value\":\"ip-10-0-208-92.ca-central-1.compute.internal\"},{\"Name\":\"privateIPv4Address\",\"Value\":\"10.0.208.92\"}],\"Id\":\"2922ba41-a0e5-443c-a1ff-db70f19440b8\",\"Status\":\"DELETED\",\"Type\":\"eni\"}],\"Attributes\":[],\"AvailabilityZone\":\"ca-central-1b\",\"ClusterArn\":\"arn:aws:ecs:ca-central-1:CENSORED:cluster/IntegErrorMessage-ClusterEB0386A7-D3avQ7QPqbOn\",\"Connectivity\":\"CONNECTED\",\"ConnectivityAt\":1629660266643,\"Containers\":[{\"ContainerArn\":\"arn:aws:ecs:ca-central-1:CENSORED:container/IntegErrorMessage-ClusterEB0386A7-D3avQ7QPqbOn/af0ad45b795c46f9aad696fa30cefff9/bb8a6b45-197c-4d14-8e0e-39d62b11c0ea\",\"Cpu\":\"0\",\"ExitCode\":1,\"GpuIds\":[],\"Image\":\"alpine:3\",\"LastStatus\":\"STOPPED\",\"ManagedAgents\":[],\"Name\":\"script\",\"NetworkBindings\":[],\"NetworkInterfaces\":[{\"AttachmentId\":\"2922ba41-a0e5-443c-a1ff-db70f19440b8\",\"PrivateIpv4Address\":\"10.0.208.92\"}],\"RuntimeId\":\"af0ad45b795c46f9aad696fa30cefff9-540962730\",\"TaskArn\":\"arn:aws:ecs:ca-central-1:CENSORED:task/IntegErrorMessage-ClusterEB0386A7-D3avQ7QPqbOn/af0ad45b795c46f9aad696fa30cefff9\"}],\"Cpu\":\"256\",\"CreatedAt\":1629660262881,\"DesiredStatus\":\"STOPPED\",\"EnableExecuteCommand\":false,\"EphemeralStorage\":{\"SizeInGiB\":20},\"ExecutionStoppedAt\":1629660277358,\"Group\":\"family:IntegErrorMessageFargateValidationFactoryTaskDefinition05A4D5C6B\",\"InferenceAccelerators\":[],\"LastStatus\":\"STOPPED\",\"LaunchType\":\"FARGATE\",\"Memory\":\"512\",\"Overrides\":{\"ContainerOverrides\":[{\"Command\":[],\"Environment\":[],\"EnvironmentFiles\":[],\"Name\":\"script\",\"ResourceRequirements\":[]}],\"InferenceAcceleratorOverrides\":[]},\"PlatformVersion\":\"1.4.0\",\"PullStartedAt\":1629660275500,\"PullStoppedAt\":1629660276679,\"StartedAt\":1629660277349,\"StartedBy\":\"AWS Step Functions\",\"StopCode\":\"EssentialContainerExited\",\"StoppedAt\":1629660300019,\"StoppedReason\":\"Essential container in task exited\",\"StoppingAt\":1629660287388,\"Tags\":[],\"TaskArn\":\"arn:aws:ecs:ca-central-1:CENSORED:task/IntegErrorMessage-ClusterEB0386A7-D3avQ7QPqbOn/af0ad45b795c46f9aad696fa30cefff9\",\"TaskDefinitionArn\":\"arn:aws:ecs:ca-central-1:CENSORED:task-definition/IntegErrorMessageFargateValidationFactoryTaskDefinition05A4D5C6B:1\",\"Version\":5}"
+            }
+        },
+        {
+            "timestamp": "2021-08-22T13:25:01.516000-06:00",
+            "type": "TaskStateAborted",
+            "id": 9,
+            "previousEventId": 8
+        },
+        {
+            "timestamp": "2021-08-22T13:25:01.516000-06:00",
+            "type": "ParallelStateFailed",
+            "id": 10,
+            "previousEventId": 8
+        },
+        {
+            "timestamp": "2021-08-22T13:25:01.541000-06:00",
+            "type": "ExecutionFailed",
+            "id": 11,
+            "previousEventId": 10,
+            "executionFailedEventDetails": {
+                "error": "States.TaskFailed",
+                "cause": "{\"Attachments\":[{\"Details\":[{\"Name\":\"subnetId\",\"Value\":\"subnet-07c64e3992cf412b3\"},{\"Name\":\"networkInterfaceId\",\"Value\":\"eni-0c77f8e70c9f4e92f\"},{\"Name\":\"macAddress\",\"Value\":\"06:ad:4c:d4:9e:c8\"},{\"Name\":\"privateDnsName\",\"Value\":\"ip-10-0-208-92.ca-central-1.compute.internal\"},{\"Name\":\"privateIPv4Address\",\"Value\":\"10.0.208.92\"}],\"Id\":\"2922ba41-a0e5-443c-a1ff-db70f19440b8\",\"Status\":\"DELETED\",\"Type\":\"eni\"}],\"Attributes\":[],\"AvailabilityZone\":\"ca-central-1b\",\"ClusterArn\":\"arn:aws:ecs:ca-central-1:CENSORED:cluster/IntegErrorMessage-ClusterEB0386A7-D3avQ7QPqbOn\",\"Connectivity\":\"CONNECTED\",\"ConnectivityAt\":1629660266643,\"Containers\":[{\"ContainerArn\":\"arn:aws:ecs:ca-central-1:CENSORED:container/IntegErrorMessage-ClusterEB0386A7-D3avQ7QPqbOn/af0ad45b795c46f9aad696fa30cefff9/bb8a6b45-197c-4d14-8e0e-39d62b11c0ea\",\"Cpu\":\"0\",\"ExitCode\":1,\"GpuIds\":[],\"Image\":\"alpine:3\",\"LastStatus\":\"STOPPED\",\"ManagedAgents\":[],\"Name\":\"script\",\"NetworkBindings\":[],\"NetworkInterfaces\":[{\"AttachmentId\":\"2922ba41-a0e5-443c-a1ff-db70f19440b8\",\"PrivateIpv4Address\":\"10.0.208.92\"}],\"RuntimeId\":\"af0ad45b795c46f9aad696fa30cefff9-540962730\",\"TaskArn\":\"arn:aws:ecs:ca-central-1:CENSORED:task/IntegErrorMessage-ClusterEB0386A7-D3avQ7QPqbOn/af0ad45b795c46f9aad696fa30cefff9\"}],\"Cpu\":\"256\",\"CreatedAt\":1629660262881,\"DesiredStatus\":\"STOPPED\",\"EnableExecuteCommand\":false,\"EphemeralStorage\":{\"SizeInGiB\":20},\"ExecutionStoppedAt\":1629660277358,\"Group\":\"family:IntegErrorMessageFargateValidationFactoryTaskDefinition05A4D5C6B\",\"InferenceAccelerators\":[],\"LastStatus\":\"STOPPED\",\"LaunchType\":\"FARGATE\",\"Memory\":\"512\",\"Overrides\":{\"ContainerOverrides\":[{\"Command\":[],\"Environment\":[],\"EnvironmentFiles\":[],\"Name\":\"script\",\"ResourceRequirements\":[]}],\"InferenceAcceleratorOverrides\":[]},\"PlatformVersion\":\"1.4.0\",\"PullStartedAt\":1629660275500,\"PullStoppedAt\":1629660276679,\"StartedAt\":1629660277349,\"StartedBy\":\"AWS Step Functions\",\"StopCode\":\"EssentialContainerExited\",\"StoppedAt\":1629660300019,\"StoppedReason\":\"Essential container in task exited\",\"StoppingAt\":1629660287388,\"Tags\":[],\"TaskArn\":\"arn:aws:ecs:ca-central-1:CENSORED:task/IntegErrorMessage-ClusterEB0386A7-D3avQ7QPqbOn/af0ad45b795c46f9aad696fa30cefff9\",\"TaskDefinitionArn\":\"arn:aws:ecs:ca-central-1:CENSORED:task-definition/IntegErrorMessageFargateValidationFactoryTaskDefinition05A4D5C6B:1\",\"Version\":5}"
+            }
+        }
+    ]
+}
