@@ -383,6 +383,13 @@ class MonitorAlarm extends Validation {
       integrationPattern: sfn.IntegrationPattern.RUN_JOB,
     });
 
+    const failureMessage = new sfn.Fail(privateScope, `${id} - Alarming`, {
+      error: 'Alarm',
+      cause: `${this.alarm.alarmName} is alarming`,
+    });
+
+    chainable.addCatch(failureMessage);
+
     return {
       chainable,
     };
@@ -416,6 +423,13 @@ class StateMachineExecutionSucceeds extends Validation {
       input: this.options.input,
       integrationPattern: sfn.IntegrationPattern.RUN_JOB,
     });
+
+    const failureMessage = new sfn.Fail(chainable, `${id} - Alarming`, {
+      error: 'ExecutionFailed',
+      cause: `${this.options.stateMachine.stateMachineArn} failed to execute`,
+    });
+
+    chainable.addCatch(failureMessage);
 
     return {
       chainable,

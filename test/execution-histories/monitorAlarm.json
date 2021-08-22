@@ -1,0 +1,139 @@
+{
+    "events": [
+        {
+            "timestamp": "2021-08-22T13:08:33.914000-06:00",
+            "type": "ExecutionStarted",
+            "id": 1,
+            "previousEventId": 0,
+            "executionStartedEventDetails": {
+                "input": "{}",
+                "inputDetails": {
+                    "truncated": false
+                },
+                "roleArn": "arn:aws:iam::CENSORED:role/IntegErrorMessage-IntrinsicValidatorStateMachineRo-WNIYREYDSF71"
+            }
+        },
+        {
+            "timestamp": "2021-08-22T13:08:33.955000-06:00",
+            "type": "ParallelStateEntered",
+            "id": 2,
+            "previousEventId": 0,
+            "stateEnteredEventDetails": {
+                "name": "Validations",
+                "input": "{}",
+                "inputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2021-08-22T13:08:33.955000-06:00",
+            "type": "ParallelStateStarted",
+            "id": 3,
+            "previousEventId": 2
+        },
+        {
+            "timestamp": "2021-08-22T13:08:33.955000-06:00",
+            "type": "TaskStateEntered",
+            "id": 4,
+            "previousEventId": 3,
+            "stateEnteredEventDetails": {
+                "name": "[0] MonitorAlarm",
+                "input": "{}",
+                "inputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2021-08-22T13:08:33.955000-06:00",
+            "type": "TaskScheduled",
+            "id": 5,
+            "previousEventId": 4,
+            "taskScheduledEventDetails": {
+                "resourceType": "states",
+                "resource": "startExecution.sync:2",
+                "region": "ca-central-1",
+                "parameters": "{\"Input\":{\"AlarmName\":\"IntegErrorMessage-TestAlarmsAlwaysAlarming69FED027-XZB960YUVQLD\",\"MonitoringDurationSeconds\":10},\"StateMachineArn\":\"arn:aws:states:ca-central-1:CENSORED:stateMachine:SingletonAlarmMonitorStateMachine9830D808-yqO3EW4REqFh\"}"
+            }
+        },
+        {
+            "timestamp": "2021-08-22T13:08:34.026000-06:00",
+            "type": "TaskStarted",
+            "id": 6,
+            "previousEventId": 5,
+            "taskStartedEventDetails": {
+                "resourceType": "states",
+                "resource": "startExecution.sync:2"
+            }
+        },
+        {
+            "timestamp": "2021-08-22T13:08:34.162000-06:00",
+            "type": "TaskSubmitted",
+            "id": 7,
+            "previousEventId": 6,
+            "taskSubmittedEventDetails": {
+                "resourceType": "states",
+                "resource": "startExecution.sync:2",
+                "output": "{\"ExecutionArn\":\"arn:aws:states:ca-central-1:CENSORED:execution:SingletonAlarmMonitorStateMachine9830D808-yqO3EW4REqFh:bba9cb4d-ec21-42c9-9c6d-1fe53616f74a\",\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"x-amzn-RequestId\":[\"87a07f1c-3178-467f-9d55-5d1096e4befe\"],\"Content-Length\":[\"190\"],\"Content-Type\":[\"application/x-amz-json-1.0\"]},\"HttpHeaders\":{\"Content-Length\":\"190\",\"Content-Type\":\"application/x-amz-json-1.0\",\"x-amzn-RequestId\":\"87a07f1c-3178-467f-9d55-5d1096e4befe\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"87a07f1c-3178-467f-9d55-5d1096e4befe\"},\"StartDate\":1629659314125}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2021-08-22T13:08:37.918000-06:00",
+            "type": "TaskFailed",
+            "id": 8,
+            "previousEventId": 7,
+            "taskFailedEventDetails": {
+                "resourceType": "states",
+                "resource": "startExecution.sync:2",
+                "error": "States.TaskFailed",
+                "cause": "{\"ExecutionArn\":\"arn:aws:states:ca-central-1:CENSORED:execution:SingletonAlarmMonitorStateMachine9830D808-yqO3EW4REqFh:bba9cb4d-ec21-42c9-9c6d-1fe53616f74a\",\"Input\":\"{\\\"AlarmName\\\":\\\"IntegErrorMessage-TestAlarmsAlwaysAlarming69FED027-XZB960YUVQLD\\\",\\\"MonitoringDurationSeconds\\\":10}\",\"InputDetails\":{\"Included\":true},\"Name\":\"bba9cb4d-ec21-42c9-9c6d-1fe53616f74a\",\"StartDate\":1629659314125,\"StateMachineArn\":\"arn:aws:states:ca-central-1:CENSORED:stateMachine:SingletonAlarmMonitorStateMachine9830D808-yqO3EW4REqFh\",\"Status\":\"FAILED\",\"StopDate\":1629659315755}"
+            }
+        },
+        {
+            "timestamp": "2021-08-22T13:08:37.950000-06:00",
+            "type": "TaskStateExited",
+            "id": 9,
+            "previousEventId": 8,
+            "stateExitedEventDetails": {
+                "name": "[0] MonitorAlarm",
+                "output": "{\"Error\":\"States.TaskFailed\",\"Cause\":\"{\\\"ExecutionArn\\\":\\\"arn:aws:states:ca-central-1:CENSORED:execution:SingletonAlarmMonitorStateMachine9830D808-yqO3EW4REqFh:bba9cb4d-ec21-42c9-9c6d-1fe53616f74a\\\",\\\"Input\\\":\\\"{\\\\\\\"AlarmName\\\\\\\":\\\\\\\"IntegErrorMessage-TestAlarmsAlwaysAlarming69FED027-XZB960YUVQLD\\\\\\\",\\\\\\\"MonitoringDurationSeconds\\\\\\\":10}\\\",\\\"InputDetails\\\":{\\\"Included\\\":true},\\\"Name\\\":\\\"bba9cb4d-ec21-42c9-9c6d-1fe53616f74a\\\",\\\"StartDate\\\":1629659314125,\\\"StateMachineArn\\\":\\\"arn:aws:states:ca-central-1:CENSORED:stateMachine:SingletonAlarmMonitorStateMachine9830D808-yqO3EW4REqFh\\\",\\\"Status\\\":\\\"FAILED\\\",\\\"StopDate\\\":1629659315755}\"}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2021-08-22T13:08:37.950000-06:00",
+            "type": "FailStateEntered",
+            "id": 10,
+            "previousEventId": 9,
+            "stateEnteredEventDetails": {
+                "name": "[0] MonitorAlarm - Alarming",
+                "input": "{\"Error\":\"States.TaskFailed\",\"Cause\":\"{\\\"ExecutionArn\\\":\\\"arn:aws:states:ca-central-1:CENSORED:execution:SingletonAlarmMonitorStateMachine9830D808-yqO3EW4REqFh:bba9cb4d-ec21-42c9-9c6d-1fe53616f74a\\\",\\\"Input\\\":\\\"{\\\\\\\"AlarmName\\\\\\\":\\\\\\\"IntegErrorMessage-TestAlarmsAlwaysAlarming69FED027-XZB960YUVQLD\\\\\\\",\\\\\\\"MonitoringDurationSeconds\\\\\\\":10}\\\",\\\"InputDetails\\\":{\\\"Included\\\":true},\\\"Name\\\":\\\"bba9cb4d-ec21-42c9-9c6d-1fe53616f74a\\\",\\\"StartDate\\\":1629659314125,\\\"StateMachineArn\\\":\\\"arn:aws:states:ca-central-1:CENSORED:stateMachine:SingletonAlarmMonitorStateMachine9830D808-yqO3EW4REqFh\\\",\\\"Status\\\":\\\"FAILED\\\",\\\"StopDate\\\":1629659315755}\"}",
+                "inputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2021-08-22T13:08:37.950000-06:00",
+            "type": "ParallelStateFailed",
+            "id": 11,
+            "previousEventId": 10
+        },
+        {
+            "timestamp": "2021-08-22T13:08:37.981000-06:00",
+            "type": "ExecutionFailed",
+            "id": 12,
+            "previousEventId": 11,
+            "executionFailedEventDetails": {
+                "error": "Alarm",
+                "cause": "IntegErrorMessage-TestAlarmsAlwaysAlarming69FED027-XZB960YUVQLD is alarming"
+            }
+        }
+    ]
+}
