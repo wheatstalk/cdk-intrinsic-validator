@@ -53,6 +53,7 @@ const project = new pj.AwsCdkConstructLibrary({
     '@wheatstalk/lit-snip@^0.0',
     'node-fetch@^2',
     'node-abort-controller@^3',
+    'esbuild',
   ],
 
   gitignore: [
@@ -105,8 +106,8 @@ project.buildTask.spawn(macros);
 
 const commonOptions = '--bundle --external:aws-sdk --platform=node';
 // Using testCompileTask because it runs before compile...
-project.testCompileTask.exec(`npx esbuild ${commonOptions} src/lambda/intrinsic-validator-provider/lambda.ts --outfile=lambda/intrinsic-validator-provider.js`);
-project.testCompileTask.exec(`npx esbuild ${commonOptions} src/lambda/http-check/lambda.ts --outfile=lambda/http-check.js`);
-project.testCompileTask.exec(`npx esbuild ${commonOptions} src/lambda/check-alarm-status/lambda.ts --outfile=lambda/check-alarm-status.js`);
+project.testCompileTask.exec(`esbuild ${commonOptions} src/lambda/intrinsic-validator-provider/lambda.ts --outfile=lambda/intrinsic-validator-provider.js`);
+project.testCompileTask.exec(`esbuild ${commonOptions} src/lambda/http-check/lambda.ts --outfile=lambda/http-check.js`);
+project.testCompileTask.exec(`esbuild ${commonOptions} src/lambda/check-alarm-status/lambda.ts --outfile=lambda/check-alarm-status.js`);
 
 project.synth();
