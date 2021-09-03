@@ -1,20 +1,17 @@
-const AWS = require('aws-sdk');
+// eslint-disable-next-line
+import { StepFunctions } from 'aws-sdk';
 
-// Lambda handlers
-exports.onEventHandler = onEventHandler;
-exports.isCompleteHandler = isCompleteHandler;
-
-// For testing:
-exports.renderErrorMessage = renderErrorMessage;
-exports.findFailures = findFailures;
-exports.renderFailure = renderFailure;
+export interface OnEventHandlerRequest {
+  readonly RequestType: string;
+  readonly StateMachineExecutionArn: string;
+}
 
 /**
  * Handles Resource events. We only care about the Create event as we assume
  * that a new custom resource will be created every time the stack is deployed
  * and the old deleted.
  */
-async function onEventHandler(event, _context) {
+export async function onEventHandler(event: OnEventHandlerRequest) {
   if (event.RequestType !== 'Create') {
     console.log(`${event.RequestType} event. Doing nothing.`);
     return {
@@ -36,36 +33,11 @@ async function onEventHandler(event, _context) {
   };
 }
 
-/**
- * Collect all history events from a step function execution.
- * @param {AWS.StepFunctions} stepFunctions
- * @param {string} stateMachineExecutionArn
- * @returns {Promise<StepFunctions.HistoryEvent[]>}
- */
-async function getAllHistoryEvents(stepFunctions, stateMachineExecutionArn) {
-  /**
-   * @type {AWS.StepFunctions.HistoryEvent[]}
-   */
-  const historyEvents = [];
-
-  let nextToken = undefined;
-  do {
-    const history = await stepFunctions.getExecutionHistory({
-      executionArn: stateMachineExecutionArn,
-      nextToken: nextToken,
-    }).promise();
-
-    if (history.events) {
-      historyEvents.push.apply(historyEvents, history.events);
-    }
-
-    nextToken = history.nextToken;
-  } while (nextToken);
-
-  return historyEvents;
+export interface IsCompleteHandlerRequest {
+  readonly StateMachineExecutionArn: string;
 }
 
-async function isCompleteHandler(event, _context) {
+export async function isCompleteHandler(event: IsCompleteHandlerRequest) {
   const stateMachineExecutionArn = event.StateMachineExecutionArn;
 
   // We don't have any idea what to do if there's no StateMachineExecutionArn,
@@ -111,39 +83,52 @@ function getStateMachineArn() {
 
 /**
  * Get the step functions client.
- * @returns {AWS.StepFunctions}
  */
-function getStepFunctionsClient() {
-  return new AWS.StepFunctions();
+function getStepFunctionsClient(): StepFunctions {
+  return new StepFunctions();
+}
+
+/**
+ * Collect all history events from a step function execution.
+ */
+async function getAllHistoryEvents(stepFunctions: StepFunctions, stateMachineExecutionArn: string): Promise<StepFunctions.HistoryEvent[]> {
+  const historyEvents = new Array<StepFunctions.HistoryEvent>();
+
+  let nextToken = undefined;
+  do {
+    const history: StepFunctions.GetExecutionHistoryOutput = await stepFunctions.getExecutionHistory({
+      executionArn: stateMachineExecutionArn,
+      nextToken: nextToken,
+    }).promise();
+
+    if (history.events) {
+      historyEvents.push.apply(historyEvents, history.events);
+    }
+
+    nextToken = history.nextToken;
+  } while (nextToken);
+
+  return historyEvents;
 }
 
 /**
  * Render an error message from the history events.
- * @param {AWS.StepFunctions.HistoryEvent[]} historyEvents
- * @returns string
  */
-function renderErrorMessage(historyEvents) {
+export function renderErrorMessage(historyEvents: StepFunctions.HistoryEvent[]): string {
   const failedChecks = findFailures(historyEvents)
     .map(renderFailure);
   const message = 'One or more of your intrinsic validations have failed. The stack update will be cancelled.\n\n';
-  return message + 'INTRINSIC VALIDATION FAILURES:\n\n' + failedChecks.join('\n\n') + "\n";
+  return message + 'INTRINSIC VALIDATION FAILURES:\n\n' + failedChecks.join('\n\n') + '\n';
 }
+
+export type HistoryEventIndex = Record<string, StepFunctions.HistoryEvent>;
 
 /**
  * Find failing checks and render them
- * @param {AWS.StepFunctions.HistoryEvent[]} historyEvents
- * @returns {ReconstructedFailure[]}
  */
-function findFailures(historyEvents) {
-  /**
-   * @type {Record<string, AWS.StepFunctions.HistoryEvent>}
-   */
-  const eventIndex = {};
-
-  /**
-   * @type {ReconstructedFailure[]}
-   */
-  let failures = [];
+export function findFailures(historyEvents: StepFunctions.HistoryEvent[]): ReconstructedFailure[] {
+  const eventIndex: HistoryEventIndex = {};
+  let failures = new Array<ReconstructedFailure>();
 
   historyEvents
     .forEach(historyEvent => {
@@ -164,10 +149,8 @@ function findFailures(historyEvents) {
 
 /**
  * Render a reconstructed failure to a user-friendly message.
- * @param {ReconstructedFailure} failure
- * @returns {string}
  */
-function renderFailure(failure) {
+export function renderFailure(failure: ReconstructedFailure): string {
   const summarizedCause = summarizeFailureCause(failure);
 
   // Note: Do not use emojis! CloudFormation will complain that: "Response is
@@ -180,10 +163,8 @@ function renderFailure(failure) {
  * in their CloudWatch events. Once Step Functions supports dynamic failure
  * messages, we should pass all responsibility to format errors back to the
  * state machine.
- * @param {ReconstructedFailure} failure 
- * @returns {string}
  */
-function summarizeFailureCause(failure) {
+function summarizeFailureCause(failure: ReconstructedFailure): string {
   // XXX: I can't find information on the maximum length of the CloudFormation
   // message, but there is definitely a maximum that can cause CloudFormation
   // to complain that the message is too long and not to show anything else.
@@ -202,11 +183,12 @@ function summarizeFailureCause(failure) {
         return failure.cause.slice(0, CAUSE_SLICE_LENGTH);
       }
 
-    case 'Exception':
+    case 'Error': // nodejs throw new Error()
+    case 'Exception': // python exception
       try {
         const exception = JSON.parse(failure.cause);
         const errorMessage = exception.errorMessage;
-        const stackTrace = exception.stackTrace || [];
+        const stackTrace = exception.stackTrace ?? exception.trace ?? [];
 
         if (!errorMessage) {
           throw new Error('Exception did not contain an errorMessage');
@@ -216,47 +198,42 @@ function summarizeFailureCause(failure) {
         lines.push.apply(lines, stackTrace);
 
         return lines.join('\n');
-      } catch(e) {
+      } catch (e) {
         console.error('Could not decode exception:', e);
         return failure.cause;
       }
-    
+
     default:
       return failure.cause;
   }
 }
 
-/**
- * @typedef ReconstructedFailure
- * @type object
- * @property {string} name
- * @property {string} error
- * @property {string} cause
- */
+export interface ReconstructedFailure {
+  readonly name: string;
+  readonly error: string;
+  readonly cause: string;
+}
 
 /**
  * Reconstruct a task failure so that it includes the task state.
- * @param historyEvent
- * @param eventIndex
- * @returns {ReconstructedFailure}
  */
-function reconstructTaskFailure(historyEvent, eventIndex) {
+function reconstructTaskFailure(historyEvent: StepFunctions.HistoryEvent, eventIndex: HistoryEventIndex): ReconstructedFailure {
   let name = 'Unknown state';
   let error = 'Unknown error';
   let cause = 'Unknown cause';
 
-  let currentEvent = historyEvent;
+  let currentEvent: StepFunctions.HistoryEvent|undefined = historyEvent;
   while (currentEvent) {
     switch (currentEvent.type) {
       case 'ExecutionFailed':
-        error = currentEvent.executionFailedEventDetails.error || error;
-        cause = currentEvent.executionFailedEventDetails.cause || cause;
+        error = currentEvent.executionFailedEventDetails!.error || error;
+        cause = currentEvent.executionFailedEventDetails!.cause || cause;
         break;
       case 'TaskStarted':
       case 'TaskScheduled':
         break;
       case 'TaskStateEntered':
-        name = currentEvent.stateEnteredEventDetails.name;
+        name = currentEvent.stateEnteredEventDetails!.name;
         return {
           name: name,
           error: error,

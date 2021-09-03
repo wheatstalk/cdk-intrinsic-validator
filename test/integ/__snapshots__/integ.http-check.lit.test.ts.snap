@@ -41,112 +41,6 @@ Object {
     },
   },
   "Resources": Object {
-    "AlwaysFails0D393A9D": Object {
-      "DependsOn": Array [
-        "AlwaysFailsServiceRole4F545107",
-      ],
-      "Properties": Object {
-        "Code": Object {
-          "ZipFile": "
-def handler(event, context):
-  raise Exception('An expected failure')
-",
-        },
-        "Handler": "index.handler",
-        "Role": Object {
-          "Fn::GetAtt": Array [
-            "AlwaysFailsServiceRole4F545107",
-            "Arn",
-          ],
-        },
-        "Runtime": "python3.8",
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "AlwaysFailsServiceRole4F545107": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                "arn:",
-                Object {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "AlwaysSucceeds94CDADD6": Object {
-      "DependsOn": Array [
-        "AlwaysSucceedsServiceRoleE790EBB8",
-      ],
-      "Properties": Object {
-        "Code": Object {
-          "ZipFile": "
-def handler(event, context):
-  return 'it works'
-",
-        },
-        "Handler": "index.handler",
-        "Role": Object {
-          "Fn::GetAtt": Array [
-            "AlwaysSucceedsServiceRoleE790EBB8",
-            "Arn",
-          ],
-        },
-        "Runtime": "python3.8",
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "AlwaysSucceedsServiceRoleE790EBB8": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                "arn:",
-                Object {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
     "IntrinsicValidator72B8901E": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
@@ -536,7 +430,7 @@ def handler(event, context):
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - isComplete (IntegLambdaLit/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - isComplete (IntegHttpCheckLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -699,7 +593,7 @@ def handler(event, context):
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onEvent (IntegLambdaLit/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - onEvent (IntegHttpCheckLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -872,7 +766,7 @@ def handler(event, context):
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onTimeout (IntegLambdaLit/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - onTimeout (IntegHttpCheckLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -1102,18 +996,14 @@ def handler(event, context):
           "Fn::Join": Array [
             "",
             Array [
-              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] LambdaInvokeSucceeds\\",\\"States\\":{\\"[0] LambdaInvokeSucceeds\\":{\\"End\\":true,\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2}],\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
-              Object {
-                "Ref": "AWS::Partition",
-              },
-              ":states:::lambda:invoke\\",\\"Parameters\\":{\\"FunctionName\\":\\"",
+              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] Http Check Succeeds\\",\\"States\\":{\\"[0] Http Check Succeeds\\":{\\"End\\":true,\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2}],\\"Type\\":\\"Task\\",\\"Resource\\":\\"",
               Object {
                 "Fn::GetAtt": Array [
-                  "AlwaysSucceeds94CDADD6",
+                  "SingletonLambdahttpcheckhandler9225252D",
                   "Arn",
                 ],
               },
-              "\\",\\"Payload.$\\":\\"$\\"}}}}]}}}",
+              "\\",\\"Parameters\\":{\\"url\\":\\"https://httpstat.us/200\\",\\"expectedStatus\\":200,\\"followRedirects\\":false,\\"timeout\\":3000,\\"checkPattern\\":\\"\\\\\\\\d+\\\\\\\\s+OK\\",\\"checkPatternFlags\\":\\"i\\"}}}}]}}}",
             ],
           ],
         },
@@ -1163,7 +1053,7 @@ def handler(event, context):
               "Effect": "Allow",
               "Resource": Object {
                 "Fn::GetAtt": Array [
-                  "AlwaysSucceeds94CDADD6",
+                  "SingletonLambdahttpcheckhandler9225252D",
                   "Arn",
                 ],
               },
@@ -1289,6 +1179,92 @@ def handler(event, context):
         ],
       },
       "Type": "AWS::IAM::Policy",
+    },
+    "SingletonLambdahttpcheckhandler9225252D": Object {
+      "DependsOn": Array [
+        "SingletonLambdahttpcheckhandlerServiceRole005D51DB",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParameters9ffd462230f70a037837e62c2303ef56c80447ee882ba10d605d2f104f1cc26bS3Bucket7DE0DF9F",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters9ffd462230f70a037837e62c2303ef56c80447ee882ba10d605d2f104f1cc26bS3VersionKey2E94249B",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters9ffd462230f70a037837e62c2303ef56c80447ee882ba10d605d2f104f1cc26bS3VersionKey2E94249B",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Handler": "http-check.handler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "SingletonLambdahttpcheckhandlerServiceRole005D51DB",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "SingletonLambdahttpcheckhandlerServiceRole005D51DB": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
     },
   },
 }

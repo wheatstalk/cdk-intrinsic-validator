@@ -1,4 +1,3 @@
-import * as path from 'path';
 import * as cw from '@aws-cdk/aws-cloudwatch';
 import * as iam from '@aws-cdk/aws-iam';
 import * as lambda from '@aws-cdk/aws-lambda';
@@ -6,6 +5,7 @@ import * as logs from '@aws-cdk/aws-logs';
 import * as sfn from '@aws-cdk/aws-stepfunctions';
 import * as sfn_tasks from '@aws-cdk/aws-stepfunctions-tasks';
 import * as cdk from '@aws-cdk/core';
+import { LAMBDA_ASSET_DIR } from './assets';
 
 /**
  * A CloudWatch alarm monitor.
@@ -46,7 +46,7 @@ export class AlarmMonitor extends cdk.Construct implements IAlarmMonitor {
     const checkAlarmStatusFunction = new lambda.Function(this, 'CheckAlarmStatusFunction', {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: 'check-alarm-status.checkAlarmStatus',
-      code: lambda.Code.fromAsset(path.join(__dirname, '..', 'lambda')),
+      code: lambda.Code.fromAsset(LAMBDA_ASSET_DIR),
       logRetention: logs.RetentionDays.ONE_MONTH,
       initialPolicy: [
         new iam.PolicyStatement({

@@ -191,6 +191,25 @@ new IntrinsicValidator(scope, 'IntrinsicValidator', {
 ```
 <!-- </macro> -->
 
+## Use Lambda to Check a URL
+
+<!-- <macro exec="lit-snip ./test/integ/integ.http-check.lit.ts"> -->
+```ts
+new IntrinsicValidator(scope, 'IntrinsicValidator', {
+  validations: [
+    // Check a URL with a lambda outside of your VPCs
+    Validation.httpCheck({
+      url: 'https://httpstat.us/200',
+      // (optional) Check the page content for a node-compatible regex.
+      checkPattern: '\\d+\\s+OK',
+      // (optional) Provide regex flags
+      checkPatternFlags: 'i',
+    }),
+  ],
+});
+```
+<!-- </macro> -->
+
 ## Tips
 
 - If you're adding `IntrinsicValidator` to your stack for the first time, try
