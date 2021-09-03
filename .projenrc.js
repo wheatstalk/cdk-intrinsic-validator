@@ -61,6 +61,7 @@ const project = new pj.AwsCdkConstructLibrary({
     'cdk.out',
     '.idea',
     '*.iml',
+    '/lambda',
   ],
 
   npmignore: [
