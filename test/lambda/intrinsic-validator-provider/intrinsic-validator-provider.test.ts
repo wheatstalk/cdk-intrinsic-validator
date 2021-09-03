@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const provider = require('../lambda/intrinsic-validator-provider');
+import * as provider from '../../../src/lambda/intrinsic-validator-provider/lambda';
 
 describe('summarizing failure cause', () => {
   const cases = [

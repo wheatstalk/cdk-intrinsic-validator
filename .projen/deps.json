@@ -138,6 +138,16 @@
       "type": "build"
     },
     {
+      "name": "node-abort-controller",
+      "version": "^3",
+      "type": "build"
+    },
+    {
+      "name": "node-fetch",
+      "version": "^2",
+      "type": "build"
+    },
+    {
       "name": "npm-check-updates",
       "version": "^11",
       "type": "build"

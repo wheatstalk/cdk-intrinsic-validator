@@ -312,6 +312,78 @@ Run this container command.
 
 ---
 
+### HttpCheckSucceedsOptions <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions"></a>
+
+#### Initializer <a name="[object Object].Initializer"></a>
+
+```typescript
+import { HttpCheckSucceedsOptions } from '@wheatstalk/cdk-intrinsic-validator'
+
+const httpCheckSucceedsOptions: HttpCheckSucceedsOptions = { ... }
+```
+
+##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.label"></a>
+
+- *Type:* `string`
+- *Default:* Automatic label based on the validation type
+
+Label references to this validation for easier identification.
+
+---
+
+##### `url`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.url"></a>
+
+- *Type:* `string`
+
+URL to check.
+
+---
+
+##### `checkPattern`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.checkPattern"></a>
+
+- *Type:* `string`
+- *Default:* Only HTTP status is checked
+
+Check the response body of the URL for this Node-compatible regex pattern.
+
+---
+
+##### `checkPatternFlags`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.checkPatternFlags"></a>
+
+- *Type:* `string`
+- *Default:* No flags
+
+Regex pattern flags.
+
+---
+
+##### `expectedStatus`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.expectedStatus"></a>
+
+- *Type:* `number`
+- *Default:* 200
+
+Expect an HTTP status.
+
+---
+
+##### `followRedirects`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.followRedirects"></a>
+
+- *Type:* `boolean`
+- *Default:* false
+
+Follow redirects when performing the check.
+
+---
+
+##### `timeout`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.timeout"></a>
+
+- *Type:* [`@aws-cdk/core.Duration`](#@aws-cdk/core.Duration)
+- *Default:* Duration.seconds(3)
+
+Maximum time to wait for a response.
+
+---
+
 ### IntrinsicValidatorProps <a name="@wheatstalk/cdk-intrinsic-validator.IntrinsicValidatorProps"></a>
 
 Props for `IntrinsicValidator`.
@@ -520,6 +592,20 @@ Validation.fargateTaskSucceeds(options: FargateTaskSucceedsOptions)
 ###### `options`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.Validation.parameter.options"></a>
 
 - *Type:* [`@wheatstalk/cdk-intrinsic-validator.FargateTaskSucceedsOptions`](#@wheatstalk/cdk-intrinsic-validator.FargateTaskSucceedsOptions)
+
+---
+
+##### `httpCheck` <a name="@wheatstalk/cdk-intrinsic-validator.Validation.httpCheck"></a>
+
+```typescript
+import { Validation } from '@wheatstalk/cdk-intrinsic-validator'
+
+Validation.httpCheck(param: HttpCheckSucceedsOptions)
+```
+
+###### `param`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.Validation.parameter.param"></a>
+
+- *Type:* [`@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions`](#@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions)
 
 ---
 

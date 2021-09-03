@@ -33,6 +33,7 @@
     "integ:fargate-puppeteer": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.fargate-puppeteer.lit.ts\"",
     "integ:cloudwatch-alarm": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.cloudwatch-alarm.lit.ts\"",
     "integ:lambda": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.lambda.lit.ts\"",
+    "integ:http-check": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.http-check.lit.ts\"",
     "integ:step-function": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.step-function.lit.ts\"",
     "integ:alarm-monitor": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.alarm-monitor.ts\"",
     "integ:error-message": "cdk --app \"ts-node -P tsconfig.jest.json test/integ/integ.error-message.ts\""
@@ -73,6 +74,8 @@
     "jsii-pacmak": "^1.34.0",
     "json-schema": "^0.3.0",
     "markmac": "^0.1",
+    "node-abort-controller": "^3",
+    "node-fetch": "^2",
     "npm-check-updates": "^11",
     "projen": "^0.27.40",
     "shx": "^0.3.3",

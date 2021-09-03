@@ -430,7 +430,7 @@ Object {
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - isComplete (IntegStepFunctionLit/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - isComplete (IntegHttpCheckLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -593,7 +593,7 @@ Object {
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onEvent (IntegStepFunctionLit/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - onEvent (IntegHttpCheckLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -766,7 +766,7 @@ Object {
             ],
           },
         },
-        "Description": "AWS CDK resource provider framework - onTimeout (IntegStepFunctionLit/IntrinsicValidator/Provider)",
+        "Description": "AWS CDK resource provider framework - onTimeout (IntegHttpCheckLit/IntrinsicValidator/Provider)",
         "Environment": Object {
           "Variables": Object {
             "USER_IS_COMPLETE_FUNCTION_ARN": Object {
@@ -996,19 +996,14 @@ Object {
           "Fn::Join": Array [
             "",
             Array [
-              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] StateMachineExecutionSucceeds\\",\\"States\\":{\\"[0] StateMachineExecutionSucceeds\\":{\\"End\\":true,\\"Catch\\":[{\\"ErrorEquals\\":[\\"States.ALL\\"],\\"Next\\":\\"[0] StateMachineExecutionSucceeds - Alarming\\"}],\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
+              "{\\"StartAt\\":\\"Validations\\",\\"States\\":{\\"Validations\\":{\\"Type\\":\\"Parallel\\",\\"End\\":true,\\"Branches\\":[{\\"StartAt\\":\\"[0] Http Check Succeeds\\",\\"States\\":{\\"[0] Http Check Succeeds\\":{\\"End\\":true,\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2}],\\"Type\\":\\"Task\\",\\"Resource\\":\\"",
               Object {
-                "Ref": "AWS::Partition",
+                "Fn::GetAtt": Array [
+                  "SingletonLambdahttpcheckhandler9225252D",
+                  "Arn",
+                ],
               },
-              ":states:::states:startExecution.sync:2\\",\\"Parameters\\":{\\"Input\\":{\\"anything\\":\\"you need\\"},\\"StateMachineArn\\":\\"",
-              Object {
-                "Ref": "StateMachine2E01A3A5",
-              },
-              "\\"}},\\"[0] StateMachineExecutionSucceeds - Alarming\\":{\\"Type\\":\\"Fail\\",\\"Error\\":\\"ExecutionFailed\\",\\"Cause\\":\\"",
-              Object {
-                "Ref": "StateMachine2E01A3A5",
-              },
-              " failed to execute\\"}}}]}}}",
+              "\\",\\"Parameters\\":{\\"url\\":\\"https://httpstat.us/200\\",\\"expectedStatus\\":200,\\"followRedirects\\":false,\\"timeout\\":3000,\\"checkPattern\\":\\"\\\\\\\\d+\\\\\\\\s+OK\\",\\"checkPatternFlags\\":\\"i\\"}}}}]}}}",
             ],
           ],
         },
@@ -1054,78 +1049,12 @@ Object {
         "PolicyDocument": Object {
           "Statement": Array [
             Object {
-              "Action": "states:StartExecution",
+              "Action": "lambda:InvokeFunction",
               "Effect": "Allow",
               "Resource": Object {
-                "Ref": "StateMachine2E01A3A5",
-              },
-            },
-            Object {
-              "Action": Array [
-                "states:DescribeExecution",
-                "states:StopExecution",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::Join": Array [
-                  "",
-                  Array [
-                    "arn:",
-                    Object {
-                      "Ref": "AWS::Partition",
-                    },
-                    ":states:",
-                    Object {
-                      "Ref": "AWS::Region",
-                    },
-                    ":",
-                    Object {
-                      "Ref": "AWS::AccountId",
-                    },
-                    ":execution:",
-                    Object {
-                      "Fn::Select": Array [
-                        6,
-                        Object {
-                          "Fn::Split": Array [
-                            ":",
-                            Object {
-                              "Ref": "StateMachine2E01A3A5",
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                    "*",
-                  ],
-                ],
-              },
-            },
-            Object {
-              "Action": Array [
-                "events:PutTargets",
-                "events:PutRule",
-                "events:DescribeRule",
-              ],
-              "Effect": "Allow",
-              "Resource": Object {
-                "Fn::Join": Array [
-                  "",
-                  Array [
-                    "arn:",
-                    Object {
-                      "Ref": "AWS::Partition",
-                    },
-                    ":events:",
-                    Object {
-                      "Ref": "AWS::Region",
-                    },
-                    ":",
-                    Object {
-                      "Ref": "AWS::AccountId",
-                    },
-                    ":rule/StepFunctionsGetEventsForStepFunctionsExecutionRule",
-                  ],
+                "Fn::GetAtt": Array [
+                  "SingletonLambdahttpcheckhandler9225252D",
+                  "Arn",
                 ],
               },
             },
@@ -1251,22 +1180,62 @@ Object {
       },
       "Type": "AWS::IAM::Policy",
     },
-    "StateMachine2E01A3A5": Object {
+    "SingletonLambdahttpcheckhandler9225252D": Object {
       "DependsOn": Array [
-        "StateMachineRoleB840431D",
+        "SingletonLambdahttpcheckhandlerServiceRole005D51DB",
       ],
       "Properties": Object {
-        "DefinitionString": "{\\"StartAt\\":\\"Pass\\",\\"States\\":{\\"Pass\\":{\\"Type\\":\\"Pass\\",\\"End\\":true}}}",
-        "RoleArn": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParameters3f63361e0c167bc2a62351d537f0ba28f0b61d15291b8766374fe1ab737ebb86S3BucketC2D9E0B5",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters3f63361e0c167bc2a62351d537f0ba28f0b61d15291b8766374fe1ab737ebb86S3VersionKey80EA7B1E",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters3f63361e0c167bc2a62351d537f0ba28f0b61d15291b8766374fe1ab737ebb86S3VersionKey80EA7B1E",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Handler": "http-check.handler",
+        "Role": Object {
           "Fn::GetAtt": Array [
-            "StateMachineRoleB840431D",
+            "SingletonLambdahttpcheckhandlerServiceRole005D51DB",
             "Arn",
           ],
         },
+        "Runtime": "nodejs14.x",
+        "Timeout": 900,
       },
-      "Type": "AWS::StepFunctions::StateMachine",
+      "Type": "AWS::Lambda::Function",
     },
-    "StateMachineRoleB840431D": Object {
+    "SingletonLambdahttpcheckhandlerServiceRole005D51DB": Object {
       "Properties": Object {
         "AssumeRolePolicyDocument": Object {
           "Statement": Array [
@@ -1274,23 +1243,26 @@ Object {
               "Action": "sts:AssumeRole",
               "Effect": "Allow",
               "Principal": Object {
-                "Service": Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "states.",
-                      Object {
-                        "Ref": "AWS::Region",
-                      },
-                      ".amazonaws.com",
-                    ],
-                  ],
-                },
+                "Service": "lambda.amazonaws.com",
               },
             },
           ],
           "Version": "2012-10-17",
         },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
       },
       "Type": "AWS::IAM::Role",
     },

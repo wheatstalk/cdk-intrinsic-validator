@@ -9,6 +9,8 @@ import * as sfn_tasks from '@aws-cdk/aws-stepfunctions-tasks';
 import * as cdk from '@aws-cdk/core';
 import * as cr from '@aws-cdk/custom-resources';
 import { SingletonAlarmMonitor } from './alarm-monitor';
+import { LAMBDA_ASSET_DIR } from './assets';
+import { HttpCheckRequest } from './lambda/http-check/lambda';
 
 /**
  * Props for `IntrinsicValidator`
@@ -59,7 +61,7 @@ export class IntrinsicValidator extends cdk.Construct {
       definition,
     });
 
-    const code = lambda.Code.fromAsset(path.join(__dirname, '..', 'lambda'));
+    const code = lambda.Code.fromAsset(LAMBDA_ASSET_DIR);
     const runtime = lambda.Runtime.NODEJS_14_X;
     const logRetention = logs.RetentionDays.ONE_MONTH;
 
@@ -164,6 +166,13 @@ export abstract class Validation {
    */
   static monitorAlarm(options: MonitorAlarmOptions): Validation {
     return new MonitorAlarm(options);
+  }
+
+  /**
+   * Create a validation that checks
+   */
+  static httpCheck(param: HttpCheckSucceedsOptions): Validation {
+    return new HttpCheck(param);
   }
 
   /** @internal */
@@ -469,3 +478,101 @@ class LambdaInvokeSucceeds extends Validation {
     };
   }
 }
+
+export interface HttpCheckSucceedsOptions extends ValidationBaseOptions {
+  /**
+   * URL to check
+   */
+  readonly url: string;
+
+  /**
+   * Maximum time to wait for a response.
+   * @default Duration.seconds(3)
+   */
+  readonly timeout?: cdk.Duration;
+
+  /**
+   * Expect an HTTP status
+   * @default 200
+   */
+  readonly expectedStatus?: number;
+
+  /**
+   * Follow redirects when performing the check
+   * @default false
+   */
+  readonly followRedirects?: boolean;
+
+  /**
+   * Check the response body of the URL for this Node-compatible regex pattern.
+   * @default - Only HTTP status is checked
+   */
+  readonly checkPattern?: string;
+
+  /**
+   * Regex pattern flags.
+   * @default - No flags
+   */
+  readonly checkPatternFlags?: string;
+}
+
+class HttpCheck extends Validation {
+  private readonly url: string;
+  private readonly expectedStatus: number;
+  private readonly timeout: cdk.Duration;
+  private readonly checkPattern?: string;
+  private readonly checkPatternFlags?: string;
+  private readonly followRedirects: boolean;
+
+  constructor(options: HttpCheckSucceedsOptions) {
+    super({ label: options.label ?? 'Http Check Succeeds' });
+
+    this.url = options.url;
+    this.expectedStatus = options.expectedStatus ?? 200;
+    this.timeout = options.timeout ?? cdk.Duration.seconds(3);
+    this.followRedirects = options.followRedirects ?? false;
+
+    if (options.checkPattern) {
+      // Check that the given pattern and flags are valid before we use them.
+      new RegExp(options.checkPattern, options.checkPatternFlags);
+      this.checkPattern = options.checkPattern;
+      this.checkPatternFlags = options.checkPatternFlags;
+    }
+
+    if (this.timeout.toMinutes({ integral: false }) > 14) {
+      throw new Error('Timeout is too long. Please keep it under 14 minutes. If you need longer, try a step function.');
+    }
+  }
+
+  _bind(scope: cdk.Construct, id: string): ValidationConfig {
+    const privateScope = new cdk.Construct(scope, id);
+
+    const lambdaFunction = new lambda.SingletonFunction(privateScope, 'Function', {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      uuid: 'http-check.handler',
+      handler: 'http-check.handler',
+      code: lambda.Code.fromAsset(path.join(LAMBDA_ASSET_DIR)),
+      timeout: cdk.Duration.minutes(15),
+    });
+
+    const httpCheckRequest: HttpCheckRequest = {
+      url: this.url,
+      expectedStatus: this.expectedStatus,
+      followRedirects: this.followRedirects,
+      timeout: this.timeout.toSeconds() * 1000,
+      checkPattern: this.checkPattern,
+      checkPatternFlags: this.checkPatternFlags,
+    };
+
+    const chainable = new sfn_tasks.LambdaInvoke(privateScope, id, {
+      lambdaFunction,
+      payload: sfn.TaskInput.fromObject(httpCheckRequest),
+      payloadResponseOnly: true,
+    });
+
+    return {
+      chainable,
+    };
+  }
+}
+
