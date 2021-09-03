@@ -12,10 +12,10 @@ export class IntegHttpCheckLit extends cdk.Stack {
     // ::SNIP
     new IntrinsicValidator(scope, 'IntrinsicValidator', {
       validations: [
-        // Check a URL with a lambda outside of your VPCs
         Validation.httpCheck({
+          // Replace this URL with a public endpoint of your own
           url: 'https://httpstat.us/200',
-          // (optional) Check the page content for a node-compatible regex.
+          // (optional) Check the page content for a node-compatible regex
           checkPattern: '\\d+\\s+OK',
           // (optional) Provide regex flags
           checkPatternFlags: 'i',
