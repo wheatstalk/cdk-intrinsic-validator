@@ -191,7 +191,11 @@ new IntrinsicValidator(scope, 'IntrinsicValidator', {
 ```
 <!-- </macro> -->
 
-## Use Lambda to Check a URL
+## Check a URL
+
+With the `httpCheck` validation, you can check a URL on every stack
+deployment without the overhead of having a VPC or waiting for containers
+to spin up.
 
 <!-- <macro exec="lit-snip ./test/integ/integ.http-check.lit.ts"> -->
 ```ts
