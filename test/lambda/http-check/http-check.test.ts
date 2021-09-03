@@ -63,12 +63,10 @@ describe('http checks', () => {
   test('network error', async () => {
     // GIVEN
     const options = {
-      // Using the first of the Class E IPs. This will probably never answer,
-      // right?
-      url: 'https://240.0.0.0:1/impossible',
+      url: 'https://127.0.0.1:1/impossible',
       expectedStatus: 200,
       followRedirects: false,
-      timeout: 500,
+      timeout: 10000,
     };
 
     // WHEN
