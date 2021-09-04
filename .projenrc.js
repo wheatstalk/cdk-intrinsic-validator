@@ -27,6 +27,8 @@ const project = new pj.AwsCdkConstructLibrary({
     secret: 'GITHUB_TOKEN',
     allowedUsernames: ['github-actions', 'github-actions[bot]', 'misterjoshua'],
   },
+  
+  minNodeVersion: '12.0.0',
 
   // Disable cdk dependencies as deps
   // @see https://dev.to/aws-builders/correctly-defining-dependencies-in-l3-cdk-constructs-45p
