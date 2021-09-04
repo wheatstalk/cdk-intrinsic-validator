@@ -56,7 +56,7 @@
     "@aws-cdk/core": "^1.95.2",
     "@aws-cdk/custom-resources": "^1.95.2",
     "@types/jest": "^26.0.24",
-    "@types/node": "^10.17.0",
+    "@types/node": "^12.0.0",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
     "@typescript-eslint/parser": "^4.30.0",
     "@wheatstalk/lit-snip": "^0.0",
@@ -108,6 +108,9 @@
     "rollback",
     "testing"
   ],
+  "engines": {
+    "node": ">= 12.0.0"
+  },
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "version": "0.0.0",
