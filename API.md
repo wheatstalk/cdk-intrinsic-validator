@@ -6,7 +6,7 @@
 
 A convenience tool for creating Fargate-based validations.
 
-#### Initializer <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactory.Initializer"></a>
+#### Initializers <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactory.Initializer"></a>
 
 ```typescript
 import { FargateValidationFactory } from '@wheatstalk/cdk-intrinsic-validator'
@@ -53,7 +53,7 @@ public runContainer(options: FargateValidationRunContainerOptions)
 
 Adds intrinsic validation to a CloudFormation stack.
 
-#### Initializer <a name="@wheatstalk/cdk-intrinsic-validator.IntrinsicValidator.Initializer"></a>
+#### Initializers <a name="@wheatstalk/cdk-intrinsic-validator.IntrinsicValidator.Initializer"></a>
 
 ```typescript
 import { IntrinsicValidator } from '@wheatstalk/cdk-intrinsic-validator'
@@ -548,7 +548,7 @@ Label references to this validation for easier identification.
 
 Create many types of validations.
 
-#### Initializer <a name="@wheatstalk/cdk-intrinsic-validator.Validation.Initializer"></a>
+#### Initializers <a name="@wheatstalk/cdk-intrinsic-validator.Validation.Initializer"></a>
 
 ```typescript
 import { Validation } from '@wheatstalk/cdk-intrinsic-validator'
