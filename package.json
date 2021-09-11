@@ -62,7 +62,7 @@
     "@wheatstalk/lit-snip": "^0.0",
     "aws-cdk": "^1.95.2",
     "aws-sdk": "^2.963.0",
-    "esbuild": "^0.12.25",
+    "esbuild": "^0.12.26",
     "eslint": "^7.32.0",
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-import-resolver-typescript": "^2.4.0",
@@ -78,12 +78,12 @@
     "node-abort-controller": "^3",
     "node-fetch": "^2",
     "npm-check-updates": "^11",
-    "projen": "^0.27.50",
+    "projen": "^0.27.51",
     "shx": "^0.3.3",
     "standard-version": "^9",
     "ts-jest": "^27.0.5",
     "ts-node": "^9",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.3"
   },
   "peerDependencies": {
     "@aws-cdk/aws-cloudwatch": "^1.95.2",
