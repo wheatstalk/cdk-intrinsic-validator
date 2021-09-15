@@ -99,6 +99,10 @@ const fargateTaskSucceedsOptions: FargateTaskSucceedsOptions = { ... }
 
 ##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateTaskSucceedsOptions.property.label"></a>
 
+```typescript
+public readonly label: string;
+```
+
 - *Type:* `string`
 - *Default:* Automatic label based on the validation type
 
@@ -108,6 +112,10 @@ Label references to this validation for easier identification.
 
 ##### `cluster`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateTaskSucceedsOptions.property.cluster"></a>
 
+```typescript
+public readonly cluster: ICluster;
+```
+
 - *Type:* [`@aws-cdk/aws-ecs.ICluster`](#@aws-cdk/aws-ecs.ICluster)
 
 The cluster to create the task on.
@@ -115,6 +123,10 @@ The cluster to create the task on.
 ---
 
 ##### `assignPublicIp`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateTaskSucceedsOptions.property.assignPublicIp"></a>
+
+```typescript
+public readonly assignPublicIp: boolean;
+```
 
 - *Type:* `boolean`
 
@@ -124,6 +136,10 @@ Assign tasks public IP addresses.
 
 ##### `containerOverrides`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateTaskSucceedsOptions.property.containerOverrides"></a>
 
+```typescript
+public readonly containerOverrides: ContainerOverride[];
+```
+
 - *Type:* [`@aws-cdk/aws-stepfunctions-tasks.ContainerOverride`](#@aws-cdk/aws-stepfunctions-tasks.ContainerOverride)[]
 
 Container overrides.
@@ -131,6 +147,10 @@ Container overrides.
 ---
 
 ##### `securityGroups`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateTaskSucceedsOptions.property.securityGroups"></a>
+
+```typescript
+public readonly securityGroups: ISecurityGroup[];
+```
 
 - *Type:* [`@aws-cdk/aws-ec2.ISecurityGroup`](#@aws-cdk/aws-ec2.ISecurityGroup)[]
 
@@ -140,6 +160,10 @@ Give tasks a security group.
 
 ##### `subnets`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateTaskSucceedsOptions.property.subnets"></a>
 
+```typescript
+public readonly subnets: SubnetSelection;
+```
+
 - *Type:* [`@aws-cdk/aws-ec2.SubnetSelection`](#@aws-cdk/aws-ec2.SubnetSelection)
 
 Select subnets in which tasks will run.
@@ -147,6 +171,10 @@ Select subnets in which tasks will run.
 ---
 
 ##### `taskDefinition`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateTaskSucceedsOptions.property.taskDefinition"></a>
+
+```typescript
+public readonly taskDefinition: TaskDefinition;
+```
 
 - *Type:* [`@aws-cdk/aws-ecs.TaskDefinition`](#@aws-cdk/aws-ecs.TaskDefinition)
 
@@ -166,6 +194,10 @@ const fargateValidationBaseOptions: FargateValidationBaseOptions = { ... }
 
 ##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationBaseOptions.property.label"></a>
 
+```typescript
+public readonly label: string;
+```
+
 - *Type:* `string`
 - *Default:* Automatic label based on the validation type
 
@@ -175,6 +207,10 @@ Label references to this validation for easier identification.
 
 ##### `cluster`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationBaseOptions.property.cluster"></a>
 
+```typescript
+public readonly cluster: ICluster;
+```
+
 - *Type:* [`@aws-cdk/aws-ecs.ICluster`](#@aws-cdk/aws-ecs.ICluster)
 
 The cluster to create the task on.
@@ -182,6 +218,10 @@ The cluster to create the task on.
 ---
 
 ##### `assignPublicIp`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationBaseOptions.property.assignPublicIp"></a>
+
+```typescript
+public readonly assignPublicIp: boolean;
+```
 
 - *Type:* `boolean`
 
@@ -191,6 +231,10 @@ Assign tasks public IP addresses.
 
 ##### `containerOverrides`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationBaseOptions.property.containerOverrides"></a>
 
+```typescript
+public readonly containerOverrides: ContainerOverride[];
+```
+
 - *Type:* [`@aws-cdk/aws-stepfunctions-tasks.ContainerOverride`](#@aws-cdk/aws-stepfunctions-tasks.ContainerOverride)[]
 
 Container overrides.
@@ -199,6 +243,10 @@ Container overrides.
 
 ##### `securityGroups`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationBaseOptions.property.securityGroups"></a>
 
+```typescript
+public readonly securityGroups: ISecurityGroup[];
+```
+
 - *Type:* [`@aws-cdk/aws-ec2.ISecurityGroup`](#@aws-cdk/aws-ec2.ISecurityGroup)[]
 
 Give tasks a security group.
@@ -206,6 +254,10 @@ Give tasks a security group.
 ---
 
 ##### `subnets`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationBaseOptions.property.subnets"></a>
+
+```typescript
+public readonly subnets: SubnetSelection;
+```
 
 - *Type:* [`@aws-cdk/aws-ec2.SubnetSelection`](#@aws-cdk/aws-ec2.SubnetSelection)
 
@@ -227,6 +279,10 @@ const fargateValidationFactoryProps: FargateValidationFactoryProps = { ... }
 
 ##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactoryProps.property.label"></a>
 
+```typescript
+public readonly label: string;
+```
+
 - *Type:* `string`
 - *Default:* Automatic label based on the validation type
 
@@ -236,6 +292,10 @@ Label references to this validation for easier identification.
 
 ##### `cluster`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactoryProps.property.cluster"></a>
 
+```typescript
+public readonly cluster: ICluster;
+```
+
 - *Type:* [`@aws-cdk/aws-ecs.ICluster`](#@aws-cdk/aws-ecs.ICluster)
 
 The cluster to create the task on.
@@ -243,6 +303,10 @@ The cluster to create the task on.
 ---
 
 ##### `assignPublicIp`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactoryProps.property.assignPublicIp"></a>
+
+```typescript
+public readonly assignPublicIp: boolean;
+```
 
 - *Type:* `boolean`
 
@@ -252,6 +316,10 @@ Assign tasks public IP addresses.
 
 ##### `containerOverrides`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactoryProps.property.containerOverrides"></a>
 
+```typescript
+public readonly containerOverrides: ContainerOverride[];
+```
+
 - *Type:* [`@aws-cdk/aws-stepfunctions-tasks.ContainerOverride`](#@aws-cdk/aws-stepfunctions-tasks.ContainerOverride)[]
 
 Container overrides.
@@ -260,6 +328,10 @@ Container overrides.
 
 ##### `securityGroups`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactoryProps.property.securityGroups"></a>
 
+```typescript
+public readonly securityGroups: ISecurityGroup[];
+```
+
 - *Type:* [`@aws-cdk/aws-ec2.ISecurityGroup`](#@aws-cdk/aws-ec2.ISecurityGroup)[]
 
 Give tasks a security group.
@@ -267,6 +339,10 @@ Give tasks a security group.
 ---
 
 ##### `subnets`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactoryProps.property.subnets"></a>
+
+```typescript
+public readonly subnets: SubnetSelection;
+```
 
 - *Type:* [`@aws-cdk/aws-ec2.SubnetSelection`](#@aws-cdk/aws-ec2.SubnetSelection)
 
@@ -288,6 +364,10 @@ const fargateValidationRunContainerOptions: FargateValidationRunContainerOptions
 
 ##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationRunContainerOptions.property.label"></a>
 
+```typescript
+public readonly label: string;
+```
+
 - *Type:* `string`
 - *Default:* Automatic label based on the validation type
 
@@ -297,6 +377,10 @@ Label references to this validation for easier identification.
 
 ##### `image`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationRunContainerOptions.property.image"></a>
 
+```typescript
+public readonly image: ContainerImage;
+```
+
 - *Type:* [`@aws-cdk/aws-ecs.ContainerImage`](#@aws-cdk/aws-ecs.ContainerImage)
 
 Container image to run.
@@ -304,6 +388,10 @@ Container image to run.
 ---
 
 ##### `command`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationRunContainerOptions.property.command"></a>
+
+```typescript
+public readonly command: string[];
+```
 
 - *Type:* `string`[]
 - *Default:* use the image's default.
@@ -324,6 +412,10 @@ const httpCheckSucceedsOptions: HttpCheckSucceedsOptions = { ... }
 
 ##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.label"></a>
 
+```typescript
+public readonly label: string;
+```
+
 - *Type:* `string`
 - *Default:* Automatic label based on the validation type
 
@@ -333,6 +425,10 @@ Label references to this validation for easier identification.
 
 ##### `url`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.url"></a>
 
+```typescript
+public readonly url: string;
+```
+
 - *Type:* `string`
 
 URL to check.
@@ -340,6 +436,10 @@ URL to check.
 ---
 
 ##### `checkPattern`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.checkPattern"></a>
+
+```typescript
+public readonly checkPattern: string;
+```
 
 - *Type:* `string`
 - *Default:* Only HTTP status is checked
@@ -350,6 +450,10 @@ Check the response body of the URL for this Node-compatible regex pattern.
 
 ##### `checkPatternFlags`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.checkPatternFlags"></a>
 
+```typescript
+public readonly checkPatternFlags: string;
+```
+
 - *Type:* `string`
 - *Default:* No flags
 
@@ -358,6 +462,10 @@ Regex pattern flags.
 ---
 
 ##### `expectedStatus`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.expectedStatus"></a>
+
+```typescript
+public readonly expectedStatus: number;
+```
 
 - *Type:* `number`
 - *Default:* 200
@@ -368,6 +476,10 @@ Expect an HTTP status.
 
 ##### `followRedirects`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.followRedirects"></a>
 
+```typescript
+public readonly followRedirects: boolean;
+```
+
 - *Type:* `boolean`
 - *Default:* false
 
@@ -376,6 +488,10 @@ Follow redirects when performing the check.
 ---
 
 ##### `timeout`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.timeout"></a>
+
+```typescript
+public readonly timeout: Duration;
+```
 
 - *Type:* [`@aws-cdk/core.Duration`](#@aws-cdk/core.Duration)
 - *Default:* Duration.seconds(3)
@@ -398,6 +514,10 @@ const intrinsicValidatorProps: IntrinsicValidatorProps = { ... }
 
 ##### `stateMachineName`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.IntrinsicValidatorProps.property.stateMachineName"></a>
 
+```typescript
+public readonly stateMachineName: string;
+```
+
 - *Type:* `string`
 - *Default:* CDK automatically picks a name
 
@@ -406,6 +526,10 @@ Name the Step Functions State Machine.
 ---
 
 ##### `validations`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.IntrinsicValidatorProps.property.validations"></a>
+
+```typescript
+public readonly validations: Validation[];
+```
 
 - *Type:* [`@wheatstalk/cdk-intrinsic-validator.Validation`](#@wheatstalk/cdk-intrinsic-validator.Validation)[]
 - *Default:* no validations are run
@@ -428,6 +552,10 @@ const lambdaInvokeSucceedsOptions: LambdaInvokeSucceedsOptions = { ... }
 
 ##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.LambdaInvokeSucceedsOptions.property.label"></a>
 
+```typescript
+public readonly label: string;
+```
+
 - *Type:* `string`
 - *Default:* Automatic label based on the validation type
 
@@ -436,6 +564,10 @@ Label references to this validation for easier identification.
 ---
 
 ##### `lambdaFunction`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.LambdaInvokeSucceedsOptions.property.lambdaFunction"></a>
+
+```typescript
+public readonly lambdaFunction: IFunction;
+```
 
 - *Type:* [`@aws-cdk/aws-lambda.IFunction`](#@aws-cdk/aws-lambda.IFunction)
 
@@ -459,6 +591,10 @@ const monitorAlarmOptions: MonitorAlarmOptions = { ... }
 
 ##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.MonitorAlarmOptions.property.label"></a>
 
+```typescript
+public readonly label: string;
+```
+
 - *Type:* `string`
 - *Default:* Automatic label based on the validation type
 
@@ -468,6 +604,10 @@ Label references to this validation for easier identification.
 
 ##### `alarm`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.MonitorAlarmOptions.property.alarm"></a>
 
+```typescript
+public readonly alarm: IAlarm;
+```
+
 - *Type:* [`@aws-cdk/aws-cloudwatch.IAlarm`](#@aws-cdk/aws-cloudwatch.IAlarm)
 
 The alarm to monitor.
@@ -475,6 +615,10 @@ The alarm to monitor.
 ---
 
 ##### `duration`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.MonitorAlarmOptions.property.duration"></a>
+
+```typescript
+public readonly duration: Duration;
+```
 
 - *Type:* [`@aws-cdk/core.Duration`](#@aws-cdk/core.Duration)
 - *Default:* one minute
@@ -497,6 +641,10 @@ const stateMachineExecutionSucceedsOptions: StateMachineExecutionSucceedsOptions
 
 ##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.StateMachineExecutionSucceedsOptions.property.label"></a>
 
+```typescript
+public readonly label: string;
+```
+
 - *Type:* `string`
 - *Default:* Automatic label based on the validation type
 
@@ -506,6 +654,10 @@ Label references to this validation for easier identification.
 
 ##### `stateMachine`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.StateMachineExecutionSucceedsOptions.property.stateMachine"></a>
 
+```typescript
+public readonly stateMachine: IStateMachine;
+```
+
 - *Type:* [`@aws-cdk/aws-stepfunctions.IStateMachine`](#@aws-cdk/aws-stepfunctions.IStateMachine)
 
 The state machine to execute.
@@ -513,6 +665,10 @@ The state machine to execute.
 ---
 
 ##### `input`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.StateMachineExecutionSucceedsOptions.property.input"></a>
+
+```typescript
+public readonly input: TaskInput;
+```
 
 - *Type:* [`@aws-cdk/aws-stepfunctions.TaskInput`](#@aws-cdk/aws-stepfunctions.TaskInput)
 - *Default:* no input given
@@ -534,6 +690,10 @@ const validationBaseOptions: ValidationBaseOptions = { ... }
 ```
 
 ##### `label`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.ValidationBaseOptions.property.label"></a>
+
+```typescript
+public readonly label: string;
+```
 
 - *Type:* `string`
 - *Default:* Automatic label based on the validation type
