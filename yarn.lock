@@ -1641,9 +1641,9 @@
     eslint-visitor-keys "^2.0.0"
 
 "@wheatstalk/lit-snip@^0.0":
-  version "0.0.42"
-  resolved "https://registry.yarnpkg.com/@wheatstalk/lit-snip/-/lit-snip-0.0.42.tgz#876c1abb496dd267f39beda9f39563d330ebbcbd"
-  integrity sha512-Nd6bnphQERkgrTQIIAGzvOSIvNfMOIB2c0m1CKPtjJ7xOeNyoOZEex6q4GdB3wUWgGs6Kzyi3p1xq8zjfOD+ZQ==
+  version "0.0.43"
+  resolved "https://registry.yarnpkg.com/@wheatstalk/lit-snip/-/lit-snip-0.0.43.tgz#7fe35d7407cb76d3ed769e74226c747fb67176fb"
+  integrity sha512-uIdVhvCPI2LE7iDCNMVaYvimHouHf/96lE/4lO4UrkkPGe9z0pJaN2HY6TPy/CaBHlHy5wFCQcnYMzmm3KWXAA==
 
 "@xmldom/xmldom@^0.7.0":
   version "0.7.5"
@@ -2514,9 +2514,9 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   integrity sha1-PXz0Rk22RG6mRL9LOVB/mFEAjo4=
 
 constructs@^3.3.69:
-  version "3.3.154"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.3.154.tgz#6a91db04b380020e5061c469b7537c816396950a"
-  integrity sha512-pV3jvJ7KRViN2boZc+hMQ5zDaOOK0QIXk0iCwyKIuLhzjcVIoYJS+cGZ+NhbuVyUNomjsar1BLSL76iXev7+Wg==
+  version "3.3.155"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.3.155.tgz#3966cd15a83bb8a736df1d8ee7467abbd1f3fecd"
+  integrity sha512-fL4Nw+EtW7a3rexuJoZcA2vrG/KhhvJy+xi33k/WzvWjgUQRFSa60r0+g14XZHaIFtAkEJxAip2ie9nHirwEgw==
 
 conventional-changelog-angular@^5.0.12:
   version "5.0.13"
@@ -4346,9 +4346,9 @@ is-generator-fn@^2.0.0:
   integrity sha512-cTIB4yPYL/Grw0EaSzASzg6bBy9gqCofvWN8okThAYIxKJZC+udlRAmGbM0XLeniEJSs8uEgHPGuHSe1XsOLSQ==
 
 is-glob@^4.0.0, is-glob@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-4.0.1.tgz#7567dbe9f2f5e2467bc77ab83c4a29482407a5dc"
-  integrity sha512-5G0tKtBTFImOqDnLB2hG6Bp2qcKEFduo4tZu9MT/H6NQv/ghhy30o55ufafxJ/LdH79LLs2Kfrn85TLKyA7BUg==
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-4.0.2.tgz#859fc2e731e58c902f99fcabccb75a7dd07d29d8"
+  integrity sha512-ZZTOjRcDjuAAAv2cTBQP/lL59ZTArx77+7UzHdWW/XB1mrfp7DEaVpKmZ0XIzx+M7AxfhKcqV+nMetUQmFifwg==
   dependencies:
     is-extglob "^2.1.1"
 
@@ -5514,9 +5514,9 @@ map-obj@^4.0.0:
   integrity sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==
 
 markmac@^0.1:
-  version "0.1.42"
-  resolved "https://registry.yarnpkg.com/markmac/-/markmac-0.1.42.tgz#b6cb759438ffb83303f10f88b288a3ef54d16983"
-  integrity sha512-nJYqAkorH/Eb9Io71xalhcwqjec5aNrHJtqutDvinZGeMTA/77USKzNE4GInleMNqD7nY05M6fRJIKhtqhH0rA==
+  version "0.1.43"
+  resolved "https://registry.yarnpkg.com/markmac/-/markmac-0.1.43.tgz#1066d60489b8595f60edb1d0bfc3cd98dc8fc3c6"
+  integrity sha512-yppDURw0vRcLdZw8AE9D8S3n/hYdLTCGCvGJ2vyEindnFTNwaFebXabecVIDSJA5yKqSttrHF8pSgmbZY0lmEQ==
 
 md5@^2.3.0:
   version "2.3.0"
@@ -6337,10 +6337,10 @@ progress@^2.0.0, progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.28.29:
-  version "0.28.29"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.28.29.tgz#ed19dd29327ef5765739b4c3691f072304a246ce"
-  integrity sha512-jddj6+KPLa+hJbcwaVneW45/Nfhx6/sb6quWs6Ac67XBGJPYLjNriVTzkLc/sbh7MuFAgHxeZua9PM36542j6w==
+projen@^0.28.30:
+  version "0.28.30"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.28.30.tgz#cbe1a2bc0efdb7f6e3ad313b53dde542f57b11a4"
+  integrity sha512-QvqCeKxf3/dhgAzDllpCD52JzSuskfic6kCfjG9AlXnY7Ae8f3gC7Fy4Ke4lGxzCXrHJQp/2yvQQKhGpKS938A==
   dependencies:
     "@iarna/toml" "^2.2.5"
     chalk "^4.1.2"
