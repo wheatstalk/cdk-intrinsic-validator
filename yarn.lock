@@ -1641,9 +1641,9 @@
     eslint-visitor-keys "^2.0.0"
 
 "@wheatstalk/lit-snip@^0.0":
-  version "0.0.48"
-  resolved "https://registry.yarnpkg.com/@wheatstalk/lit-snip/-/lit-snip-0.0.48.tgz#b26dc6de7acbc9e51bd52170ac3ab36fb3c97a3e"
-  integrity sha512-VXXmPwvhQMTQRrrBIv8qAL7KEygDPKU/l1mZ0dzrukAOxwkYqxvku+sdM7HftbKVX457VsqZzZ42v2RXc7I2pQ==
+  version "0.0.49"
+  resolved "https://registry.yarnpkg.com/@wheatstalk/lit-snip/-/lit-snip-0.0.49.tgz#4bffbe01dbf33faf7cf689de2654c022e9dec462"
+  integrity sha512-IL3sAiTOraYnrYbbC+UyN8ncg0vUDQBStpzfvqT31w0m7Qu8CukpG3APYGtHYPILWe7Uo50KIajHk7Lc6YWBnQ==
 
 "@xmldom/xmldom@^0.7.5":
   version "0.7.5"
@@ -5521,9 +5521,9 @@ map-obj@^4.0.0:
   integrity sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==
 
 markmac@^0.1:
-  version "0.1.48"
-  resolved "https://registry.yarnpkg.com/markmac/-/markmac-0.1.48.tgz#9a1fafde2d95e2fff3e197bec1762a5c4618b51d"
-  integrity sha512-JEQGOSCW6vH581PS6UejTIwPRYfnxJhV1gLYNKu/0o4E/tAE9fSX5aD/eZ+tN9tT7rVodA/9D5GvbJqVs4mSiA==
+  version "0.1.49"
+  resolved "https://registry.yarnpkg.com/markmac/-/markmac-0.1.49.tgz#0feb10f7c34f87980e29559428f5be6af22d7a6c"
+  integrity sha512-WtFmcnEvPBMVxBjZW7BQ1pm9V++LEkEjZwkOYRAIAw5khQYrul6QU1bnQux+X2lqplesbfErWpaqFbHkzn7fTg==
 
 md5@^2.3.0:
   version "2.3.0"
@@ -5783,9 +5783,9 @@ node-modules-regexp@^1.0.0:
   integrity sha1-jZ2+KJZKSsVxLpExZCEHxx6Q7EA=
 
 node-releases@^1.1.76:
-  version "1.1.76"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.76.tgz#df245b062b0cafbd5282ab6792f7dccc2d97f36e"
-  integrity sha512-9/IECtNr8dXNmPWmFXepT0/7o5eolGesHUa3mtr0KlgnCvnZxwh2qensKL42JJY2vQKC3nIBXetFAqR+PW1CmA==
+  version "1.1.77"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.77.tgz#50b0cfede855dd374e7585bf228ff34e57c1c32e"
+  integrity sha512-rB1DUFUNAN4Gn9keO2K1efO35IDK7yKHCdCaIMvFO7yUYmmZYeDjnGKle26G4rwj+LKRQpjyUUvMkPglwGCYNQ==
 
 nopt@^5.0.0:
   version "5.0.0"
@@ -6339,10 +6339,10 @@ progress@^2.0.0, progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.28.33:
-  version "0.28.33"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.28.33.tgz#3f42f7ac46b5be9885d1e36b3b3b518ef36d6d4e"
-  integrity sha512-BhUBzLWy2lOdxCPnuNw8fb2idaxWWz0R4osBKcoIP3QA2j+YoK1+pzxlo+cFuVY07QZjD+P5GO6KcPnd7+rUWA==
+projen@^0.28.34:
+  version "0.28.34"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.28.34.tgz#327a436426d6afbc89a6b510329ec563c4a53937"
+  integrity sha512-ZKHRGKhitceQbKXpBwNdVemY7DDcAuK0HnIa0sgC7RdxE0fmhhF4SIcXjWvu0gpuIQM4RMRbzs1hytw+KK5LpQ==
   dependencies:
     "@iarna/toml" "^2.2.5"
     chalk "^4.1.2"
