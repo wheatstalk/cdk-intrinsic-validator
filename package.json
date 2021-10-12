@@ -71,14 +71,14 @@
     "jest-junit": "^12",
     "jsii": "^1.38.0",
     "jsii-diff": "^1.38.0",
-    "jsii-docgen": "^3.7.0",
+    "jsii-docgen": "^3.7.3",
     "jsii-pacmak": "^1.38.0",
     "json-schema": "^0.3.0",
     "markmac": "^0.1",
     "node-abort-controller": "^3",
     "node-fetch": "^2",
     "npm-check-updates": "^11",
-    "projen": "^0.29.17",
+    "projen": "^0.30.0",
     "shx": "^0.3.3",
     "standard-version": "^9",
     "ts-jest": "^27.0.5",
@@ -149,7 +149,7 @@
     "preset": "ts-jest",
     "globals": {
       "ts-jest": {
-        "tsconfig": "tsconfig.jest.json"
+        "tsconfig": "tsconfig.dev.json"
       }
     }
   },
