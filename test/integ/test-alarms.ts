@@ -1,17 +1,18 @@
-import * as cw from '@aws-cdk/aws-cloudwatch';
-import * as cdk from '@aws-cdk/core';
+import * as cdk from 'aws-cdk-lib';
+import * as cw from 'aws-cdk-lib/aws-cloudwatch';
+import { Construct } from 'constructs';
 
 /**
  * Create some test alarms.
  * @internal
  */
-export class TestAlarms extends cdk.Construct {
+export class TestAlarms extends Construct {
   /** An alarm that is always in alarm */
   public readonly alwaysAlarming: cw.IAlarm;
   /** An alarm that is never in alarm */
   public readonly neverAlarming: cw.IAlarm;
 
-  constructor(scope: cdk.Construct, id: string) {
+  constructor(scope: Construct, id: string) {
     super(scope, id);
 
     // Create some alarms
@@ -19,7 +20,7 @@ export class TestAlarms extends cdk.Construct {
       metricName: 'EstimatedCharges',
       namespace: 'AWS/Billing',
       statistic: 'Maximum',
-      dimensions: {
+      dimensionsMap: {
         Currency: 'USD',
       },
     }).with({

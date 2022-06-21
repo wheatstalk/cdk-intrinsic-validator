@@ -1,10 +1,11 @@
-import * as ecs from '@aws-cdk/aws-ecs';
-import * as cdk from '@aws-cdk/core';
+import * as cdk from 'aws-cdk-lib';
+import * as ecs from 'aws-cdk-lib/aws-ecs';
+import { Construct } from 'constructs';
 import { FargateValidationFactory, IntrinsicValidator, Validation } from '../../src';
 
 /** @internal */
 export class IntegMainLit extends cdk.Stack {
-  constructor(scope_: cdk.Construct, props: cdk.StackProps = {}) {
+  constructor(scope_: Construct, props: cdk.StackProps = {}) {
     super(scope_, 'IntegMainLit', props);
 
     // Lit code uses 'scope'

@@ -1,5 +1,5 @@
 import { SynthUtils } from '@aws-cdk/assert';
-import * as cdk from '@aws-cdk/core';
+import * as cdk from 'aws-cdk-lib';
 import { DisableRandomnessContextKey } from '../../src';
 import { IntegStepFunctionLit } from './integ.step-function.lit';
 

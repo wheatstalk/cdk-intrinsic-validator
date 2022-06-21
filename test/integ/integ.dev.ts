@@ -1,12 +1,13 @@
-import * as ecs from '@aws-cdk/aws-ecs';
-import * as cdk from '@aws-cdk/core';
+import * as cdk from 'aws-cdk-lib';
+import * as ecs from 'aws-cdk-lib/aws-ecs';
+import { Construct } from 'constructs';
 import { FargateValidationFactory, IntrinsicValidator, Validation } from '../../src';
 import { TestAlarms } from './test-alarms';
 import { TestLambdas } from './test-lambdas';
 
 /** @internal */
 export class IntegDev extends cdk.Stack {
-  constructor(scope: cdk.Construct, props: cdk.StackProps = {}) {
+  constructor(scope: Construct, props: cdk.StackProps = {}) {
     super(scope, 'IntegDev', props);
 
     // Create an ECS cluster to run some Fargate tasks in.

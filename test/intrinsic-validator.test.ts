@@ -1,5 +1,5 @@
 import { expect as expectCDK, haveResource } from '@aws-cdk/assert';
-import * as cdk from '@aws-cdk/core';
+import * as cdk from 'aws-cdk-lib';
 import { DisableRandomnessContextKey, IntrinsicValidator } from '../src';
 
 it('provides a random resource id', () => {
@@ -14,7 +14,7 @@ it('provides a random resource id', () => {
   expect(validator.node.children.some(node => node.node.id.match(/^Resource\d+/))).toBeTruthy();
 });
 
-it ('provides a stable resource id with context', () => {
+it('provides a stable resource id with context', () => {
   const app = new cdk.App({
     context: { [DisableRandomnessContextKey]: true },
   });

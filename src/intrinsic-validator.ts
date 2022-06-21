@@ -1,13 +1,14 @@
 import * as path from 'path';
-import * as cw from '@aws-cdk/aws-cloudwatch';
-import * as ec2 from '@aws-cdk/aws-ec2';
-import * as ecs from '@aws-cdk/aws-ecs';
-import * as lambda from '@aws-cdk/aws-lambda';
-import * as logs from '@aws-cdk/aws-logs';
-import * as sfn from '@aws-cdk/aws-stepfunctions';
-import * as sfn_tasks from '@aws-cdk/aws-stepfunctions-tasks';
-import * as cdk from '@aws-cdk/core';
-import * as cr from '@aws-cdk/custom-resources';
+import * as cdk from 'aws-cdk-lib';
+import * as cw from 'aws-cdk-lib/aws-cloudwatch';
+import * as ec2 from 'aws-cdk-lib/aws-ec2';
+import * as ecs from 'aws-cdk-lib/aws-ecs';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as logs from 'aws-cdk-lib/aws-logs';
+import * as sfn from 'aws-cdk-lib/aws-stepfunctions';
+import * as sfn_tasks from 'aws-cdk-lib/aws-stepfunctions-tasks';
+import * as cr from 'aws-cdk-lib/custom-resources';
+import { Construct } from 'constructs';
 import { SingletonAlarmMonitor } from './alarm-monitor';
 import { LAMBDA_ASSET_DIR } from './assets';
 import { HttpCheckRequest } from './lambda/http-check/lambda';
@@ -35,8 +36,8 @@ export const DisableRandomnessContextKey = 'intrinsic-validator.disable-randomne
 /**
  * Adds intrinsic validation to a CloudFormation stack.
  */
-export class IntrinsicValidator extends cdk.Construct {
-  constructor(scope: cdk.Construct, id: string, props: IntrinsicValidatorProps = {}) {
+export class IntrinsicValidator extends Construct {
+  constructor(scope: Construct, id: string, props: IntrinsicValidatorProps = {}) {
     super(scope, id);
 
     const definition = new sfn.Parallel(this, 'Validations');
@@ -184,7 +185,7 @@ export abstract class Validation {
   }
 
   /** @internal */
-  abstract _bind(scope: cdk.Construct, id: string): ValidationConfig;
+  abstract _bind(scope: Construct, id: string): ValidationConfig;
 }
 
 /** @internal */
@@ -193,7 +194,7 @@ class AlwaysSucceeds extends Validation {
     super({ label: 'AlwaysSucceeds' });
   }
 
-  _bind(scope: cdk.Construct, id: string): ValidationConfig {
+  _bind(scope: Construct, id: string): ValidationConfig {
     return {
       chainable: new sfn.Pass(scope, id, {
         result: sfn.Result.fromString('Winner'),
@@ -208,7 +209,7 @@ class AlwaysFails extends Validation {
     super({ label: 'AlwaysFails' });
   }
 
-  _bind(scope: cdk.Construct, id: string): ValidationConfig {
+  _bind(scope: Construct, id: string): ValidationConfig {
     return {
       chainable: new sfn.Fail(scope, id),
     };
@@ -271,7 +272,7 @@ class FargateTaskSucceeds extends Validation {
     });
   }
 
-  _bind(scope: cdk.Construct, id: string): ValidationConfig {
+  _bind(scope: Construct, id: string): ValidationConfig {
     return {
       chainable: new sfn_tasks.EcsRunTask(scope, id, {
         launchTarget: new sfn_tasks.EcsFargateLaunchTarget(),
@@ -307,12 +308,12 @@ export interface FargateValidationRunContainerOptions extends ValidationBaseOpti
 /**
  * A convenience tool for creating Fargate-based validations.
  */
-export class FargateValidationFactory extends cdk.Construct {
+export class FargateValidationFactory extends Construct {
   private readonly options: FargateValidationFactoryProps;
   private readonly securityGroups: ec2.ISecurityGroup[];
   private taskDefinitionIndex = -1;
 
-  constructor(scope: cdk.Construct, id: string, props: FargateValidationFactoryProps) {
+  constructor(scope: Construct, id: string, props: FargateValidationFactoryProps) {
     super(scope, id);
     this.options = props;
     // By default, no security group.
@@ -379,8 +380,8 @@ class MonitorAlarm extends Validation {
     this.timeout = options.duration ?? cdk.Duration.minutes(1);
   }
 
-  _bind(scope: cdk.Construct, id: string): ValidationConfig {
-    const privateScope = new cdk.Construct(scope, id);
+  _bind(scope: Construct, id: string): ValidationConfig {
+    const privateScope = new Construct(scope, id);
     const alarmMonitor = new SingletonAlarmMonitor(privateScope, 'AlarmMonitor');
 
     const chainable = new sfn_tasks.StepFunctionsStartExecution(privateScope, id, {
@@ -426,7 +427,7 @@ class StateMachineExecutionSucceeds extends Validation {
     });
   }
 
-  _bind(scope: cdk.Construct, id: string): ValidationConfig {
+  _bind(scope: Construct, id: string): ValidationConfig {
     const chainable = new sfn_tasks.StepFunctionsStartExecution(scope, id, {
       stateMachine: this.options.stateMachine,
       input: this.options.input,
@@ -467,7 +468,7 @@ class LambdaInvokeSucceeds extends Validation {
     this.lambdaFunction = options.lambdaFunction;
   }
 
-  _bind(scope: cdk.Construct, id: string): ValidationConfig {
+  _bind(scope: Construct, id: string): ValidationConfig {
     const chainable = new sfn_tasks.LambdaInvoke(scope, id, {
       integrationPattern: sfn.IntegrationPattern.REQUEST_RESPONSE,
       lambdaFunction: this.lambdaFunction,
@@ -544,8 +545,8 @@ class HttpCheck extends Validation {
     }
   }
 
-  _bind(scope: cdk.Construct, id: string): ValidationConfig {
-    const privateScope = new cdk.Construct(scope, id);
+  _bind(scope: Construct, id: string): ValidationConfig {
+    const privateScope = new Construct(scope, id);
 
     const lambdaFunction = new lambda.SingletonFunction(privateScope, 'Function', {
       runtime: lambda.Runtime.NODEJS_14_X,

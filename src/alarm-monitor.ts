@@ -1,10 +1,11 @@
-import * as cw from '@aws-cdk/aws-cloudwatch';
-import * as iam from '@aws-cdk/aws-iam';
-import * as lambda from '@aws-cdk/aws-lambda';
-import * as logs from '@aws-cdk/aws-logs';
-import * as sfn from '@aws-cdk/aws-stepfunctions';
-import * as sfn_tasks from '@aws-cdk/aws-stepfunctions-tasks';
-import * as cdk from '@aws-cdk/core';
+import * as cdk from 'aws-cdk-lib';
+import * as cw from 'aws-cdk-lib/aws-cloudwatch';
+import * as iam from 'aws-cdk-lib/aws-iam';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as logs from 'aws-cdk-lib/aws-logs';
+import * as sfn from 'aws-cdk-lib/aws-stepfunctions';
+import * as sfn_tasks from 'aws-cdk-lib/aws-stepfunctions-tasks';
+import { Construct } from 'constructs';
 import { LAMBDA_ASSET_DIR } from './assets';
 
 /**
@@ -35,10 +36,10 @@ export interface AlarmMonitorTaskInputOptions {
 /**
  * Provides a State Machine to monitor CloudWatch Alarms.
  */
-export class AlarmMonitor extends cdk.Construct implements IAlarmMonitor {
+export class AlarmMonitor extends Construct implements IAlarmMonitor {
   readonly stateMachine: sfn.IStateMachine;
 
-  constructor(scope: cdk.Construct, id: string) {
+  constructor(scope: Construct, id: string) {
     super(scope, id);
 
     const bugState = new sfn.Fail(this, 'BugState');
@@ -115,14 +116,14 @@ export class AlarmMonitor extends cdk.Construct implements IAlarmMonitor {
 /**
  * Creates or re-uses a singleton alarm monitor.
  */
-export class SingletonAlarmMonitor extends cdk.Construct implements IAlarmMonitor {
+export class SingletonAlarmMonitor extends Construct implements IAlarmMonitor {
   private readonly alarmMonitor: IAlarmMonitor;
 
   public get stateMachine(): sfn.IStateMachine {
     return this.alarmMonitor.stateMachine;
   }
 
-  constructor(scope: cdk.Construct, id: string) {
+  constructor(scope: Construct, id: string) {
     super(scope, id);
 
     const stack = cdk.Stack.of(this);

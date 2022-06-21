@@ -1,10 +1,11 @@
-import { Chain, Pass, StateMachine, TaskInput } from '@aws-cdk/aws-stepfunctions';
-import * as cdk from '@aws-cdk/core';
+import * as cdk from 'aws-cdk-lib';
+import { Chain, Pass, StateMachine, TaskInput } from 'aws-cdk-lib/aws-stepfunctions';
+import { Construct } from 'constructs';
 import { IntrinsicValidator, Validation } from '../../src';
 
 /** @internal */
 export class IntegStepFunctionLit extends cdk.Stack {
-  constructor(scope_: cdk.Construct, props: cdk.StackProps = {}) {
+  constructor(scope_: Construct, props: cdk.StackProps = {}) {
     super(scope_, 'IntegStepFunctionLit', props);
 
     const stateMachine = new StateMachine(this, 'StateMachine', {

@@ -1,10 +1,11 @@
-import * as cdk from '@aws-cdk/core';
+import * as cdk from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 import { IntrinsicValidator, Validation } from '../../src';
 import { TestAlarms } from './test-alarms';
 
 /** @internal */
 export class IntegCloudwatchAlarmLit extends cdk.Stack {
-  constructor(scope_: cdk.Construct, props: cdk.StackProps = {}) {
+  constructor(scope_: Construct, props: cdk.StackProps = {}) {
     super(scope_, 'IntegCloudwatchAlarmLit', props);
 
     const testAlarms = new TestAlarms(this, 'TestAlarms');

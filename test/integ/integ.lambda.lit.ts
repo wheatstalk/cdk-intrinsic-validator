@@ -1,10 +1,11 @@
-import * as cdk from '@aws-cdk/core';
+import * as cdk from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 import { IntrinsicValidator, Validation } from '../../src';
 import { TestLambdas } from './test-lambdas';
 
 /** @internal */
 export class IntegLambdaLit extends cdk.Stack {
-  constructor(scope_: cdk.Construct, props: cdk.StackProps = {}) {
+  constructor(scope_: Construct, props: cdk.StackProps = {}) {
     super(scope_, 'IntegLambdaLit', props);
 
     const testLambdas = new TestLambdas(this, 'TestLambdas');
