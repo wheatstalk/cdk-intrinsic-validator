@@ -1,5 +1,5 @@
-const pj = require('projen');
-const project = new pj.AwsCdkConstructLibrary({
+const { awscdk } = require('projen');
+const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Josh Kellendonk',
   authorAddress: 'joshkellendonk@gmail.com',
   cdkVersion: '1.95.2',
@@ -28,8 +28,6 @@ const project = new pj.AwsCdkConstructLibrary({
     allowedUsernames: ['github-actions', 'github-actions[bot]', 'misterjoshua'],
   },
 
-  minNodeVersion: '12.13.0',
-
   // Disable cdk dependencies as deps
   // @see https://dev.to/aws-builders/correctly-defining-dependencies-in-l3-cdk-constructs-45p
   cdkDependenciesAsDeps: false,
@@ -47,7 +45,18 @@ const project = new pj.AwsCdkConstructLibrary({
   ],
 
   devDeps: [
-    'ts-node@^9',
+    '@aws-cdk/core',
+    '@aws-cdk/custom-resources',
+    '@aws-cdk/aws-cloudwatch',
+    '@aws-cdk/aws-ec2',
+    '@aws-cdk/aws-ecs',
+    '@aws-cdk/aws-iam',
+    '@aws-cdk/aws-lambda',
+    '@aws-cdk/aws-logs',
+    '@aws-cdk/aws-stepfunctions',
+    '@aws-cdk/aws-stepfunctions-tasks',
+
+    'ts-node@^10',
     'aws-cdk@^1.95.2',
     'aws-sdk@^2.963.0',
     'markmac@^0.1',
@@ -90,27 +99,27 @@ const project = new pj.AwsCdkConstructLibrary({
   // release: undefined,                /* Add release management to this project. */
 });
 
-project.package.setScript('integ:dev', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.dev.ts"');
-project.package.setScript('integ:main', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.main.lit.ts"');
-project.package.setScript('integ:fargate', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.fargate.lit.ts"');
-project.package.setScript('integ:fargate-puppeteer', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.fargate-puppeteer.lit.ts"');
-project.package.setScript('integ:cloudwatch-alarm', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.cloudwatch-alarm.lit.ts"');
-project.package.setScript('integ:lambda', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.lambda.lit.ts"');
-project.package.setScript('integ:http-check', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.http-check.lit.ts"');
-project.package.setScript('integ:step-function', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.step-function.lit.ts"');
-project.package.setScript('integ:alarm-monitor', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.alarm-monitor.ts"');
-project.package.setScript('integ:error-message', 'cdk --app "ts-node -P tsconfig.jest.json test/integ/integ.error-message.ts"');
+project.package.setScript('integ:dev', 'cdk --app "ts-node -P tsconfig.dev.json test/integ/integ.dev.ts"');
+project.package.setScript('integ:main', 'cdk --app "ts-node -P tsconfig.dev.json test/integ/integ.main.lit.ts"');
+project.package.setScript('integ:fargate', 'cdk --app "ts-node -P tsconfig.dev.json test/integ/integ.fargate.lit.ts"');
+project.package.setScript('integ:fargate-puppeteer', 'cdk --app "ts-node -P tsconfig.dev.json test/integ/integ.fargate-puppeteer.lit.ts"');
+project.package.setScript('integ:cloudwatch-alarm', 'cdk --app "ts-node -P tsconfig.dev.json test/integ/integ.cloudwatch-alarm.lit.ts"');
+project.package.setScript('integ:lambda', 'cdk --app "ts-node -P tsconfig.dev.json test/integ/integ.lambda.lit.ts"');
+project.package.setScript('integ:http-check', 'cdk --app "ts-node -P tsconfig.dev.json test/integ/integ.http-check.lit.ts"');
+project.package.setScript('integ:step-function', 'cdk --app "ts-node -P tsconfig.dev.json test/integ/integ.step-function.lit.ts"');
+project.package.setScript('integ:alarm-monitor', 'cdk --app "ts-node -P tsconfig.dev.json test/integ/integ.alarm-monitor.ts"');
+project.package.setScript('integ:error-message', 'cdk --app "ts-node -P tsconfig.dev.json test/integ/integ.error-message.ts"');
 
 const macros = project.addTask('readme-macros');
 macros.exec('shx mv README.md README.md.bak');
 macros.exec('shx cat README.md.bak | markmac > README.md');
 macros.exec('shx rm README.md.bak');
-project.buildTask.spawn(macros);
+project.buildWorkflow.addPostBuildJobTask(macros);
 
 const commonOptions = '--bundle --external:aws-sdk --platform=node';
-// Using testCompileTask because it runs before compile...
-project.testCompileTask.exec(`esbuild ${commonOptions} src/lambda/intrinsic-validator-provider/lambda.ts --outfile=lambda/intrinsic-validator-provider.js`);
-project.testCompileTask.exec(`esbuild ${commonOptions} src/lambda/http-check/lambda.ts --outfile=lambda/http-check.js`);
-project.testCompileTask.exec(`esbuild ${commonOptions} src/lambda/check-alarm-status/lambda.ts --outfile=lambda/check-alarm-status.js`);
+const preCompileTask = project.tasks.tryFind('pre-compile');
+preCompileTask.exec(`esbuild ${commonOptions} src/lambda/intrinsic-validator-provider/lambda.ts --outfile=lambda/intrinsic-validator-provider.js`);
+preCompileTask.exec(`esbuild ${commonOptions} src/lambda/http-check/lambda.ts --outfile=lambda/http-check.js`);
+preCompileTask.exec(`esbuild ${commonOptions} src/lambda/check-alarm-status/lambda.ts --outfile=lambda/check-alarm-status.js`);
 
 project.synth();
