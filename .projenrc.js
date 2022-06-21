@@ -2,7 +2,7 @@ const pj = require('projen');
 const project = new pj.AwsCdkConstructLibrary({
   author: 'Josh Kellendonk',
   authorAddress: 'joshkellendonk@gmail.com',
-  cdkVersion: '1.95.2',
+  cdkVersion: '2.28.0',
   defaultReleaseBranch: 'main',
   name: '@wheatstalk/cdk-intrinsic-validator',
   repositoryUrl: 'https://github.com/wheatstalk/cdk-intrinsic-validator.git',
@@ -34,22 +34,14 @@ const project = new pj.AwsCdkConstructLibrary({
   // @see https://dev.to/aws-builders/correctly-defining-dependencies-in-l3-cdk-constructs-45p
   cdkDependenciesAsDeps: false,
   cdkDependencies: [
-    '@aws-cdk/core',
-    '@aws-cdk/custom-resources',
-    '@aws-cdk/aws-cloudwatch',
-    '@aws-cdk/aws-ec2',
-    '@aws-cdk/aws-ecs',
-    '@aws-cdk/aws-iam',
-    '@aws-cdk/aws-lambda',
-    '@aws-cdk/aws-logs',
-    '@aws-cdk/aws-stepfunctions',
-    '@aws-cdk/aws-stepfunctions-tasks',
+    'aws-cdk-lib',
   ],
 
   devDeps: [
     'ts-node@^9',
-    'aws-cdk@^1.95.2',
+    'aws-cdk-lib@^2.28.0',
     'aws-sdk@^2.963.0',
+    'constructs@^10',
     'markmac@^0.1',
     'shx',
     '@wheatstalk/lit-snip@^0.0',
