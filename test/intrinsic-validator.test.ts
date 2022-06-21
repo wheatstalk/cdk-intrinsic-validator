@@ -1,5 +1,5 @@
-import { expect as expectCDK, haveResource } from '@aws-cdk/assert';
 import * as cdk from 'aws-cdk-lib';
+import { Template } from 'aws-cdk-lib/assertions';
 import { DisableRandomnessContextKey, IntrinsicValidator } from '../src';
 
 it('provides a random resource id', () => {
@@ -37,5 +37,5 @@ it('produces a state machine', () => {
   new IntrinsicValidator(stack, 'Intrinsic');
 
   // THEN
-  expectCDK(stack).to(haveResource('AWS::StepFunctions::StateMachine'));
+  Template.fromStack(stack).hasResourceProperties('AWS::StepFunctions::StateMachine', {});
 });

@@ -1,5 +1,5 @@
-import { SynthUtils } from '@aws-cdk/assert';
 import * as cdk from 'aws-cdk-lib';
+import { Template } from 'aws-cdk-lib/assertions';
 import { DisableRandomnessContextKey } from '../../src';
 import { IntegLambdaLit } from './integ.lambda.lit';
 
@@ -11,5 +11,5 @@ test('snapshot', () => {
   });
 
   const stack = new IntegLambdaLit(app);
-  expect(SynthUtils.toCloudFormation(stack)).toMatchSnapshot();
+  expect(Template.fromStack(stack).toJSON()).toMatchSnapshot();
 });
