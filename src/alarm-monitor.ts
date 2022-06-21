@@ -45,7 +45,7 @@ export class AlarmMonitor extends cdk.Construct implements IAlarmMonitor {
 
     const checkAlarmStatusFunction = new lambda.Function(this, 'CheckAlarmStatusFunction', {
       runtime: lambda.Runtime.NODEJS_14_X,
-      handler: 'check-alarm-status.checkAlarmStatus',
+      handler: 'check-alarm-status.handler',
       code: lambda.Code.fromAsset(LAMBDA_ASSET_DIR),
       logRetention: logs.RetentionDays.ONE_MONTH,
       initialPolicy: [
