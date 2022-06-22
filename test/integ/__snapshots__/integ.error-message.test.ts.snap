@@ -1666,7 +1666,7 @@ def handler(event, context):
           },
           "S3Key": "942a4effc6a5eb9e9052b826b9852fb36fb9d62cc202e71c8120b5e1541e16bb.zip",
         },
-        "Handler": "check-alarm-status.checkAlarmStatus",
+        "Handler": "check-alarm-status.handler",
         "Role": Object {
           "Fn::GetAtt": Array [
             "SingletonAlarmMonitorCheckAlarmStatusFunctionServiceRoleA8B357EC",
