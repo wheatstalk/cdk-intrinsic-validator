@@ -31,6 +31,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   devDeps: [
     'ts-node@^10',
     'aws-cdk@^2.28.0',
+    'aws-cdk-lib@^2.28.0',
     'aws-sdk@^2.963.0',
     'constructs@^10',
     'markmac@^0.1',
