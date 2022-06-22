@@ -8,7 +8,7 @@ export class IntegCloudwatchAlarmLit extends cdk.Stack {
     super(scope_, 'IntegCloudwatchAlarmLit', props);
 
     const testAlarms = new TestAlarms(this, 'TestAlarms');
-    const alarm = testAlarms.neverAlarming;
+    const alarm = testAlarms.compositeNeverAlarming;
 
     // Lit code uses 'scope'
     const scope = this;
@@ -21,7 +21,7 @@ export class IntegCloudwatchAlarmLit extends cdk.Stack {
         // monitoring it, the stack will roll back automatically.
         Validation.monitorAlarm({
           alarm,
-          duration: cdk.Duration.minutes(5),
+          duration: cdk.Duration.minutes(1),
         }),
       ],
     });

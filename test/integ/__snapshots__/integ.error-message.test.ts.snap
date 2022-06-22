@@ -96,49 +96,7 @@ Object {
       },
     },
   },
-  "Outputs": Object {
-    "TestAlarmsAlwaysAlarmingExecution4B32A340": Object {
-      "Value": Object {
-        "Fn::Join": Array [
-          "",
-          Array [
-            "{\\"AlarmName\\":\\"",
-            Object {
-              "Ref": "TestAlarmsAlwaysAlarming69FED027",
-            },
-            "\\",\\"MonitoringSeconds\\":31}",
-          ],
-        ],
-      },
-    },
-    "TestAlarmsNeverAlarmingExecutionF5D1776E": Object {
-      "Value": Object {
-        "Fn::Join": Array [
-          "",
-          Array [
-            "{\\"AlarmName\\":\\"",
-            Object {
-              "Ref": "TestAlarmsNeverAlarmingHopefullyFD878B05",
-            },
-            "\\",\\"MonitoringSeconds\\":60}",
-          ],
-        ],
-      },
-    },
-  },
   "Parameters": Object {
-    "AssetParameters6cb41dd3d114f80cf466dce4b16b8148c7f86051eeb919a53d84d6bf46c54cb8ArtifactHash4F60A775": Object {
-      "Description": "Artifact hash for asset \\"6cb41dd3d114f80cf466dce4b16b8148c7f86051eeb919a53d84d6bf46c54cb8\\"",
-      "Type": "String",
-    },
-    "AssetParameters6cb41dd3d114f80cf466dce4b16b8148c7f86051eeb919a53d84d6bf46c54cb8S3Bucket25BAB033": Object {
-      "Description": "S3 bucket for asset \\"6cb41dd3d114f80cf466dce4b16b8148c7f86051eeb919a53d84d6bf46c54cb8\\"",
-      "Type": "String",
-    },
-    "AssetParameters6cb41dd3d114f80cf466dce4b16b8148c7f86051eeb919a53d84d6bf46c54cb8S3VersionKeyBB063205": Object {
-      "Description": "S3 key for asset version \\"6cb41dd3d114f80cf466dce4b16b8148c7f86051eeb919a53d84d6bf46c54cb8\\"",
-      "Type": "String",
-    },
     "AssetParameters8dd02cc4ac473ca5b08800e92edaa31a1a7db4005928021d029c5363584f11b9ArtifactHash26B5BCAA": Object {
       "Description": "Artifact hash for asset \\"8dd02cc4ac473ca5b08800e92edaa31a1a7db4005928021d029c5363584f11b9\\"",
       "Type": "String",
@@ -149,6 +107,18 @@ Object {
     },
     "AssetParameters8dd02cc4ac473ca5b08800e92edaa31a1a7db4005928021d029c5363584f11b9S3VersionKey36104212": Object {
       "Description": "S3 key for asset version \\"8dd02cc4ac473ca5b08800e92edaa31a1a7db4005928021d029c5363584f11b9\\"",
+      "Type": "String",
+    },
+    "AssetParametersc7c8e179917686cb9c4f5ee68753c6c10b5746a5516eb528a103c660513b7f4cArtifactHashE172E14D": Object {
+      "Description": "Artifact hash for asset \\"c7c8e179917686cb9c4f5ee68753c6c10b5746a5516eb528a103c660513b7f4c\\"",
+      "Type": "String",
+    },
+    "AssetParametersc7c8e179917686cb9c4f5ee68753c6c10b5746a5516eb528a103c660513b7f4cS3Bucket0DBF9D02": Object {
+      "Description": "S3 bucket for asset \\"c7c8e179917686cb9c4f5ee68753c6c10b5746a5516eb528a103c660513b7f4c\\"",
+      "Type": "String",
+    },
+    "AssetParametersc7c8e179917686cb9c4f5ee68753c6c10b5746a5516eb528a103c660513b7f4cS3VersionKeyC05805C0": Object {
+      "Description": "S3 key for asset version \\"c7c8e179917686cb9c4f5ee68753c6c10b5746a5516eb528a103c660513b7f4c\\"",
       "Type": "String",
     },
     "AssetParametersff11416d5596b03499b7d71853b288cd55b7162e49359ac6d037ad1902d674fdArtifactHash6E87626F": Object {
@@ -678,7 +648,7 @@ def handler(event, context):
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters6cb41dd3d114f80cf466dce4b16b8148c7f86051eeb919a53d84d6bf46c54cb8S3Bucket25BAB033",
+            "Ref": "AssetParametersc7c8e179917686cb9c4f5ee68753c6c10b5746a5516eb528a103c660513b7f4cS3Bucket0DBF9D02",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -691,7 +661,7 @@ def handler(event, context):
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters6cb41dd3d114f80cf466dce4b16b8148c7f86051eeb919a53d84d6bf46c54cb8S3VersionKeyBB063205",
+                          "Ref": "AssetParametersc7c8e179917686cb9c4f5ee68753c6c10b5746a5516eb528a103c660513b7f4cS3VersionKeyC05805C0",
                         },
                       ],
                     },
@@ -704,7 +674,7 @@ def handler(event, context):
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters6cb41dd3d114f80cf466dce4b16b8148c7f86051eeb919a53d84d6bf46c54cb8S3VersionKeyBB063205",
+                          "Ref": "AssetParametersc7c8e179917686cb9c4f5ee68753c6c10b5746a5516eb528a103c660513b7f4cS3VersionKeyC05805C0",
                         },
                       ],
                     },
@@ -871,7 +841,7 @@ def handler(event, context):
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters6cb41dd3d114f80cf466dce4b16b8148c7f86051eeb919a53d84d6bf46c54cb8S3Bucket25BAB033",
+            "Ref": "AssetParametersc7c8e179917686cb9c4f5ee68753c6c10b5746a5516eb528a103c660513b7f4cS3Bucket0DBF9D02",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -884,7 +854,7 @@ def handler(event, context):
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters6cb41dd3d114f80cf466dce4b16b8148c7f86051eeb919a53d84d6bf46c54cb8S3VersionKeyBB063205",
+                          "Ref": "AssetParametersc7c8e179917686cb9c4f5ee68753c6c10b5746a5516eb528a103c660513b7f4cS3VersionKeyC05805C0",
                         },
                       ],
                     },
@@ -897,7 +867,7 @@ def handler(event, context):
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters6cb41dd3d114f80cf466dce4b16b8148c7f86051eeb919a53d84d6bf46c54cb8S3VersionKeyBB063205",
+                          "Ref": "AssetParametersc7c8e179917686cb9c4f5ee68753c6c10b5746a5516eb528a103c660513b7f4cS3VersionKeyC05805C0",
                         },
                       ],
                     },
@@ -1885,7 +1855,7 @@ def handler(event, context):
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters6cb41dd3d114f80cf466dce4b16b8148c7f86051eeb919a53d84d6bf46c54cb8S3Bucket25BAB033",
+            "Ref": "AssetParametersc7c8e179917686cb9c4f5ee68753c6c10b5746a5516eb528a103c660513b7f4cS3Bucket0DBF9D02",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -1898,7 +1868,7 @@ def handler(event, context):
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters6cb41dd3d114f80cf466dce4b16b8148c7f86051eeb919a53d84d6bf46c54cb8S3VersionKeyBB063205",
+                          "Ref": "AssetParametersc7c8e179917686cb9c4f5ee68753c6c10b5746a5516eb528a103c660513b7f4cS3VersionKeyC05805C0",
                         },
                       ],
                     },
@@ -1911,7 +1881,7 @@ def handler(event, context):
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters6cb41dd3d114f80cf466dce4b16b8148c7f86051eeb919a53d84d6bf46c54cb8S3VersionKeyBB063205",
+                          "Ref": "AssetParametersc7c8e179917686cb9c4f5ee68753c6c10b5746a5516eb528a103c660513b7f4cS3VersionKeyC05805C0",
                         },
                       ],
                     },
@@ -2126,6 +2096,55 @@ def handler(event, context):
         "TreatMissingData": "breaching",
       },
       "Type": "AWS::CloudWatch::Alarm",
+    },
+    "TestAlarmsCompositeAlwaysAlarmingA7E34597": Object {
+      "Properties": Object {
+        "AlarmName": "IntegErrorMessageTestAlarmsCompositeAlwaysAlarming8F79650A",
+        "AlarmRule": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "(ALARM(\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "TestAlarmsAlwaysAlarming69FED027",
+                  "Arn",
+                ],
+              },
+              "\\") OR ALARM(\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "TestAlarmsNeverAlarmingHopefullyFD878B05",
+                  "Arn",
+                ],
+              },
+              "\\"))",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudWatch::CompositeAlarm",
+    },
+    "TestAlarmsCompositeNeverAlarming02CDF5B3": Object {
+      "Properties": Object {
+        "AlarmName": "IntegErrorMessageTestAlarmsCompositeNeverAlarming7066A320",
+        "AlarmRule": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "(ALARM(\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "TestAlarmsNeverAlarmingHopefullyFD878B05",
+                  "Arn",
+                ],
+              },
+              "\\"))",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudWatch::CompositeAlarm",
     },
     "TestAlarmsNeverAlarmingHopefullyFD878B05": Object {
       "Properties": Object {

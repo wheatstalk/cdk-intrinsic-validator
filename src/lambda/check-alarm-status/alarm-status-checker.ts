@@ -39,7 +39,8 @@ export class AlarmStatusChecker {
 
     console.info('Alarm info =', alarms);
 
-    if ((alarms.MetricAlarms ?? []).length > 0) {
+    const totalAlarms = (alarms.MetricAlarms ?? []).length + (alarms.CompositeAlarms ?? []).length;
+    if (totalAlarms > 0) {
       console.warn('Alarm is in an alarming state');
       return {
         Status: AlarmStatus.Alarm,
