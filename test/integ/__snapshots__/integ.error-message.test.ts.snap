@@ -1921,7 +1921,7 @@ def handler(event, context):
             ],
           },
         },
-        "Handler": "check-alarm-status.checkAlarmStatus",
+        "Handler": "check-alarm-status.handler",
         "Role": Object {
           "Fn::GetAtt": Array [
             "SingletonAlarmMonitorCheckAlarmStatusFunctionServiceRoleA8B357EC",

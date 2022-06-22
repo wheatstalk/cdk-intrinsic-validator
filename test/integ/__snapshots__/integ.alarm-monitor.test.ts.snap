@@ -197,7 +197,7 @@ Object {
             ],
           },
         },
-        "Handler": "check-alarm-status.checkAlarmStatus",
+        "Handler": "check-alarm-status.handler",
         "Role": Object {
           "Fn::GetAtt": Array [
             "AlarmMonitorCheckAlarmStatusFunctionServiceRole0FE14751",
