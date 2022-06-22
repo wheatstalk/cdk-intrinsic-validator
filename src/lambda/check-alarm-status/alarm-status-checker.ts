@@ -18,7 +18,7 @@ export enum AlarmStatus {
 }
 
 export class AlarmStatusChecker {
-  constructor(private readonly cloudwatch: CloudWatch) {}
+  constructor(private readonly cloudwatch: CloudWatch) { }
 
   async checkStatus(input: CheckAlarmStatusRequest) {
     console.info('Parsing the input');
@@ -34,11 +34,13 @@ export class AlarmStatusChecker {
     const alarms = await this.cloudwatch.describeAlarms({
       AlarmNames: alarmNames,
       StateValue: 'ALARM',
+      AlarmTypes: ['CompositeAlarm', 'MetricAlarm'],
     }).promise();
 
     console.info('Alarm info =', alarms);
 
-    if ((alarms.MetricAlarms ?? []).length > 0) {
+    const totalAlarms = (alarms.MetricAlarms ?? []).length + (alarms.CompositeAlarms ?? []).length;
+    if (totalAlarms > 0) {
       console.warn('Alarm is in an alarming state');
       return {
         Status: AlarmStatus.Alarm,

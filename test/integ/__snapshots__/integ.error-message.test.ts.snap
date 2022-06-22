@@ -96,36 +96,6 @@ Object {
       },
     },
   },
-  "Outputs": Object {
-    "TestAlarmsAlwaysAlarmingExecution4B32A340": Object {
-      "Value": Object {
-        "Fn::Join": Array [
-          "",
-          Array [
-            "{\\"AlarmName\\":\\"",
-            Object {
-              "Ref": "TestAlarmsAlwaysAlarming69FED027",
-            },
-            "\\",\\"MonitoringSeconds\\":31}",
-          ],
-        ],
-      },
-    },
-    "TestAlarmsNeverAlarmingExecutionF5D1776E": Object {
-      "Value": Object {
-        "Fn::Join": Array [
-          "",
-          Array [
-            "{\\"AlarmName\\":\\"",
-            Object {
-              "Ref": "TestAlarmsNeverAlarmingHopefullyFD878B05",
-            },
-            "\\",\\"MonitoringSeconds\\":60}",
-          ],
-        ],
-      },
-    },
-  },
   "Parameters": Object {
     "BootstrapVersion": Object {
       "Default": "/cdk-bootstrap/hnb659fds/version",
@@ -649,7 +619,7 @@ def handler(event, context):
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "9b25729a83803329aca1a3a366363ccf228dfbd9fb52e31e4b5ee0a2cf2c6069.zip",
+          "S3Key": "bbabe4652bcb9c2ce4bfd87c8803d55a7f0fc19d7c7b20f97f03ed47c60968f3.zip",
         },
         "Environment": Object {
           "Variables": Object {
@@ -810,7 +780,7 @@ def handler(event, context):
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "9b25729a83803329aca1a3a366363ccf228dfbd9fb52e31e4b5ee0a2cf2c6069.zip",
+          "S3Key": "bbabe4652bcb9c2ce4bfd87c8803d55a7f0fc19d7c7b20f97f03ed47c60968f3.zip",
         },
         "Environment": Object {
           "Variables": Object {
@@ -1664,7 +1634,7 @@ def handler(event, context):
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "9b25729a83803329aca1a3a366363ccf228dfbd9fb52e31e4b5ee0a2cf2c6069.zip",
+          "S3Key": "bbabe4652bcb9c2ce4bfd87c8803d55a7f0fc19d7c7b20f97f03ed47c60968f3.zip",
         },
         "Handler": "check-alarm-status.handler",
         "Role": Object {
@@ -1871,6 +1841,55 @@ def handler(event, context):
         "TreatMissingData": "breaching",
       },
       "Type": "AWS::CloudWatch::Alarm",
+    },
+    "TestAlarmsCompositeAlwaysAlarmingA7E34597": Object {
+      "Properties": Object {
+        "AlarmName": "IntegErrorMessageTestAlarmsCompositeAlwaysAlarming8F79650A",
+        "AlarmRule": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "(ALARM(\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "TestAlarmsAlwaysAlarming69FED027",
+                  "Arn",
+                ],
+              },
+              "\\") OR ALARM(\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "TestAlarmsNeverAlarmingHopefullyFD878B05",
+                  "Arn",
+                ],
+              },
+              "\\"))",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudWatch::CompositeAlarm",
+    },
+    "TestAlarmsCompositeNeverAlarming02CDF5B3": Object {
+      "Properties": Object {
+        "AlarmName": "IntegErrorMessageTestAlarmsCompositeNeverAlarming7066A320",
+        "AlarmRule": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "(ALARM(\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "TestAlarmsNeverAlarmingHopefullyFD878B05",
+                  "Arn",
+                ],
+              },
+              "\\"))",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudWatch::CompositeAlarm",
     },
     "TestAlarmsNeverAlarmingHopefullyFD878B05": Object {
       "Properties": Object {

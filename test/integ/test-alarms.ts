@@ -12,6 +12,9 @@ export class TestAlarms extends Construct {
   /** An alarm that is never in alarm */
   public readonly neverAlarming: cw.IAlarm;
 
+  public readonly compositeAlwaysAlarming: cw.IAlarm;
+  public readonly compositeNeverAlarming: cw.IAlarm;
+
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
@@ -40,13 +43,6 @@ export class TestAlarms extends Construct {
       treatMissingData: cw.TreatMissingData.BREACHING,
     });
 
-    new cdk.CfnOutput(this, 'AlwaysAlarmingExecution', {
-      value: JSON.stringify({
-        AlarmName: this.alwaysAlarming.alarmName,
-        MonitoringSeconds: 31,
-      }),
-    });
-
     // This alarm shouldn't ever alarm.
     this.neverAlarming = new cw.Alarm(this, 'NeverAlarmingHopefully', {
       metric,
@@ -56,11 +52,14 @@ export class TestAlarms extends Construct {
       treatMissingData: cw.TreatMissingData.NOT_BREACHING,
     });
 
-    new cdk.CfnOutput(this, 'NeverAlarmingExecution', {
-      value: JSON.stringify({
-        AlarmName: this.neverAlarming.alarmName,
-        MonitoringSeconds: 60,
-      }),
+    // This composite alarm should always be alarming
+    this.compositeAlwaysAlarming = new cw.CompositeAlarm(this, 'CompositeAlwaysAlarming', {
+      alarmRule: cw.AlarmRule.anyOf(this.alwaysAlarming, this.neverAlarming),
+    });
+
+    // This composite alarm should never be alarming.
+    this.compositeNeverAlarming = new cw.CompositeAlarm(this, 'CompositeNeverAlarming', {
+      alarmRule: cw.AlarmRule.anyOf(this.neverAlarming),
     });
   }
 }
