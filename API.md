@@ -16,7 +16,7 @@ new FargateValidationFactory(scope: Construct, id: string, props: FargateValidat
 
 ##### `scope`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.FargateValidationFactory.parameter.scope"></a>
 
-- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -63,7 +63,7 @@ new IntrinsicValidator(scope: Construct, id: string, props?: IntrinsicValidatorP
 
 ##### `scope`<sup>Required</sup> <a name="@wheatstalk/cdk-intrinsic-validator.IntrinsicValidator.parameter.scope"></a>
 
-- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 
@@ -116,7 +116,7 @@ Label references to this validation for easier identification.
 public readonly cluster: ICluster;
 ```
 
-- *Type:* [`@aws-cdk/aws-ecs.ICluster`](#@aws-cdk/aws-ecs.ICluster)
+- *Type:* [`aws-cdk-lib.aws_ecs.ICluster`](#aws-cdk-lib.aws_ecs.ICluster)
 
 The cluster to create the task on.
 
@@ -140,7 +140,7 @@ Assign tasks public IP addresses.
 public readonly containerOverrides: ContainerOverride[];
 ```
 
-- *Type:* [`@aws-cdk/aws-stepfunctions-tasks.ContainerOverride`](#@aws-cdk/aws-stepfunctions-tasks.ContainerOverride)[]
+- *Type:* [`aws-cdk-lib.aws_stepfunctions_tasks.ContainerOverride`](#aws-cdk-lib.aws_stepfunctions_tasks.ContainerOverride)[]
 
 Container overrides.
 
@@ -152,7 +152,7 @@ Container overrides.
 public readonly securityGroups: ISecurityGroup[];
 ```
 
-- *Type:* [`@aws-cdk/aws-ec2.ISecurityGroup`](#@aws-cdk/aws-ec2.ISecurityGroup)[]
+- *Type:* [`aws-cdk-lib.aws_ec2.ISecurityGroup`](#aws-cdk-lib.aws_ec2.ISecurityGroup)[]
 
 Give tasks a security group.
 
@@ -164,7 +164,7 @@ Give tasks a security group.
 public readonly subnets: SubnetSelection;
 ```
 
-- *Type:* [`@aws-cdk/aws-ec2.SubnetSelection`](#@aws-cdk/aws-ec2.SubnetSelection)
+- *Type:* [`aws-cdk-lib.aws_ec2.SubnetSelection`](#aws-cdk-lib.aws_ec2.SubnetSelection)
 
 Select subnets in which tasks will run.
 
@@ -176,7 +176,7 @@ Select subnets in which tasks will run.
 public readonly taskDefinition: TaskDefinition;
 ```
 
-- *Type:* [`@aws-cdk/aws-ecs.TaskDefinition`](#@aws-cdk/aws-ecs.TaskDefinition)
+- *Type:* [`aws-cdk-lib.aws_ecs.TaskDefinition`](#aws-cdk-lib.aws_ecs.TaskDefinition)
 
 ---
 
@@ -211,7 +211,7 @@ Label references to this validation for easier identification.
 public readonly cluster: ICluster;
 ```
 
-- *Type:* [`@aws-cdk/aws-ecs.ICluster`](#@aws-cdk/aws-ecs.ICluster)
+- *Type:* [`aws-cdk-lib.aws_ecs.ICluster`](#aws-cdk-lib.aws_ecs.ICluster)
 
 The cluster to create the task on.
 
@@ -235,7 +235,7 @@ Assign tasks public IP addresses.
 public readonly containerOverrides: ContainerOverride[];
 ```
 
-- *Type:* [`@aws-cdk/aws-stepfunctions-tasks.ContainerOverride`](#@aws-cdk/aws-stepfunctions-tasks.ContainerOverride)[]
+- *Type:* [`aws-cdk-lib.aws_stepfunctions_tasks.ContainerOverride`](#aws-cdk-lib.aws_stepfunctions_tasks.ContainerOverride)[]
 
 Container overrides.
 
@@ -247,7 +247,7 @@ Container overrides.
 public readonly securityGroups: ISecurityGroup[];
 ```
 
-- *Type:* [`@aws-cdk/aws-ec2.ISecurityGroup`](#@aws-cdk/aws-ec2.ISecurityGroup)[]
+- *Type:* [`aws-cdk-lib.aws_ec2.ISecurityGroup`](#aws-cdk-lib.aws_ec2.ISecurityGroup)[]
 
 Give tasks a security group.
 
@@ -259,7 +259,7 @@ Give tasks a security group.
 public readonly subnets: SubnetSelection;
 ```
 
-- *Type:* [`@aws-cdk/aws-ec2.SubnetSelection`](#@aws-cdk/aws-ec2.SubnetSelection)
+- *Type:* [`aws-cdk-lib.aws_ec2.SubnetSelection`](#aws-cdk-lib.aws_ec2.SubnetSelection)
 
 Select subnets in which tasks will run.
 
@@ -296,7 +296,7 @@ Label references to this validation for easier identification.
 public readonly cluster: ICluster;
 ```
 
-- *Type:* [`@aws-cdk/aws-ecs.ICluster`](#@aws-cdk/aws-ecs.ICluster)
+- *Type:* [`aws-cdk-lib.aws_ecs.ICluster`](#aws-cdk-lib.aws_ecs.ICluster)
 
 The cluster to create the task on.
 
@@ -320,7 +320,7 @@ Assign tasks public IP addresses.
 public readonly containerOverrides: ContainerOverride[];
 ```
 
-- *Type:* [`@aws-cdk/aws-stepfunctions-tasks.ContainerOverride`](#@aws-cdk/aws-stepfunctions-tasks.ContainerOverride)[]
+- *Type:* [`aws-cdk-lib.aws_stepfunctions_tasks.ContainerOverride`](#aws-cdk-lib.aws_stepfunctions_tasks.ContainerOverride)[]
 
 Container overrides.
 
@@ -332,7 +332,7 @@ Container overrides.
 public readonly securityGroups: ISecurityGroup[];
 ```
 
-- *Type:* [`@aws-cdk/aws-ec2.ISecurityGroup`](#@aws-cdk/aws-ec2.ISecurityGroup)[]
+- *Type:* [`aws-cdk-lib.aws_ec2.ISecurityGroup`](#aws-cdk-lib.aws_ec2.ISecurityGroup)[]
 
 Give tasks a security group.
 
@@ -344,7 +344,7 @@ Give tasks a security group.
 public readonly subnets: SubnetSelection;
 ```
 
-- *Type:* [`@aws-cdk/aws-ec2.SubnetSelection`](#@aws-cdk/aws-ec2.SubnetSelection)
+- *Type:* [`aws-cdk-lib.aws_ec2.SubnetSelection`](#aws-cdk-lib.aws_ec2.SubnetSelection)
 
 Select subnets in which tasks will run.
 
@@ -381,7 +381,7 @@ Label references to this validation for easier identification.
 public readonly image: ContainerImage;
 ```
 
-- *Type:* [`@aws-cdk/aws-ecs.ContainerImage`](#@aws-cdk/aws-ecs.ContainerImage)
+- *Type:* [`aws-cdk-lib.aws_ecs.ContainerImage`](#aws-cdk-lib.aws_ecs.ContainerImage)
 
 Container image to run.
 
@@ -493,7 +493,7 @@ Follow redirects when performing the check.
 public readonly timeout: Duration;
 ```
 
-- *Type:* [`@aws-cdk/core.Duration`](#@aws-cdk/core.Duration)
+- *Type:* [`aws-cdk-lib.Duration`](#aws-cdk-lib.Duration)
 - *Default:* Duration.seconds(3)
 
 Maximum time to wait for a response.
@@ -569,7 +569,7 @@ Label references to this validation for easier identification.
 public readonly lambdaFunction: IFunction;
 ```
 
-- *Type:* [`@aws-cdk/aws-lambda.IFunction`](#@aws-cdk/aws-lambda.IFunction)
+- *Type:* [`aws-cdk-lib.aws_lambda.IFunction`](#aws-cdk-lib.aws_lambda.IFunction)
 
 The Lambda function to invoke.
 
@@ -608,7 +608,7 @@ Label references to this validation for easier identification.
 public readonly alarm: IAlarm;
 ```
 
-- *Type:* [`@aws-cdk/aws-cloudwatch.IAlarm`](#@aws-cdk/aws-cloudwatch.IAlarm)
+- *Type:* [`aws-cdk-lib.aws_cloudwatch.IAlarm`](#aws-cdk-lib.aws_cloudwatch.IAlarm)
 
 The alarm to monitor.
 
@@ -620,7 +620,7 @@ The alarm to monitor.
 public readonly duration: Duration;
 ```
 
-- *Type:* [`@aws-cdk/core.Duration`](#@aws-cdk/core.Duration)
+- *Type:* [`aws-cdk-lib.Duration`](#aws-cdk-lib.Duration)
 - *Default:* one minute
 
 The length of time to monitor the alarm.
@@ -658,7 +658,7 @@ Label references to this validation for easier identification.
 public readonly stateMachine: IStateMachine;
 ```
 
-- *Type:* [`@aws-cdk/aws-stepfunctions.IStateMachine`](#@aws-cdk/aws-stepfunctions.IStateMachine)
+- *Type:* [`aws-cdk-lib.aws_stepfunctions.IStateMachine`](#aws-cdk-lib.aws_stepfunctions.IStateMachine)
 
 The state machine to execute.
 
@@ -670,7 +670,7 @@ The state machine to execute.
 public readonly input: TaskInput;
 ```
 
-- *Type:* [`@aws-cdk/aws-stepfunctions.TaskInput`](#@aws-cdk/aws-stepfunctions.TaskInput)
+- *Type:* [`aws-cdk-lib.aws_stepfunctions.TaskInput`](#aws-cdk-lib.aws_stepfunctions.TaskInput)
 - *Default:* no input given
 
 Input for the state machine's execution.

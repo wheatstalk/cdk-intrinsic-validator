@@ -1,5 +1,5 @@
-import * as lambda from '@aws-cdk/aws-lambda';
-import * as cdk from '@aws-cdk/core';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import { Construct } from 'constructs';
 
 const ALWAYS_FAILS_SRC = `
 def handler(event, context):
@@ -14,13 +14,13 @@ def handler(event, context):
  * Create some test lambdas.
  * @internal
  */
-export class TestLambdas extends cdk.Construct {
+export class TestLambdas extends Construct {
   /** A lambda that always fails */
   public readonly alwaysFails: lambda.IFunction;
   /** A lambda that always succeeds */
   public readonly alwaysSucceeds: lambda.IFunction;
 
-  constructor(scope: cdk.Construct, id: string) {
+  constructor(scope: Construct, id: string) {
     super(scope, id);
 
     this.alwaysFails = new lambda.Function(scope, 'AlwaysFails', {

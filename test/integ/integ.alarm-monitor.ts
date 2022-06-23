@@ -1,10 +1,11 @@
-import * as cdk from '@aws-cdk/core';
+import * as cdk from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 import { AlarmMonitor } from '../../src/alarm-monitor';
 import { TestAlarms } from './test-alarms';
 
 /** @internal */
 export class IntegAlarmMonitor extends cdk.Stack {
-  constructor(scope: cdk.Construct, props: cdk.StackProps = {}) {
+  constructor(scope: Construct, props: cdk.StackProps = {}) {
     super(scope, 'IntegAlarmMonitor', props);
 
     new AlarmMonitor(this, 'AlarmMonitor');

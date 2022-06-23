@@ -1,5 +1,6 @@
-import * as ecs from '@aws-cdk/aws-ecs';
-import * as cdk from '@aws-cdk/core';
+import * as cdk from 'aws-cdk-lib';
+import * as ecs from 'aws-cdk-lib/aws-ecs';
+import { Construct } from 'constructs';
 import {
   FargateValidationFactory,
   IntrinsicValidator,
@@ -12,7 +13,7 @@ import { TestLambdas } from './test-lambdas';
 
 /** @internal */
 export class IntegErrorMessage extends cdk.Stack {
-  constructor(scope: cdk.Construct, props: cdk.StackProps = {}) {
+  constructor(scope: Construct, props: cdk.StackProps = {}) {
     super(scope, 'IntegErrorMessage', props);
 
     const cluster = new ecs.Cluster(this, 'Cluster');

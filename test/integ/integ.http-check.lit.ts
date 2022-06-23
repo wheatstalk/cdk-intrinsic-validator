@@ -1,9 +1,10 @@
-import * as cdk from '@aws-cdk/core';
+import * as cdk from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 import { IntrinsicValidator, Validation } from '../../src';
 
 /** @internal */
 export class IntegHttpCheckLit extends cdk.Stack {
-  constructor(scope_: cdk.Construct, props: cdk.StackProps = {}) {
+  constructor(scope_: Construct, props: cdk.StackProps = {}) {
     super(scope_, 'IntegHttpCheckLit', props);
 
     // Lit code uses 'scope'
