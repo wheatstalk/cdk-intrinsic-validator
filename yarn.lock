@@ -1233,16 +1233,16 @@ aws-cdk-lib@2.28.0:
     yaml "1.10.2"
 
 aws-cdk@^2.28.0:
-  version "2.29.0"
-  resolved "https://registry.yarnpkg.com/aws-cdk/-/aws-cdk-2.29.0.tgz#3c810a26651f0adac240100848b643a9d7420f74"
-  integrity sha512-NoFHoel2B2SgDsTH+J3LwWAbnfcdUFoKc9JAMXcBighkYecWPJK6lvPu00N2CGiFRWfkYGWwqU5BbfYJb1KgkQ==
+  version "2.29.1"
+  resolved "https://registry.yarnpkg.com/aws-cdk/-/aws-cdk-2.29.1.tgz#3b7360c6d195c23cbdb7c994d88e777d4ad106c8"
+  integrity sha512-JRuxHfMPR7kpGrk5fA1NgBmTLPpVa2gIRf5Pz+T9XaHM0lB8QLOkjXD6O5UJvgQtx/rwYAyD8b+n3b1rKaEGRQ==
   optionalDependencies:
     fsevents "2.3.2"
 
 aws-sdk@^2.963.0:
-  version "2.1161.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1161.0.tgz#acfc1a257808c31e6c57625b874b7fc2de5113a8"
-  integrity sha512-qpOtPovj3xJhdTFBkJgqmSuy5rc7vDu2HtM+S3sLiP8Uhkb3Pn3z7LtTZt5YUnY2lV1DDR9H1aWuRlRDK96k1w==
+  version "2.1162.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1162.0.tgz#e19ff30f255e5c4021eaf02a80ec0a368a4712a0"
+  integrity sha512-tRDAa5GOqSkphVR/Yhc8eyLcV9ZGTgmZ7kY5ODJDMw52Cd/92kXfe6YDoFWFLyeA/z5H9o/2uZ6+3CjU96Ap/g==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -1481,9 +1481,9 @@ camelcase@^6.2.0, camelcase@^6.3.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001358:
-  version "1.0.30001358"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001358.tgz#473d35dabf5e448b463095cab7924e96ccfb8c00"
-  integrity sha512-hvp8PSRymk85R20bsDra7ZTCpSVGN/PAz9pSAjPSjKC+rNmnUk5vCRgJwiTT/O4feQ/yu/drvZYpKxxhbFuChw==
+  version "1.0.30001359"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001359.tgz#a1c1cbe1c2da9e689638813618b4219acbd4925e"
+  integrity sha512-Xln/BAsPzEuiVLgJ2/45IaqD9jShtk3Y33anKb4+yLwQzws3+v6odKfpgES/cDEaZMLzSChpIGdbOYtH9MyuHw==
 
 case@1.6.3, case@^1.6.3:
   version "1.6.3"
@@ -2113,9 +2113,9 @@ duplexer3@^0.1.4:
   integrity sha512-CEj8FwwNA4cVH2uFCoHUrmojhYh1vmCdOaneKJXwkeY1i9jnlslVo9dx+hQ5Hl9GnH/Bwy/IjxAyOePyPKYnzA==
 
 electron-to-chromium@^1.4.164:
-  version "1.4.168"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.168.tgz#8f6bda320a434ac963850d18e41d83220973cbdd"
-  integrity sha512-yz247hclRBaP8ABB1hf9kL7AMfa+yC2hB9F3XF8Y87VWMnYgq4QYvV6acRACcDkTDxfGQ4GYK/aZPQiuFMGbaA==
+  version "1.4.170"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.170.tgz#0415fc489402e09bfbe1f0c99bbf4d73f31d48d4"
+  integrity sha512-rZ8PZLhK4ORPjFqLp9aqC4/S1j4qWFsPPz13xmWdrbBkU/LlxMcok+f+6f8YnQ57MiZwKtOaW15biZZsY5Igvw==
 
 emittery@^0.8.1:
   version "0.8.1"
@@ -4347,9 +4347,9 @@ map-obj@^4.0.0:
   integrity sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==
 
 markmac@^0.1:
-  version "0.1.290"
-  resolved "https://registry.yarnpkg.com/markmac/-/markmac-0.1.290.tgz#023ee380004ff9bfad1a1af5cd26e84706ac7e3f"
-  integrity sha512-QgXlKxgoOLJEJm81YaqMLdjVxSYfLtK5T/fuy8pJNFjTAMVDtAhqJPYWH1g4vlOXTGGVRjgDRTADQal13Vccxg==
+  version "0.1.291"
+  resolved "https://registry.yarnpkg.com/markmac/-/markmac-0.1.291.tgz#37ab2c4a260efa30e222b0644140779c20961c1a"
+  integrity sha512-Sfi/80vbZDC23iZrV09HHpX+Yov4jYxRQGut9he7ZsxKlbyi1oaMwtUBMkwXxnv8zWlnuo7Rn7alLddLDvrrOQ==
 
 mdurl@~1.0.1:
   version "1.0.1"
@@ -5085,10 +5085,10 @@ progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.58.15:
-  version "0.58.15"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.58.15.tgz#37640b839c2af5d03dcfe276f25b9988d84308ab"
-  integrity sha512-js9tdlmyUqPdz46BDYcdCrN936Gcr8ndnjX0J5aYVgOxucS1EHWXdLHqAOyhZiuYevpQ2dXg2AYurEdgjRXPtA==
+projen@^0.58.17:
+  version "0.58.17"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.58.17.tgz#0e5f0b723db94d275b4fd3c038b276a622502d61"
+  integrity sha512-dwVCHFB9cMDDn8ctJM/AXVHHabh+G+AbZ84kSOPo2uvpVdzTMkuJV/T/oXu+CDhkHCJQIfSh5zJ+7Ebpo5MGyg==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
