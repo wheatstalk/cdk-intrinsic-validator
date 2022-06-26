@@ -4347,9 +4347,9 @@ map-obj@^4.0.0:
   integrity sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==
 
 markmac@^0.1:
-  version "0.1.291"
-  resolved "https://registry.yarnpkg.com/markmac/-/markmac-0.1.291.tgz#37ab2c4a260efa30e222b0644140779c20961c1a"
-  integrity sha512-Sfi/80vbZDC23iZrV09HHpX+Yov4jYxRQGut9he7ZsxKlbyi1oaMwtUBMkwXxnv8zWlnuo7Rn7alLddLDvrrOQ==
+  version "0.1.292"
+  resolved "https://registry.yarnpkg.com/markmac/-/markmac-0.1.292.tgz#702c12c10df7d6059013166535270223ba4eef87"
+  integrity sha512-FhBkKgMGMqqZ43TQcSHI/+TxRQJWAwt2V6PYaq7D4HckqbEtKLGlmN8cD+3J7Xwp3H0vt6nxhu5Xei2XdMxrBQ==
 
 mdurl@~1.0.1:
   version "1.0.1"
@@ -4748,9 +4748,9 @@ npmlog@^6.0.0:
     set-blocking "^2.0.0"
 
 nwsapi@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.2.0.tgz#204879a9e3d068ff2a55139c2c772780681a38b7"
-  integrity sha512-h2AatdwYH+JHiZpv7pt/gSX1XoRGb7L/qSIeuqA6GwYoF9w1vP1cw42TO0aI2pNyshRK5893hNSl+1//vHK7hQ==
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.2.1.tgz#10a9f268fbf4c461249ebcfe38e359aa36e2577c"
+  integrity sha512-JYOWTeFoS0Z93587vRJgASD5Ut11fYl5NyihP3KrYBvMe1FRRs6RN7m20SA/16GM4P6hTnZjT+UmDOt38UeXNg==
 
 object-inspect@^1.12.0, object-inspect@^1.9.0:
   version "1.12.2"
