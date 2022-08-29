@@ -1560,9 +1560,9 @@ camelcase@^7.0.0:
   integrity sha512-JToIvOmz6nhGsUhAYScbo2d6Py5wojjNfoxoc2mEVLUdJ70gJK2gnd+ABY1Tc3sVMyK7QDPtN0T/XdlCQWITyQ==
 
 caniuse-lite@^1.0.30001370:
-  version "1.0.30001383"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001383.tgz#aecf317ccd940690725ae3ae4f28293c5fb8050e"
-  integrity sha512-swMpEoTp5vDoGBZsYZX7L7nXHe6dsHxi9o6/LKf/f0LukVtnrxly5GVb/fWdCDTqi/yw6Km6tiJ0pmBacm0gbg==
+  version "1.0.30001384"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001384.tgz#029527c2d781a3cfef13fa63b3a78a6088e35973"
+  integrity sha512-BBWt57kqWbc0GYZXb47wTXpmAgqr5LSibPzNjk/AWMdmJMQhLqOl3c/Kd4OAU/tu4NLfYkMx8Tlq3RVBkOBolQ==
 
 case@1.6.3, case@^1.6.3:
   version "1.6.3"
@@ -4491,9 +4491,9 @@ map-obj@^4.0.0:
   integrity sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==
 
 markmac@^0.1:
-  version "0.1.352"
-  resolved "https://registry.yarnpkg.com/markmac/-/markmac-0.1.352.tgz#8152d82a1e90a9e6825e7fdc484e54c77bc38502"
-  integrity sha512-/f0CtvfTIXJvLzp4vfPQtGEz3Tl3Dy68ipDSbSzB/YGPIth89ijigdvtFTlTFy1z9/eLgUXGirqb1oA1w+g9Rw==
+  version "0.1.353"
+  resolved "https://registry.yarnpkg.com/markmac/-/markmac-0.1.353.tgz#7237aa3d4e89133786205c38128e3eea694a2f7e"
+  integrity sha512-bcRQ4jscZHzBY/wt6//Lmy3arHWtQG8Jq1Ix0gsHmNFuzE9AQDSWVpJ+zcnMUeombCUavK7gUm1AR93gDposbQ==
 
 mdurl@~1.0.1:
   version "1.0.1"
@@ -5229,10 +5229,10 @@ progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.61.30:
-  version "0.61.30"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.61.30.tgz#541568c120b5181ef04cfa2c84b67ee7e466c492"
-  integrity sha512-/9wv7wBsY7Y25OQkPUI16HZIa7IuX4c7u+8pjxJpLRmRhb9NylruMxFVJwaVdkzBVixzP807I06OwpJXyfZoQg==
+projen@^0.61.32:
+  version "0.61.32"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.61.32.tgz#88cd669cd874997ac9b923a70e7a41e9eec27746"
+  integrity sha512-lIHYG/XLO40ZX8B+JCgI5Fmec9DlfCMhbIJwpajPgYJuu4f0nBPwTCbpXZfH2EFkgC5ucBJ4apVi5NEidrTvWg==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
