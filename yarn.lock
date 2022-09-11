@@ -1188,9 +1188,9 @@ ansi-styles@^5.0.0:
   integrity sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==
 
 ansi-styles@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-6.1.0.tgz#87313c102b8118abd57371afab34618bf7350ed3"
-  integrity sha512-VbqNsoz55SYGczauuup0MFUyXNQviSpFTj1RQtFzmQLk18qbVSpTFFGMT293rmDaQuKCT6InmbuEyUne4mTuxQ==
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-6.1.1.tgz#63cd61c72283a71cb30bd881dbb60adada74bc70"
+  integrity sha512-qDOv24WjnYuL+wbwHdlsYZFy+cgPtrYw0Tn7GLORicQp9BkQLzrgI3Pm4VyR9ERZ41YTn7KlMPuL1n05WdZvmg==
 
 anymatch@^3.0.3:
   version "3.1.2"
@@ -4478,9 +4478,9 @@ map-obj@^4.0.0:
   integrity sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==
 
 markmac@^0.1:
-  version "0.1.361"
-  resolved "https://registry.yarnpkg.com/markmac/-/markmac-0.1.361.tgz#b0a248da03203de82aeac5247182ee09b87d22a4"
-  integrity sha512-MNJRdeAcckS+NJGJJZiqx6EOHm5P1DGqOs5InzL90dImfXbOE4NE540xpzxsCE9f+S5zmiWuLorQZRzH9FYSvA==
+  version "0.1.362"
+  resolved "https://registry.yarnpkg.com/markmac/-/markmac-0.1.362.tgz#7d202bf335c6ca126ee4861ced18f6e4614af1f8"
+  integrity sha512-KNpmpTpnPhj/QD7XGf9XnwirjY4yPSx/r8yOGmsyZTmkx/Hruop6dU56pZGGkXgwBeGcOaf09CbrfomM1yL91A==
 
 mdurl@~1.0.1:
   version "1.0.1"
@@ -5216,10 +5216,10 @@ progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.62.0:
-  version "0.62.0"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.62.0.tgz#50d45423565f6bf9b56dedeb7eab55bb88c5a000"
-  integrity sha512-ZRdHX8GFC7j1dep8ZrlYQZwEyiu+YEj06tmmaPUBoOSU6bE73BEu9t0mJ98pobo1+Hvv6Xlj6WSnVMTVShF7aw==
+projen@^0.62.1:
+  version "0.62.2"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.62.2.tgz#2b4556a3fd7cca828dc94b04d19df8238dc33646"
+  integrity sha512-lJ0SIblIF9T26Xk37IPJ3W5neNe2CEw7NhBOiJjC3/vdKAO5Ce6NdKAZHHdSVZWhOUrpDGgVA0vSNQpIDZotOw==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
