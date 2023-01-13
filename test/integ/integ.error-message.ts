@@ -1,6 +1,8 @@
 import * as cdk from 'aws-cdk-lib';
 import * as ecs from 'aws-cdk-lib/aws-ecs';
 import { Construct } from 'constructs';
+import { TestAlarms } from './test-alarms';
+import { TestLambdas } from './test-lambdas';
 import {
   FargateValidationFactory,
   IntrinsicValidator,
@@ -8,8 +10,6 @@ import {
   Validation,
 } from '../../src';
 import { SingletonAlarmMonitor } from '../../src/alarm-monitor';
-import { TestAlarms } from './test-alarms';
-import { TestLambdas } from './test-lambdas';
 
 /** @internal */
 export class IntegErrorMessage extends cdk.Stack {

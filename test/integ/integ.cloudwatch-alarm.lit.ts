@@ -1,7 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import { IntrinsicValidator, Validation } from '../../src';
 import { TestAlarms } from './test-alarms';
+import { IntrinsicValidator, Validation } from '../../src';
 
 /** @internal */
 export class IntegCloudwatchAlarmLit extends cdk.Stack {

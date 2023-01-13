@@ -1,7 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import { IntrinsicValidator, Validation } from '../../src';
 import { TestLambdas } from './test-lambdas';
+import { IntrinsicValidator, Validation } from '../../src';
 
 /** @internal */
 export class IntegLambdaLit extends cdk.Stack {

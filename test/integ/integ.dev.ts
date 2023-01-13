@@ -1,9 +1,9 @@
 import * as cdk from 'aws-cdk-lib';
 import * as ecs from 'aws-cdk-lib/aws-ecs';
 import { Construct } from 'constructs';
-import { FargateValidationFactory, IntrinsicValidator, Validation } from '../../src';
 import { TestAlarms } from './test-alarms';
 import { TestLambdas } from './test-lambdas';
+import { FargateValidationFactory, IntrinsicValidator, Validation } from '../../src';
 
 /** @internal */
 export class IntegDev extends cdk.Stack {
