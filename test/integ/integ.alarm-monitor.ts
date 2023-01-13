@@ -1,7 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import { AlarmMonitor } from '../../src/alarm-monitor';
 import { TestAlarms } from './test-alarms';
+import { AlarmMonitor } from '../../src/alarm-monitor';
 
 /** @internal */
 export class IntegAlarmMonitor extends cdk.Stack {
