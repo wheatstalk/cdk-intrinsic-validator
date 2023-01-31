@@ -93,10 +93,6 @@
       "type": "build"
     },
     {
-      "name": "json-schema",
-      "type": "build"
-    },
-    {
       "name": "markmac",
       "version": "^0.1",
       "type": "build"
