@@ -12,6 +12,7 @@ import { Construct } from 'constructs';
 import { SingletonAlarmMonitor } from './alarm-monitor';
 import { LAMBDA_ASSET_DIR } from './assets';
 import { HttpCheckRequest } from './lambda/http-check/lambda';
+import { compilePortSpec } from './port-spec';
 
 /**
  * Props for `IntrinsicValidator`
@@ -496,7 +497,13 @@ export interface HttpCheckSucceedsOptions extends ValidationBaseOptions {
    * Expect an HTTP status
    * @default 200
    */
-  readonly expectedStatus?: number;
+  readonly expectedStatus?: number | string;
+
+  /**
+   * Retry the check if the given http status is resolved.
+   * @default - no retries
+   */
+  readonly retryStatus?: string;
 
   /**
    * Follow redirects when performing the check
@@ -519,19 +526,29 @@ export interface HttpCheckSucceedsOptions extends ValidationBaseOptions {
 
 class HttpCheck extends Validation {
   private readonly url: string;
-  private readonly expectedStatus: number;
+  private readonly expectedStatus: string;
   private readonly timeout: cdk.Duration;
   private readonly checkPattern?: string;
   private readonly checkPatternFlags?: string;
   private readonly followRedirects: boolean;
+  private readonly retryStatus?: string;
 
   constructor(options: HttpCheckSucceedsOptions) {
     super({ label: options.label ?? 'Http Check Succeeds' });
 
     this.url = options.url;
-    this.expectedStatus = options.expectedStatus ?? 200;
+    this.expectedStatus = options.expectedStatus?.toString() ?? '200';
     this.timeout = options.timeout ?? cdk.Duration.seconds(3);
     this.followRedirects = options.followRedirects ?? false;
+    this.retryStatus = options.retryStatus;
+
+    // Test expectStatus is valid syntax
+    compilePortSpec(this.expectedStatus);
+
+    if (this.retryStatus) {
+      // Test retryStatus is valid syntax
+      compilePortSpec(this.retryStatus);
+    }
 
     if (options.checkPattern) {
       // Check that the given pattern and flags are valid before we use them.
@@ -559,6 +576,7 @@ class HttpCheck extends Validation {
     const httpCheckRequest: HttpCheckRequest = {
       url: this.url,
       expectedStatus: this.expectedStatus,
+      retryStatus: this.retryStatus,
       followRedirects: this.followRedirects,
       timeout: this.timeout.toSeconds() * 1000,
       checkPattern: this.checkPattern,
@@ -576,4 +594,3 @@ class HttpCheck extends Validation {
     };
   }
 }
-
