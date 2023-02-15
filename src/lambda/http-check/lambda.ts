@@ -18,6 +18,7 @@ export async function handler(event: HttpCheckRequest): Promise<HttpCheckResult>
     followRedirects: event.followRedirects,
     timeout: event.timeout,
     retryStatus: event.retryStatus,
+    retryUntilTimeout: event.retryUntilTimeout,
     ...checkPatternOptions,
   });
 
@@ -32,6 +33,7 @@ export interface HttpCheckBase {
   readonly url: string;
   readonly expectedStatus: string;
   readonly retryStatus?: string;
+  readonly retryUntilTimeout: boolean;
   readonly followRedirects: boolean;
   readonly timeout: number;
 }
@@ -51,19 +53,19 @@ export interface HttpCheckOptions extends HttpCheckBase {
 }
 
 export async function httpCheck(options: HttpCheckOptions): Promise<HttpCheckResult> {
-  const abortController = new AbortController();
-  const timeoutHandle = setTimeout(() => abortController.abort(), options.timeout);
   const timeoutDeadline = Date.now() + options.timeout;
-
   const isExpectedStatus = compilePortSpec(options.expectedStatus);
   const isRetryStatus = options.retryStatus ? compilePortSpec(options.retryStatus) : () => false;
 
-  try {
-    while (true) {
+  while (true) {
+    const abortController = new AbortController();
+    const timeoutHandle = setTimeout(() => abortController.abort(), timeoutDeadline - Date.now());
+
+    try {
       if (Date.now() > timeoutDeadline) {
         return {
           success: false,
-          message: 'HTTP check timed out waiting for expected status',
+          message: `HTTP check timed out after ${options.timeout}ms`,
         };
       }
 
@@ -78,6 +80,10 @@ export async function httpCheck(options: HttpCheckOptions): Promise<HttpCheckRes
       }
 
       if (!isExpectedStatus(response.status)) {
+        if (options.retryUntilTimeout) {
+          continue;
+        }
+
         return {
           success: false,
           message: `Unexpected HTTP status: ${response.status}`,
@@ -87,6 +93,10 @@ export async function httpCheck(options: HttpCheckOptions): Promise<HttpCheckRes
       if (options.checkPattern) {
         const body = await response.text();
         if (!options.checkPattern.test(body)) {
+          if (options.retryUntilTimeout) {
+            continue;
+          }
+
           return {
             success: false,
             message: 'The content does not match the given check pattern',
@@ -98,20 +108,24 @@ export async function httpCheck(options: HttpCheckOptions): Promise<HttpCheckRes
         success: true,
         message: 'Check succeeded',
       };
+    } catch (e) {
+      if (options.retryUntilTimeout) {
+        continue;
+      }
+
+      if (e instanceof Error && e.name === 'AbortError') {
+        return {
+          success: false,
+          message: `The request timed out after ${options.timeout}ms`,
+        };
+      } else {
+        return {
+          success: false,
+          message: `Could not fetch the url: ${e}`,
+        };
+      }
+    } finally {
+      clearTimeout(timeoutHandle);
     }
-  } catch (e) {
-    if (e instanceof Error && e.name === 'AbortError') {
-      return {
-        success: false,
-        message: `The request timed out after ${options.timeout}ms`,
-      };
-    } else {
-      return {
-        success: false,
-        message: `Could not fetch the url: ${e}`,
-      };
-    }
-  } finally {
-    clearTimeout(timeoutHandle);
   }
 }

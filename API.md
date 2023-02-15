@@ -500,6 +500,19 @@ Retry the check if the given http status is resolved.
 
 ---
 
+##### `retryUntilTimeout`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.retryUntilTimeout"></a>
+
+```typescript
+public readonly retryUntilTimeout: boolean;
+```
+
+- *Type:* `boolean`
+- *Default:* false
+
+Continue to retry the check until the timeout is reached.
+
+---
+
 ##### `timeout`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.timeout"></a>
 
 ```typescript
