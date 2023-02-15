@@ -99,7 +99,7 @@ new IntrinsicValidator(scope, 'IntrinsicValidator', {
     // monitoring it, the stack will roll back automatically.
     Validation.monitorAlarm({
       alarm,
-      duration: cdk.Duration.minutes(5),
+      duration: cdk.Duration.minutes(1),
     }),
   ],
 });
@@ -204,6 +204,12 @@ new IntrinsicValidator(scope, 'IntrinsicValidator', {
     Validation.httpCheck({
       // Replace this URL with a public endpoint of your own
       url: 'https://httpstat.us/200',
+      // (optional) Expect an http 200 status
+      expectedStatus: '200',
+      // (optional) Ignore http 4xx or 502 statuses and retry the check up to the timeout
+      retryStatus: '400-499,502',
+      // (optional) Try for up to 14 minutes
+      timeout: Duration.minutes(14),
       // (optional) Check the page content for a node-compatible regex
       checkPattern: '\\d+\\s+OK',
       // (optional) Provide regex flags
