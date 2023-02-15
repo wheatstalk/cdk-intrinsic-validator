@@ -1,5 +1,8 @@
 import { httpCheck } from '../../../src/lambda/http-check/lambda';
 
+// Longer timeouts because we're using live HTTP checking...
+jest.setTimeout(30_000);
+
 describe('http checks', () => {
   test('http 200', async () => {
     const options = {
@@ -59,7 +62,7 @@ describe('http checks', () => {
         success: false,
         message: 'HTTP check timed out waiting for expected status',
       }));
-  }, 10_000);
+  });
 
   test('timeout', async () => {
     // GIVEN
