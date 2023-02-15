@@ -506,6 +506,12 @@ export interface HttpCheckSucceedsOptions extends ValidationBaseOptions {
   readonly retryStatus?: string;
 
   /**
+   * Continue to retry the check until the timeout is reached.
+   * @default false
+   */
+  readonly retryUntilTimeout?: boolean;
+
+  /**
    * Follow redirects when performing the check
    * @default false
    */
@@ -532,6 +538,7 @@ class HttpCheck extends Validation {
   private readonly checkPatternFlags?: string;
   private readonly followRedirects: boolean;
   private readonly retryStatus?: string;
+  private readonly retryUntilTimeout: boolean;
 
   constructor(options: HttpCheckSucceedsOptions) {
     super({ label: options.label ?? 'Http Check Succeeds' });
@@ -541,6 +548,7 @@ class HttpCheck extends Validation {
     this.timeout = options.timeout ?? cdk.Duration.seconds(3);
     this.followRedirects = options.followRedirects ?? false;
     this.retryStatus = options.retryStatus;
+    this.retryUntilTimeout = options.retryUntilTimeout ?? false;
 
     // Test expectStatus is valid syntax
     compilePortSpec(this.expectedStatus);
@@ -577,6 +585,7 @@ class HttpCheck extends Validation {
       url: this.url,
       expectedStatus: this.expectedStatus,
       retryStatus: this.retryStatus,
+      retryUntilTimeout: this.retryUntilTimeout,
       followRedirects: this.followRedirects,
       timeout: this.timeout.toSeconds() * 1000,
       checkPattern: this.checkPattern,

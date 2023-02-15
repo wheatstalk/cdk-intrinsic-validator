@@ -114,7 +114,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "441ad9c77ad86eff918d59e87c1ec1e58281719fdf8e831612a33237e99cc7b5.zip",
+          "S3Key": "fbe933df74bbb681c62da7e529a867421157111a0a9f4b3ea457d908e0d49c50.zip",
         },
         "Handler": "check-alarm-status.handler",
         "Role": Object {
