@@ -127,7 +127,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "fbe933df74bbb681c62da7e529a867421157111a0a9f4b3ea457d908e0d49c50.zip",
+          "S3Key": "af90e21a130cf1ecf0ca420cfa724c21d5b600c54c809c09a7f050dfdf91caca.zip",
         },
         "Environment": Object {
           "Variables": Object {
@@ -288,7 +288,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "fbe933df74bbb681c62da7e529a867421157111a0a9f4b3ea457d908e0d49c50.zip",
+          "S3Key": "af90e21a130cf1ecf0ca420cfa724c21d5b600c54c809c09a7f050dfdf91caca.zip",
         },
         "Environment": Object {
           "Variables": Object {
@@ -1198,7 +1198,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "fbe933df74bbb681c62da7e529a867421157111a0a9f4b3ea457d908e0d49c50.zip",
+          "S3Key": "af90e21a130cf1ecf0ca420cfa724c21d5b600c54c809c09a7f050dfdf91caca.zip",
         },
         "Handler": "http-check.handler",
         "Role": Object {
