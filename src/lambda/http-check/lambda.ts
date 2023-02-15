@@ -2,6 +2,7 @@
 import { AbortController } from 'node-abort-controller';
 // @ts-ignore
 import fetch from 'node-fetch';
+import { compilePortSpec } from '../../port-spec';
 
 export async function handler(event: HttpCheckRequest): Promise<HttpCheckResult> {
   let checkPatternOptions = {};
@@ -29,8 +30,8 @@ export async function handler(event: HttpCheckRequest): Promise<HttpCheckResult>
 
 export interface HttpCheckBase {
   readonly url: string;
-  readonly expectedStatus: number;
-  readonly retryStatus: number[];
+  readonly expectedStatus: string;
+  readonly retryStatus?: string;
   readonly followRedirects: boolean;
   readonly timeout: number;
 }
@@ -54,6 +55,9 @@ export async function httpCheck(options: HttpCheckOptions): Promise<HttpCheckRes
   const timeoutHandle = setTimeout(() => abortController.abort(), options.timeout);
   const timeoutDeadline = Date.now() + options.timeout;
 
+  const isExpectedStatus = compilePortSpec(options.expectedStatus);
+  const isRetryStatus = options.retryStatus ? compilePortSpec(options.retryStatus) : () => false;
+
   try {
     while (true) {
       if (Date.now() > timeoutDeadline) {
@@ -68,12 +72,12 @@ export async function httpCheck(options: HttpCheckOptions): Promise<HttpCheckRes
         signal: abortController.signal,
       });
 
-      if (options.retryStatus.includes(response.status)) {
+      if (isRetryStatus(response.status)) {
         await new Promise(res => setTimeout(res, 1_000));
         continue;
       }
 
-      if (response.status !== options.expectedStatus) {
+      if (!isExpectedStatus(response.status)) {
         return {
           success: false,
           message: `Unexpected HTTP status: ${response.status}`,

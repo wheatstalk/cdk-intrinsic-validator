@@ -60,7 +60,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
 
   tsconfig: {
     compilerOptions: {
-      lib: ['es2018', 'dom'],
+      lib: ['es2019', 'dom'],
     },
   },
 

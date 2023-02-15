@@ -464,10 +464,10 @@ Regex pattern flags.
 ##### `expectedStatus`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.expectedStatus"></a>
 
 ```typescript
-public readonly expectedStatus: number;
+public readonly expectedStatus: string | number;
 ```
 
-- *Type:* `number`
+- *Type:* `string` | `number`
 - *Default:* 200
 
 Expect an HTTP status.
@@ -490,13 +490,13 @@ Follow redirects when performing the check.
 ##### `retryStatus`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.retryStatus"></a>
 
 ```typescript
-public readonly retryStatus: number[];
+public readonly retryStatus: string;
 ```
 
-- *Type:* `number`[]
+- *Type:* `string`
 - *Default:* no retries
 
-Retry the check if any of the following HTTP statuses are received.
+Retry the check if the given http status is resolved.
 
 ---
 

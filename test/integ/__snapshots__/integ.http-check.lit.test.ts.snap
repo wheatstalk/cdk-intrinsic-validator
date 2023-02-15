@@ -127,7 +127,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "d5cdf89d1d81809983bfed14e181281990179a2db7d03248a863ee6526a779e1.zip",
+          "S3Key": "f8c9285bfa91aad50b2861ee93ce876b607bf3e7fbf750d489e21ffd13ecce29.zip",
         },
         "Environment": Object {
           "Variables": Object {
@@ -288,7 +288,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "d5cdf89d1d81809983bfed14e181281990179a2db7d03248a863ee6526a779e1.zip",
+          "S3Key": "f8c9285bfa91aad50b2861ee93ce876b607bf3e7fbf750d489e21ffd13ecce29.zip",
         },
         "Environment": Object {
           "Variables": Object {
@@ -1031,7 +1031,7 @@ Object {
                   "Arn",
                 ],
               },
-              "\\",\\"Parameters\\":{\\"url\\":\\"https://httpstat.us/200\\",\\"expectedStatus\\":200,\\"retryStatus\\":[],\\"followRedirects\\":false,\\"timeout\\":3000,\\"checkPattern\\":\\"\\\\\\\\d+\\\\\\\\s+OK\\",\\"checkPatternFlags\\":\\"i\\"}}}}]}}}",
+              "\\",\\"Parameters\\":{\\"url\\":\\"https://httpstat.us/200\\",\\"expectedStatus\\":\\"200\\",\\"followRedirects\\":false,\\"timeout\\":3000,\\"checkPattern\\":\\"\\\\\\\\d+\\\\\\\\s+OK\\",\\"checkPatternFlags\\":\\"i\\"}}}}]}}}",
             ],
           ],
         },
@@ -1198,7 +1198,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "d5cdf89d1d81809983bfed14e181281990179a2db7d03248a863ee6526a779e1.zip",
+          "S3Key": "f8c9285bfa91aad50b2861ee93ce876b607bf3e7fbf750d489e21ffd13ecce29.zip",
         },
         "Handler": "http-check.handler",
         "Role": Object {
