@@ -487,6 +487,19 @@ Follow redirects when performing the check.
 
 ---
 
+##### `retryStatus`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.retryStatus"></a>
+
+```typescript
+public readonly retryStatus: number[];
+```
+
+- *Type:* `number`[]
+- *Default:* no retries
+
+Retry the check if any of the following HTTP statuses are received.
+
+---
+
 ##### `timeout`<sup>Optional</sup> <a name="@wheatstalk/cdk-intrinsic-validator.HttpCheckSucceedsOptions.property.timeout"></a>
 
 ```typescript

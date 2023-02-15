@@ -7,6 +7,7 @@ describe('http checks', () => {
       expectedStatus: 200,
       followRedirects: false,
       timeout: 3000,
+      retryStatus: [],
     };
 
     // WHEN
@@ -27,6 +28,7 @@ describe('http checks', () => {
       expectedStatus: 200,
       followRedirects: false,
       timeout: 3000,
+      retryStatus: [],
     };
 
     // WHEN
@@ -40,6 +42,27 @@ describe('http checks', () => {
       }));
   });
 
+  test('retry status', async () => {
+    // GIVEN
+    const options = {
+      url: 'https://httpstat.us/502',
+      expectedStatus: 200,
+      followRedirects: false,
+      timeout: 5000,
+      retryStatus: [502],
+    };
+
+    // WHEN
+    const result = await httpCheck(options);
+
+    // THEN
+    expect(result).toEqual(
+      expect.objectContaining({
+        success: false,
+        message: 'HTTP check timed out waiting for expected status',
+      }));
+  }, 10_000);
+
   test('timeout', async () => {
     // GIVEN
     const options = {
@@ -47,6 +70,7 @@ describe('http checks', () => {
       expectedStatus: 200,
       followRedirects: false,
       timeout: 500,
+      retryStatus: [],
     };
 
     // WHEN
@@ -67,6 +91,7 @@ describe('http checks', () => {
       expectedStatus: 200,
       followRedirects: false,
       timeout: 10000,
+      retryStatus: [],
     };
 
     // WHEN
@@ -88,6 +113,7 @@ describe('http checks', () => {
       followRedirects: false,
       timeout: 3000,
       checkPattern: /\d+\s+OK/i,
+      retryStatus: [],
     };
 
     // WHEN
@@ -108,6 +134,7 @@ describe('http checks', () => {
       followRedirects: false,
       timeout: 3000,
       checkPattern: /NEVER_MATCH/i,
+      retryStatus: [],
     };
 
     const result = await httpCheck(options);

@@ -499,6 +499,12 @@ export interface HttpCheckSucceedsOptions extends ValidationBaseOptions {
   readonly expectedStatus?: number;
 
   /**
+   * Retry the check if any of the following HTTP statuses are received
+   * @default - no retries
+   */
+  readonly retryStatus?: number[];
+
+  /**
    * Follow redirects when performing the check
    * @default false
    */
@@ -524,6 +530,7 @@ class HttpCheck extends Validation {
   private readonly checkPattern?: string;
   private readonly checkPatternFlags?: string;
   private readonly followRedirects: boolean;
+  private readonly retryStatus: number[];
 
   constructor(options: HttpCheckSucceedsOptions) {
     super({ label: options.label ?? 'Http Check Succeeds' });
@@ -532,6 +539,7 @@ class HttpCheck extends Validation {
     this.expectedStatus = options.expectedStatus ?? 200;
     this.timeout = options.timeout ?? cdk.Duration.seconds(3);
     this.followRedirects = options.followRedirects ?? false;
+    this.retryStatus = options.retryStatus ?? [];
 
     if (options.checkPattern) {
       // Check that the given pattern and flags are valid before we use them.
@@ -559,6 +567,7 @@ class HttpCheck extends Validation {
     const httpCheckRequest: HttpCheckRequest = {
       url: this.url,
       expectedStatus: this.expectedStatus,
+      retryStatus: this.retryStatus,
       followRedirects: this.followRedirects,
       timeout: this.timeout.toSeconds() * 1000,
       checkPattern: this.checkPattern,
@@ -576,4 +585,3 @@ class HttpCheck extends Validation {
     };
   }
 }
-

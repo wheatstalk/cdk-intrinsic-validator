@@ -3,19 +3,20 @@ import { AbortController } from 'node-abort-controller';
 // @ts-ignore
 import fetch from 'node-fetch';
 
-export async function handler(_event: HttpCheckRequest): Promise<HttpCheckResult> {
+export async function handler(event: HttpCheckRequest): Promise<HttpCheckResult> {
   let checkPatternOptions = {};
-  if (_event.checkPattern) {
+  if (event.checkPattern) {
     checkPatternOptions = {
-      checkPattern: new RegExp(_event.checkPattern, _event.checkPatternFlags),
+      checkPattern: new RegExp(event.checkPattern, event.checkPatternFlags),
     };
   }
 
   const result = await httpCheck({
-    url: _event.url,
-    expectedStatus: _event.expectedStatus,
-    followRedirects: _event.followRedirects,
-    timeout: _event.timeout,
+    url: event.url,
+    expectedStatus: event.expectedStatus,
+    followRedirects: event.followRedirects,
+    timeout: event.timeout,
+    retryStatus: event.retryStatus,
     ...checkPatternOptions,
   });
 
@@ -29,6 +30,7 @@ export async function handler(_event: HttpCheckRequest): Promise<HttpCheckResult
 export interface HttpCheckBase {
   readonly url: string;
   readonly expectedStatus: number;
+  readonly retryStatus: number[];
   readonly followRedirects: boolean;
   readonly timeout: number;
 }
@@ -50,34 +52,49 @@ export interface HttpCheckOptions extends HttpCheckBase {
 export async function httpCheck(options: HttpCheckOptions): Promise<HttpCheckResult> {
   const abortController = new AbortController();
   const timeoutHandle = setTimeout(() => abortController.abort(), options.timeout);
+  const timeoutDeadline = Date.now() + options.timeout;
 
   try {
-    const response = await fetch(options.url, {
-      redirect: options.followRedirects ? 'follow' : 'manual',
-      signal: abortController.signal,
-    });
-
-    if (response.status !== options.expectedStatus) {
-      return {
-        success: false,
-        message: `Unexpected HTTP status: ${response.status}`,
-      };
-    }
-
-    if (options.checkPattern) {
-      const body = await response.text();
-      if (!options.checkPattern.test(body)) {
+    while (true) {
+      if (Date.now() > timeoutDeadline) {
         return {
           success: false,
-          message: 'The content does not match the given check pattern',
+          message: 'HTTP check timed out waiting for expected status',
         };
       }
-    }
 
-    return {
-      success: true,
-      message: 'Check succeeded',
-    };
+      const response = await fetch(options.url, {
+        redirect: options.followRedirects ? 'follow' : 'manual',
+        signal: abortController.signal,
+      });
+
+      if (options.retryStatus.includes(response.status)) {
+        await new Promise(res => setTimeout(res, 1_000));
+        continue;
+      }
+
+      if (response.status !== options.expectedStatus) {
+        return {
+          success: false,
+          message: `Unexpected HTTP status: ${response.status}`,
+        };
+      }
+
+      if (options.checkPattern) {
+        const body = await response.text();
+        if (!options.checkPattern.test(body)) {
+          return {
+            success: false,
+            message: 'The content does not match the given check pattern',
+          };
+        }
+      }
+
+      return {
+        success: true,
+        message: 'Check succeeded',
+      };
+    }
   } catch (e) {
     if (e instanceof Error && e.name === 'AbortError') {
       return {
