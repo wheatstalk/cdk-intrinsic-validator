@@ -227,3 +227,20 @@ new IntrinsicValidator(scope, 'IntrinsicValidator', {
   a validation error, you can keep the State Machine that contains the error.
 
 [1]: examples/puppeteer
+
+- If you are using snapshot tests on your stack then you may run into issues because
+  the stack will constantly fail as the Logical ID of the intrinsic validator will 
+  always be different. You can you disable this in your tests using a context value:
+  
+  ```ts
+  import { DisableRandomnessContextKey } from '@wheatstalk/cdk-intrinsic-validator';
+
+  test('Snapshot test', ()=> {
+    const app = new App({
+      context: {
+        [DisableRandomnessContextKey]: true,
+      },
+    });
+  });
+  
+  ```
