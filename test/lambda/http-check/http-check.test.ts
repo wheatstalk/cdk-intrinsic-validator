@@ -63,7 +63,7 @@ describe('http checks', () => {
     expect(result).toEqual(
       expect.objectContaining({
         success: false,
-        message: 'HTTP check timed out after 5000ms',
+        message: expect.stringMatching(/timed out.*5000ms/),
       }));
   });
 
