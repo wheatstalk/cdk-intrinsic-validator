@@ -70,7 +70,7 @@
     "node-abort-controller": "^3",
     "node-fetch": "^2",
     "npm-check-updates": "^16",
-    "projen": "^0.71.62",
+    "projen": "^0.71.64",
     "shx": "^0.3.4",
     "standard-version": "^9",
     "ts-jest": "^27",
@@ -82,8 +82,8 @@
     "constructs": "^10.0.5"
   },
   "resolutions": {
-    "@types/prettier": "2.6.0",
-    "@types/babel__traverse": "7.18.2"
+    "@types/babel__traverse": "7.18.2",
+    "@types/prettier": "2.6.0"
   },
   "keywords": [
     "cdk",
