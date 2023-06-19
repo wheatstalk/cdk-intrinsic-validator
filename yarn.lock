@@ -4622,9 +4622,9 @@ map-obj@^4.0.0:
   integrity sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==
 
 markmac@^0.1:
-  version "0.1.642"
-  resolved "https://registry.yarnpkg.com/markmac/-/markmac-0.1.642.tgz#b53f1aa7b9bae6eccf4a15eec19e8d7ffaa8d4bf"
-  integrity sha512-qh0FdXWJMopnDiwL4Hfn9+L+WEZTFW7E0ooGFG1O6UcRZw5dFlQjxHk+Ww+M1SlB257HDSApIzMlvRjM3f1O0w==
+  version "0.1.643"
+  resolved "https://registry.yarnpkg.com/markmac/-/markmac-0.1.643.tgz#afcb916f90fb4046b8d4bdf863dd28f2fa10e6d6"
+  integrity sha512-cI/vf8ArMaDCeh45DY7UpdtYhoBxkiJga9tqqc7Hj/ZkhB+YX+jqmI79Cgd/gmvCj6JAcuCDR0yEtpk3a8qTDg==
 
 mdurl@~1.0.1:
   version "1.0.1"
@@ -5376,10 +5376,10 @@ progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.71.99:
-  version "0.71.99"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.71.99.tgz#b3d1b9ed98f1f8e437d9e430b1031b226877d1e3"
-  integrity sha512-yt3zlMMz+BZizXpwFGoEia/JmI6bsO4yypxW8zhxWsqnjJPm4HpZcNgQp8YKrPiAlvT3ovUTI7G2lk9R6RnZ8g==
+projen@^0.71.100:
+  version "0.71.100"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.71.100.tgz#25d74df66eb9ac1d9f6d55d1a56b31c7215e4e01"
+  integrity sha512-UWig1B/6L4FJmzpnzyErUaCLwyr1z/CezvRsO2TmgABgAugMQAjqTzW9R9QyBAen3VYt8uHGl9B+4CrkoFxHSw==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
