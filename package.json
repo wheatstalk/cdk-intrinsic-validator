@@ -71,7 +71,7 @@
     "node-abort-controller": "^3",
     "node-fetch": "^2",
     "npm-check-updates": "^16",
-    "projen": "^0.73.39",
+    "projen": "^0.73.40",
     "shx": "^0.3.4",
     "standard-version": "^9",
     "ts-jest": "^27",
