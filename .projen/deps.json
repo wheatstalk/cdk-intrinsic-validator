@@ -41,11 +41,6 @@
       "type": "build"
     },
     {
-      "name": "constructs",
-      "version": "^10",
-      "type": "build"
-    },
-    {
       "name": "esbuild",
       "type": "build"
     },

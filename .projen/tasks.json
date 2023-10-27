@@ -290,13 +290,13 @@
           "exec": "yarn upgrade npm-check-updates"
         },
         {
-          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,@wheatstalk/lit-snip,aws-cdk-lib,aws-cdk,aws-sdk,constructs,esbuild,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest-junit,jest,jsii-diff,jsii-docgen,jsii-pacmak,markmac,node-abort-controller,node-fetch,npm-check-updates,projen,shx,standard-version,ts-jest,ts-node,typescript"
+          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,@wheatstalk/lit-snip,aws-cdk-lib,aws-cdk,aws-sdk,esbuild,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest-junit,jest,jsii-diff,jsii-docgen,jsii-pacmak,markmac,node-abort-controller,node-fetch,npm-check-updates,projen,shx,standard-version,ts-jest,ts-node,typescript,constructs"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser @wheatstalk/lit-snip aws-cdk-lib aws-cdk aws-sdk constructs esbuild eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak markmac node-abort-controller node-fetch npm-check-updates projen shx standard-version ts-jest ts-node typescript"
+          "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser @wheatstalk/lit-snip aws-cdk-lib aws-cdk aws-sdk esbuild eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak markmac node-abort-controller node-fetch npm-check-updates projen shx standard-version ts-jest ts-node typescript constructs"
         },
         {
           "exec": "npx projen"
