@@ -1546,16 +1546,16 @@ aws-cdk-lib@2.28.0:
     yaml "1.10.2"
 
 aws-cdk@^2.28.0:
-  version "2.108.1"
-  resolved "https://registry.yarnpkg.com/aws-cdk/-/aws-cdk-2.108.1.tgz#56379055968892deeb1b82e9c2e60b351ba9c2f4"
-  integrity sha512-VSu1KYLT1VzJdZqKPgVFQGfEBxaWmWCp0USfT4Xqk7drOmMzZK1PmXhSDpWr1mq1jn0m+4rwaifUi1Tt/0eFNQ==
+  version "2.109.0"
+  resolved "https://registry.yarnpkg.com/aws-cdk/-/aws-cdk-2.109.0.tgz#048078e151b0b88e3e826103c35cd630cbc0f764"
+  integrity sha512-e06YlA4HsKZCOdh3ApynZauJ3/224o/q5vOso3Fs5ksLkYhfXREl+O7UmAOZ1Nenq5ADNgccvNwuChQWbNSvSg==
   optionalDependencies:
     fsevents "2.3.2"
 
 aws-sdk@^2.963.0:
-  version "2.1496.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1496.0.tgz#94d0bd1c0a6b17ded44ecb47895629f4dc6baf10"
-  integrity sha512-w/JnK6kmYBDSJ+vt9KKJbYYh3SXak5NFB7uLiev0Ysl3dkxnA3ScSmc1x7KZvDkHcbkACI0VeMPTkftEGvY9kQ==
+  version "2.1497.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1497.0.tgz#d47c24097d678dbc94792ee1d2100cc47c6674df"
+  integrity sha512-X8bDAMVToQ+vr3Ctizt4GRGYFhfwOQ0+dyBRTt9tyuOQ0BQQFIicBoUM6WHqGez6G2EZWPAYjBQQNj4zsCUMCw==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -2478,9 +2478,9 @@ eastasianwidth@^0.2.0:
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
 electron-to-chromium@^1.4.535:
-  version "1.4.583"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.583.tgz#7b0ac4f36388da4b5485788adb92cd7dd0abffc4"
-  integrity sha512-93y1gcONABZ7uqYe/JWDVQP/Pj/sQSunF0HVAPdlg/pfBnOyBMLlQUxWvkqcljJg1+W6cjvPuYD+r1Th9Tn8mA==
+  version "1.4.585"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.585.tgz#7b3cb6846bb5cc10a8d5904c351a9b8aaa76ea90"
+  integrity sha512-B4yBlX0azdA3rVMxpYwLQfDpdwOgcnLCkpvSOd68iFmeedo+WYjaBJS3/W58LVD8CB2nf+o7C4K9xz1l09RkWg==
 
 emittery@^0.8.1:
   version "0.8.1"
