@@ -233,7 +233,7 @@ def handler(event, context):
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "ebc8b8f7e1f2e3c045cbc515121e9e1c04ee276833497269d0236d4a8b75cb50.zip",
+          "S3Key": "d4930248a23d5f0fd64f0f02c3124aad7d1d75d112d37f432f3fba6e6af41765.zip",
         },
         "Environment": Object {
           "Variables": Object {
@@ -394,7 +394,7 @@ def handler(event, context):
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "ebc8b8f7e1f2e3c045cbc515121e9e1c04ee276833497269d0236d4a8b75cb50.zip",
+          "S3Key": "d4930248a23d5f0fd64f0f02c3124aad7d1d75d112d37f432f3fba6e6af41765.zip",
         },
         "Environment": Object {
           "Variables": Object {
