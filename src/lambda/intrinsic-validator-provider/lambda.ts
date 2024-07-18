@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { StepFunctions } from 'aws-sdk';
+import StepFunctions = require('aws-sdk/clients/stepfunctions');
 
 export interface OnEventHandlerRequest {
   readonly RequestType: string;
