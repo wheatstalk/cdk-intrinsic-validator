@@ -22,6 +22,9 @@ Object {
       "ap-south-1": Object {
         "states": "states.ap-south-1.amazonaws.com",
       },
+      "ap-south-2": Object {
+        "states": "states.ap-south-2.amazonaws.com",
+      },
       "ap-southeast-1": Object {
         "states": "states.ap-southeast-1.amazonaws.com",
       },
@@ -30,6 +33,9 @@ Object {
       },
       "ap-southeast-3": Object {
         "states": "states.ap-southeast-3.amazonaws.com",
+      },
+      "ap-southeast-4": Object {
+        "states": "states.ap-southeast-4.amazonaws.com",
       },
       "ca-central-1": Object {
         "states": "states.ca-central-1.amazonaws.com",
@@ -42,6 +48,9 @@ Object {
       },
       "eu-central-1": Object {
         "states": "states.eu-central-1.amazonaws.com",
+      },
+      "eu-central-2": Object {
+        "states": "states.eu-central-2.amazonaws.com",
       },
       "eu-north-1": Object {
         "states": "states.eu-north-1.amazonaws.com",
@@ -60,6 +69,12 @@ Object {
       },
       "eu-west-3": Object {
         "states": "states.eu-west-3.amazonaws.com",
+      },
+      "il-central-1": Object {
+        "states": "states.il-central-1.amazonaws.com",
+      },
+      "me-central-1": Object {
+        "states": "states.me-central-1.amazonaws.com",
       },
       "me-south-1": Object {
         "states": "states.me-south-1.amazonaws.com",
@@ -405,6 +420,10 @@ def handler(event, context):
       "Type": "AWS::EC2::EIP",
     },
     "ClusterVpcPublicSubnet1NATGateway0693C346": Object {
+      "DependsOn": Array [
+        "ClusterVpcPublicSubnet1DefaultRoute62DA4B4B",
+        "ClusterVpcPublicSubnet1RouteTableAssociation0FBEF1F4",
+      ],
       "Properties": Object {
         "AllocationId": Object {
           "Fn::GetAtt": Array [
@@ -509,6 +528,10 @@ def handler(event, context):
       "Type": "AWS::EC2::EIP",
     },
     "ClusterVpcPublicSubnet2NATGateway00B24686": Object {
+      "DependsOn": Array [
+        "ClusterVpcPublicSubnet2DefaultRoute97446C8A",
+        "ClusterVpcPublicSubnet2RouteTableAssociation8446B27D",
+      ],
       "Properties": Object {
         "AllocationId": Object {
           "Fn::GetAtt": Array [
@@ -709,7 +732,7 @@ def handler(event, context):
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "403182b125cdb88998072bb5e504dde8c8f6a9aea5beb2fcfa46097ac0216aa0.zip",
+          "S3Key": "9eca353b1722fc02df4a8bc56bd22ac4430218fc5abc718c9624b30bfea78404.zip",
         },
         "Environment": Object {
           "Variables": Object {
@@ -725,7 +748,7 @@ def handler(event, context):
             "Arn",
           ],
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs18.x",
       },
       "Type": "AWS::Lambda::Function",
     },
@@ -870,7 +893,7 @@ def handler(event, context):
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "403182b125cdb88998072bb5e504dde8c8f6a9aea5beb2fcfa46097ac0216aa0.zip",
+          "S3Key": "9eca353b1722fc02df4a8bc56bd22ac4430218fc5abc718c9624b30bfea78404.zip",
         },
         "Environment": Object {
           "Variables": Object {
@@ -886,7 +909,7 @@ def handler(event, context):
             "Arn",
           ],
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs18.x",
       },
       "Type": "AWS::Lambda::Function",
     },
@@ -977,7 +1000,7 @@ def handler(event, context):
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "eaeb69bc290b516fe3b049f89d6118b22249df682fbabf56af300cf345198574.zip",
+          "S3Key": "7382a0addb9f34974a1ea6c6c9b063882af874828f366f5c93b2b7b64db15c94.zip",
         },
         "Description": "AWS CDK resource provider framework - isComplete (IntegDev/IntrinsicValidator/Provider)",
         "Environment": Object {
@@ -1003,7 +1026,7 @@ def handler(event, context):
             "Arn",
           ],
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs18.x",
         "Timeout": 900,
       },
       "Type": "AWS::Lambda::Function",
@@ -1140,7 +1163,7 @@ def handler(event, context):
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "eaeb69bc290b516fe3b049f89d6118b22249df682fbabf56af300cf345198574.zip",
+          "S3Key": "7382a0addb9f34974a1ea6c6c9b063882af874828f366f5c93b2b7b64db15c94.zip",
         },
         "Description": "AWS CDK resource provider framework - onEvent (IntegDev/IntrinsicValidator/Provider)",
         "Environment": Object {
@@ -1169,7 +1192,7 @@ def handler(event, context):
             "Arn",
           ],
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs18.x",
         "Timeout": 900,
       },
       "Type": "AWS::Lambda::Function",
@@ -1313,7 +1336,7 @@ def handler(event, context):
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "eaeb69bc290b516fe3b049f89d6118b22249df682fbabf56af300cf345198574.zip",
+          "S3Key": "7382a0addb9f34974a1ea6c6c9b063882af874828f366f5c93b2b7b64db15c94.zip",
         },
         "Description": "AWS CDK resource provider framework - onTimeout (IntegDev/IntrinsicValidator/Provider)",
         "Environment": Object {
@@ -1339,7 +1362,7 @@ def handler(event, context):
             "Arn",
           ],
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs18.x",
         "Timeout": 900,
       },
       "Type": "AWS::Lambda::Function",
@@ -1597,6 +1620,7 @@ def handler(event, context):
       "Type": "AWS::IAM::Policy",
     },
     "IntrinsicValidatorStateMachine503A46CB": Object {
+      "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "IntrinsicValidatorStateMachineRoleDefaultPolicy24A129F9",
         "IntrinsicValidatorStateMachineRole4BD3BBAE",
@@ -1660,7 +1684,7 @@ def handler(event, context):
               Object {
                 "Ref": "TestAlarmsNeverAlarmingHopefullyFD878B05",
               },
-              " is alarming\\"}}},{\\"StartAt\\":\\"[3] LambdaInvokeSucceeds\\",\\"States\\":{\\"[3] LambdaInvokeSucceeds\\":{\\"End\\":true,\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2}],\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
+              " is alarming\\"}}},{\\"StartAt\\":\\"[3] LambdaInvokeSucceeds\\",\\"States\\":{\\"[3] LambdaInvokeSucceeds\\":{\\"End\\":true,\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ClientExecutionTimeoutException\\",\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2}],\\"Type\\":\\"Task\\",\\"Resource\\":\\"arn:",
               Object {
                 "Ref": "AWS::Partition",
               },
@@ -1683,6 +1707,7 @@ def handler(event, context):
         },
       },
       "Type": "AWS::StepFunctions::StateMachine",
+      "UpdateReplacePolicy": "Delete",
     },
     "IntrinsicValidatorStateMachineRole4BD3BBAE": Object {
       "Properties": Object {
@@ -2123,7 +2148,7 @@ def handler(event, context):
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "4cd567bf52e0f31674ae9e960efae8855b8b1249fa9997799ae47dc9f80e9ff8.zip",
+          "S3Key": "5bc602ecde93c947efe5899ae355f999986a1acbe610b1c0b9c468d738857555.zip",
         },
         "Handler": "index.handler",
         "Role": Object {
@@ -2132,7 +2157,8 @@ def handler(event, context):
             "Arn",
           ],
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs18.x",
+        "Timeout": 900,
       },
       "Type": "AWS::Lambda::Function",
     },
@@ -2201,7 +2227,7 @@ def handler(event, context):
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "403182b125cdb88998072bb5e504dde8c8f6a9aea5beb2fcfa46097ac0216aa0.zip",
+          "S3Key": "9eca353b1722fc02df4a8bc56bd22ac4430218fc5abc718c9624b30bfea78404.zip",
         },
         "Handler": "check-alarm-status.handler",
         "Role": Object {
@@ -2210,7 +2236,7 @@ def handler(event, context):
             "Arn",
           ],
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs18.x",
       },
       "Type": "AWS::Lambda::Function",
     },
@@ -2290,6 +2316,7 @@ def handler(event, context):
       "Type": "AWS::IAM::Policy",
     },
     "SingletonAlarmMonitorStateMachine9830D808": Object {
+      "DeletionPolicy": "Delete",
       "DependsOn": Array [
         "SingletonAlarmMonitorStateMachineRoleDefaultPolicy445274A5",
         "SingletonAlarmMonitorStateMachineRoleBFB10518",
@@ -2299,7 +2326,7 @@ def handler(event, context):
           "Fn::Join": Array [
             "",
             Array [
-              "{\\"StartAt\\":\\"CheckAlarmStatus\\",\\"States\\":{\\"CheckAlarmStatus\\":{\\"Next\\":\\"AlarmStatusChoice\\",\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2},{\\"ErrorEquals\\":[\\"States.ALL\\"],\\"MaxAttempts\\":3}],\\"Catch\\":[{\\"ErrorEquals\\":[\\"States.ALL\\"],\\"Next\\":\\"BugState\\"}],\\"Type\\":\\"Task\\",\\"ResultPath\\":\\"$.CheckAlarmStatus\\",\\"ResultSelector\\":{\\"Status.$\\":\\"$.Payload.Status\\"},\\"Resource\\":\\"arn:",
+              "{\\"StartAt\\":\\"CheckAlarmStatus\\",\\"States\\":{\\"CheckAlarmStatus\\":{\\"Next\\":\\"AlarmStatusChoice\\",\\"Retry\\":[{\\"ErrorEquals\\":[\\"Lambda.ClientExecutionTimeoutException\\",\\"Lambda.ServiceException\\",\\"Lambda.AWSLambdaException\\",\\"Lambda.SdkClientException\\"],\\"IntervalSeconds\\":2,\\"MaxAttempts\\":6,\\"BackoffRate\\":2},{\\"ErrorEquals\\":[\\"States.ALL\\"],\\"MaxAttempts\\":3}],\\"Catch\\":[{\\"ErrorEquals\\":[\\"States.ALL\\"],\\"Next\\":\\"BugState\\"}],\\"Type\\":\\"Task\\",\\"ResultPath\\":\\"$.CheckAlarmStatus\\",\\"ResultSelector\\":{\\"Status.$\\":\\"$.Payload.Status\\"},\\"Resource\\":\\"arn:",
               Object {
                 "Ref": "AWS::Partition",
               },
@@ -2322,6 +2349,7 @@ def handler(event, context):
         },
       },
       "Type": "AWS::StepFunctions::StateMachine",
+      "UpdateReplacePolicy": "Delete",
     },
     "SingletonAlarmMonitorStateMachineRoleBFB10518": Object {
       "Properties": Object {

@@ -64,7 +64,7 @@ export class IntrinsicValidator extends Construct {
     });
 
     const code = lambda.Code.fromAsset(LAMBDA_ASSET_DIR);
-    const runtime = lambda.Runtime.NODEJS_14_X;
+    const runtime = lambda.Runtime.NODEJS_LATEST;
     const logRetention = logs.RetentionDays.ONE_MONTH;
 
     const onEventHandler = new lambda.Function(this, 'OnEventHandler', {
@@ -574,7 +574,7 @@ class HttpCheck extends Validation {
     const privateScope = new Construct(scope, id);
 
     const lambdaFunction = new lambda.SingletonFunction(privateScope, 'Function', {
-      runtime: lambda.Runtime.NODEJS_14_X,
+      runtime: lambda.Runtime.NODEJS_LATEST,
       uuid: 'http-check.handler',
       handler: 'http-check.handler',
       code: lambda.Code.fromAsset(path.join(LAMBDA_ASSET_DIR)),

@@ -1,8 +1,9 @@
 const { awscdk } = require('projen');
+const cdkVersion = '2.100.0';
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Josh Kellendonk',
   authorAddress: 'joshkellendonk@gmail.com',
-  cdkVersion: '2.28.0',
+  cdkVersion,
   defaultReleaseBranch: 'main',
   name: '@wheatstalk/cdk-intrinsic-validator',
   repositoryUrl: 'https://github.com/wheatstalk/cdk-intrinsic-validator.git',
@@ -30,8 +31,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
 
   devDeps: [
     'ts-node@^10',
-    'aws-cdk@^2.28.0',
-    'aws-cdk-lib@^2.28.0',
+    `aws-cdk@^${cdkVersion}`,
+    `aws-cdk-lib@^${cdkVersion}`,
     'aws-sdk@^2.963.0',
     'constructs@^10',
     'markmac@^0.1',
