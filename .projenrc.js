@@ -92,7 +92,7 @@ macros.exec('shx cat README.md.bak | markmac > README.md');
 macros.exec('shx rm README.md.bak');
 project.buildWorkflow.addPostBuildJobTask(macros);
 
-const commonOptions = '--bundle --external:aws-sdk --platform=node';
+const commonOptions = '--bundle --platform=node';
 const preCompileTask = project.tasks.tryFind('pre-compile');
 preCompileTask.exec(`esbuild ${commonOptions} src/lambda/intrinsic-validator-provider/lambda.ts --outfile=lambda/intrinsic-validator-provider.js`);
 preCompileTask.exec(`esbuild ${commonOptions} src/lambda/http-check/lambda.ts --outfile=lambda/http-check.js`);

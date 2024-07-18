@@ -194,13 +194,13 @@
       "description": "Prepare the project for compilation",
       "steps": [
         {
-          "exec": "esbuild --bundle --external:aws-sdk --platform=node src/lambda/intrinsic-validator-provider/lambda.ts --outfile=lambda/intrinsic-validator-provider.js"
+          "exec": "esbuild --bundle --platform=node src/lambda/intrinsic-validator-provider/lambda.ts --outfile=lambda/intrinsic-validator-provider.js"
         },
         {
-          "exec": "esbuild --bundle --external:aws-sdk --platform=node src/lambda/http-check/lambda.ts --outfile=lambda/http-check.js"
+          "exec": "esbuild --bundle --platform=node src/lambda/http-check/lambda.ts --outfile=lambda/http-check.js"
         },
         {
-          "exec": "esbuild --bundle --external:aws-sdk --platform=node src/lambda/check-alarm-status/lambda.ts --outfile=lambda/check-alarm-status.js"
+          "exec": "esbuild --bundle --platform=node src/lambda/check-alarm-status/lambda.ts --outfile=lambda/check-alarm-status.js"
         }
       ]
     },

@@ -1,5 +1,5 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { CloudWatch } from 'aws-sdk';
+// eslint-disable-next-line import/no-extraneous-dependencies, @typescript-eslint/no-require-imports
+import CloudWatch = require('aws-sdk/clients/cloudwatch');
 
 export interface CheckAlarmStatusRequest {
   readonly AlarmName: string;
