@@ -642,7 +642,7 @@ def handler(event, context):
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "c4e97eaf9949758d62d58b5ec583953a5835569d7af935534226421b75b4a3c0.zip",
+          "S3Key": "5beb798c57ed68eb49d8c7403c92ab91498e463cc4928e320ff071c9a9b07157.zip",
         },
         "Environment": Object {
           "Variables": Object {
@@ -803,7 +803,7 @@ def handler(event, context):
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "c4e97eaf9949758d62d58b5ec583953a5835569d7af935534226421b75b4a3c0.zip",
+          "S3Key": "5beb798c57ed68eb49d8c7403c92ab91498e463cc4928e320ff071c9a9b07157.zip",
         },
         "Environment": Object {
           "Variables": Object {
@@ -1660,7 +1660,7 @@ def handler(event, context):
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "c4e97eaf9949758d62d58b5ec583953a5835569d7af935534226421b75b4a3c0.zip",
+          "S3Key": "5beb798c57ed68eb49d8c7403c92ab91498e463cc4928e320ff071c9a9b07157.zip",
         },
         "Handler": "check-alarm-status.handler",
         "Role": Object {
